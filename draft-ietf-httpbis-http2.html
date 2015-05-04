@@ -2125,7 +2125,7 @@ Upgrade: h2c
                </p>
             </div>
             <div id="rfc.section.6.2.p.7">
-               <p>The HEADERS frame can include padding. Padding fields and flags are identical to those defined for DATA frames (<a href="#DATA" title="DATA">Section&nbsp;6.1</a>).
+               <p>The HEADERS frame can include padding. Padding fields and flags are identical to those defined for DATA frames (<a href="#DATA" title="DATA">Section&nbsp;6.1</a>). Padding that exceeds the size remaining for the header block fragment MUST be treated as a <a href="#PROTOCOL_ERROR" class="smpl">PROTOCOL_ERROR</a>.
                </p>
             </div>
             <div id="rfc.section.6.2.p.8">
