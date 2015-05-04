@@ -137,30 +137,30 @@ Internet-Draft                   HTTP/2                         May 2015
      6.10. CONTINUATION  . . . . . . . . . . . . . . . . . . . . . .  49
    7.  Error Codes . . . . . . . . . . . . . . . . . . . . . . . . .  50
    8.  HTTP Message Exchanges  . . . . . . . . . . . . . . . . . . .  51
-     8.1.  HTTP Request/Response Exchange  . . . . . . . . . . . . .  52
+     8.1.  HTTP Request/Response Exchange  . . . . . . . . . . . . .  51
        8.1.1.  Upgrading From HTTP/2 . . . . . . . . . . . . . . . .  53
        8.1.2.  HTTP Header Fields  . . . . . . . . . . . . . . . . .  53
        8.1.3.  Examples  . . . . . . . . . . . . . . . . . . . . . .  57
-       8.1.4.  Request Reliability Mechanisms in HTTP/2  . . . . . .  60
+       8.1.4.  Request Reliability Mechanisms in HTTP/2  . . . . . .  59
      8.2.  Server Push . . . . . . . . . . . . . . . . . . . . . . .  60
        8.2.1.  Push Requests . . . . . . . . . . . . . . . . . . . .  61
-       8.2.2.  Push Responses  . . . . . . . . . . . . . . . . . . .  63
-     8.3.  The CONNECT Method  . . . . . . . . . . . . . . . . . . .  64
-   9.  Additional HTTP Requirements/Considerations . . . . . . . . .  65
-     9.1.  Connection Management . . . . . . . . . . . . . . . . . .  65
-       9.1.1.  Connection Reuse  . . . . . . . . . . . . . . . . . .  66
+       8.2.2.  Push Responses  . . . . . . . . . . . . . . . . . . .  62
+     8.3.  The CONNECT Method  . . . . . . . . . . . . . . . . . . .  63
+   9.  Additional HTTP Requirements/Considerations . . . . . . . . .  64
+     9.1.  Connection Management . . . . . . . . . . . . . . . . . .  64
+       9.1.1.  Connection Reuse  . . . . . . . . . . . . . . . . . .  65
        9.1.2.  The 421 (Misdirected Request) Status Code . . . . . .  66
-     9.2.  Use of TLS Features . . . . . . . . . . . . . . . . . . .  67
+     9.2.  Use of TLS Features . . . . . . . . . . . . . . . . . . .  66
        9.2.1.  TLS 1.2 Features  . . . . . . . . . . . . . . . . . .  67
        9.2.2.  TLS 1.2 Cipher Suites . . . . . . . . . . . . . . . .  68
-   10. Security Considerations . . . . . . . . . . . . . . . . . . .  69
-     10.1.  Server Authority . . . . . . . . . . . . . . . . . . . .  69
-     10.2.  Cross-Protocol Attacks . . . . . . . . . . . . . . . . .  69
-     10.3.  Intermediary Encapsulation Attacks . . . . . . . . . . .  70
-     10.4.  Cacheability of Pushed Responses . . . . . . . . . . . .  70
+   10. Security Considerations . . . . . . . . . . . . . . . . . . .  68
+     10.1.  Server Authority . . . . . . . . . . . . . . . . . . . .  68
+     10.2.  Cross-Protocol Attacks . . . . . . . . . . . . . . . . .  68
+     10.3.  Intermediary Encapsulation Attacks . . . . . . . . . . .  69
+     10.4.  Cacheability of Pushed Responses . . . . . . . . . . . .  69
      10.5.  Denial of Service Considerations . . . . . . . . . . . .  70
        10.5.1.  Limits on Header Block Size  . . . . . . . . . . . .  71
-       10.5.2.  CONNECT Issues . . . . . . . . . . . . . . . . . . .  72
+       10.5.2.  CONNECT Issues . . . . . . . . . . . . . . . . . . .  71
      10.6.  Use of Compression . . . . . . . . . . . . . . . . . . .  72
 
 
@@ -170,11 +170,11 @@ Belshe, et al.          Expires November 5, 2015                [Page 3]
 Internet-Draft                   HTTP/2                         May 2015
 
 
-     10.7.  Use of Padding . . . . . . . . . . . . . . . . . . . . .  73
+     10.7.  Use of Padding . . . . . . . . . . . . . . . . . . . . .  72
      10.8.  Privacy Considerations . . . . . . . . . . . . . . . . .  73
-   11. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  74
+   11. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  73
      11.1.  Registration of HTTP/2 Identification Strings  . . . . .  74
-     11.2.  Frame Type Registry  . . . . . . . . . . . . . . . . . .  75
+     11.2.  Frame Type Registry  . . . . . . . . . . . . . . . . . .  74
      11.3.  Settings Registry  . . . . . . . . . . . . . . . . . . .  75
      11.4.  Error Code Registry  . . . . . . . . . . . . . . . . . .  76
      11.5.  HTTP2-Settings Header Field Registration . . . . . . . .  77
@@ -186,25 +186,25 @@ Internet-Draft                   HTTP/2                         May 2015
      13.2.  Informative References . . . . . . . . . . . . . . . . .  81
      13.3.  URIs . . . . . . . . . . . . . . . . . . . . . . . . . .  82
    Appendix A.  TLS 1.2 Cipher Suite Black List  . . . . . . . . . .  83
-   Appendix B.  Change Log . . . . . . . . . . . . . . . . . . . . .  94
-     B.1.  Since draft-ietf-httpbis-http2-15 . . . . . . . . . . . .  94
-     B.2.  Since draft-ietf-httpbis-http2-14 . . . . . . . . . . . .  95
-     B.3.  Since draft-ietf-httpbis-http2-13 . . . . . . . . . . . .  95
-     B.4.  Since draft-ietf-httpbis-http2-12 . . . . . . . . . . . .  95
-     B.5.  Since draft-ietf-httpbis-http2-11 . . . . . . . . . . . .  95
-     B.6.  Since draft-ietf-httpbis-http2-10 . . . . . . . . . . . .  96
-     B.7.  Since draft-ietf-httpbis-http2-09 . . . . . . . . . . . .  96
-     B.8.  Since draft-ietf-httpbis-http2-08 . . . . . . . . . . . .  96
-     B.9.  Since draft-ietf-httpbis-http2-07 . . . . . . . . . . . .  97
-     B.10. Since draft-ietf-httpbis-http2-06 . . . . . . . . . . . .  97
-     B.11. Since draft-ietf-httpbis-http2-05 . . . . . . . . . . . .  97
-     B.12. Since draft-ietf-httpbis-http2-04 . . . . . . . . . . . .  97
-     B.13. Since draft-ietf-httpbis-http2-03 . . . . . . . . . . . .  98
-     B.14. Since draft-ietf-httpbis-http2-02 . . . . . . . . . . . .  98
-     B.15. Since draft-ietf-httpbis-http2-01 . . . . . . . . . . . .  98
-     B.16. Since draft-ietf-httpbis-http2-00 . . . . . . . . . . . .  99
-     B.17. Since draft-mbelshe-httpbis-spdy-00 . . . . . . . . . . .  99
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  99
+   Appendix B.  Change Log . . . . . . . . . . . . . . . . . . . . .  87
+     B.1.  Since draft-ietf-httpbis-http2-15 . . . . . . . . . . . .  87
+     B.2.  Since draft-ietf-httpbis-http2-14 . . . . . . . . . . . .  87
+     B.3.  Since draft-ietf-httpbis-http2-13 . . . . . . . . . . . .  88
+     B.4.  Since draft-ietf-httpbis-http2-12 . . . . . . . . . . . .  88
+     B.5.  Since draft-ietf-httpbis-http2-11 . . . . . . . . . . . .  88
+     B.6.  Since draft-ietf-httpbis-http2-10 . . . . . . . . . . . .  88
+     B.7.  Since draft-ietf-httpbis-http2-09 . . . . . . . . . . . .  89
+     B.8.  Since draft-ietf-httpbis-http2-08 . . . . . . . . . . . .  89
+     B.9.  Since draft-ietf-httpbis-http2-07 . . . . . . . . . . . .  90
+     B.10. Since draft-ietf-httpbis-http2-06 . . . . . . . . . . . .  90
+     B.11. Since draft-ietf-httpbis-http2-05 . . . . . . . . . . . .  90
+     B.12. Since draft-ietf-httpbis-http2-04 . . . . . . . . . . . .  90
+     B.13. Since draft-ietf-httpbis-http2-03 . . . . . . . . . . . .  91
+     B.14. Since draft-ietf-httpbis-http2-02 . . . . . . . . . . . .  91
+     B.15. Since draft-ietf-httpbis-http2-01 . . . . . . . . . . . .  91
+     B.16. Since draft-ietf-httpbis-http2-00 . . . . . . . . . . . .  92
+     B.17. Since draft-mbelshe-httpbis-spdy-00 . . . . . . . . . . .  92
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  92
 
 1.  Introduction
 
@@ -1810,8 +1810,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
    The HEADERS frame (type=0x1) is used to open a stream (Section 5.1),
    and additionally carries a header block fragment.  HEADERS frames can
-   be sent on a stream in the "idle", "reserved (local)", "open" or
-   "half closed (remote)" states.
+   be sent on a stream in the "open" or "half closed (remote)" states.
 
     +---------------+
     |Pad Length? (8)|
@@ -1841,7 +1840,8 @@ Internet-Draft                   HTTP/2                         May 2015
       this stream depends on, see Section 5.3.  This field is only
       present if the PRIORITY flag is set.
 
-
+   Weight:  An unsigned 8-bit integer representing a priority weight for
+      the stream, see Section 5.3.  Add one to the value to obtain a
 
 
 
@@ -1850,8 +1850,6 @@ Belshe, et al.          Expires November 5, 2015               [Page 33]
 Internet-Draft                   HTTP/2                         May 2015
 
 
-   Weight:  An unsigned 8-bit integer representing a priority weight for
-      the stream, see Section 5.3.  Add one to the value to obtain a
       weight between 1 and 256.  This field is only present if the
       PRIORITY flag is set.
 
@@ -1898,6 +1896,8 @@ Internet-Draft                   HTTP/2                         May 2015
 
    The HEADERS frame changes the connection state as described in
    Section 4.3.
+
+
 
 
 
@@ -2371,11 +2371,18 @@ Internet-Draft                   HTTP/2                         May 2015
 
 6.8.  GOAWAY
 
-   The GOAWAY frame (type=0x7) is used to initiate shutdown of a
-   connection or to signal serious error conditions.  GOAWAY allows an
-   endpoint to gracefully stop accepting new streams, while still
-   finishing processing of previously established streams.  This enables
-   administrative actions, like server maintenance.
+   The GOAWAY frame (type=0x7) informs the remote peer to stop creating
+   streams on this connection.  GOAWAY can be sent by either the client
+   or the server.  Once sent, the sender will ignore frames sent on any
+   new streams with identifiers higher than the included last stream
+   identifier.  Receivers of a GOAWAY frame MUST NOT open additional
+   streams on the connection, although a new connection can be
+   established for new streams.
+
+   The purpose of this frame is to allow an endpoint to gracefully stop
+   accepting new streams, while still finishing processing of previously
+   established streams.  This enables administrative actions, like
+   server maintenance.
 
    There is an inherent race condition between an endpoint starting new
    streams and the remote sending a GOAWAY frame.  To deal with this
@@ -2384,12 +2391,6 @@ Internet-Draft                   HTTP/2                         May 2015
    endpoint in this connection.  For instance, if the server sends a
    GOAWAY frame, the identified stream is the highest numbered stream
    initiated by the client.
-
-   Once sent, the sender will ignore frames sent on streams initiated by
-   the receiver if the stream has an identifier higher than the included
-   last stream identifier.  Receivers of a GOAWAY frame MUST NOT open
-   additional streams on the connection, although a new connection can
-   be established for new streams.
 
    If the receiver of the GOAWAY has sent data on streams with a higher
    stream identifier than what is indicated in the GOAWAY frame, those
@@ -2401,7 +2402,6 @@ Internet-Draft                   HTTP/2                         May 2015
    Endpoints SHOULD always send a GOAWAY frame before closing a
    connection so that the remote peer can know whether a stream has been
    partially processed or not.  For example, if an HTTP client sends a
-   POST at the same time that a server closes a connection, the client
 
 
 
@@ -2410,17 +2410,13 @@ Belshe, et al.          Expires November 5, 2015               [Page 43]
 Internet-Draft                   HTTP/2                         May 2015
 
 
+   POST at the same time that a server closes a connection, the client
    cannot know if the server started to process that POST request if the
    server does not send a GOAWAY frame to indicate what streams it might
    have acted on.
 
    An endpoint might choose to close a connection without sending GOAWAY
    for misbehaving peers.
-
-   A GOAWAY frame might not immediately precede closing of the
-   connection; a receiver of a GOAWAY that has no more use for the
-   connection SHOULD still send a GOAWAY frame before terminating the
-   connection.
 
     +-+-------------------------------------------------------------+
     |R|                  Last-Stream-ID (31)                        |
@@ -2457,7 +2453,11 @@ Internet-Draft                   HTTP/2                         May 2015
    closed completely prior to the connection being closed, re-attempting
    requests, transactions, or any protocol activity is not possible,
    with the exception of idempotent actions like HTTP GET, PUT, or
+   DELETE.  Any protocol activity that uses higher numbered streams can
+   be safely retried using a new connection.
 
+   Activity on streams numbered lower or equal to the last stream
+   identifier might still complete successfully.  The sender of a GOAWAY
 
 
 
@@ -2466,11 +2466,6 @@ Belshe, et al.          Expires November 5, 2015               [Page 44]
 Internet-Draft                   HTTP/2                         May 2015
 
 
-   DELETE.  Any protocol activity that uses higher numbered streams can
-   be safely retried using a new connection.
-
-   Activity on streams numbered lower or equal to the last stream
-   identifier might still complete successfully.  The sender of a GOAWAY
    frame might gracefully shut down a connection by sending a GOAWAY
    frame, maintaining the connection in an open state until all in-
    progress streams complete.
@@ -2490,23 +2485,21 @@ Internet-Draft                   HTTP/2                         May 2015
    HTTP/2.  A server that is attempting to gracefully shut down a
    connection SHOULD send an initial GOAWAY frame with the last stream
    identifier set to 2^31-1 and a NO_ERROR code.  This signals to the
-   client that a shutdown is imminent and that initiating further
-   requests is prohibited.  After allowing time for any in flight stream
-   creation - at least one round trip time - the server can send another
-   GOAWAY frame with an updated last stream identifier.  This ensures
-   that a connection can be cleanly shut down without causing clients to
-   lose requests.
+   client that a shutdown is imminent and that no further requests can
+   be initiated.  After waiting at least one round trip time, the server
+   can send another GOAWAY frame with an updated last stream identifier.
+   This ensures that a connection can be cleanly shut down without
+   losing requests.
 
    After sending a GOAWAY frame, the sender can discard frames for
-   streams initiated by the receiver with identifiers higher than the
-   identified last stream.  However, any frames that alter connection
-   state cannot be completely ignored.  For instance, HEADERS,
-   PUSH_PROMISE and CONTINUATION frames MUST be minimally processed to
-   ensure the state maintained for header compression is consistent (see
-   Section 4.3); similarly DATA frames MUST be counted toward the
-   connection flow control window.  Failure to process these frames can
-   cause flow control or header compression state to become
-   unsynchronized.
+   streams with identifiers higher than the identified last stream.
+   However, any frames that alter connection state cannot be completely
+   ignored.  For instance, HEADERS, PUSH_PROMISE and CONTINUATION frames
+   MUST be minimally processed to ensure the state maintained for header
+   compression is consistent (see Section 4.3); similarly DATA frames
+   MUST be counted toward the connection flow control window.  Failure
+   to process these frames can cause flow control or header compression
+   state to become unsynchronized.
 
    The GOAWAY frame also contains a 32-bit error code (Section 7) that
    contains the reason for closing the connection.
@@ -2514,6 +2507,13 @@ Internet-Draft                   HTTP/2                         May 2015
    Endpoints MAY append opaque data to the payload of any GOAWAY frame.
    Additional debug data is intended for diagnostic purposes only and
    carries no semantic value.  Debug information could contain security-
+   or privacy-sensitive data.  Logged or otherwise persistently stored
+   debug data MUST have adequate safeguards to prevent unauthorized
+   access.
+
+
+
+
 
 
 
@@ -2521,10 +2521,6 @@ Belshe, et al.          Expires November 5, 2015               [Page 45]
 
 Internet-Draft                   HTTP/2                         May 2015
 
-
-   or privacy-sensitive data.  Logged or otherwise persistently stored
-   debug data MUST have adequate safeguards to prevent unauthorized
-   access.
 
 6.9.  WINDOW_UPDATE
 
@@ -2570,6 +2566,10 @@ Internet-Draft                   HTTP/2                         May 2015
 
    A receiver MUST treat the receipt of a WINDOW_UPDATE frame with an
    flow control window increment of 0 as a stream error (Section 5.4.2)
+   of type PROTOCOL_ERROR; errors on the connection flow control window
+   MUST be treated as a connection error (Section 5.4.1).
+
+
 
 
 
@@ -2577,9 +2577,6 @@ Belshe, et al.          Expires November 5, 2015               [Page 46]
 
 Internet-Draft                   HTTP/2                         May 2015
 
-
-   of type PROTOCOL_ERROR; errors on the connection flow control window
-   MUST be treated as a connection error (Section 5.4.1).
 
    WINDOW_UPDATE can be sent by a peer that has sent a frame bearing the
    END_STREAM flag.  This means that a receiver could receive a
@@ -2625,6 +2622,9 @@ Internet-Draft                   HTTP/2                         May 2015
    WINDOW_UPDATE frames are sent for the stream and connection level
    flow control windows.
 
+   A sender that receives a WINDOW_UPDATE frame updates the
+   corresponding window by the amount specified in the frame.
+
 
 
 
@@ -2633,9 +2633,6 @@ Belshe, et al.          Expires November 5, 2015               [Page 47]
 
 Internet-Draft                   HTTP/2                         May 2015
 
-
-   A sender that receives a WINDOW_UPDATE frame updates the
-   corresponding window by the amount specified in the frame.
 
    A sender MUST NOT allow a flow control window to exceed 2^31-1
    octets.  If a sender receives a WINDOW_UPDATE that causes a flow
@@ -2665,10 +2662,8 @@ Internet-Draft                   HTTP/2                         May 2015
    the connection flow control window is set to the default initial
    window size until a WINDOW_UPDATE frame is received.
 
-   In addition to changing the flow control window for streams that are
-   not yet active, a SETTINGS frame can alter the initial flow control
-   window size for streams with active flow control windows (that is,
-   streams in the "open" or "half closed (remote)" state).  When the
+   A SETTINGS frame can alter the initial flow control window size for
+   all streams in the "open" or "half closed (remote)" state.  When the
    value of SETTINGS_INITIAL_WINDOW_SIZE changes, a receiver MUST adjust
    the size of all stream flow control windows that it maintains by the
    difference between the new value and the old value.
@@ -2682,6 +2677,11 @@ Internet-Draft                   HTTP/2                         May 2015
    For example, if the client sends 60KB immediately on connection
    establishment, and the server sets the initial window size to be
    16KB, the client will recalculate the available flow control window
+   to be -44KB on receipt of the SETTINGS frame.  The client retains a
+   negative flow control window until WINDOW_UPDATE frames restore the
+   window to being positive, after which the client can resume sending.
+
+   A SETTINGS frame cannot alter the connection flow control window.
 
 
 
@@ -2689,12 +2689,6 @@ Belshe, et al.          Expires November 5, 2015               [Page 48]
 
 Internet-Draft                   HTTP/2                         May 2015
 
-
-   to be -44KB on receipt of the SETTINGS frame.  The client retains a
-   negative flow control window until WINDOW_UPDATE frames restore the
-   window to being positive, after which the client can resume sending.
-
-   A SETTINGS frame cannot alter the connection flow control window.
 
    An endpoint MUST treat a change to SETTINGS_INITIAL_WINDOW_SIZE that
    causes any flow control window to exceed the maximum size as a
@@ -2739,17 +2733,18 @@ Internet-Draft                   HTTP/2                         May 2015
    END_HEADERS (0x4):  Bit 2 being set indicates that this frame ends a
       header block (Section 4.3).
 
+      If the END_HEADERS bit is not set, this frame MUST be followed by
+      another CONTINUATION frame.  A receiver MUST treat the receipt of
+      any other type of frame or a frame on a different stream as a
+      connection error (Section 5.4.1) of type PROTOCOL_ERROR.
+
+
 
 
 Belshe, et al.          Expires November 5, 2015               [Page 49]
 
 Internet-Draft                   HTTP/2                         May 2015
 
-
-      If the END_HEADERS bit is not set, this frame MUST be followed by
-      another CONTINUATION frame.  A receiver MUST treat the receipt of
-      any other type of frame or a frame on a different stream as a
-      connection error (Section 5.4.1) of type PROTOCOL_ERROR.
 
    The CONTINUATION frame changes the connection state as defined in
    Section 4.3.
@@ -2793,6 +2788,11 @@ Internet-Draft                   HTTP/2                         May 2015
       not receive a response in a timely manner.  See Settings
       Synchronization (Section 6.5.3).
 
+   STREAM_CLOSED (0x5):  The endpoint received a frame after a stream
+      was half closed.
+
+   FRAME_SIZE_ERROR (0x6):  The endpoint received a frame with an
+      invalid size.
 
 
 
@@ -2801,12 +2801,6 @@ Belshe, et al.          Expires November 5, 2015               [Page 50]
 
 Internet-Draft                   HTTP/2                         May 2015
 
-
-   STREAM_CLOSED (0x5):  The endpoint received a frame after a stream
-      was half closed.
-
-   FRAME_SIZE_ERROR (0x6):  The endpoint received a frame with an
-      invalid size.
 
    REFUSED_STREAM (0x7):  The endpoint refuses the stream prior to
       performing any application processing, see Section 8.1.4 for
@@ -2850,6 +2844,12 @@ Internet-Draft                   HTTP/2                         May 2015
    also applicable in HTTP/2, but the expression of those semantics for
    this protocol are defined in the sections below.
 
+8.1.  HTTP Request/Response Exchange
+
+   A client sends an HTTP request on a new stream, using a previously
+   unused stream identifier (Section 5.1.1).  A server sends an HTTP
+   response on the same stream as the request.
+
 
 
 
@@ -2857,12 +2857,6 @@ Belshe, et al.          Expires November 5, 2015               [Page 51]
 
 Internet-Draft                   HTTP/2                         May 2015
 
-
-8.1.  HTTP Request/Response Exchange
-
-   A client sends an HTTP request on a new stream, using a previously
-   unused stream identifier (Section 5.1.1).  A server sends an HTTP
-   response on the same stream as the request.
 
    An HTTP message (request or response) consists of:
 
@@ -2906,6 +2900,12 @@ Internet-Draft                   HTTP/2                         May 2015
    informational) status code MUST treat the corresponding request or
    response as malformed (Section 8.1.2.6).
 
+   An HTTP request/response exchange fully consumes a single stream.  A
+   request starts with the HEADERS frame that puts the stream into an
+   "open" state.  The request ends with a frame bearing END_STREAM,
+   which causes the stream to become "half closed (local)" for the
+   client and "half closed (remote)" for the server.  A response starts
+
 
 
 
@@ -2914,11 +2914,6 @@ Belshe, et al.          Expires November 5, 2015               [Page 52]
 Internet-Draft                   HTTP/2                         May 2015
 
 
-   An HTTP request/response exchange fully consumes a single stream.  A
-   request starts with the HEADERS frame that puts the stream into an
-   "open" state.  The request ends with a frame bearing END_STREAM,
-   which causes the stream to become "half closed (local)" for the
-   client and "half closed (remote)" for the server.  A response starts
    with a HEADERS frame and ends with a frame bearing END_STREAM, which
    places the stream in the "closed" state.
 
@@ -2963,16 +2958,17 @@ Internet-Draft                   HTTP/2                         May 2015
    the status code for the response, HTTP/2 uses special pseudo-header
    fields beginning with ':' character (ASCII 0x3a) for this purpose.
 
+   Pseudo-header fields are not HTTP header fields.  Endpoints MUST NOT
+   generate pseudo-header fields other than those defined in this
+   document.
+
+
 
 
 Belshe, et al.          Expires November 5, 2015               [Page 53]
 
 Internet-Draft                   HTTP/2                         May 2015
 
-
-   Pseudo-header fields are not HTTP header fields.  Endpoints MUST NOT
-   generate pseudo-header fields other than those defined in this
-   document.
 
    Pseudo-header fields are only valid in the context in which they are
    defined.  Pseudo-header fields defined for requests MUST NOT appear
@@ -3019,15 +3015,16 @@ Internet-Draft                   HTTP/2                         May 2015
    o  The ":method" pseudo-header field includes the HTTP method
       ([RFC7231], Section 4).
 
+   o  The ":scheme" pseudo-header field includes the scheme portion of
+      the target URI ([RFC3986], Section 3.1).
+
+
 
 
 Belshe, et al.          Expires November 5, 2015               [Page 54]
 
 Internet-Draft                   HTTP/2                         May 2015
 
-
-   o  The ":scheme" pseudo-header field includes the scheme portion of
-      the target URI ([RFC3986], Section 3.1).
 
       ":scheme" is not restricted to "http" and "https" schemed URIs.  A
       proxy or gateway can translate requests for non-HTTP schemes,
@@ -3070,9 +3067,12 @@ Internet-Draft                   HTTP/2                         May 2015
    HTTP/2 does not define a way to carry the version identifier that is
    included in the HTTP/1.1 request line.
 
+8.1.2.4.  Response Pseudo-Header Fields
 
-
-
+   For HTTP/2 responses, a single ":status" pseudo-header field is
+   defined that carries the HTTP status code field (see [RFC7231],
+   Section 6).  This pseudo-header field MUST be included in all
+   responses, otherwise the response is malformed (Section 8.1.2.6).
 
 
 
@@ -3081,13 +3081,6 @@ Belshe, et al.          Expires November 5, 2015               [Page 55]
 
 Internet-Draft                   HTTP/2                         May 2015
 
-
-8.1.2.4.  Response Pseudo-Header Fields
-
-   For HTTP/2 responses, a single ":status" pseudo-header field is
-   defined that carries the HTTP status code field (see [RFC7231],
-   Section 6).  This pseudo-header field MUST be included in all
-   responses, otherwise the response is malformed (Section 8.1.2.6).
 
    HTTP/2 does not define a way to carry the version or reason phrase
    that is included in an HTTP/1.1 status line.
@@ -3130,6 +3123,13 @@ Internet-Draft                   HTTP/2                         May 2015
    "content-length" header field.  A request or response is also
    malformed if the value of a "content-length" header field does not
    equal the sum of the DATA frame payload lengths that form the body.
+   A response that is defined to have no payload, as described in
+   [RFC7230], Section 3.3.2, can have a non-zero "content-length" header
+   field, even though no content is included in DATA frames.
+
+   Intermediaries that process HTTP requests or responses (i.e., any
+   intermediary not acting as a tunnel) MUST NOT forward a malformed
+   request or response.  Malformed requests or responses that are
 
 
 
@@ -3138,13 +3138,6 @@ Belshe, et al.          Expires November 5, 2015               [Page 56]
 Internet-Draft                   HTTP/2                         May 2015
 
 
-   A response that is defined to have no payload, as described in
-   [RFC7230], Section 3.3.2, can have a non-zero "content-length" header
-   field, even though no content is included in DATA frames.
-
-   Intermediaries that process HTTP requests or responses (i.e., any
-   intermediary not acting as a tunnel) MUST NOT forward a malformed
-   request or response.  Malformed requests or responses that are
    detected MUST be treated as a stream error (Section 5.4.2) of type
    PROTOCOL_ERROR.
 
@@ -3181,19 +3174,6 @@ Internet-Draft                   HTTP/2                         May 2015
    CONTINUATION frames) containing the serialized block of response
    header fields.
 
-
-
-
-
-
-
-
-
-Belshe, et al.          Expires November 5, 2015               [Page 57]
-
-Internet-Draft                   HTTP/2                         May 2015
-
-
      HTTP/1.1 304 Not Modified        HEADERS
      ETag: "xyzzy"              ==>     + END_STREAM
      Expires: Thu, 23 Jan ...           + END_HEADERS
@@ -3205,6 +3185,15 @@ Internet-Draft                   HTTP/2                         May 2015
    data is transmitted as one HEADERS frame, followed by zero or more
    CONTINUATION frames containing the request header fields, followed by
    one or more DATA frames, with the last CONTINUATION (or HEADERS)
+
+
+
+
+Belshe, et al.          Expires November 5, 2015               [Page 57]
+
+Internet-Draft                   HTTP/2                         May 2015
+
+
    frame having the END_HEADERS flag set and the final DATA frame having
    the END_STREAM flag set:
 
@@ -3234,22 +3223,6 @@ Internet-Draft                   HTTP/2                         May 2015
    frames, followed by one or more DATA frames, with the last DATA frame
    in the sequence having the END_STREAM flag set:
 
-
-
-
-
-
-
-
-
-
-
-
-Belshe, et al.          Expires November 5, 2015               [Page 58]
-
-Internet-Draft                   HTTP/2                         May 2015
-
-
      HTTP/1.1 200 OK                  HEADERS
      Content-Type: image/jpeg   ==>     - END_STREAM
      Content-Length: 123                + END_HEADERS
@@ -3269,6 +3242,13 @@ Internet-Draft                   HTTP/2                         May 2015
    request or response header block and all the DATA frames have been
    sent.  The HEADERS frame starting the trailers header block has the
    END_STREAM flag set.
+
+
+
+Belshe, et al.          Expires November 5, 2015               [Page 58]
+
+Internet-Draft                   HTTP/2                         May 2015
+
 
    The following example includes both a 100 (Continue) status code,
    which is sent in response to a request containing a "100-continue"
@@ -3297,15 +3277,6 @@ Internet-Draft                   HTTP/2                         May 2015
                                         + END_HEADERS
                                           foo = bar
 
-
-
-
-
-Belshe, et al.          Expires November 5, 2015               [Page 59]
-
-Internet-Draft                   HTTP/2                         May 2015
-
-
 8.1.4.  Request Reliability Mechanisms in HTTP/2
 
    In HTTP/1.1, an HTTP client is unable to retry a non-idempotent
@@ -3325,6 +3296,15 @@ Internet-Draft                   HTTP/2                         May 2015
       frame to indicate that the stream is being closed prior to any
       processing having occurred.  Any request that was sent on the
       reset stream can be safely retried.
+
+
+
+
+
+Belshe, et al.          Expires November 5, 2015               [Page 59]
+
+Internet-Draft                   HTTP/2                         May 2015
+
 
    Requests that have not been processed have not failed; clients MAY
    automatically retry them, even those with non-idempotent methods.
@@ -3352,16 +3332,6 @@ Internet-Draft                   HTTP/2                         May 2015
    responses available in order to fully process the response to the
    original request.
 
-
-
-
-
-
-Belshe, et al.          Expires November 5, 2015               [Page 60]
-
-Internet-Draft                   HTTP/2                         May 2015
-
-
    A client can request that server push be disabled, though this is
    negotiated for each hop independently.  The SETTINGS_ENABLE_PUSH
    setting can be set to 0 to indicate that server push is disabled.
@@ -3381,6 +3351,16 @@ Internet-Draft                   HTTP/2                         May 2015
    (e.g., if the "no-cache" cache response directive [RFC7234],
    Section 5.2.2 is present) while the stream identified by the promised
    stream ID is still open.
+
+
+
+
+
+
+Belshe, et al.          Expires November 5, 2015               [Page 60]
+
+Internet-Draft                   HTTP/2                         May 2015
+
 
    Pushed responses that are not cacheable MUST NOT be stored by any
    HTTP cache.  They MAY be made available to the application
@@ -3409,15 +3389,6 @@ Internet-Draft                   HTTP/2                         May 2015
    request; however, in this case that request is also sent by the
    server, as a PUSH_PROMISE frame.
 
-
-
-
-
-Belshe, et al.          Expires November 5, 2015               [Page 61]
-
-Internet-Draft                   HTTP/2                         May 2015
-
-
    The PUSH_PROMISE frame includes a header block that contains a
    complete set of request header fields that the server attributes to
    the request.  It is not possible to push a response to a request that
@@ -3437,6 +3408,15 @@ Internet-Draft                   HTTP/2                         May 2015
    fields, or the ":method" header field identifies a method that is not
    safe, it MUST respond with a stream error (Section 5.4.2) of type
    PROTOCOL_ERROR.
+
+
+
+
+
+Belshe, et al.          Expires November 5, 2015               [Page 61]
+
+Internet-Draft                   HTTP/2                         May 2015
+
 
    The server SHOULD send PUSH_PROMISE (Section 6.6) frames prior to
    sending any frames that reference the promised responses.  This
@@ -3466,14 +3446,6 @@ Internet-Draft                   HTTP/2                         May 2015
    into the "reserved (local)" state for the server and the "reserved
    (remote)" state for the client.
 
-
-
-
-Belshe, et al.          Expires November 5, 2015               [Page 62]
-
-Internet-Draft                   HTTP/2                         May 2015
-
-
 8.2.2.  Push Responses
 
    After sending the PUSH_PROMISE frame, the server can begin delivering
@@ -3493,6 +3465,14 @@ Internet-Draft                   HTTP/2                         May 2015
    too long to begin sending the promised response, the client can send
    an RST_STREAM frame, using either the CANCEL or REFUSED_STREAM codes,
    and referencing the pushed stream's identifier.
+
+
+
+
+Belshe, et al.          Expires November 5, 2015               [Page 62]
+
+Internet-Draft                   HTTP/2                         May 2015
+
 
    A client can use the SETTINGS_MAX_CONCURRENT_STREAMS setting to limit
    the number of responses that can be concurrently pushed by a server.
@@ -3518,18 +3498,6 @@ Internet-Draft                   HTTP/2                         May 2015
    Note:  The client never sends a frame with the END_STREAM flag for a
       server push.
 
-
-
-
-
-
-
-
-Belshe, et al.          Expires November 5, 2015               [Page 63]
-
-Internet-Draft                   HTTP/2                         May 2015
-
-
 8.3.  The CONNECT Method
 
    In HTTP/1.x, the pseudo-method CONNECT ([RFC7231], Section 4.3.6) is
@@ -3553,6 +3521,14 @@ Internet-Draft                   HTTP/2                         May 2015
 
    A CONNECT request that does not conform to these restrictions is
    malformed (Section 8.1.2.6).
+
+
+
+
+Belshe, et al.          Expires November 5, 2015               [Page 63]
+
+Internet-Draft                   HTTP/2                         May 2015
+
 
    A proxy that supports CONNECT establishes a TCP connection [TCP] to
    the server identified in the ":authority" header field.  Once this
@@ -3579,13 +3555,6 @@ Internet-Draft                   HTTP/2                         May 2015
    the END_STREAM flag set.  Note that the final TCP segment or DATA
    frame could be empty.
 
-
-
-Belshe, et al.          Expires November 5, 2015               [Page 64]
-
-Internet-Draft                   HTTP/2                         May 2015
-
-
    A TCP connection error is signaled with RST_STREAM.  A proxy treats
    any error in the TCP connection, which includes receiving a TCP
    segment with the RST bit set, as a stream error (Section 5.4.2) of
@@ -3606,6 +3575,16 @@ Internet-Draft                   HTTP/2                         May 2015
    that no further communication with a server is necessary (for
    example, when a user navigates away from a particular web page), or
    until the server closes the connection.
+
+
+
+
+
+
+Belshe, et al.          Expires November 5, 2015               [Page 64]
+
+Internet-Draft                   HTTP/2                         May 2015
+
 
    Clients SHOULD NOT open more than one HTTP/2 connection to a given
    host and port pair, where host is derived from a URI, a selected
@@ -3629,18 +3608,6 @@ Internet-Draft                   HTTP/2                         May 2015
    (Section 6.8) frame so that both endpoints can reliably determine
    whether previously sent frames have been processed and gracefully
    complete or terminate any necessary remaining tasks.
-
-
-
-
-
-
-
-
-Belshe, et al.          Expires November 5, 2015               [Page 65]
-
-Internet-Draft                   HTTP/2                         May 2015
-
 
 9.1.1.  Connection Reuse
 
@@ -3667,6 +3634,14 @@ Internet-Draft                   HTTP/2                         May 2015
    In some deployments, reusing a connection for multiple origins can
    result in requests being directed to the wrong origin server.  For
    example, TLS termination might be performed by a middlebox that uses
+
+
+
+Belshe, et al.          Expires November 5, 2015               [Page 65]
+
+Internet-Draft                   HTTP/2                         May 2015
+
+
    the TLS Server Name Indication (SNI) [TLS-EXT] extension to select an
    origin server.  This means that it is possible for clients to send
    confidential information to servers that might not be the intended
@@ -3689,14 +3664,6 @@ Internet-Draft                   HTTP/2                         May 2015
    This can be sent by a server that is not configured to produce
    responses for the combination of scheme and authority that are
    included in the request URI.
-
-
-
-
-Belshe, et al.          Expires November 5, 2015               [Page 66]
-
-Internet-Draft                   HTTP/2                         May 2015
-
 
    Clients receiving a 421 (Misdirected Request) response from a server
    MAY retry the request - whether the request method is idempotent or
@@ -3723,6 +3690,14 @@ Internet-Draft                   HTTP/2                         May 2015
 
    Deployments of HTTP/2 that negotiate TLS 1.3 or higher need only
    support and use the SNI extension; deployments of TLS 1.2 are subject
+
+
+
+Belshe, et al.          Expires November 5, 2015               [Page 66]
+
+Internet-Draft                   HTTP/2                         May 2015
+
+
    to the requirements in the following sections.  Implementations are
    encouraged to provide defaults that comply, but it is recognized that
    deployments are ultimately responsible for compliance.
@@ -3746,14 +3721,6 @@ Internet-Draft                   HTTP/2                         May 2015
    A deployment of HTTP/2 over TLS 1.2 MUST disable renegotiation.  An
    endpoint MUST treat a TLS renegotiation as a connection error
    (Section 5.4.1) of type PROTOCOL_ERROR.  Note that disabling
-
-
-
-Belshe, et al.          Expires November 5, 2015               [Page 67]
-
-Internet-Draft                   HTTP/2                         May 2015
-
-
    renegotiation can result in long-lived connections becoming unusable
    due to limits on the number of messages the underlying cipher suite
    can encipher.
@@ -3777,6 +3744,15 @@ Internet-Draft                   HTTP/2                         May 2015
    MUST accept DHE sizes of up to 4096 bits.  Endpoints MAY treat
    negotiation of key sizes smaller than the lower limits as a
    connection error (Section 5.4.1) of type INADEQUATE_SECURITY.
+
+
+
+
+
+Belshe, et al.          Expires November 5, 2015               [Page 67]
+
+Internet-Draft                   HTTP/2                         May 2015
+
 
 9.2.2.  TLS 1.2 Cipher Suites
 
@@ -3802,14 +3778,6 @@ Internet-Draft                   HTTP/2                         May 2015
    1.2 MUST support TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 [TLS-ECDHE]
    with the P256 elliptic curve [FIPS186].
 
-
-
-
-Belshe, et al.          Expires November 5, 2015               [Page 68]
-
-Internet-Draft                   HTTP/2                         May 2015
-
-
    Note that clients might advertise support of cipher suites that are
    on the black list in order to allow for connection to servers that do
    not support HTTP/2.  This allows servers to select HTTP/1.1 with a
@@ -3833,6 +3801,15 @@ Internet-Draft                   HTTP/2                         May 2015
    transaction in one protocol toward a server that understands a
    different protocol.  An attacker might be able to cause the
    transaction to appear as valid transaction in the second protocol.
+
+
+
+
+Belshe, et al.          Expires November 5, 2015               [Page 68]
+
+Internet-Draft                   HTTP/2                         May 2015
+
+
    In combination with the capabilities of the web context, this can be
    used to interact with poorly protected servers in private networks.
 
@@ -3853,18 +3830,6 @@ Internet-Draft                   HTTP/2                         May 2015
    to ignore parts of an HTTP/1.1 request containing an Upgrade header
    field in addition to the client connection preface could be exposed
    to a cross-protocol attack.
-
-
-
-
-
-
-
-
-Belshe, et al.          Expires November 5, 2015               [Page 69]
-
-Internet-Draft                   HTTP/2                         May 2015
-
 
 10.3.  Intermediary Encapsulation Attacks
 
@@ -3892,6 +3857,15 @@ Internet-Draft                   HTTP/2                         May 2015
    Caching responses that are pushed is possible based on the guidance
    provided by the origin server in the Cache-Control header field.
    However, this can cause issues if a single server hosts more than one
+
+
+
+
+Belshe, et al.          Expires November 5, 2015               [Page 69]
+
+Internet-Draft                   HTTP/2                         May 2015
+
+
    tenant.  For example, a server might offer multiple users each a
    small portion of its URI space.
 
@@ -3912,15 +3886,6 @@ Internet-Draft                   HTTP/2                         May 2015
    and flow control depend on a commitment of resources for storing a
    greater amount of state.  Settings for these features ensure that
    memory commitments for these features are strictly bounded.
-
-
-
-
-
-Belshe, et al.          Expires November 5, 2015               [Page 70]
-
-Internet-Draft                   HTTP/2                         May 2015
-
 
    The number of PUSH_PROMISE frames is not constrained in the same
    fashion.  A client that accepts server push SHOULD limit the number
@@ -3949,6 +3914,14 @@ Internet-Draft                   HTTP/2                         May 2015
 
    Limits in SETTINGS parameters cannot be reduced instantaneously,
    which leaves an endpoint exposed to behavior from a peer that could
+
+
+
+Belshe, et al.          Expires November 5, 2015               [Page 70]
+
+Internet-Draft                   HTTP/2                         May 2015
+
+
    exceed the new limits.  In particular, immediately after establishing
    a connection, limits set by a server are not known to clients and
    could be exceeded without being an obvious protocol violation.
@@ -3970,14 +3943,6 @@ Internet-Draft                   HTTP/2                         May 2015
    routing can appear toward the end of a header block, which prevents
    streaming of header fields to their ultimate destination.  This
    ordering and other reasons, such as ensuring cache correctness, means
-
-
-
-Belshe, et al.          Expires November 5, 2015               [Page 71]
-
-Internet-Draft                   HTTP/2                         May 2015
-
-
    that an endpoint might need to buffer the entire header block.  Since
    there is no hard limit to the size of a header block, some endpoints
    could be forced to commit a large amount of available memory for
@@ -4005,6 +3970,14 @@ Internet-Draft                   HTTP/2                         May 2015
    proxy, since stream creation is relatively inexpensive when compared
    to the creation and maintenance of a TCP connection.  A proxy might
    also maintain some resources for a TCP connection beyond the closing
+
+
+
+Belshe, et al.          Expires November 5, 2015               [Page 71]
+
+Internet-Draft                   HTTP/2                         May 2015
+
+
    of the stream that carries the CONNECT request, since the outgoing
    TCP connection remains in the TIME_WAIT state.  A proxy therefore
    cannot rely on SETTINGS_MAX_CONCURRENT_STREAMS alone to limit the
@@ -4026,14 +3999,6 @@ Internet-Draft                   HTTP/2                         May 2015
 
    Implementations communicating on a secure channel MUST NOT compress
    content that includes both confidential and attacker-controlled data
-
-
-
-Belshe, et al.          Expires November 5, 2015               [Page 72]
-
-Internet-Draft                   HTTP/2                         May 2015
-
-
    unless separate compression dictionaries are used for each source of
    data.  Compression MUST NOT be used if the source of data cannot be
    reliably determined.  Generic stream compression, such as that
@@ -4061,6 +4026,14 @@ Internet-Draft                   HTTP/2                         May 2015
    immediately obvious.  At best, padding only makes it more difficult
    for an attacker to infer length information by increasing the number
    of frames an attacker has to observe.  Incorrectly implemented
+
+
+
+Belshe, et al.          Expires November 5, 2015               [Page 72]
+
+Internet-Draft                   HTTP/2                         May 2015
+
+
    padding schemes can be easily defeated.  In particular, randomized
    padding with a predictable distribution provides very little
    protection; similarly, padding payloads to a fixed size exposes
@@ -4080,15 +4053,6 @@ Internet-Draft                   HTTP/2                         May 2015
    windows are managed, the way priorities are allocated to streams,
    timing of reactions to stimulus, and handling of any features that
    are controlled by settings.
-
-
-
-
-
-Belshe, et al.          Expires November 5, 2015               [Page 73]
-
-Internet-Draft                   HTTP/2                         May 2015
-
 
    As far as this creates observable differences in behavior, they could
    be used as a basis for fingerprinting a specific client, as defined
@@ -4119,6 +4083,13 @@ Internet-Draft                   HTTP/2                         May 2015
    This document registers the "PRI" method for use in HTTP, to avoid
    collisions with the connection preface (Section 3.5).
 
+
+
+Belshe, et al.          Expires November 5, 2015               [Page 73]
+
+Internet-Draft                   HTTP/2                         May 2015
+
+
 11.1.  Registration of HTTP/2 Identification Strings
 
    This document creates two registrations for the identification of
@@ -4138,13 +4109,6 @@ Internet-Draft                   HTTP/2                         May 2015
    Protocol:  HTTP/2 over TCP
 
    Identification Sequence:  0x68 0x32 0x63 ("h2c")
-
-
-
-Belshe, et al.          Expires November 5, 2015               [Page 74]
-
-Internet-Draft                   HTTP/2                         May 2015
-
 
    Specification:  This document
 
@@ -4169,6 +4133,18 @@ Internet-Draft                   HTTP/2                         May 2015
       conditionally present based on the value of flags.
 
    The entries in the following table are registered by this document.
+
+
+
+
+
+
+
+
+Belshe, et al.          Expires November 5, 2015               [Page 74]
+
+Internet-Draft                   HTTP/2                         May 2015
+
 
    +---------------+------+--------------+
    | Frame Type    | Code | Section      |
@@ -4195,13 +4171,6 @@ Internet-Draft                   HTTP/2                         May 2015
 
    New registrations are advised to provide the following information:
 
-
-
-Belshe, et al.          Expires November 5, 2015               [Page 75]
-
-Internet-Draft                   HTTP/2                         May 2015
-
-
    Name:  A symbolic name for the setting.  Specifying a setting name is
       optional.
 
@@ -4225,6 +4194,13 @@ Internet-Draft                   HTTP/2                         May 2015
    | MAX_FRAME_SIZE         | 0x5  | 16384         | Section 6.5.2 |
    | MAX_HEADER_LIST_SIZE   | 0x6  | (infinite)    | Section 6.5.2 |
    +------------------------+------+---------------+---------------+
+
+
+
+Belshe, et al.          Expires November 5, 2015               [Page 75]
+
+Internet-Draft                   HTTP/2                         May 2015
+
 
 11.4.  Error Code Registry
 
@@ -4251,14 +4227,36 @@ Internet-Draft                   HTTP/2                         May 2015
    Specification:  An optional reference for a specification that
       defines the error code.
 
+   The entries in the following table are registered by this document.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Belshe, et al.          Expires November 5, 2015               [Page 76]
 
 Internet-Draft                   HTTP/2                         May 2015
 
-
-   The entries in the following table are registered by this document.
 
    +---------------------+------+----------------------+---------------+
    | Name                | Code | Description          | Specification |
@@ -4306,6 +4304,8 @@ Internet-Draft                   HTTP/2                         May 2015
 
    Related information:  This header field is only used by an HTTP/2
       client for Upgrade-based negotiation.
+
+
 
 
 
@@ -4598,50 +4598,50 @@ Appendix A.  TLS 1.2 Cipher Suite Black List
 
    An HTTP/2 implementation MAY treat the negotiation of any of the
    following cipher suites with TLS 1.2 as a connection error
-   (Section 5.4.1) of type INADEQUATE_SECURITY:
-
-   o  TLS_NULL_WITH_NULL_NULL
-
-   o  TLS_RSA_WITH_NULL_MD5
-
-   o  TLS_RSA_WITH_NULL_SHA
-
-   o  TLS_RSA_EXPORT_WITH_RC4_40_MD5
-
-   o  TLS_RSA_WITH_RC4_128_MD5
-
-   o  TLS_RSA_WITH_RC4_128_SHA
-
-   o  TLS_RSA_EXPORT_WITH_RC2_CBC_40_MD5
-
-   o  TLS_RSA_WITH_IDEA_CBC_SHA
-
-   o  TLS_RSA_EXPORT_WITH_DES40_CBC_SHA
-
-   o  TLS_RSA_WITH_DES_CBC_SHA
-
-   o  TLS_RSA_WITH_3DES_EDE_CBC_SHA
-
-   o  TLS_DH_DSS_EXPORT_WITH_DES40_CBC_SHA
-
-   o  TLS_DH_DSS_WITH_DES_CBC_SHA
-
-   o  TLS_DH_DSS_WITH_3DES_EDE_CBC_SHA
-
-   o  TLS_DH_RSA_EXPORT_WITH_DES40_CBC_SHA
-
-   o  TLS_DH_RSA_WITH_DES_CBC_SHA
-
-   o  TLS_DH_RSA_WITH_3DES_EDE_CBC_SHA
-
-   o  TLS_DHE_DSS_EXPORT_WITH_DES40_CBC_SHA
-
-   o  TLS_DHE_DSS_WITH_DES_CBC_SHA
-
-   o  TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA
-
-   o  TLS_DHE_RSA_EXPORT_WITH_DES40_CBC_SHA
-
+   (Section 5.4.1) of type INADEQUATE_SECURITY: TLS_NULL_WITH_NULL_NULL,
+   TLS_RSA_WITH_NULL_MD5, TLS_RSA_WITH_NULL_SHA,
+   TLS_RSA_EXPORT_WITH_RC4_40_MD5, TLS_RSA_WITH_RC4_128_MD5,
+   TLS_RSA_WITH_RC4_128_SHA, TLS_RSA_EXPORT_WITH_RC2_CBC_40_MD5,
+   TLS_RSA_WITH_IDEA_CBC_SHA, TLS_RSA_EXPORT_WITH_DES40_CBC_SHA,
+   TLS_RSA_WITH_DES_CBC_SHA, TLS_RSA_WITH_3DES_EDE_CBC_SHA,
+   TLS_DH_DSS_EXPORT_WITH_DES40_CBC_SHA, TLS_DH_DSS_WITH_DES_CBC_SHA,
+   TLS_DH_DSS_WITH_3DES_EDE_CBC_SHA,
+   TLS_DH_RSA_EXPORT_WITH_DES40_CBC_SHA, TLS_DH_RSA_WITH_DES_CBC_SHA,
+   TLS_DH_RSA_WITH_3DES_EDE_CBC_SHA,
+   TLS_DHE_DSS_EXPORT_WITH_DES40_CBC_SHA, TLS_DHE_DSS_WITH_DES_CBC_SHA,
+   TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA,
+   TLS_DHE_RSA_EXPORT_WITH_DES40_CBC_SHA, TLS_DHE_RSA_WITH_DES_CBC_SHA,
+   TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA,
+   TLS_DH_anon_EXPORT_WITH_RC4_40_MD5, TLS_DH_anon_WITH_RC4_128_MD5,
+   TLS_DH_anon_EXPORT_WITH_DES40_CBC_SHA, TLS_DH_anon_WITH_DES_CBC_SHA,
+   TLS_DH_anon_WITH_3DES_EDE_CBC_SHA, TLS_KRB5_WITH_DES_CBC_SHA,
+   TLS_KRB5_WITH_3DES_EDE_CBC_SHA, TLS_KRB5_WITH_RC4_128_SHA,
+   TLS_KRB5_WITH_IDEA_CBC_SHA, TLS_KRB5_WITH_DES_CBC_MD5,
+   TLS_KRB5_WITH_3DES_EDE_CBC_MD5, TLS_KRB5_WITH_RC4_128_MD5,
+   TLS_KRB5_WITH_IDEA_CBC_MD5, TLS_KRB5_EXPORT_WITH_DES_CBC_40_SHA,
+   TLS_KRB5_EXPORT_WITH_RC2_CBC_40_SHA, TLS_KRB5_EXPORT_WITH_RC4_40_SHA,
+   TLS_KRB5_EXPORT_WITH_DES_CBC_40_MD5,
+   TLS_KRB5_EXPORT_WITH_RC2_CBC_40_MD5, TLS_KRB5_EXPORT_WITH_RC4_40_MD5,
+   TLS_PSK_WITH_NULL_SHA, TLS_DHE_PSK_WITH_NULL_SHA,
+   TLS_RSA_PSK_WITH_NULL_SHA, TLS_RSA_WITH_AES_128_CBC_SHA,
+   TLS_DH_DSS_WITH_AES_128_CBC_SHA, TLS_DH_RSA_WITH_AES_128_CBC_SHA,
+   TLS_DHE_DSS_WITH_AES_128_CBC_SHA, TLS_DHE_RSA_WITH_AES_128_CBC_SHA,
+   TLS_DH_anon_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_256_CBC_SHA,
+   TLS_DH_DSS_WITH_AES_256_CBC_SHA, TLS_DH_RSA_WITH_AES_256_CBC_SHA,
+   TLS_DHE_DSS_WITH_AES_256_CBC_SHA, TLS_DHE_RSA_WITH_AES_256_CBC_SHA,
+   TLS_DH_anon_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_NULL_SHA256,
+   TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256,
+   TLS_DH_DSS_WITH_AES_128_CBC_SHA256,
+   TLS_DH_RSA_WITH_AES_128_CBC_SHA256,
+   TLS_DHE_DSS_WITH_AES_128_CBC_SHA256,
+   TLS_RSA_WITH_CAMELLIA_128_CBC_SHA,
+   TLS_DH_DSS_WITH_CAMELLIA_128_CBC_SHA,
+   TLS_DH_RSA_WITH_CAMELLIA_128_CBC_SHA,
+   TLS_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA,
+   TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA,
+   TLS_DH_anon_WITH_CAMELLIA_128_CBC_SHA,
+   TLS_DHE_RSA_WITH_AES_128_CBC_SHA256,
+   TLS_DH_DSS_WITH_AES_256_CBC_SHA256,
 
 
 
@@ -4650,54 +4650,54 @@ Belshe, et al.          Expires November 5, 2015               [Page 83]
 Internet-Draft                   HTTP/2                         May 2015
 
 
-   o  TLS_DHE_RSA_WITH_DES_CBC_SHA
-
-   o  TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA
-
-   o  TLS_DH_anon_EXPORT_WITH_RC4_40_MD5
-
-   o  TLS_DH_anon_WITH_RC4_128_MD5
-
-   o  TLS_DH_anon_EXPORT_WITH_DES40_CBC_SHA
-
-   o  TLS_DH_anon_WITH_DES_CBC_SHA
-
-   o  TLS_DH_anon_WITH_3DES_EDE_CBC_SHA
-
-   o  TLS_KRB5_WITH_DES_CBC_SHA
-
-   o  TLS_KRB5_WITH_3DES_EDE_CBC_SHA
-
-   o  TLS_KRB5_WITH_RC4_128_SHA
-
-   o  TLS_KRB5_WITH_IDEA_CBC_SHA
-
-   o  TLS_KRB5_WITH_DES_CBC_MD5
-
-   o  TLS_KRB5_WITH_3DES_EDE_CBC_MD5
-
-   o  TLS_KRB5_WITH_RC4_128_MD5
-
-   o  TLS_KRB5_WITH_IDEA_CBC_MD5
-
-   o  TLS_KRB5_EXPORT_WITH_DES_CBC_40_SHA
-
-   o  TLS_KRB5_EXPORT_WITH_RC2_CBC_40_SHA
-
-   o  TLS_KRB5_EXPORT_WITH_RC4_40_SHA
-
-   o  TLS_KRB5_EXPORT_WITH_DES_CBC_40_MD5
-
-   o  TLS_KRB5_EXPORT_WITH_RC2_CBC_40_MD5
-
-   o  TLS_KRB5_EXPORT_WITH_RC4_40_MD5
-
-   o  TLS_PSK_WITH_NULL_SHA
-
-   o  TLS_DHE_PSK_WITH_NULL_SHA
-
-   o  TLS_RSA_PSK_WITH_NULL_SHA
-
+   TLS_DH_RSA_WITH_AES_256_CBC_SHA256,
+   TLS_DHE_DSS_WITH_AES_256_CBC_SHA256,
+   TLS_DHE_RSA_WITH_AES_256_CBC_SHA256,
+   TLS_DH_anon_WITH_AES_128_CBC_SHA256,
+   TLS_DH_anon_WITH_AES_256_CBC_SHA256,
+   TLS_RSA_WITH_CAMELLIA_256_CBC_SHA,
+   TLS_DH_DSS_WITH_CAMELLIA_256_CBC_SHA,
+   TLS_DH_RSA_WITH_CAMELLIA_256_CBC_SHA,
+   TLS_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA,
+   TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA,
+   TLS_DH_anon_WITH_CAMELLIA_256_CBC_SHA, TLS_PSK_WITH_RC4_128_SHA,
+   TLS_PSK_WITH_3DES_EDE_CBC_SHA, TLS_PSK_WITH_AES_128_CBC_SHA,
+   TLS_PSK_WITH_AES_256_CBC_SHA, TLS_DHE_PSK_WITH_RC4_128_SHA,
+   TLS_DHE_PSK_WITH_3DES_EDE_CBC_SHA, TLS_DHE_PSK_WITH_AES_128_CBC_SHA,
+   TLS_DHE_PSK_WITH_AES_256_CBC_SHA, TLS_RSA_PSK_WITH_RC4_128_SHA,
+   TLS_RSA_PSK_WITH_3DES_EDE_CBC_SHA, TLS_RSA_PSK_WITH_AES_128_CBC_SHA,
+   TLS_RSA_PSK_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_SEED_CBC_SHA,
+   TLS_DH_DSS_WITH_SEED_CBC_SHA, TLS_DH_RSA_WITH_SEED_CBC_SHA,
+   TLS_DHE_DSS_WITH_SEED_CBC_SHA, TLS_DHE_RSA_WITH_SEED_CBC_SHA,
+   TLS_DH_anon_WITH_SEED_CBC_SHA, TLS_RSA_WITH_AES_128_GCM_SHA256,
+   TLS_RSA_WITH_AES_256_GCM_SHA384, TLS_DH_RSA_WITH_AES_128_GCM_SHA256,
+   TLS_DH_RSA_WITH_AES_256_GCM_SHA384,
+   TLS_DH_DSS_WITH_AES_128_GCM_SHA256,
+   TLS_DH_DSS_WITH_AES_256_GCM_SHA384,
+   TLS_DH_anon_WITH_AES_128_GCM_SHA256,
+   TLS_DH_anon_WITH_AES_256_GCM_SHA384, TLS_PSK_WITH_AES_128_GCM_SHA256,
+   TLS_PSK_WITH_AES_256_GCM_SHA384, TLS_RSA_PSK_WITH_AES_128_GCM_SHA256,
+   TLS_RSA_PSK_WITH_AES_256_GCM_SHA384, TLS_PSK_WITH_AES_128_CBC_SHA256,
+   TLS_PSK_WITH_AES_256_CBC_SHA384, TLS_PSK_WITH_NULL_SHA256,
+   TLS_PSK_WITH_NULL_SHA384, TLS_DHE_PSK_WITH_AES_128_CBC_SHA256,
+   TLS_DHE_PSK_WITH_AES_256_CBC_SHA384, TLS_DHE_PSK_WITH_NULL_SHA256,
+   TLS_DHE_PSK_WITH_NULL_SHA384, TLS_RSA_PSK_WITH_AES_128_CBC_SHA256,
+   TLS_RSA_PSK_WITH_AES_256_CBC_SHA384, TLS_RSA_PSK_WITH_NULL_SHA256,
+   TLS_RSA_PSK_WITH_NULL_SHA384, TLS_RSA_WITH_CAMELLIA_128_CBC_SHA256,
+   TLS_DH_DSS_WITH_CAMELLIA_128_CBC_SHA256,
+   TLS_DH_RSA_WITH_CAMELLIA_128_CBC_SHA256,
+   TLS_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA256,
+   TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA256,
+   TLS_DH_anon_WITH_CAMELLIA_128_CBC_SHA256,
+   TLS_RSA_WITH_CAMELLIA_256_CBC_SHA256,
+   TLS_DH_DSS_WITH_CAMELLIA_256_CBC_SHA256,
+   TLS_DH_RSA_WITH_CAMELLIA_256_CBC_SHA256,
+   TLS_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA256,
+   TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA256,
+   TLS_DH_anon_WITH_CAMELLIA_256_CBC_SHA256,
+   TLS_EMPTY_RENEGOTIATION_INFO_SCSV, TLS_ECDH_ECDSA_WITH_NULL_SHA,
+   TLS_ECDH_ECDSA_WITH_RC4_128_SHA,
+   TLS_ECDH_ECDSA_WITH_3DES_EDE_CBC_SHA,
 
 
 
@@ -4706,54 +4706,54 @@ Belshe, et al.          Expires November 5, 2015               [Page 84]
 Internet-Draft                   HTTP/2                         May 2015
 
 
-   o  TLS_RSA_WITH_AES_128_CBC_SHA
-
-   o  TLS_DH_DSS_WITH_AES_128_CBC_SHA
-
-   o  TLS_DH_RSA_WITH_AES_128_CBC_SHA
-
-   o  TLS_DHE_DSS_WITH_AES_128_CBC_SHA
-
-   o  TLS_DHE_RSA_WITH_AES_128_CBC_SHA
-
-   o  TLS_DH_anon_WITH_AES_128_CBC_SHA
-
-   o  TLS_RSA_WITH_AES_256_CBC_SHA
-
-   o  TLS_DH_DSS_WITH_AES_256_CBC_SHA
-
-   o  TLS_DH_RSA_WITH_AES_256_CBC_SHA
-
-   o  TLS_DHE_DSS_WITH_AES_256_CBC_SHA
-
-   o  TLS_DHE_RSA_WITH_AES_256_CBC_SHA
-
-   o  TLS_DH_anon_WITH_AES_256_CBC_SHA
-
-   o  TLS_RSA_WITH_NULL_SHA256
-
-   o  TLS_RSA_WITH_AES_128_CBC_SHA256
-
-   o  TLS_RSA_WITH_AES_256_CBC_SHA256
-
-   o  TLS_DH_DSS_WITH_AES_128_CBC_SHA256
-
-   o  TLS_DH_RSA_WITH_AES_128_CBC_SHA256
-
-   o  TLS_DHE_DSS_WITH_AES_128_CBC_SHA256
-
-   o  TLS_RSA_WITH_CAMELLIA_128_CBC_SHA
-
-   o  TLS_DH_DSS_WITH_CAMELLIA_128_CBC_SHA
-
-   o  TLS_DH_RSA_WITH_CAMELLIA_128_CBC_SHA
-
-   o  TLS_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA
-
-   o  TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA
-
-   o  TLS_DH_anon_WITH_CAMELLIA_128_CBC_SHA
-
+   TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA,
+   TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_NULL_SHA,
+   TLS_ECDHE_ECDSA_WITH_RC4_128_SHA,
+   TLS_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA,
+   TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,
+   TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDH_RSA_WITH_NULL_SHA,
+   TLS_ECDH_RSA_WITH_RC4_128_SHA, TLS_ECDH_RSA_WITH_3DES_EDE_CBC_SHA,
+   TLS_ECDH_RSA_WITH_AES_128_CBC_SHA, TLS_ECDH_RSA_WITH_AES_256_CBC_SHA,
+   TLS_ECDHE_RSA_WITH_NULL_SHA, TLS_ECDHE_RSA_WITH_RC4_128_SHA,
+   TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA,
+   TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,
+   TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDH_anon_WITH_NULL_SHA,
+   TLS_ECDH_anon_WITH_RC4_128_SHA, TLS_ECDH_anon_WITH_3DES_EDE_CBC_SHA,
+   TLS_ECDH_anon_WITH_AES_128_CBC_SHA,
+   TLS_ECDH_anon_WITH_AES_256_CBC_SHA,
+   TLS_SRP_SHA_WITH_3DES_EDE_CBC_SHA,
+   TLS_SRP_SHA_RSA_WITH_3DES_EDE_CBC_SHA,
+   TLS_SRP_SHA_DSS_WITH_3DES_EDE_CBC_SHA,
+   TLS_SRP_SHA_WITH_AES_128_CBC_SHA,
+   TLS_SRP_SHA_RSA_WITH_AES_128_CBC_SHA,
+   TLS_SRP_SHA_DSS_WITH_AES_128_CBC_SHA,
+   TLS_SRP_SHA_WITH_AES_256_CBC_SHA,
+   TLS_SRP_SHA_RSA_WITH_AES_256_CBC_SHA,
+   TLS_SRP_SHA_DSS_WITH_AES_256_CBC_SHA,
+   TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,
+   TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,
+   TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,
+   TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,
+   TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,
+   TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,
+   TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,
+   TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,
+   TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,
+   TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,
+   TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,
+   TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_PSK_WITH_RC4_128_SHA,
+   TLS_ECDHE_PSK_WITH_3DES_EDE_CBC_SHA,
+   TLS_ECDHE_PSK_WITH_AES_128_CBC_SHA,
+   TLS_ECDHE_PSK_WITH_AES_256_CBC_SHA,
+   TLS_ECDHE_PSK_WITH_AES_128_CBC_SHA256,
+   TLS_ECDHE_PSK_WITH_AES_256_CBC_SHA384, TLS_ECDHE_PSK_WITH_NULL_SHA,
+   TLS_ECDHE_PSK_WITH_NULL_SHA256, TLS_ECDHE_PSK_WITH_NULL_SHA384,
+   TLS_RSA_WITH_ARIA_128_CBC_SHA256, TLS_RSA_WITH_ARIA_256_CBC_SHA384,
+   TLS_DH_DSS_WITH_ARIA_128_CBC_SHA256,
+   TLS_DH_DSS_WITH_ARIA_256_CBC_SHA384,
+   TLS_DH_RSA_WITH_ARIA_128_CBC_SHA256,
+   TLS_DH_RSA_WITH_ARIA_256_CBC_SHA384,
+   TLS_DHE_DSS_WITH_ARIA_128_CBC_SHA256,
 
 
 
@@ -4762,54 +4762,54 @@ Belshe, et al.          Expires November 5, 2015               [Page 85]
 Internet-Draft                   HTTP/2                         May 2015
 
 
-   o  TLS_DHE_RSA_WITH_AES_128_CBC_SHA256
-
-   o  TLS_DH_DSS_WITH_AES_256_CBC_SHA256
-
-   o  TLS_DH_RSA_WITH_AES_256_CBC_SHA256
-
-   o  TLS_DHE_DSS_WITH_AES_256_CBC_SHA256
-
-   o  TLS_DHE_RSA_WITH_AES_256_CBC_SHA256
-
-   o  TLS_DH_anon_WITH_AES_128_CBC_SHA256
-
-   o  TLS_DH_anon_WITH_AES_256_CBC_SHA256
-
-   o  TLS_RSA_WITH_CAMELLIA_256_CBC_SHA
-
-   o  TLS_DH_DSS_WITH_CAMELLIA_256_CBC_SHA
-
-   o  TLS_DH_RSA_WITH_CAMELLIA_256_CBC_SHA
-
-   o  TLS_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA
-
-   o  TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA
-
-   o  TLS_DH_anon_WITH_CAMELLIA_256_CBC_SHA
-
-   o  TLS_PSK_WITH_RC4_128_SHA
-
-   o  TLS_PSK_WITH_3DES_EDE_CBC_SHA
-
-   o  TLS_PSK_WITH_AES_128_CBC_SHA
-
-   o  TLS_PSK_WITH_AES_256_CBC_SHA
-
-   o  TLS_DHE_PSK_WITH_RC4_128_SHA
-
-   o  TLS_DHE_PSK_WITH_3DES_EDE_CBC_SHA
-
-   o  TLS_DHE_PSK_WITH_AES_128_CBC_SHA
-
-   o  TLS_DHE_PSK_WITH_AES_256_CBC_SHA
-
-   o  TLS_RSA_PSK_WITH_RC4_128_SHA
-
-   o  TLS_RSA_PSK_WITH_3DES_EDE_CBC_SHA
-
-   o  TLS_RSA_PSK_WITH_AES_128_CBC_SHA
-
+   TLS_DHE_DSS_WITH_ARIA_256_CBC_SHA384,
+   TLS_DHE_RSA_WITH_ARIA_128_CBC_SHA256,
+   TLS_DHE_RSA_WITH_ARIA_256_CBC_SHA384,
+   TLS_DH_anon_WITH_ARIA_128_CBC_SHA256,
+   TLS_DH_anon_WITH_ARIA_256_CBC_SHA384,
+   TLS_ECDHE_ECDSA_WITH_ARIA_128_CBC_SHA256,
+   TLS_ECDHE_ECDSA_WITH_ARIA_256_CBC_SHA384,
+   TLS_ECDH_ECDSA_WITH_ARIA_128_CBC_SHA256,
+   TLS_ECDH_ECDSA_WITH_ARIA_256_CBC_SHA384,
+   TLS_ECDHE_RSA_WITH_ARIA_128_CBC_SHA256,
+   TLS_ECDHE_RSA_WITH_ARIA_256_CBC_SHA384,
+   TLS_ECDH_RSA_WITH_ARIA_128_CBC_SHA256,
+   TLS_ECDH_RSA_WITH_ARIA_256_CBC_SHA384,
+   TLS_RSA_WITH_ARIA_128_GCM_SHA256, TLS_RSA_WITH_ARIA_256_GCM_SHA384,
+   TLS_DH_RSA_WITH_ARIA_128_GCM_SHA256,
+   TLS_DH_RSA_WITH_ARIA_256_GCM_SHA384,
+   TLS_DH_DSS_WITH_ARIA_128_GCM_SHA256,
+   TLS_DH_DSS_WITH_ARIA_256_GCM_SHA384,
+   TLS_DH_anon_WITH_ARIA_128_GCM_SHA256,
+   TLS_DH_anon_WITH_ARIA_256_GCM_SHA384,
+   TLS_ECDH_ECDSA_WITH_ARIA_128_GCM_SHA256,
+   TLS_ECDH_ECDSA_WITH_ARIA_256_GCM_SHA384,
+   TLS_ECDH_RSA_WITH_ARIA_128_GCM_SHA256,
+   TLS_ECDH_RSA_WITH_ARIA_256_GCM_SHA384,
+   TLS_PSK_WITH_ARIA_128_CBC_SHA256, TLS_PSK_WITH_ARIA_256_CBC_SHA384,
+   TLS_DHE_PSK_WITH_ARIA_128_CBC_SHA256,
+   TLS_DHE_PSK_WITH_ARIA_256_CBC_SHA384,
+   TLS_RSA_PSK_WITH_ARIA_128_CBC_SHA256,
+   TLS_RSA_PSK_WITH_ARIA_256_CBC_SHA384,
+   TLS_PSK_WITH_ARIA_128_GCM_SHA256, TLS_PSK_WITH_ARIA_256_GCM_SHA384,
+   TLS_RSA_PSK_WITH_ARIA_128_GCM_SHA256,
+   TLS_RSA_PSK_WITH_ARIA_256_GCM_SHA384,
+   TLS_ECDHE_PSK_WITH_ARIA_128_CBC_SHA256,
+   TLS_ECDHE_PSK_WITH_ARIA_256_CBC_SHA384,
+   TLS_ECDHE_ECDSA_WITH_CAMELLIA_128_CBC_SHA256,
+   TLS_ECDHE_ECDSA_WITH_CAMELLIA_256_CBC_SHA384,
+   TLS_ECDH_ECDSA_WITH_CAMELLIA_128_CBC_SHA256,
+   TLS_ECDH_ECDSA_WITH_CAMELLIA_256_CBC_SHA384,
+   TLS_ECDHE_RSA_WITH_CAMELLIA_128_CBC_SHA256,
+   TLS_ECDHE_RSA_WITH_CAMELLIA_256_CBC_SHA384,
+   TLS_ECDH_RSA_WITH_CAMELLIA_128_CBC_SHA256,
+   TLS_ECDH_RSA_WITH_CAMELLIA_256_CBC_SHA384,
+   TLS_RSA_WITH_CAMELLIA_128_GCM_SHA256,
+   TLS_RSA_WITH_CAMELLIA_256_GCM_SHA384,
+   TLS_DH_RSA_WITH_CAMELLIA_128_GCM_SHA256,
+   TLS_DH_RSA_WITH_CAMELLIA_256_GCM_SHA384,
+   TLS_DH_DSS_WITH_CAMELLIA_128_GCM_SHA256,
+   TLS_DH_DSS_WITH_CAMELLIA_256_GCM_SHA384,
 
 
 
@@ -4818,427 +4818,28 @@ Belshe, et al.          Expires November 5, 2015               [Page 86]
 Internet-Draft                   HTTP/2                         May 2015
 
 
-   o  TLS_RSA_PSK_WITH_AES_256_CBC_SHA
-
-   o  TLS_RSA_WITH_SEED_CBC_SHA
-
-   o  TLS_DH_DSS_WITH_SEED_CBC_SHA
-
-   o  TLS_DH_RSA_WITH_SEED_CBC_SHA
-
-   o  TLS_DHE_DSS_WITH_SEED_CBC_SHA
-
-   o  TLS_DHE_RSA_WITH_SEED_CBC_SHA
-
-   o  TLS_DH_anon_WITH_SEED_CBC_SHA
-
-   o  TLS_RSA_WITH_AES_128_GCM_SHA256
-
-   o  TLS_RSA_WITH_AES_256_GCM_SHA384
-
-   o  TLS_DH_RSA_WITH_AES_128_GCM_SHA256
-
-   o  TLS_DH_RSA_WITH_AES_256_GCM_SHA384
-
-   o  TLS_DH_DSS_WITH_AES_128_GCM_SHA256
-
-   o  TLS_DH_DSS_WITH_AES_256_GCM_SHA384
-
-   o  TLS_DH_anon_WITH_AES_128_GCM_SHA256
-
-   o  TLS_DH_anon_WITH_AES_256_GCM_SHA384
-
-   o  TLS_PSK_WITH_AES_128_GCM_SHA256
-
-   o  TLS_PSK_WITH_AES_256_GCM_SHA384
-
-   o  TLS_RSA_PSK_WITH_AES_128_GCM_SHA256
-
-   o  TLS_RSA_PSK_WITH_AES_256_GCM_SHA384
-
-   o  TLS_PSK_WITH_AES_128_CBC_SHA256
-
-   o  TLS_PSK_WITH_AES_256_CBC_SHA384
-
-   o  TLS_PSK_WITH_NULL_SHA256
-
-   o  TLS_PSK_WITH_NULL_SHA384
-
-   o  TLS_DHE_PSK_WITH_AES_128_CBC_SHA256
-
-
-
-
-Belshe, et al.          Expires November 5, 2015               [Page 87]
-
-Internet-Draft                   HTTP/2                         May 2015
-
-
-   o  TLS_DHE_PSK_WITH_AES_256_CBC_SHA384
-
-   o  TLS_DHE_PSK_WITH_NULL_SHA256
-
-   o  TLS_DHE_PSK_WITH_NULL_SHA384
-
-   o  TLS_RSA_PSK_WITH_AES_128_CBC_SHA256
-
-   o  TLS_RSA_PSK_WITH_AES_256_CBC_SHA384
-
-   o  TLS_RSA_PSK_WITH_NULL_SHA256
-
-   o  TLS_RSA_PSK_WITH_NULL_SHA384
-
-   o  TLS_RSA_WITH_CAMELLIA_128_CBC_SHA256
-
-   o  TLS_DH_DSS_WITH_CAMELLIA_128_CBC_SHA256
-
-   o  TLS_DH_RSA_WITH_CAMELLIA_128_CBC_SHA256
-
-   o  TLS_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA256
-
-   o  TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA256
-
-   o  TLS_DH_anon_WITH_CAMELLIA_128_CBC_SHA256
-
-   o  TLS_RSA_WITH_CAMELLIA_256_CBC_SHA256
-
-   o  TLS_DH_DSS_WITH_CAMELLIA_256_CBC_SHA256
-
-   o  TLS_DH_RSA_WITH_CAMELLIA_256_CBC_SHA256
-
-   o  TLS_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA256
-
-   o  TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA256
-
-   o  TLS_DH_anon_WITH_CAMELLIA_256_CBC_SHA256
-
-   o  TLS_EMPTY_RENEGOTIATION_INFO_SCSV
-
-   o  TLS_ECDH_ECDSA_WITH_NULL_SHA
-
-   o  TLS_ECDH_ECDSA_WITH_RC4_128_SHA
-
-   o  TLS_ECDH_ECDSA_WITH_3DES_EDE_CBC_SHA
-
-   o  TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA
-
-
-
-
-Belshe, et al.          Expires November 5, 2015               [Page 88]
-
-Internet-Draft                   HTTP/2                         May 2015
-
-
-   o  TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA
-
-   o  TLS_ECDHE_ECDSA_WITH_NULL_SHA
-
-   o  TLS_ECDHE_ECDSA_WITH_RC4_128_SHA
-
-   o  TLS_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA
-
-   o  TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA
-
-   o  TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA
-
-   o  TLS_ECDH_RSA_WITH_NULL_SHA
-
-   o  TLS_ECDH_RSA_WITH_RC4_128_SHA
-
-   o  TLS_ECDH_RSA_WITH_3DES_EDE_CBC_SHA
-
-   o  TLS_ECDH_RSA_WITH_AES_128_CBC_SHA
-
-   o  TLS_ECDH_RSA_WITH_AES_256_CBC_SHA
-
-   o  TLS_ECDHE_RSA_WITH_NULL_SHA
-
-   o  TLS_ECDHE_RSA_WITH_RC4_128_SHA
-
-   o  TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA
-
-   o  TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
-
-   o  TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
-
-   o  TLS_ECDH_anon_WITH_NULL_SHA
-
-   o  TLS_ECDH_anon_WITH_RC4_128_SHA
-
-   o  TLS_ECDH_anon_WITH_3DES_EDE_CBC_SHA
-
-   o  TLS_ECDH_anon_WITH_AES_128_CBC_SHA
-
-   o  TLS_ECDH_anon_WITH_AES_256_CBC_SHA
-
-   o  TLS_SRP_SHA_WITH_3DES_EDE_CBC_SHA
-
-   o  TLS_SRP_SHA_RSA_WITH_3DES_EDE_CBC_SHA
-
-   o  TLS_SRP_SHA_DSS_WITH_3DES_EDE_CBC_SHA
-
-
-
-
-Belshe, et al.          Expires November 5, 2015               [Page 89]
-
-Internet-Draft                   HTTP/2                         May 2015
-
-
-   o  TLS_SRP_SHA_WITH_AES_128_CBC_SHA
-
-   o  TLS_SRP_SHA_RSA_WITH_AES_128_CBC_SHA
-
-   o  TLS_SRP_SHA_DSS_WITH_AES_128_CBC_SHA
-
-   o  TLS_SRP_SHA_WITH_AES_256_CBC_SHA
-
-   o  TLS_SRP_SHA_RSA_WITH_AES_256_CBC_SHA
-
-   o  TLS_SRP_SHA_DSS_WITH_AES_256_CBC_SHA
-
-   o  TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
-
-   o  TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
-
-   o  TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256
-
-   o  TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384
-
-   o  TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
-
-   o  TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
-
-   o  TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256
-
-   o  TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384
-
-   o  TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256
-
-   o  TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384
-
-   o  TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256
-
-   o  TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384
-
-   o  TLS_ECDHE_PSK_WITH_RC4_128_SHA
-
-   o  TLS_ECDHE_PSK_WITH_3DES_EDE_CBC_SHA
-
-   o  TLS_ECDHE_PSK_WITH_AES_128_CBC_SHA
-
-   o  TLS_ECDHE_PSK_WITH_AES_256_CBC_SHA
-
-   o  TLS_ECDHE_PSK_WITH_AES_128_CBC_SHA256
-
-   o  TLS_ECDHE_PSK_WITH_AES_256_CBC_SHA384
-
-
-
-
-Belshe, et al.          Expires November 5, 2015               [Page 90]
-
-Internet-Draft                   HTTP/2                         May 2015
-
-
-   o  TLS_ECDHE_PSK_WITH_NULL_SHA
-
-   o  TLS_ECDHE_PSK_WITH_NULL_SHA256
-
-   o  TLS_ECDHE_PSK_WITH_NULL_SHA384
-
-   o  TLS_RSA_WITH_ARIA_128_CBC_SHA256
-
-   o  TLS_RSA_WITH_ARIA_256_CBC_SHA384
-
-   o  TLS_DH_DSS_WITH_ARIA_128_CBC_SHA256
-
-   o  TLS_DH_DSS_WITH_ARIA_256_CBC_SHA384
-
-   o  TLS_DH_RSA_WITH_ARIA_128_CBC_SHA256
-
-   o  TLS_DH_RSA_WITH_ARIA_256_CBC_SHA384
-
-   o  TLS_DHE_DSS_WITH_ARIA_128_CBC_SHA256
-
-   o  TLS_DHE_DSS_WITH_ARIA_256_CBC_SHA384
-
-   o  TLS_DHE_RSA_WITH_ARIA_128_CBC_SHA256
-
-   o  TLS_DHE_RSA_WITH_ARIA_256_CBC_SHA384
-
-   o  TLS_DH_anon_WITH_ARIA_128_CBC_SHA256
-
-   o  TLS_DH_anon_WITH_ARIA_256_CBC_SHA384
-
-   o  TLS_ECDHE_ECDSA_WITH_ARIA_128_CBC_SHA256
-
-   o  TLS_ECDHE_ECDSA_WITH_ARIA_256_CBC_SHA384
-
-   o  TLS_ECDH_ECDSA_WITH_ARIA_128_CBC_SHA256
-
-   o  TLS_ECDH_ECDSA_WITH_ARIA_256_CBC_SHA384
-
-   o  TLS_ECDHE_RSA_WITH_ARIA_128_CBC_SHA256
-
-   o  TLS_ECDHE_RSA_WITH_ARIA_256_CBC_SHA384
-
-   o  TLS_ECDH_RSA_WITH_ARIA_128_CBC_SHA256
-
-   o  TLS_ECDH_RSA_WITH_ARIA_256_CBC_SHA384
-
-   o  TLS_RSA_WITH_ARIA_128_GCM_SHA256
-
-
-
-
-Belshe, et al.          Expires November 5, 2015               [Page 91]
-
-Internet-Draft                   HTTP/2                         May 2015
-
-
-   o  TLS_RSA_WITH_ARIA_256_GCM_SHA384
-
-   o  TLS_DH_RSA_WITH_ARIA_128_GCM_SHA256
-
-   o  TLS_DH_RSA_WITH_ARIA_256_GCM_SHA384
-
-   o  TLS_DH_DSS_WITH_ARIA_128_GCM_SHA256
-
-   o  TLS_DH_DSS_WITH_ARIA_256_GCM_SHA384
-
-   o  TLS_DH_anon_WITH_ARIA_128_GCM_SHA256
-
-   o  TLS_DH_anon_WITH_ARIA_256_GCM_SHA384
-
-   o  TLS_ECDH_ECDSA_WITH_ARIA_128_GCM_SHA256
-
-   o  TLS_ECDH_ECDSA_WITH_ARIA_256_GCM_SHA384
-
-   o  TLS_ECDH_RSA_WITH_ARIA_128_GCM_SHA256
-
-   o  TLS_ECDH_RSA_WITH_ARIA_256_GCM_SHA384
-
-   o  TLS_PSK_WITH_ARIA_128_CBC_SHA256
-
-   o  TLS_PSK_WITH_ARIA_256_CBC_SHA384
-
-   o  TLS_DHE_PSK_WITH_ARIA_128_CBC_SHA256
-
-   o  TLS_DHE_PSK_WITH_ARIA_256_CBC_SHA384
-
-   o  TLS_RSA_PSK_WITH_ARIA_128_CBC_SHA256
-
-   o  TLS_RSA_PSK_WITH_ARIA_256_CBC_SHA384
-
-   o  TLS_PSK_WITH_ARIA_128_GCM_SHA256
-
-   o  TLS_PSK_WITH_ARIA_256_GCM_SHA384
-
-   o  TLS_RSA_PSK_WITH_ARIA_128_GCM_SHA256
-
-   o  TLS_RSA_PSK_WITH_ARIA_256_GCM_SHA384
-
-   o  TLS_ECDHE_PSK_WITH_ARIA_128_CBC_SHA256
-
-   o  TLS_ECDHE_PSK_WITH_ARIA_256_CBC_SHA384
-
-   o  TLS_ECDHE_ECDSA_WITH_CAMELLIA_128_CBC_SHA256
-
-
-
-
-Belshe, et al.          Expires November 5, 2015               [Page 92]
-
-Internet-Draft                   HTTP/2                         May 2015
-
-
-   o  TLS_ECDHE_ECDSA_WITH_CAMELLIA_256_CBC_SHA384
-
-   o  TLS_ECDH_ECDSA_WITH_CAMELLIA_128_CBC_SHA256
-
-   o  TLS_ECDH_ECDSA_WITH_CAMELLIA_256_CBC_SHA384
-
-   o  TLS_ECDHE_RSA_WITH_CAMELLIA_128_CBC_SHA256
-
-   o  TLS_ECDHE_RSA_WITH_CAMELLIA_256_CBC_SHA384
-
-   o  TLS_ECDH_RSA_WITH_CAMELLIA_128_CBC_SHA256
-
-   o  TLS_ECDH_RSA_WITH_CAMELLIA_256_CBC_SHA384
-
-   o  TLS_RSA_WITH_CAMELLIA_128_GCM_SHA256
-
-   o  TLS_RSA_WITH_CAMELLIA_256_GCM_SHA384
-
-   o  TLS_DH_RSA_WITH_CAMELLIA_128_GCM_SHA256
-
-   o  TLS_DH_RSA_WITH_CAMELLIA_256_GCM_SHA384
-
-   o  TLS_DH_DSS_WITH_CAMELLIA_128_GCM_SHA256
-
-   o  TLS_DH_DSS_WITH_CAMELLIA_256_GCM_SHA384
-
-   o  TLS_DH_anon_WITH_CAMELLIA_128_GCM_SHA256
-
-   o  TLS_DH_anon_WITH_CAMELLIA_256_GCM_SHA384
-
-   o  TLS_ECDH_ECDSA_WITH_CAMELLIA_128_GCM_SHA256
-
-   o  TLS_ECDH_ECDSA_WITH_CAMELLIA_256_GCM_SHA384
-
-   o  TLS_ECDH_RSA_WITH_CAMELLIA_128_GCM_SHA256
-
-   o  TLS_ECDH_RSA_WITH_CAMELLIA_256_GCM_SHA384
-
-   o  TLS_PSK_WITH_CAMELLIA_128_GCM_SHA256
-
-   o  TLS_PSK_WITH_CAMELLIA_256_GCM_SHA384
-
-   o  TLS_RSA_PSK_WITH_CAMELLIA_128_GCM_SHA256
-
-   o  TLS_RSA_PSK_WITH_CAMELLIA_256_GCM_SHA384
-
-   o  TLS_PSK_WITH_CAMELLIA_128_CBC_SHA256
-
-
-
-
-Belshe, et al.          Expires November 5, 2015               [Page 93]
-
-Internet-Draft                   HTTP/2                         May 2015
-
-
-   o  TLS_PSK_WITH_CAMELLIA_256_CBC_SHA384
-
-   o  TLS_DHE_PSK_WITH_CAMELLIA_128_CBC_SHA256
-
-   o  TLS_DHE_PSK_WITH_CAMELLIA_256_CBC_SHA384
-
-   o  TLS_RSA_PSK_WITH_CAMELLIA_128_CBC_SHA256
-
-   o  TLS_RSA_PSK_WITH_CAMELLIA_256_CBC_SHA384
-
-   o  TLS_ECDHE_PSK_WITH_CAMELLIA_128_CBC_SHA256
-
-   o  TLS_ECDHE_PSK_WITH_CAMELLIA_256_CBC_SHA384
-
-   o  TLS_RSA_WITH_AES_128_CCM
-
-   o  TLS_RSA_WITH_AES_256_CCM
-
-   o  TLS_RSA_WITH_AES_128_CCM_8
-
-   o  TLS_RSA_WITH_AES_256_CCM_8
-
-   o  TLS_PSK_WITH_AES_128_CCM
-
-   o  TLS_PSK_WITH_AES_256_CCM
-
-   o  TLS_PSK_WITH_AES_128_CCM_8
-
-   o  TLS_PSK_WITH_AES_256_CCM_8
+   TLS_DH_anon_WITH_CAMELLIA_128_GCM_SHA256,
+   TLS_DH_anon_WITH_CAMELLIA_256_GCM_SHA384,
+   TLS_ECDH_ECDSA_WITH_CAMELLIA_128_GCM_SHA256,
+   TLS_ECDH_ECDSA_WITH_CAMELLIA_256_GCM_SHA384,
+   TLS_ECDH_RSA_WITH_CAMELLIA_128_GCM_SHA256,
+   TLS_ECDH_RSA_WITH_CAMELLIA_256_GCM_SHA384,
+   TLS_PSK_WITH_CAMELLIA_128_GCM_SHA256,
+   TLS_PSK_WITH_CAMELLIA_256_GCM_SHA384,
+   TLS_RSA_PSK_WITH_CAMELLIA_128_GCM_SHA256,
+   TLS_RSA_PSK_WITH_CAMELLIA_256_GCM_SHA384,
+   TLS_PSK_WITH_CAMELLIA_128_CBC_SHA256,
+   TLS_PSK_WITH_CAMELLIA_256_CBC_SHA384,
+   TLS_DHE_PSK_WITH_CAMELLIA_128_CBC_SHA256,
+   TLS_DHE_PSK_WITH_CAMELLIA_256_CBC_SHA384,
+   TLS_RSA_PSK_WITH_CAMELLIA_128_CBC_SHA256,
+   TLS_RSA_PSK_WITH_CAMELLIA_256_CBC_SHA384,
+   TLS_ECDHE_PSK_WITH_CAMELLIA_128_CBC_SHA256,
+   TLS_ECDHE_PSK_WITH_CAMELLIA_256_CBC_SHA384, TLS_RSA_WITH_AES_128_CCM,
+   TLS_RSA_WITH_AES_256_CCM, TLS_RSA_WITH_AES_128_CCM_8,
+   TLS_RSA_WITH_AES_256_CCM_8, TLS_PSK_WITH_AES_128_CCM,
+   TLS_PSK_WITH_AES_256_CCM, TLS_PSK_WITH_AES_128_CCM_8,
+   TLS_PSK_WITH_AES_256_CCM_8.
 
    Note:  This list was assembled from the set of registered TLS cipher
       suites at the time of writing.  This list includes those cipher
@@ -5259,18 +4860,19 @@ B.1.  Since draft-ietf-httpbis-http2-15
    Added a cipher suite blacklist and made several changes to the TLS
    usage section.
 
-
-
-Belshe, et al.          Expires November 5, 2015               [Page 94]
-
-Internet-Draft                   HTTP/2                         May 2015
-
-
 B.2.  Since draft-ietf-httpbis-http2-14
 
    Renamed Not Authoritative status code to Misdirected Request.
 
    Added HTTP_1_1_REQUIRED error code.
+
+
+
+
+Belshe, et al.          Expires November 5, 2015               [Page 87]
+
+Internet-Draft                   HTTP/2                         May 2015
+
 
 B.3.  Since draft-ietf-httpbis-http2-13
 
@@ -5315,17 +4917,18 @@ B.5.  Since draft-ietf-httpbis-http2-11
 
    Added DATA per-frame GZIP compression.
 
-
-
-Belshe, et al.          Expires November 5, 2015               [Page 95]
-
-Internet-Draft                   HTTP/2                         May 2015
-
-
 B.6.  Since draft-ietf-httpbis-http2-10
 
    Changed "connection header" to "connection preface" to avoid
    confusion.
+
+
+
+
+Belshe, et al.          Expires November 5, 2015               [Page 88]
+
+Internet-Draft                   HTTP/2                         May 2015
+
 
    Added dependency-based stream prioritization.
 
@@ -5373,7 +4976,12 @@ B.8.  Since draft-ietf-httpbis-http2-08
 
 
 
-Belshe, et al.          Expires November 5, 2015               [Page 96]
+
+
+
+
+
+Belshe, et al.          Expires November 5, 2015               [Page 89]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -5429,7 +5037,7 @@ B.12.  Since draft-ietf-httpbis-http2-04
 
 
 
-Belshe, et al.          Expires November 5, 2015               [Page 97]
+Belshe, et al.          Expires November 5, 2015               [Page 90]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -5485,7 +5093,7 @@ B.15.  Since draft-ietf-httpbis-http2-01
 
 
 
-Belshe, et al.          Expires November 5, 2015               [Page 98]
+Belshe, et al.          Expires November 5, 2015               [Page 91]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -5541,7 +5149,7 @@ Authors' Addresses
 
 
 
-Belshe, et al.          Expires November 5, 2015               [Page 99]
+Belshe, et al.          Expires November 5, 2015               [Page 92]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -5597,4 +5205,4 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 5, 2015              [Page 100]
+Belshe, et al.          Expires November 5, 2015               [Page 93]
