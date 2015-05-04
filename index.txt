@@ -2371,11 +2371,18 @@ Internet-Draft                   HTTP/2                         May 2015
 
 6.8.  GOAWAY
 
-   The GOAWAY frame (type=0x7) is used to initiate shutdown of a
-   connection or to signal serious error conditions.  GOAWAY allows an
-   endpoint to gracefully stop accepting new streams, while still
-   finishing processing of previously established streams.  This enables
-   administrative actions, like server maintenance.
+   The GOAWAY frame (type=0x7) informs the remote peer to stop creating
+   streams on this connection.  GOAWAY can be sent by either the client
+   or the server.  Once sent, the sender will ignore frames sent on any
+   new streams with identifiers higher than the included last stream
+   identifier.  Receivers of a GOAWAY frame MUST NOT open additional
+   streams on the connection, although a new connection can be
+   established for new streams.
+
+   The purpose of this frame is to allow an endpoint to gracefully stop
+   accepting new streams, while still finishing processing of previously
+   established streams.  This enables administrative actions, like
+   server maintenance.
 
    There is an inherent race condition between an endpoint starting new
    streams and the remote sending a GOAWAY frame.  To deal with this
@@ -2384,12 +2391,6 @@ Internet-Draft                   HTTP/2                         May 2015
    endpoint in this connection.  For instance, if the server sends a
    GOAWAY frame, the identified stream is the highest numbered stream
    initiated by the client.
-
-   Once sent, the sender will ignore frames sent on streams initiated by
-   the receiver if the stream has an identifier higher than the included
-   last stream identifier.  Receivers of a GOAWAY frame MUST NOT open
-   additional streams on the connection, although a new connection can
-   be established for new streams.
 
    If the receiver of the GOAWAY has sent data on streams with a higher
    stream identifier than what is indicated in the GOAWAY frame, those
@@ -2401,7 +2402,6 @@ Internet-Draft                   HTTP/2                         May 2015
    Endpoints SHOULD always send a GOAWAY frame before closing a
    connection so that the remote peer can know whether a stream has been
    partially processed or not.  For example, if an HTTP client sends a
-   POST at the same time that a server closes a connection, the client
 
 
 
@@ -2410,17 +2410,13 @@ Belshe, et al.          Expires November 5, 2015               [Page 43]
 Internet-Draft                   HTTP/2                         May 2015
 
 
+   POST at the same time that a server closes a connection, the client
    cannot know if the server started to process that POST request if the
    server does not send a GOAWAY frame to indicate what streams it might
    have acted on.
 
    An endpoint might choose to close a connection without sending GOAWAY
    for misbehaving peers.
-
-   A GOAWAY frame might not immediately precede closing of the
-   connection; a receiver of a GOAWAY that has no more use for the
-   connection SHOULD still send a GOAWAY frame before terminating the
-   connection.
 
     +-+-------------------------------------------------------------+
     |R|                  Last-Stream-ID (31)                        |
@@ -2457,7 +2453,11 @@ Internet-Draft                   HTTP/2                         May 2015
    closed completely prior to the connection being closed, re-attempting
    requests, transactions, or any protocol activity is not possible,
    with the exception of idempotent actions like HTTP GET, PUT, or
+   DELETE.  Any protocol activity that uses higher numbered streams can
+   be safely retried using a new connection.
 
+   Activity on streams numbered lower or equal to the last stream
+   identifier might still complete successfully.  The sender of a GOAWAY
 
 
 
@@ -2466,11 +2466,6 @@ Belshe, et al.          Expires November 5, 2015               [Page 44]
 Internet-Draft                   HTTP/2                         May 2015
 
 
-   DELETE.  Any protocol activity that uses higher numbered streams can
-   be safely retried using a new connection.
-
-   Activity on streams numbered lower or equal to the last stream
-   identifier might still complete successfully.  The sender of a GOAWAY
    frame might gracefully shut down a connection by sending a GOAWAY
    frame, maintaining the connection in an open state until all in-
    progress streams complete.
@@ -2490,23 +2485,21 @@ Internet-Draft                   HTTP/2                         May 2015
    HTTP/2.  A server that is attempting to gracefully shut down a
    connection SHOULD send an initial GOAWAY frame with the last stream
    identifier set to 2^31-1 and a NO_ERROR code.  This signals to the
-   client that a shutdown is imminent and that initiating further
-   requests is prohibited.  After allowing time for any in flight stream
-   creation - at least one round trip time - the server can send another
-   GOAWAY frame with an updated last stream identifier.  This ensures
-   that a connection can be cleanly shut down without causing clients to
-   lose requests.
+   client that a shutdown is imminent and that no further requests can
+   be initiated.  After waiting at least one round trip time, the server
+   can send another GOAWAY frame with an updated last stream identifier.
+   This ensures that a connection can be cleanly shut down without
+   losing requests.
 
    After sending a GOAWAY frame, the sender can discard frames for
-   streams initiated by the receiver with identifiers higher than the
-   identified last stream.  However, any frames that alter connection
-   state cannot be completely ignored.  For instance, HEADERS,
-   PUSH_PROMISE and CONTINUATION frames MUST be minimally processed to
-   ensure the state maintained for header compression is consistent (see
-   Section 4.3); similarly DATA frames MUST be counted toward the
-   connection flow control window.  Failure to process these frames can
-   cause flow control or header compression state to become
-   unsynchronized.
+   streams with identifiers higher than the identified last stream.
+   However, any frames that alter connection state cannot be completely
+   ignored.  For instance, HEADERS, PUSH_PROMISE and CONTINUATION frames
+   MUST be minimally processed to ensure the state maintained for header
+   compression is consistent (see Section 4.3); similarly DATA frames
+   MUST be counted toward the connection flow control window.  Failure
+   to process these frames can cause flow control or header compression
+   state to become unsynchronized.
 
    The GOAWAY frame also contains a 32-bit error code (Section 7) that
    contains the reason for closing the connection.
@@ -2514,6 +2507,13 @@ Internet-Draft                   HTTP/2                         May 2015
    Endpoints MAY append opaque data to the payload of any GOAWAY frame.
    Additional debug data is intended for diagnostic purposes only and
    carries no semantic value.  Debug information could contain security-
+   or privacy-sensitive data.  Logged or otherwise persistently stored
+   debug data MUST have adequate safeguards to prevent unauthorized
+   access.
+
+
+
+
 
 
 
@@ -2521,10 +2521,6 @@ Belshe, et al.          Expires November 5, 2015               [Page 45]
 
 Internet-Draft                   HTTP/2                         May 2015
 
-
-   or privacy-sensitive data.  Logged or otherwise persistently stored
-   debug data MUST have adequate safeguards to prevent unauthorized
-   access.
 
 6.9.  WINDOW_UPDATE
 
@@ -2570,6 +2566,10 @@ Internet-Draft                   HTTP/2                         May 2015
 
    A receiver MUST treat the receipt of a WINDOW_UPDATE frame with an
    flow control window increment of 0 as a stream error (Section 5.4.2)
+   of type PROTOCOL_ERROR; errors on the connection flow control window
+   MUST be treated as a connection error (Section 5.4.1).
+
+
 
 
 
@@ -2577,9 +2577,6 @@ Belshe, et al.          Expires November 5, 2015               [Page 46]
 
 Internet-Draft                   HTTP/2                         May 2015
 
-
-   of type PROTOCOL_ERROR; errors on the connection flow control window
-   MUST be treated as a connection error (Section 5.4.1).
 
    WINDOW_UPDATE can be sent by a peer that has sent a frame bearing the
    END_STREAM flag.  This means that a receiver could receive a
@@ -2625,6 +2622,9 @@ Internet-Draft                   HTTP/2                         May 2015
    WINDOW_UPDATE frames are sent for the stream and connection level
    flow control windows.
 
+   A sender that receives a WINDOW_UPDATE frame updates the
+   corresponding window by the amount specified in the frame.
+
 
 
 
@@ -2633,9 +2633,6 @@ Belshe, et al.          Expires November 5, 2015               [Page 47]
 
 Internet-Draft                   HTTP/2                         May 2015
 
-
-   A sender that receives a WINDOW_UPDATE frame updates the
-   corresponding window by the amount specified in the frame.
 
    A sender MUST NOT allow a flow control window to exceed 2^31-1
    octets.  If a sender receives a WINDOW_UPDATE that causes a flow
@@ -2682,6 +2679,9 @@ Internet-Draft                   HTTP/2                         May 2015
    For example, if the client sends 60KB immediately on connection
    establishment, and the server sets the initial window size to be
    16KB, the client will recalculate the available flow control window
+   to be -44KB on receipt of the SETTINGS frame.  The client retains a
+   negative flow control window until WINDOW_UPDATE frames restore the
+   window to being positive, after which the client can resume sending.
 
 
 
@@ -2689,10 +2689,6 @@ Belshe, et al.          Expires November 5, 2015               [Page 48]
 
 Internet-Draft                   HTTP/2                         May 2015
 
-
-   to be -44KB on receipt of the SETTINGS frame.  The client retains a
-   negative flow control window until WINDOW_UPDATE frames restore the
-   window to being positive, after which the client can resume sending.
 
    A SETTINGS frame cannot alter the connection flow control window.
 
@@ -2739,6 +2735,10 @@ Internet-Draft                   HTTP/2                         May 2015
    END_HEADERS (0x4):  Bit 2 being set indicates that this frame ends a
       header block (Section 4.3).
 
+      If the END_HEADERS bit is not set, this frame MUST be followed by
+      another CONTINUATION frame.  A receiver MUST treat the receipt of
+
+
 
 
 Belshe, et al.          Expires November 5, 2015               [Page 49]
@@ -2746,8 +2746,6 @@ Belshe, et al.          Expires November 5, 2015               [Page 49]
 Internet-Draft                   HTTP/2                         May 2015
 
 
-      If the END_HEADERS bit is not set, this frame MUST be followed by
-      another CONTINUATION frame.  A receiver MUST treat the receipt of
       any other type of frame or a frame on a different stream as a
       connection error (Section 5.4.1) of type PROTOCOL_ERROR.
 
@@ -2793,6 +2791,8 @@ Internet-Draft                   HTTP/2                         May 2015
       not receive a response in a timely manner.  See Settings
       Synchronization (Section 6.5.3).
 
+   STREAM_CLOSED (0x5):  The endpoint received a frame after a stream
+      was half closed.
 
 
 
@@ -2801,9 +2801,6 @@ Belshe, et al.          Expires November 5, 2015               [Page 50]
 
 Internet-Draft                   HTTP/2                         May 2015
 
-
-   STREAM_CLOSED (0x5):  The endpoint received a frame after a stream
-      was half closed.
 
    FRAME_SIZE_ERROR (0x6):  The endpoint received a frame with an
       invalid size.
@@ -2849,6 +2846,9 @@ Internet-Draft                   HTTP/2                         May 2015
    and Routing [RFC7230], such as the HTTP and HTTPS URI schemes, are
    also applicable in HTTP/2, but the expression of those semantics for
    this protocol are defined in the sections below.
+
+
+
 
 
 
