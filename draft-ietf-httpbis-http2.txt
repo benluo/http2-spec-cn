@@ -1907,9 +1907,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
    The HEADERS frame can include padding.  Padding fields and flags are
-   identical to those defined for DATA frames (Section 6.1).  Padding
-   that exceeds the size remaining for the header block fragment MUST be
-   treated as a PROTOCOL_ERROR.
+   identical to those defined for DATA frames (Section 6.1).
 
    Prioritization information in a HEADERS frame is logically equivalent
    to a separate PRIORITY frame, but inclusion in HEADERS avoids the
@@ -1920,8 +1918,8 @@ Internet-Draft                   HTTP/2                         May 2015
 6.3.  PRIORITY
 
    The PRIORITY frame (type=0x2) specifies the sender-advised priority
-   of a stream (Section 5.3).  It can be sent in any stream state,
-   including idle or closed streams.
+   of a stream (Section 5.3).  It can be sent at any time for any
+   stream, including idle or closed streams.
 
     +-+-------------------------------------------------------------+
     |E|                  Stream Dependency (31)                     |
@@ -1954,6 +1952,8 @@ Internet-Draft                   HTTP/2                         May 2015
    cannot be sent between consecutive frames that comprise a single
    header block (Section 4.3).  Note that this frame could arrive after
    processing or frame sending has completed, which would cause it to
+   have no effect on the identified stream.  For a stream that is in the
+   "half closed (remote)" or "closed" - state, this frame can only
 
 
 
@@ -1962,8 +1962,6 @@ Belshe, et al.          Expires November 5, 2015               [Page 35]
 Internet-Draft                   HTTP/2                         May 2015
 
 
-   have no effect on the identified stream.  For a stream that is in the
-   "half closed (remote)" or "closed" - state, this frame can only
    affect processing of the identified stream and its dependent streams
    and not frame transmission on that stream.
 
@@ -2010,6 +2008,8 @@ Internet-Draft                   HTTP/2                         May 2015
    If a RST_STREAM frame identifying an idle stream is received, the
    recipient MUST treat this as a connection error (Section 5.4.1) of
    type PROTOCOL_ERROR.
+
+
 
 
 
