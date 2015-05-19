@@ -5,10 +5,10 @@
 HTTPbis Working Group                                          M. Belshe
 Internet-Draft                                                     Twist
 Intended status: Standards Track                                 R. Peon
-Expires: November 18, 2015                                   Google, Inc
+Expires: November 20, 2015                                   Google, Inc
                                                          M. Thomson, Ed.
                                                                  Mozilla
-                                                            May 17, 2015
+                                                            May 19, 2015
 
 
                  Hypertext Transfer Protocol version 2
@@ -29,10 +29,11 @@ Abstract
 Editorial Note (To be removed by RFC Editor)
 
    Discussion of this draft takes place on the HTTPBIS working group
-   mailing list (ietf-http-wg@w3.org), which is archived at [1].
+   mailing list (ietf-http-wg@w3.org), which is archived at
+   <https://lists.w3.org/Archives/Public/ietf-http-wg/>.
 
-   Working Group information can be found at [2]; that specific to
-   HTTP/2 are at [3].
+   Working Group information can be found at <https://tools.ietf.org/wg/
+   httpbis/>; that specific to HTTP/2 are at <https://http2.github.io/>.
 
    The changes in this draft are summarized in Appendix B.
 
@@ -48,17 +49,19 @@ Status of This Memo
 
    Internet-Drafts are draft documents valid for a maximum of six months
    and may be updated, replaced, or obsoleted by other documents at any
-   time.  It is inappropriate to use Internet-Drafts as reference
-   material or to cite them other than as "work in progress."
 
 
 
-Belshe, et al.          Expires November 18, 2015               [Page 1]
+
+Belshe, et al.          Expires November 20, 2015               [Page 1]
 
 Internet-Draft                   HTTP/2                         May 2015
 
 
-   This Internet-Draft will expire on November 18, 2015.
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on November 20, 2015.
 
 Copyright Notice
 
@@ -103,17 +106,17 @@ Table of Contents
        5.3.1.  Stream Dependencies . . . . . . . . . . . . . . . . .  25
        5.3.2.  Dependency Weighting  . . . . . . . . . . . . . . . .  26
        5.3.3.  Reprioritization  . . . . . . . . . . . . . . . . . .  27
-       5.3.4.  Prioritization State Management . . . . . . . . . . .  27
-       5.3.5.  Default Priorities  . . . . . . . . . . . . . . . . .  29
-     5.4.  Error Handling  . . . . . . . . . . . . . . . . . . . . .  29
 
 
 
-Belshe, et al.          Expires November 18, 2015               [Page 2]
+Belshe, et al.          Expires November 20, 2015               [Page 2]
 
 Internet-Draft                   HTTP/2                         May 2015
 
 
+       5.3.4.  Prioritization State Management . . . . . . . . . . .  27
+       5.3.5.  Default Priorities  . . . . . . . . . . . . . . . . .  29
+     5.4.  Error Handling  . . . . . . . . . . . . . . . . . . . . .  29
        5.4.1.  Connection Error Handling . . . . . . . . . . . . . .  29
        5.4.2.  Stream Error Handling . . . . . . . . . . . . . . . .  30
        5.4.3.  Connection Termination  . . . . . . . . . . . . . . .  30
@@ -159,17 +162,17 @@ Internet-Draft                   HTTP/2                         May 2015
      10.3.  Intermediary Encapsulation Attacks . . . . . . . . . . .  70
      10.4.  Cacheability of Pushed Responses . . . . . . . . . . . .  70
      10.5.  Denial of Service Considerations . . . . . . . . . . . .  70
-       10.5.1.  Limits on Header Block Size  . . . . . . . . . . . .  71
-       10.5.2.  CONNECT Issues . . . . . . . . . . . . . . . . . . .  72
-     10.6.  Use of Compression . . . . . . . . . . . . . . . . . . .  72
 
 
 
-Belshe, et al.          Expires November 18, 2015               [Page 3]
+Belshe, et al.          Expires November 20, 2015               [Page 3]
 
 Internet-Draft                   HTTP/2                         May 2015
 
 
+       10.5.1.  Limits on Header Block Size  . . . . . . . . . . . .  71
+       10.5.2.  CONNECT Issues . . . . . . . . . . . . . . . . . . .  72
+     10.6.  Use of Compression . . . . . . . . . . . . . . . . . . .  72
      10.7.  Use of Padding . . . . . . . . . . . . . . . . . . . . .  73
      10.8.  Privacy Considerations . . . . . . . . . . . . . . . . .  73
    11. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  74
@@ -184,7 +187,6 @@ Internet-Draft                   HTTP/2                         May 2015
    13. References  . . . . . . . . . . . . . . . . . . . . . . . . .  79
      13.1.  Normative References . . . . . . . . . . . . . . . . . .  79
      13.2.  Informative References . . . . . . . . . . . . . . . . .  81
-     13.3.  URIs . . . . . . . . . . . . . . . . . . . . . . . . . .  82
    Appendix A.  TLS 1.2 Cipher Suite Black List  . . . . . . . . . .  83
    Appendix B.  Change Log . . . . . . . . . . . . . . . . . . . . .  94
      B.1.  Since draft-ietf-httpbis-http2-15 . . . . . . . . . . . .  94
@@ -204,7 +206,7 @@ Internet-Draft                   HTTP/2                         May 2015
      B.15. Since draft-ietf-httpbis-http2-01 . . . . . . . . . . . .  98
      B.16. Since draft-ietf-httpbis-http2-00 . . . . . . . . . . . .  99
      B.17. Since draft-mbelshe-httpbis-spdy-00 . . . . . . . . . . .  99
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  99
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . 100
 
 1.  Introduction
 
@@ -216,16 +218,15 @@ Internet-Draft                   HTTP/2                         May 2015
    In particular, HTTP/1.0 allowed only one request to be outstanding at
    a time on a given TCP connection.  HTTP/1.1 added request pipelining,
    but this only partially addressed request concurrency and still
-   suffers from head-of-line blocking.  Therefore, HTTP/1.0 and HTTP/1.1
 
 
 
-
-Belshe, et al.          Expires November 18, 2015               [Page 4]
+Belshe, et al.          Expires November 20, 2015               [Page 4]
 
 Internet-Draft                   HTTP/2                         May 2015
 
 
+   suffers from head-of-line blocking.  Therefore, HTTP/1.0 and HTTP/1.1
    clients that need to make many requests use multiple connections to a
    server in order to achieve concurrency and thereby reduce latency.
 
@@ -272,15 +273,17 @@ Internet-Draft                   HTTP/2                         May 2015
    Flow control and prioritization ensure that it is possible to
    efficiently use multiplexed streams.  Flow control (Section 5.2)
    helps to ensure that only data that can be used by a receiver is
-   transmitted.  Prioritization (Section 5.3) ensures that limited
-   resources can be directed to the most important streams first.
 
 
 
-Belshe, et al.          Expires November 18, 2015               [Page 5]
+
+Belshe, et al.          Expires November 20, 2015               [Page 5]
 
 Internet-Draft                   HTTP/2                         May 2015
 
+
+   transmitted.  Prioritization (Section 5.3) ensures that limited
+   resources can be directed to the most important streams first.
 
    HTTP/2 adds a new interaction mode, whereby a server can push
    responses to a client (Section 8.2).  Server push allows a server to
@@ -327,16 +330,16 @@ Internet-Draft                   HTTP/2                         May 2015
 
    All numeric values are in network byte order.  Values are unsigned
    unless otherwise indicated.  Literal values are provided in decimal
-   or hexadecimal as appropriate.  Hexadecimal literals are prefixed
-   with "0x" to distinguish them from decimal literals.
 
 
 
-
-Belshe, et al.          Expires November 18, 2015               [Page 6]
+Belshe, et al.          Expires November 20, 2015               [Page 6]
 
 Internet-Draft                   HTTP/2                         May 2015
 
+
+   or hexadecimal as appropriate.  Hexadecimal literals are prefixed
+   with "0x" to distinguish them from decimal literals.
 
    The following terms are used:
 
@@ -382,18 +385,19 @@ Internet-Draft                   HTTP/2                         May 2015
    of a TCP connection ([TCP]).  The client is the TCP connection
    initiator.
 
-   HTTP/2 uses the same "http" and "https" URI schemes used by HTTP/1.1.
-   HTTP/2 shares the same default port numbers: 80 for "http" URIs and
-   443 for "https" URIs.  As a result, implementations processing
-   requests for target resource URIs like "http://example.org/foo" or
 
 
 
-Belshe, et al.          Expires November 18, 2015               [Page 7]
+
+Belshe, et al.          Expires November 20, 2015               [Page 7]
 
 Internet-Draft                   HTTP/2                         May 2015
 
 
+   HTTP/2 uses the same "http" and "https" URI schemes used by HTTP/1.1.
+   HTTP/2 shares the same default port numbers: 80 for "http" URIs and
+   443 for "https" URIs.  As a result, implementations processing
+   requests for target resource URIs like "http://example.org/foo" or
    "https://example.com/bar" are required to first discover whether the
    upstream server (the immediate peer to which the client wishes to
    establish a connection) supports HTTP/2.
@@ -437,19 +441,20 @@ Internet-Draft                   HTTP/2                         May 2015
    example, draft-ietf-httpbis-http2-11 over TLS is identified using the
    string "h2-11".
 
+
+
+
+
+Belshe, et al.          Expires November 20, 2015               [Page 8]
+
+Internet-Draft                   HTTP/2                         May 2015
+
+
    Non-compatible experiments that are based on these draft versions
    MUST append the string "-" and an experiment name to the identifier.
    For example, an experimental implementation of packet mood-based
    encoding based on draft-ietf-httpbis-http2-09 might identify itself
    as "h2-09-emo".  Note that any label MUST conform to the "token"
-
-
-
-Belshe, et al.          Expires November 18, 2015               [Page 8]
-
-Internet-Draft                   HTTP/2                         May 2015
-
-
    syntax defined in Section 3.2.6 of [RFC7230].  Experimenters are
    encouraged to coordinate their experiments on the ietf-http-wg@w3.org
    mailing list.
@@ -494,18 +499,16 @@ Internet-Draft                   HTTP/2                         May 2015
    Presence of a token with "h2" implies HTTP/2 over TLS, which is
    instead negotiated as described in Section 3.3.
 
-   A server that supports HTTP/2 accepts the upgrade with a 101
-   (Switching Protocols) response.  After the empty line that terminates
-   the 101 response, the server can begin sending HTTP/2 frames.  These
 
 
-
-
-Belshe, et al.          Expires November 18, 2015               [Page 9]
+Belshe, et al.          Expires November 20, 2015               [Page 9]
 
 Internet-Draft                   HTTP/2                         May 2015
 
 
+   A server that supports HTTP/2 accepts the upgrade with a 101
+   (Switching Protocols) response.  After the empty line that terminates
+   the 101 response, the server can begin sending HTTP/2 frames.  These
    frames MUST include a response to the request that initiated the
    Upgrade.
 
@@ -550,18 +553,18 @@ Internet-Draft                   HTTP/2                         May 2015
    [RFC5234] production for "token68" is defined in Section 2.1 of
    [RFC7235].
 
-   Since the upgrade is only intended to apply to the immediate
-   connection, a client sending "HTTP2-Settings" MUST also send
-   "HTTP2-Settings" as a connection option in the "Connection" header
 
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 10]
+Belshe, et al.          Expires November 20, 2015              [Page 10]
 
 Internet-Draft                   HTTP/2                         May 2015
 
 
+   Since the upgrade is only intended to apply to the immediate
+   connection, a client sending "HTTP2-Settings" MUST also send
+   "HTTP2-Settings" as a connection option in the "Connection" header
    field to prevent it from being forwarded (see Section 6.1 of
    [RFC7230]).
 
@@ -610,10 +613,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-
-
-
-Belshe, et al.          Expires November 18, 2015              [Page 11]
+Belshe, et al.          Expires November 20, 2015              [Page 11]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -669,7 +669,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 12]
+Belshe, et al.          Expires November 20, 2015              [Page 12]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -725,7 +725,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 13]
+Belshe, et al.          Expires November 20, 2015              [Page 13]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -781,7 +781,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 14]
+Belshe, et al.          Expires November 20, 2015              [Page 14]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -837,7 +837,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 15]
+Belshe, et al.          Expires November 20, 2015              [Page 15]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -893,7 +893,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 16]
+Belshe, et al.          Expires November 20, 2015              [Page 16]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -949,7 +949,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 17]
+Belshe, et al.          Expires November 20, 2015              [Page 17]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -1005,7 +1005,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 18]
+Belshe, et al.          Expires November 20, 2015              [Page 18]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -1061,7 +1061,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 19]
+Belshe, et al.          Expires November 20, 2015              [Page 19]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -1117,7 +1117,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 20]
+Belshe, et al.          Expires November 20, 2015              [Page 20]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -1173,7 +1173,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 21]
+Belshe, et al.          Expires November 20, 2015              [Page 21]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -1229,7 +1229,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 22]
+Belshe, et al.          Expires November 20, 2015              [Page 22]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -1285,7 +1285,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 23]
+Belshe, et al.          Expires November 20, 2015              [Page 23]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -1341,7 +1341,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 24]
+Belshe, et al.          Expires November 20, 2015              [Page 24]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -1397,7 +1397,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 25]
+Belshe, et al.          Expires November 20, 2015              [Page 25]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -1453,7 +1453,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 26]
+Belshe, et al.          Expires November 20, 2015              [Page 26]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -1509,7 +1509,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 27]
+Belshe, et al.          Expires November 20, 2015              [Page 27]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -1565,7 +1565,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 28]
+Belshe, et al.          Expires November 20, 2015              [Page 28]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -1621,7 +1621,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 29]
+Belshe, et al.          Expires November 20, 2015              [Page 29]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -1677,7 +1677,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 30]
+Belshe, et al.          Expires November 20, 2015              [Page 30]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -1733,7 +1733,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 31]
+Belshe, et al.          Expires November 20, 2015              [Page 31]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -1789,7 +1789,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 32]
+Belshe, et al.          Expires November 20, 2015              [Page 32]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -1845,7 +1845,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 33]
+Belshe, et al.          Expires November 20, 2015              [Page 33]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -1901,7 +1901,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 34]
+Belshe, et al.          Expires November 20, 2015              [Page 34]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -1957,7 +1957,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 35]
+Belshe, et al.          Expires November 20, 2015              [Page 35]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -2013,7 +2013,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 36]
+Belshe, et al.          Expires November 20, 2015              [Page 36]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -2069,7 +2069,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 37]
+Belshe, et al.          Expires November 20, 2015              [Page 37]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -2125,7 +2125,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 38]
+Belshe, et al.          Expires November 20, 2015              [Page 38]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -2181,7 +2181,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 39]
+Belshe, et al.          Expires November 20, 2015              [Page 39]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -2237,7 +2237,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 40]
+Belshe, et al.          Expires November 20, 2015              [Page 40]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -2293,7 +2293,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 41]
+Belshe, et al.          Expires November 20, 2015              [Page 41]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -2349,7 +2349,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 42]
+Belshe, et al.          Expires November 20, 2015              [Page 42]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -2405,7 +2405,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 43]
+Belshe, et al.          Expires November 20, 2015              [Page 43]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -2461,7 +2461,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 44]
+Belshe, et al.          Expires November 20, 2015              [Page 44]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -2517,7 +2517,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 45]
+Belshe, et al.          Expires November 20, 2015              [Page 45]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -2573,7 +2573,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 46]
+Belshe, et al.          Expires November 20, 2015              [Page 46]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -2629,7 +2629,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 47]
+Belshe, et al.          Expires November 20, 2015              [Page 47]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -2685,7 +2685,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 48]
+Belshe, et al.          Expires November 20, 2015              [Page 48]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -2741,7 +2741,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 49]
+Belshe, et al.          Expires November 20, 2015              [Page 49]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -2797,7 +2797,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 50]
+Belshe, et al.          Expires November 20, 2015              [Page 50]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -2853,7 +2853,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 51]
+Belshe, et al.          Expires November 20, 2015              [Page 51]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -2909,7 +2909,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 52]
+Belshe, et al.          Expires November 20, 2015              [Page 52]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -2948,7 +2948,8 @@ Internet-Draft                   HTTP/2                         May 2015
 
    HTTP header fields carry information as a series of key-value pairs.
    For a listing of registered HTTP headers, see the Message Header
-   Field Registry maintained at [4].
+   Field Registry maintained at <https://www.iana.org/assignments/
+   message-headers>.
 
    Just as in HTTP/1.x, header field names are strings of ASCII
    characters that are compared in a case-insensitive fashion.  However,
@@ -2960,15 +2961,17 @@ Internet-Draft                   HTTP/2                         May 2015
 
    While HTTP/1.x used the message start-line (see [RFC7230],
    Section 3.1) to convey the target URI and method of the request, and
-   the status code for the response, HTTP/2 uses special pseudo-header
-   fields beginning with ':' character (ASCII 0x3a) for this purpose.
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 53]
+
+Belshe, et al.          Expires November 20, 2015              [Page 53]
 
 Internet-Draft                   HTTP/2                         May 2015
 
+
+   the status code for the response, HTTP/2 uses special pseudo-header
+   fields beginning with ':' character (ASCII 0x3a) for this purpose.
 
    Pseudo-header fields are not HTTP header fields.  Endpoints MUST NOT
    generate pseudo-header fields other than those defined in this
@@ -3012,19 +3015,23 @@ Internet-Draft                   HTTP/2                         May 2015
       protocol.  The handshake methods described in Section 3 are
       believed sufficient to negotiate the use of alternative protocols.
 
+
+
+
+
+
+
+Belshe, et al.          Expires November 20, 2015              [Page 54]
+
+Internet-Draft                   HTTP/2                         May 2015
+
+
 8.1.2.3.  Request Pseudo-Header Fields
 
    The following pseudo-header fields are defined for HTTP/2 requests:
 
    o  The ":method" pseudo-header field includes the HTTP method
       ([RFC7231], Section 4).
-
-
-
-Belshe, et al.          Expires November 18, 2015              [Page 54]
-
-Internet-Draft                   HTTP/2                         May 2015
-
 
    o  The ":scheme" pseudo-header field includes the scheme portion of
       the target URI ([RFC3986], Section 3.1).
@@ -3067,20 +3074,16 @@ Internet-Draft                   HTTP/2                         May 2015
    a CONNECT request (Section 8.3).  An HTTP request that omits
    mandatory pseudo-header fields is malformed (Section 8.1.2.6).
 
-   HTTP/2 does not define a way to carry the version identifier that is
-   included in the HTTP/1.1 request line.
 
 
 
-
-
-
-
-
-Belshe, et al.          Expires November 18, 2015              [Page 55]
+Belshe, et al.          Expires November 20, 2015              [Page 55]
 
 Internet-Draft                   HTTP/2                         May 2015
 
+
+   HTTP/2 does not define a way to carry the version identifier that is
+   included in the HTTP/1.1 request line.
 
 8.1.2.4.  Response Pseudo-Header Fields
 
@@ -3126,18 +3129,19 @@ Internet-Draft                   HTTP/2                         May 2015
    of mandatory header fields, or the inclusion of uppercase header
    field names.
 
-   A request or response that includes an payload body can include a
-   "content-length" header field.  A request or response is also
-   malformed if the value of a "content-length" header field does not
-   equal the sum of the DATA frame payload lengths that form the body.
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 56]
+
+Belshe, et al.          Expires November 20, 2015              [Page 56]
 
 Internet-Draft                   HTTP/2                         May 2015
 
 
+   A request or response that includes an payload body can include a
+   "content-length" header field.  A request or response is also
+   malformed if the value of a "content-length" header field does not
+   equal the sum of the DATA frame payload lengths that form the body.
    A response that is defined to have no payload, as described in
    [RFC7230], Section 3.3.2, can have a non-zero "content-length" header
    field, even though no content is included in DATA frames.
@@ -3185,11 +3189,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-
-
-
-
-Belshe, et al.          Expires November 18, 2015              [Page 57]
+Belshe, et al.          Expires November 20, 2015              [Page 57]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -3245,7 +3245,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 58]
+Belshe, et al.          Expires November 20, 2015              [Page 58]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -3301,7 +3301,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 59]
+Belshe, et al.          Expires November 20, 2015              [Page 59]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -3357,7 +3357,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 60]
+Belshe, et al.          Expires November 20, 2015              [Page 60]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -3413,7 +3413,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 61]
+Belshe, et al.          Expires November 20, 2015              [Page 61]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -3469,7 +3469,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 62]
+Belshe, et al.          Expires November 20, 2015              [Page 62]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -3525,7 +3525,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 63]
+Belshe, et al.          Expires November 20, 2015              [Page 63]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -3581,7 +3581,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 64]
+Belshe, et al.          Expires November 20, 2015              [Page 64]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -3637,7 +3637,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 65]
+Belshe, et al.          Expires November 20, 2015              [Page 65]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -3693,7 +3693,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 66]
+Belshe, et al.          Expires November 20, 2015              [Page 66]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -3749,7 +3749,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 67]
+Belshe, et al.          Expires November 20, 2015              [Page 67]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -3805,7 +3805,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 68]
+Belshe, et al.          Expires November 20, 2015              [Page 68]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -3861,7 +3861,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 69]
+Belshe, et al.          Expires November 20, 2015              [Page 69]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -3917,7 +3917,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 70]
+Belshe, et al.          Expires November 20, 2015              [Page 70]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -3973,7 +3973,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 71]
+Belshe, et al.          Expires November 20, 2015              [Page 71]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -4029,7 +4029,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 72]
+Belshe, et al.          Expires November 20, 2015              [Page 72]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -4085,7 +4085,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 73]
+Belshe, et al.          Expires November 20, 2015              [Page 73]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -4141,7 +4141,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 74]
+Belshe, et al.          Expires November 20, 2015              [Page 74]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -4197,7 +4197,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 75]
+Belshe, et al.          Expires November 20, 2015              [Page 75]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -4253,7 +4253,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 76]
+Belshe, et al.          Expires November 20, 2015              [Page 76]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -4309,7 +4309,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 77]
+Belshe, et al.          Expires November 20, 2015              [Page 77]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -4365,7 +4365,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 78]
+Belshe, et al.          Expires November 20, 2015              [Page 78]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -4421,7 +4421,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 79]
+Belshe, et al.          Expires November 20, 2015              [Page 79]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -4477,7 +4477,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 80]
+Belshe, et al.          Expires November 20, 2015              [Page 80]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -4506,7 +4506,7 @@ Internet-Draft                   HTTP/2                         May 2015
               Recommendation REC-html5-20141028, October 2014,
               <http://www.w3.org/TR/2014/REC-html5-20141028/>.
 
-              Latest version available at [5].
+              Latest version available at <http://www.w3.org/TR/html5/>.
 
    [RFC3749]  Hollenbeck, S., "Transport Layer Security Protocol
               Compression Methods", RFC 3749, May 2004,
@@ -4533,7 +4533,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 81]
+Belshe, et al.          Expires November 20, 2015              [Page 81]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -4542,15 +4542,6 @@ Internet-Draft                   HTTP/2                         May 2015
               "Recommendations for Secure Use of TLS and DTLS", draft-
               ietf-uta-tls-bcp-08 (work in progress), December 2014.
 
-13.3.  URIs
-
-   [1] https://www.iana.org/assignments/message-headers
-
-   [2] https://groups.google.com/forum/?fromgroups#!topic/spdy-dev/
-       cfUef2gL3iU
-
-   [3] https://tools.ietf.org/html/draft-montenegro-httpbis-http2-fc-
-       principles-01
 
 
 
@@ -4589,7 +4580,16 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 82]
+
+
+
+
+
+
+
+
+
+Belshe, et al.          Expires November 20, 2015              [Page 82]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -4645,7 +4645,7 @@ Appendix A.  TLS 1.2 Cipher Suite Black List
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 83]
+Belshe, et al.          Expires November 20, 2015              [Page 83]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -4701,7 +4701,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 84]
+Belshe, et al.          Expires November 20, 2015              [Page 84]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -4757,7 +4757,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 85]
+Belshe, et al.          Expires November 20, 2015              [Page 85]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -4813,7 +4813,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 86]
+Belshe, et al.          Expires November 20, 2015              [Page 86]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -4869,7 +4869,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 87]
+Belshe, et al.          Expires November 20, 2015              [Page 87]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -4925,7 +4925,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 88]
+Belshe, et al.          Expires November 20, 2015              [Page 88]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -4981,7 +4981,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 89]
+Belshe, et al.          Expires November 20, 2015              [Page 89]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -5037,7 +5037,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 90]
+Belshe, et al.          Expires November 20, 2015              [Page 90]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -5093,7 +5093,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 91]
+Belshe, et al.          Expires November 20, 2015              [Page 91]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -5149,7 +5149,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 92]
+Belshe, et al.          Expires November 20, 2015              [Page 92]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -5205,7 +5205,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 93]
+Belshe, et al.          Expires November 20, 2015              [Page 93]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -5261,7 +5261,7 @@ B.1.  Since draft-ietf-httpbis-http2-15
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 94]
+Belshe, et al.          Expires November 20, 2015              [Page 94]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -5317,7 +5317,7 @@ B.5.  Since draft-ietf-httpbis-http2-11
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 95]
+Belshe, et al.          Expires November 20, 2015              [Page 95]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -5373,7 +5373,7 @@ B.8.  Since draft-ietf-httpbis-http2-08
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 96]
+Belshe, et al.          Expires November 20, 2015              [Page 96]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -5429,7 +5429,7 @@ B.12.  Since draft-ietf-httpbis-http2-04
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 97]
+Belshe, et al.          Expires November 20, 2015              [Page 97]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -5485,7 +5485,7 @@ B.15.  Since draft-ietf-httpbis-http2-01
 
 
 
-Belshe, et al.          Expires November 18, 2015              [Page 98]
+Belshe, et al.          Expires November 20, 2015              [Page 98]
 
 Internet-Draft                   HTTP/2                         May 2015
 
@@ -5514,7 +5514,9 @@ B.16.  Since draft-ietf-httpbis-http2-00
 
    Removed section on Incompatibilities with SPDY draft#2.
 
-   Changed INTERNAL_ERROR on GOAWAY to have a value of 2 [6].
+   Changed INTERNAL_ERROR on GOAWAY to have a value of 2
+   <https://groups.google.com/forum/?fromgroups#!topic/spdy-dev/
+   cfUef2gL3iU>.
 
    Replaced abstract and introduction.
 
@@ -5522,7 +5524,9 @@ B.16.  Since draft-ietf-httpbis-http2-00
 
    Removed unused references.
 
-   Added flow control principles (Section 5.2.1) based on [7].
+   Added flow control principles (Section 5.2.1) based on
+   <https://tools.ietf.org/html/draft-montenegro-httpbis-http2-fc-
+   principles-01>.
 
 B.17.  Since draft-mbelshe-httpbis-spdy-00
 
@@ -5532,18 +5536,22 @@ B.17.  Since draft-mbelshe-httpbis-spdy-00
 
    Added status note.
 
+
+
+
+
+
+Belshe, et al.          Expires November 20, 2015              [Page 99]
+
+Internet-Draft                   HTTP/2                         May 2015
+
+
 Authors' Addresses
 
    Mike Belshe
    Twist
 
    EMail: mbelshe@chromium.org
-
-
-
-Belshe, et al.          Expires November 18, 2015              [Page 99]
-
-Internet-Draft                   HTTP/2                         May 2015
 
 
    Roberto Peon
@@ -5589,12 +5597,4 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
-
-
-
-
-
-
-
-
-Belshe, et al.          Expires November 18, 2015             [Page 100]
+Belshe, et al.          Expires November 20, 2015             [Page 100]
