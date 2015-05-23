@@ -1866,8 +1866,8 @@ Upgrade: h2c
                <h3 id="rfc.section.5.4.3"><a href="#rfc.section.5.4.3">5.4.3</a>&nbsp;Connection Termination
                </h3>
                <div id="rfc.section.5.4.3.p.1">
-                  <p>If the TCP connection is closed or reset while streams remain in open or half-closed states, then the affected streams cannot
-                     be automatically retried (see <a href="#Reliability" title="Request Reliability Mechanisms in HTTP/2">Section&nbsp;8.1.4</a> for details).
+                  <p>If the TCP connection is closed or reset while streams remain in "open" or "half-closed" state, then the affected streams
+                     cannot be automatically retried (see <a href="#Reliability" title="Request Reliability Mechanisms in HTTP/2">Section&nbsp;8.1.4</a> for details).
                   </p>
                </div>
             </div>
@@ -1978,7 +1978,7 @@ Upgrade: h2c
                </p>
             </div>
             <div id="rfc.section.6.1.p.6">
-               <p>DATA frames are subject to flow control and can only be sent when a stream is in the "open" or "half-closed (remote)" states.
+               <p>DATA frames are subject to flow control and can only be sent when a stream is in the "open" or "half-closed (remote)" state.
                   The entire DATA frame payload is included in flow control, including Pad Length and Padding fields if present. If a DATA frame
                   is received whose stream is not in "open" or "half-closed (local)" state, the recipient MUST respond with a stream error (<a href="#StreamErrorHandler" title="Stream Error Handling">Section&nbsp;5.4.2</a>) of type <a href="#STREAM_CLOSED" class="smpl">STREAM_CLOSED</a>.
                </p>
@@ -1999,7 +1999,7 @@ Upgrade: h2c
             <h2 id="rfc.section.6.2"><a href="#rfc.section.6.2">6.2</a>&nbsp;<a href="#HEADERS">HEADERS</a></h2>
             <div id="rfc.section.6.2.p.1">
                <p>The HEADERS frame (type=0x1) is used to open a stream (<a href="#StreamStates" title="Stream States">Section&nbsp;5.1</a>), and additionally carries a header block fragment. HEADERS frames can be sent on a stream in the "idle", "reserved (local)",
-                  "open", or "half-closed (remote)" states.
+                  "open", or "half-closed (remote)" state.
                </p>
             </div>
             <div id="HEADERSFramePayload"></div>
@@ -2136,7 +2136,7 @@ Upgrade: h2c
                </p>
             </div>
             <div id="rfc.section.6.3.p.6">
-               <p>The PRIORITY frame can be sent for a stream in the "idle" or "closed" states. This allows for the reprioritization of a group
+               <p>The PRIORITY frame can be sent for a stream in the "idle" or "closed" state. This allows for the reprioritization of a group
                   of dependent streams by altering the priority of an unused or closed parent stream.
                </p>
             </div>
@@ -2166,7 +2166,7 @@ Upgrade: h2c
                <p>The RST_STREAM frame does not define any flags.</p>
             </div>
             <div id="rfc.section.6.4.p.4">
-               <p>The RST_STREAM frame fully terminates the referenced stream and causes it to enter the closed state. After receiving a RST_STREAM
+               <p>The RST_STREAM frame fully terminates the referenced stream and causes it to enter the "closed" state. After receiving a RST_STREAM
                   on a stream, the receiver MUST NOT send additional frames for that stream, with the exception of <a href="#PRIORITY" class="smpl">PRIORITY</a>. However, after sending the RST_STREAM, the sending endpoint MUST be prepared to receive and process additional frames sent
                   on the stream that might have been sent by the peer prior to the arrival of the RST_STREAM.
                </p>
@@ -2557,8 +2557,8 @@ Upgrade: h2c
             </div>
             <div id="rfc.section.6.8.p.14">
                <p>Activity on streams numbered lower or equal to the last stream identifier might still complete successfully. The sender of
-                  a GOAWAY frame might gracefully shut down a connection by sending a GOAWAY frame, maintaining the connection in an open state
-                  until all in-progress streams complete.
+                  a GOAWAY frame might gracefully shut down a connection by sending a GOAWAY frame, maintaining the connection in an "open"
+                  state until all in-progress streams complete.
                </p>
             </div>
             <div id="rfc.section.6.8.p.15">

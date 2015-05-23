@@ -1598,8 +1598,8 @@ Internet-Draft                   HTTP/2                         May 2015
 
 5.4.3.  Connection Termination
 
-   If the TCP connection is closed or reset while streams remain in open
-   or half-closed states, then the affected streams cannot be
+   If the TCP connection is closed or reset while streams remain in
+   "open" or "half-closed" state, then the affected streams cannot be
    automatically retried (see Section 8.1.4 for details).
 
 5.5.  Extending HTTP/2
@@ -1727,7 +1727,7 @@ Internet-Draft                   HTTP/2                         May 2015
    PROTOCOL_ERROR.
 
    DATA frames are subject to flow control and can only be sent when a
-   stream is in the "open" or "half-closed (remote)" states.  The entire
+   stream is in the "open" or "half-closed (remote)" state.  The entire
    DATA frame payload is included in flow control, including Pad Length
    and Padding fields if present.  If a DATA frame is received whose
 
@@ -1755,7 +1755,7 @@ Internet-Draft                   HTTP/2                         May 2015
    The HEADERS frame (type=0x1) is used to open a stream (Section 5.1),
    and additionally carries a header block fragment.  HEADERS frames can
    be sent on a stream in the "idle", "reserved (local)", "open", or
-   "half-closed (remote)" states.
+   "half-closed (remote)" state.
 
     +---------------+
     |Pad Length? (8)|
@@ -1912,7 +1912,7 @@ Internet-Draft                   HTTP/2                         May 2015
    and not frame transmission on that stream.
 
    The PRIORITY frame can be sent for a stream in the "idle" or "closed"
-   states.  This allows for the reprioritization of a group of dependent
+   state.  This allows for the reprioritization of a group of dependent
    streams by altering the priority of an unused or closed parent
    stream.
 
@@ -1938,8 +1938,8 @@ Internet-Draft                   HTTP/2                         May 2015
    The RST_STREAM frame does not define any flags.
 
    The RST_STREAM frame fully terminates the referenced stream and
-   causes it to enter the closed state.  After receiving a RST_STREAM on
-   a stream, the receiver MUST NOT send additional frames for that
+   causes it to enter the "closed" state.  After receiving a RST_STREAM
+   on a stream, the receiver MUST NOT send additional frames for that
    stream, with the exception of PRIORITY.  However, after sending the
    RST_STREAM, the sending endpoint MUST be prepared to receive and
    process additional frames sent on the stream that might have been
@@ -2416,7 +2416,7 @@ Internet-Draft                   HTTP/2                         May 2015
    Activity on streams numbered lower or equal to the last stream
    identifier might still complete successfully.  The sender of a GOAWAY
    frame might gracefully shut down a connection by sending a GOAWAY
-   frame, maintaining the connection in an open state until all in-
+   frame, maintaining the connection in an "open" state until all in-
    progress streams complete.
 
    An endpoint MAY send multiple GOAWAY frames if circumstances change.
