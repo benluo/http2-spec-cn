@@ -645,7 +645,7 @@ pre.text, pre.text2 {
                      </ul>
                   </li>
                   <li><a href="#rfc.section.5.2">5.2</a>&nbsp;&nbsp;&nbsp;<a href="#FlowControl">Flow Control</a><ul>
-                        <li><a href="#rfc.section.5.2.1">5.2.1</a>&nbsp;&nbsp;&nbsp;<a href="#fc-principles">Flow Control Principles</a></li>
+                        <li><a href="#rfc.section.5.2.1">5.2.1</a>&nbsp;&nbsp;&nbsp;<a href="#fc-principles">Flow-Control Principles</a></li>
                         <li><a href="#rfc.section.5.2.2">5.2.2</a>&nbsp;&nbsp;&nbsp;<a href="#DisableFlowControl">Appropriate Use of Flow Control</a></li>
                      </ul>
                   </li>
@@ -681,8 +681,8 @@ pre.text, pre.text2 {
                   <li><a href="#rfc.section.6.7">6.7</a>&nbsp;&nbsp;&nbsp;<a href="#PING">PING</a></li>
                   <li><a href="#rfc.section.6.8">6.8</a>&nbsp;&nbsp;&nbsp;<a href="#GOAWAY">GOAWAY</a></li>
                   <li><a href="#rfc.section.6.9">6.9</a>&nbsp;&nbsp;&nbsp;<a href="#WINDOW_UPDATE">WINDOW_UPDATE</a><ul>
-                        <li><a href="#rfc.section.6.9.1">6.9.1</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.6.9.1">The Flow Control Window</a></li>
-                        <li><a href="#rfc.section.6.9.2">6.9.2</a>&nbsp;&nbsp;&nbsp;<a href="#InitialWindowSize">Initial Flow Control Window Size</a></li>
+                        <li><a href="#rfc.section.6.9.1">6.9.1</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.6.9.1">The Flow-Control Window</a></li>
+                        <li><a href="#rfc.section.6.9.2">6.9.2</a>&nbsp;&nbsp;&nbsp;<a href="#InitialWindowSize">Initial Flow-Control Window Size</a></li>
                         <li><a href="#rfc.section.6.9.3">6.9.3</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.6.9.3">Reducing the Stream Window Size</a></li>
                      </ul>
                   </li>
@@ -724,7 +724,7 @@ pre.text, pre.text2 {
                   <li><a href="#rfc.section.10.2">10.2</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.10.2">Cross-Protocol Attacks</a></li>
                   <li><a href="#rfc.section.10.3">10.3</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.10.3">Intermediary Encapsulation Attacks</a></li>
                   <li><a href="#rfc.section.10.4">10.4</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.10.4">Cacheability of Pushed Responses</a></li>
-                  <li><a href="#rfc.section.10.5">10.5</a>&nbsp;&nbsp;&nbsp;<a href="#dos">Denial of Service Considerations</a><ul>
+                  <li><a href="#rfc.section.10.5">10.5</a>&nbsp;&nbsp;&nbsp;<a href="#dos">Denial-of-Service Considerations</a><ul>
                         <li><a href="#rfc.section.10.5.1">10.5.1</a>&nbsp;&nbsp;&nbsp;<a href="#MaxHeaderBlock">Limits on Header Block Size</a></li>
                         <li><a href="#rfc.section.10.5.2">10.5.2</a>&nbsp;&nbsp;&nbsp;<a href="#connectDos">CONNECT Issues</a></li>
                      </ul>
@@ -791,8 +791,8 @@ pre.text, pre.text2 {
             </p>
          </div>
          <div id="rfc.section.1.p.3">
-            <p>Furthermore, HTTP header fields are often repetitive and verbose, causing unnecessary network traffic, as well as causing
-               the initial <a href="#TCP">TCP</a> <cite title="Transmission Control Protocol">[TCP]</cite> congestion window to quickly fill. This can result in excessive latency when multiple requests are made on a new TCP connection.
+            <p>Furthermore, HTTP header fields are often repetitive and verbose, causing unnecessary network traffic as well as causing the
+               initial <a href="#TCP">TCP</a> <cite title="Transmission Control Protocol">[TCP]</cite> congestion window to quickly fill. This can result in excessive latency when multiple requests are made on a new TCP connection.
             </p>
          </div>
          <div id="rfc.section.1.p.4">
@@ -803,8 +803,8 @@ pre.text, pre.text2 {
             </p>
          </div>
          <div id="rfc.section.1.p.5">
-            <p>The resulting protocol is more friendly to the network, because fewer TCP connections can be used in comparison to HTTP/1.x.
-               This means less competition with other flows, and longer-lived connections, which in turn leads to better utilization of available
+            <p>The resulting protocol is more friendly to the network because fewer TCP connections can be used in comparison to HTTP/1.x.
+               This means less competition with other flows and longer-lived connections, which in turn leads to better utilization of available
                network capacity.
             </p>
          </div>
@@ -815,8 +815,8 @@ pre.text, pre.text2 {
       <div id="Overview">
          <h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a>&nbsp;<a href="#Overview">HTTP/2 Protocol Overview</a></h1>
          <div id="rfc.section.2.p.1">
-            <p>HTTP/2 provides an optimized transport for HTTP semantics. HTTP/2 supports all of the core features of HTTP/1.1, but aims
-               to be more efficient in several ways.
+            <p>HTTP/2 provides an optimized transport for HTTP semantics. HTTP/2 supports all of the core features of HTTP/1.1 but aims to
+               be more efficient in several ways.
             </p>
          </div>
          <div id="rfc.section.2.p.2">
@@ -824,7 +824,7 @@ pre.text, pre.text2 {
             </p>
          </div>
          <div id="rfc.section.2.p.3">
-            <p>Multiplexing of requests is achieved by having each HTTP request-response exchange associated with its own stream (<a href="#StreamsLayer" title="Streams and Multiplexing">Section&nbsp;5</a>). Streams are largely independent of each other, so a blocked or stalled request or response does not prevent progress on
+            <p>Multiplexing of requests is achieved by having each HTTP request/response exchange associated with its own stream (<a href="#StreamsLayer" title="Streams and Multiplexing">Section&nbsp;5</a>). Streams are largely independent of each other, so a blocked or stalled request or response does not prevent progress on
                other streams.
             </p>
          </div>
@@ -833,7 +833,7 @@ pre.text, pre.text2 {
             </p>
          </div>
          <div id="rfc.section.2.p.5">
-            <p>HTTP/2 adds a new interaction mode, whereby a server can push responses to a client (<a href="#PushResources" title="Server Push">Section&nbsp;8.2</a>). Server push allows a server to speculatively send data to a client that the server anticipates the client will need, trading
+            <p>HTTP/2 adds a new interaction mode whereby a server can push responses to a client (<a href="#PushResources" title="Server Push">Section&nbsp;8.2</a>). Server push allows a server to speculatively send data to a client that the server anticipates the client will need, trading
                off some network usage against a potential latency gain. The server does this by synthesizing a request, which it sends as
                a <a href="#PUSH_PROMISE" class="smpl">PUSH_PROMISE</a> frame. The server is then able to send a response to the synthetic request on a separate stream.
             </p>
@@ -904,7 +904,7 @@ pre.text, pre.text2 {
                   <dt>server:</dt>
                   <dd>The endpoint that accepts an HTTP/2 connection. Servers receive HTTP requests and serve HTTP responses.</dd>
                   <dt>stream:</dt>
-                  <dd>A bi-directional flow of frames within the HTTP/2 connection.</dd>
+                  <dd>A bidirectional flow of frames within the HTTP/2 connection.</dd>
                   <dt>stream error:</dt>
                   <dd>An error on the individual HTTP/2 stream.</dd>
                </dl>
@@ -922,7 +922,7 @@ pre.text, pre.text2 {
       <div id="starting">
          <h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a>&nbsp;<a href="#starting">Starting HTTP/2</a></h1>
          <div id="rfc.section.3.p.1">
-            <p>An HTTP/2 connection is an application layer protocol running on top of a TCP connection (<a href="#TCP"><cite title="Transmission Control Protocol">[TCP]</cite></a>). The client is the TCP connection initiator.
+            <p>An HTTP/2 connection is an application-layer protocol running on top of a TCP connection (<a href="#TCP"><cite title="Transmission Control Protocol">[TCP]</cite></a>). The client is the TCP connection initiator.
             </p>
          </div>
          <div id="rfc.section.3.p.2">
@@ -942,20 +942,20 @@ pre.text, pre.text2 {
                <p>The protocol defined in this document has two identifiers. </p>
                <ul>
                   <li>
-                     <p>The string "h2" identifies the protocol where HTTP/2 uses <a href="#TLS12">TLS</a> <cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[TLS12]</cite>. This identifier is used in the <a href="#TLS-ALPN">TLS application layer protocol negotiation extension (ALPN)</a> <cite title="Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension">[TLS-ALPN]</cite> field and in any place where HTTP/2 over TLS is identified.
+                     <p>The string "h2" identifies the protocol where HTTP/2 uses <a href="#TLS12">TLS</a> <cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[TLS12]</cite>. This identifier is used in the <a href="#TLS-ALPN">TLS application-layer protocol negotiation extension (ALPN)</a> <cite title="Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension">[TLS-ALPN]</cite> field and in any place where HTTP/2 over TLS is identified.
                      </p>
-                     <p>The "h2" string is serialized into an ALPN protocol identifier as the two octet sequence: 0x68, 0x32.</p>
+                     <p>The "h2" string is serialized into an ALPN protocol identifier as the two-octet sequence: 0x68, 0x32.</p>
                   </li>
                   <li>
                      <p>The string "h2c" identifies the protocol where HTTP/2 is run over cleartext TCP. This identifier is used in the HTTP/1.1 Upgrade
                         header field and in any place where HTTP/2 over TCP is identified.
                      </p>
-                     <p>The "h2c" string is reserved from the ALPN identifier space, but describes a protocol that does not use TLS.</p>
+                     <p>The "h2c" string is reserved from the ALPN identifier space but describes a protocol that does not use TLS.</p>
                   </li>
                </ul>
             </div>
             <div id="rfc.section.3.1.p.2">
-               <p>Negotiating "h2" or "h2c" implies the use of the transport, security, framing and message semantics described in this document.</p>
+               <p>Negotiating "h2" or "h2c" implies the use of the transport, security, framing, and message semantics described in this document.</p>
             </div>
          </div>
          <div id="discover-http">
@@ -981,7 +981,7 @@ HTTP2-Settings: &lt;base64url encoding of HTTP/2 SETTINGS payload&gt;
             </div>
             <div id="rfc.section.3.2.p.3">
                <p>If concurrency of an initial request with subsequent requests is important, an OPTIONS request can be used to perform the
-                  upgrade to HTTP/2, at the cost of an additional round-trip.
+                  upgrade to HTTP/2, at the cost of an additional round trip.
                </p>
             </div>
             <div id="rfc.section.3.2.p.4" class="avoidbreakafter">
@@ -1016,7 +1016,7 @@ Upgrade: h2c
                </p>
             </div>
             <div id="rfc.section.3.2.p.8">
-               <p>The HTTP/1.1 request that is sent prior to upgrade is assigned a stream identifier of 1 (see <a href="#StreamIdentifiers" title="Stream Identifiers">Section&nbsp;5.1.1</a>) with default priority values (<a href="#pri-default" title="Default Priorities">Section&nbsp;5.3.5</a>). Stream 1 is implicitly "half closed" from the client toward the server (see <a href="#StreamStates" title="Stream States">Section&nbsp;5.1</a>), since the request is completed as an HTTP/1.1 request. After commencing the HTTP/2 connection, stream 1 is used for the
+               <p>The HTTP/1.1 request that is sent prior to upgrade is assigned a stream identifier of 1 (see <a href="#StreamIdentifiers" title="Stream Identifiers">Section&nbsp;5.1.1</a>) with default priority values (<a href="#pri-default" title="Default Priorities">Section&nbsp;5.3.5</a>). Stream 1 is implicitly "half-closed" from the client toward the server (see <a href="#StreamStates" title="Stream States">Section&nbsp;5.1</a>), since the request is completed as an HTTP/1.1 request. After commencing the HTTP/2 connection, stream 1 is used for the
                   response.
                </p>
             </div>
@@ -1030,8 +1030,8 @@ Upgrade: h2c
                <div id="rfc.figure.u.4"><pre class="inline">HTTP2-Settings    = token68
 </pre></div>
                <div id="rfc.section.3.2.1.p.2">
-                  <p>A server MUST NOT upgrade the connection to HTTP/2 if this header field is not present, or if more than one is present. A
-                     server MUST NOT send this header field.
+                  <p>A server MUST NOT upgrade the connection to HTTP/2 if this header field is not present or if more than one is present. A server
+                     MUST NOT send this header field.
                   </p>
                </div>
                <div id="rfc.section.3.2.1.p.3">
@@ -1052,7 +1052,7 @@ Upgrade: h2c
          <div id="discover-https">
             <h2 id="rfc.section.3.3"><a href="#rfc.section.3.3">3.3</a>&nbsp;<a href="#discover-https">Starting HTTP/2 for "https" URIs</a></h2>
             <div id="rfc.section.3.3.p.1">
-               <p>A client that makes a request to an "https" URI uses <a href="#TLS12">TLS</a> <cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[TLS12]</cite> with the <a href="#TLS-ALPN">application layer protocol negotiation (ALPN) extension</a> <cite title="Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension">[TLS-ALPN]</cite>.
+               <p>A client that makes a request to an "https" URI uses <a href="#TLS12">TLS</a> <cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[TLS12]</cite> with the <a href="#TLS-ALPN">application-layer protocol negotiation (ALPN) extension</a> <cite title="Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension">[TLS-ALPN]</cite>.
                </p>
             </div>
             <div id="rfc.section.3.3.p.2">
@@ -1072,9 +1072,9 @@ Upgrade: h2c
                </p>
             </div>
             <div id="rfc.section.3.4.p.2">
-               <p>A client MUST send the connection preface (<a href="#ConnectionHeader" title="HTTP/2 Connection Preface">Section&nbsp;3.5</a>), and then MAY immediately send HTTP/2 frames to such a server; servers can identify these connections by the presence of
-                  the connection preface. This only affects the establishment of HTTP/2 connections over cleartext TCP; implementations that
-                  support HTTP/2 over TLS MUST use <a href="#TLS-ALPN">protocol negotiation in TLS</a> <cite title="Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension">[TLS-ALPN]</cite>.
+               <p>A client MUST send the connection preface (<a href="#ConnectionHeader" title="HTTP/2 Connection Preface">Section&nbsp;3.5</a>) and then MAY immediately send HTTP/2 frames to such a server; servers can identify these connections by the presence of the
+                  connection preface. This only affects the establishment of HTTP/2 connections over cleartext TCP; implementations that support
+                  HTTP/2 over TLS MUST use <a href="#TLS-ALPN">protocol negotiation in TLS</a> <cite title="Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension">[TLS-ALPN]</cite>.
                </p>
             </div>
             <div id="rfc.section.3.4.p.3">
@@ -1091,7 +1091,7 @@ Upgrade: h2c
          <div id="ConnectionHeader">
             <h2 id="rfc.section.3.5"><a href="#rfc.section.3.5">3.5</a>&nbsp;<a href="#ConnectionHeader">HTTP/2 Connection Preface</a></h2>
             <div id="rfc.section.3.5.p.1">
-               <p>In HTTP/2, each endpoint is required to send a connection preface as a final confirmation of the protocol in use, and to establish
+               <p>In HTTP/2, each endpoint is required to send a connection preface as a final confirmation of the protocol in use and to establish
                   the initial settings for the HTTP/2 connection. The client and server each send a different connection preface.
                </p>
             </div>
@@ -1102,7 +1102,7 @@ Upgrade: h2c
 </pre></div>
             <div id="rfc.section.3.5.p.3">
                <p>(the string <tt>PRI * HTTP/2.0\r\n\r\nSM\r\n\r\n</tt>). This sequence MUST be followed by a <a href="#SETTINGS" class="smpl">SETTINGS</a> frame (<a href="#SETTINGS" title="SETTINGS">Section&nbsp;6.5</a>), which MAY be empty. The client sends the client connection preface immediately upon receipt of a 101 Switching Protocols
-                  response (indicating a successful upgrade), or as the first application data octets of a TLS connection. If starting an HTTP/2
+                  response (indicating a successful upgrade) or as the first application data octets of a TLS connection. If starting an HTTP/2
                   connection with prior knowledge of server support for the protocol, the client connection preface is sent upon connection
                   establishment.
                </p>
@@ -1177,7 +1177,7 @@ Upgrade: h2c
                   <dd>
                      <p>An 8-bit field reserved for frame-type specific boolean flags.</p>
                      <p>Flags are assigned semantics specific to the indicated frame type. Flags that have no defined semantics for a particular frame
-                        type MUST be ignored, and MUST be left unset (0x0) when sending.
+                        type MUST be ignored and MUST be left unset (0x0) when sending.
                      </p>
                   </dd>
                   <dt>R:</dt>
@@ -1205,7 +1205,7 @@ Upgrade: h2c
                </p>
             </div>
             <div id="rfc.section.4.2.p.2">
-               <p>All implementations MUST be capable of receiving and minimally processing frames up to 2<sup>14</sup> octets in length, plus the 9 octet frame header (<a href="#FrameHeader" title="Frame Format">Section&nbsp;4.1</a>). The size of the frame header is not included when describing frame sizes. 
+               <p>All implementations MUST be capable of receiving and minimally processing frames up to 2<sup>14</sup> octets in length, plus the 9-octet frame header (<a href="#FrameHeader" title="Frame Format">Section&nbsp;4.1</a>). The size of the frame header is not included when describing frame sizes. 
                </p>
                <dl>
                   <dt>Note:</dt>
@@ -1221,7 +1221,7 @@ Upgrade: h2c
             <div id="rfc.section.4.2.p.4">
                <p>Endpoints are not obligated to use all available space in a frame. Responsiveness can be improved by using frames that are
                   smaller than the permitted maximum size. Sending large frames can result in delays in sending time-sensitive frames (such
-                  as <a href="#RST_STREAM" class="smpl">RST_STREAM</a>, <a href="#WINDOW_UPDATE" class="smpl">WINDOW_UPDATE</a>, or <a href="#PRIORITY" class="smpl">PRIORITY</a>) which if blocked by the transmission of a large frame, could affect performance.
+                  as <a href="#RST_STREAM" class="smpl">RST_STREAM</a>, <a href="#WINDOW_UPDATE" class="smpl">WINDOW_UPDATE</a>, or <a href="#PRIORITY" class="smpl">PRIORITY</a>), which, if blocked by the transmission of a large frame, could affect performance.
                </p>
             </div>
          </div>
@@ -1235,7 +1235,7 @@ Upgrade: h2c
             <div id="rfc.section.4.3.p.2">
                <p>Header lists are collections of zero or more header fields. When transmitted over a connection, a header list is serialized
                   into a header block using <a href="#COMPRESSION">HTTP Header Compression</a> <cite title="HPACK: Header Compression for HTTP/2">[COMPRESSION]</cite>. The serialized header block is then divided into one or more octet sequences, called header block fragments, and transmitted
-                  within the payload of HEADERS (<a href="#HEADERS" title="HEADERS">Section&nbsp;6.2</a>), PUSH_PROMISE (<a href="#PUSH_PROMISE" title="PUSH_PROMISE">Section&nbsp;6.6</a>) or CONTINUATION (<a href="#CONTINUATION" title="CONTINUATION">Section&nbsp;6.10</a>) frames.
+                  within the payload of HEADERS (<a href="#HEADERS" title="HEADERS">Section&nbsp;6.2</a>), PUSH_PROMISE (<a href="#PUSH_PROMISE" title="PUSH_PROMISE">Section&nbsp;6.6</a>), or CONTINUATION (<a href="#CONTINUATION" title="CONTINUATION">Section&nbsp;6.10</a>) frames.
                </p>
             </div>
             <div id="rfc.section.4.3.p.3">
@@ -1267,7 +1267,7 @@ Upgrade: h2c
                </p>
             </div>
             <div id="rfc.section.4.3.p.8">
-               <p>Header block fragments can only be sent as the payload of <a href="#HEADERS" class="smpl">HEADERS</a>, <a href="#PUSH_PROMISE" class="smpl">PUSH_PROMISE</a> or <a href="#CONTINUATION" class="smpl">CONTINUATION</a> frames, because these frames carry data that can modify the compression context maintained by a receiver. An endpoint receiving <a href="#HEADERS" class="smpl">HEADERS</a>, <a href="#PUSH_PROMISE" class="smpl">PUSH_PROMISE</a> or <a href="#CONTINUATION" class="smpl">CONTINUATION</a> frames needs to reassemble header blocks and perform decompression even if the frames are to be discarded. A receiver MUST
+               <p>Header block fragments can only be sent as the payload of <a href="#HEADERS" class="smpl">HEADERS</a>, <a href="#PUSH_PROMISE" class="smpl">PUSH_PROMISE</a>, or <a href="#CONTINUATION" class="smpl">CONTINUATION</a> frames because these frames carry data that can modify the compression context maintained by a receiver. An endpoint receiving <a href="#HEADERS" class="smpl">HEADERS</a>, <a href="#PUSH_PROMISE" class="smpl">PUSH_PROMISE</a>, or <a href="#CONTINUATION" class="smpl">CONTINUATION</a> frames needs to reassemble header blocks and perform decompression even if the frames are to be discarded. A receiver MUST
                   terminate the connection with a connection error (<a href="#ConnectionErrorHandler" title="Connection Error Handling">Section&nbsp;5.4.1</a>) of type <a href="#COMPRESSION_ERROR" class="smpl">COMPRESSION_ERROR</a> if it does not decompress a header block.
                </p>
             </div>
@@ -1276,7 +1276,7 @@ Upgrade: h2c
       <div id="StreamsLayer">
          <h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a>&nbsp;<a href="#StreamsLayer">Streams and Multiplexing</a></h1>
          <div id="rfc.section.5.p.1">
-            <p>A "stream" is an independent, bi-directional sequence of frames exchanged between the client and server within an HTTP/2 connection.
+            <p>A "stream" is an independent, bidirectional sequence of frames exchanged between the client and server within an HTTP/2 connection.
                Streams have several important characteristics: 
             </p>
             <ul>
@@ -1286,7 +1286,7 @@ Upgrade: h2c
                <li>Streams can be established and used unilaterally or shared by either the client or server.</li>
                <li>Streams can be closed by either endpoint.</li>
                <li>The order in which frames are sent on a stream is significant. Recipients process frames in the order they are received. In
-                  particular, the order of <a href="#HEADERS" class="smpl">HEADERS</a>, and <a href="#DATA" class="smpl">DATA</a> frames is semantically significant.
+                  particular, the order of <a href="#HEADERS" class="smpl">HEADERS</a> and <a href="#DATA" class="smpl">DATA</a> frames is semantically significant.
                </li>
                <li>Streams are identified by an integer. Stream identifiers are assigned to streams by the endpoint initiating the stream.</li>
             </ul>
@@ -1359,7 +1359,7 @@ Upgrade: h2c
                      </p>
                      <p>The following transitions are valid from this state: </p>
                      <ul>
-                        <li>Sending or receiving a <a href="#HEADERS" class="smpl">HEADERS</a> frame causes the stream to become "open". The stream identifier is selected as described in <a href="#StreamIdentifiers" title="Stream Identifiers">Section&nbsp;5.1.1</a>. The same <a href="#HEADERS" class="smpl">HEADERS</a> frame can also cause a stream to immediately become "half closed".
+                        <li>Sending or receiving a <a href="#HEADERS" class="smpl">HEADERS</a> frame causes the stream to become "open". The stream identifier is selected as described in <a href="#StreamIdentifiers" title="Stream Identifiers">Section&nbsp;5.1.1</a>. The same <a href="#HEADERS" class="smpl">HEADERS</a> frame can also cause a stream to immediately become "half-closed".
                         </li>
                         <li>Sending a <a href="#PUSH_PROMISE" class="smpl">PUSH_PROMISE</a> frame on another stream reserves the idle stream that is identified for later use. The stream state for the reserved stream
                            transitions to "reserved (local)".
@@ -1367,7 +1367,7 @@ Upgrade: h2c
                         <li>Receiving a <a href="#PUSH_PROMISE" class="smpl">PUSH_PROMISE</a> frame on another stream reserves an idle stream that is identified for later use. The stream state for the reserved stream
                            transitions to "reserved (remote)".
                         </li>
-                        <li>Note that the <a href="#PUSH_PROMISE" class="smpl">PUSH_PROMISE</a> frame is not sent on the idle stream, but references the newly reserved stream in the Promised Stream ID field.
+                        <li>Note that the <a href="#PUSH_PROMISE" class="smpl">PUSH_PROMISE</a> frame is not sent on the idle stream but references the newly reserved stream in the Promised Stream ID field.
                         </li>
                      </ul>
                      <p>Receiving any frame other than <a href="#HEADERS" class="smpl">HEADERS</a> or <a href="#PRIORITY" class="smpl">PRIORITY</a> on a stream in this state MUST be treated as a connection error (<a href="#ConnectionErrorHandler" title="Connection Error Handling">Section&nbsp;5.4.1</a>) of type <a href="#PROTOCOL_ERROR" class="smpl">PROTOCOL_ERROR</a>.
@@ -1379,14 +1379,14 @@ Upgrade: h2c
                      </p>
                      <p>In this state, only the following transitions are possible: </p>
                      <ul>
-                        <li>The endpoint can send a <a href="#HEADERS" class="smpl">HEADERS</a> frame. This causes the stream to open in a "half closed (remote)" state.
+                        <li>The endpoint can send a <a href="#HEADERS" class="smpl">HEADERS</a> frame. This causes the stream to open in a "half-closed (remote)" state.
                         </li>
                         <li>Either endpoint can send a <a href="#RST_STREAM" class="smpl">RST_STREAM</a> frame to cause the stream to become "closed". This releases the stream reservation.
                         </li>
                      </ul>
                      <p>An endpoint MUST NOT send any type of frame other than <a href="#HEADERS" class="smpl">HEADERS</a>, <a href="#RST_STREAM" class="smpl">RST_STREAM</a>, or <a href="#PRIORITY" class="smpl">PRIORITY</a> in this state.
                      </p>
-                     <p>A <a href="#PRIORITY" class="smpl">PRIORITY</a> or <a href="#WINDOW_UPDATE" class="smpl">WINDOW_UPDATE</a> frame MAY be received in this state. Receiving any type of frame other than <a href="#RST_STREAM" class="smpl">RST_STREAM</a>, <a href="#PRIORITY" class="smpl">PRIORITY</a> or <a href="#WINDOW_UPDATE" class="smpl">WINDOW_UPDATE</a> on a stream in this state MUST be treated as a connection error (<a href="#ConnectionErrorHandler" title="Connection Error Handling">Section&nbsp;5.4.1</a>) of type <a href="#PROTOCOL_ERROR" class="smpl">PROTOCOL_ERROR</a>.
+                     <p>A <a href="#PRIORITY" class="smpl">PRIORITY</a> or <a href="#WINDOW_UPDATE" class="smpl">WINDOW_UPDATE</a> frame MAY be received in this state. Receiving any type of frame other than <a href="#RST_STREAM" class="smpl">RST_STREAM</a>, <a href="#PRIORITY" class="smpl">PRIORITY</a>, or <a href="#WINDOW_UPDATE" class="smpl">WINDOW_UPDATE</a> on a stream in this state MUST be treated as a connection error (<a href="#ConnectionErrorHandler" title="Connection Error Handling">Section&nbsp;5.4.1</a>) of type <a href="#PROTOCOL_ERROR" class="smpl">PROTOCOL_ERROR</a>.
                      </p>
                   </dd>
                   <dt>reserved (remote):</dt>
@@ -1395,50 +1395,50 @@ Upgrade: h2c
                      </p>
                      <p>In this state, only the following transitions are possible: </p>
                      <ul>
-                        <li>Receiving a <a href="#HEADERS" class="smpl">HEADERS</a> frame causes the stream to transition to "half closed (local)".
+                        <li>Receiving a <a href="#HEADERS" class="smpl">HEADERS</a> frame causes the stream to transition to "half-closed (local)".
                         </li>
                         <li>Either endpoint can send a <a href="#RST_STREAM" class="smpl">RST_STREAM</a> frame to cause the stream to become "closed". This releases the stream reservation.
                         </li>
                      </ul>
                      <p>An endpoint MAY send a <a href="#PRIORITY" class="smpl">PRIORITY</a> frame in this state to reprioritize the reserved stream. An endpoint MUST NOT send any type of frame other than <a href="#RST_STREAM" class="smpl">RST_STREAM</a>, <a href="#WINDOW_UPDATE" class="smpl">WINDOW_UPDATE</a>, or <a href="#PRIORITY" class="smpl">PRIORITY</a> in this state.
                      </p>
-                     <p>Receiving any type of frame other than <a href="#HEADERS" class="smpl">HEADERS</a>, <a href="#RST_STREAM" class="smpl">RST_STREAM</a> or <a href="#PRIORITY" class="smpl">PRIORITY</a> on a stream in this state MUST be treated as a connection error (<a href="#ConnectionErrorHandler" title="Connection Error Handling">Section&nbsp;5.4.1</a>) of type <a href="#PROTOCOL_ERROR" class="smpl">PROTOCOL_ERROR</a>.
+                     <p>Receiving any type of frame other than <a href="#HEADERS" class="smpl">HEADERS</a>, <a href="#RST_STREAM" class="smpl">RST_STREAM</a>, or <a href="#PRIORITY" class="smpl">PRIORITY</a> on a stream in this state MUST be treated as a connection error (<a href="#ConnectionErrorHandler" title="Connection Error Handling">Section&nbsp;5.4.1</a>) of type <a href="#PROTOCOL_ERROR" class="smpl">PROTOCOL_ERROR</a>.
                      </p>
                   </dd>
                   <dt>open:</dt>
                   <dd>
-                     <p><br> A stream in the "open" state may be used by both peers to send frames of any type. In this state, sending peers observe advertised stream level flow control limits (<a href="#FlowControl" title="Flow Control">Section&nbsp;5.2</a>).
+                     <p><br> A stream in the "open" state may be used by both peers to send frames of any type. In this state, sending peers observe advertised stream-level flow-control limits (<a href="#FlowControl" title="Flow Control">Section&nbsp;5.2</a>).
                      </p>
-                     <p>From this state either endpoint can send a frame with an END_STREAM flag set, which causes the stream to transition into one
-                        of the "half closed" states: an endpoint sending an END_STREAM flag causes the stream state to become "half closed (local)";
-                        an endpoint receiving an END_STREAM flag causes the stream state to become "half closed (remote)".
+                     <p>From this state, either endpoint can send a frame with an END_STREAM flag set, which causes the stream to transition into
+                        one of the "half-closed" states: an endpoint sending an END_STREAM flag causes the stream state to become "half-closed (local)";
+                        an endpoint receiving an END_STREAM flag causes the stream state to become "half-closed (remote)".
                      </p>
                      <p>Either endpoint can send a <a href="#RST_STREAM" class="smpl">RST_STREAM</a> frame from this state, causing it to transition immediately to "closed".
                      </p>
                   </dd>
-                  <dt>half closed (local):</dt>
+                  <dt>half-closed (local):</dt>
                   <dd>
-                     <p><br> A stream that is in the "half closed (local)" state cannot be used for sending frames other than <a href="#WINDOW_UPDATE" class="smpl">WINDOW_UPDATE</a>, <a href="#PRIORITY" class="smpl">PRIORITY</a> and <a href="#RST_STREAM" class="smpl">RST_STREAM</a>.
+                     <p><br> A stream that is in the "half-closed (local)" state cannot be used for sending frames other than <a href="#WINDOW_UPDATE" class="smpl">WINDOW_UPDATE</a>, <a href="#PRIORITY" class="smpl">PRIORITY</a>, and <a href="#RST_STREAM" class="smpl">RST_STREAM</a>.
                      </p>
-                     <p>A stream transitions from this state to "closed" when a frame that contains an END_STREAM flag is received, or when either
+                     <p>A stream transitions from this state to "closed" when a frame that contains an END_STREAM flag is received or when either
                         peer sends a <a href="#RST_STREAM" class="smpl">RST_STREAM</a> frame.
                      </p>
-                     <p>An endpoint can receive any type of frame in this state. Providing flow control credit using <a href="#WINDOW_UPDATE" class="smpl">WINDOW_UPDATE</a> frames is necessary to continue receiving flow controlled frames. A receiver can ignore <a href="#WINDOW_UPDATE" class="smpl">WINDOW_UPDATE</a> frames in this state, which might arrive for a short period after a frame bearing the END_STREAM flag is sent.
+                     <p>An endpoint can receive any type of frame in this state. Providing flow-control credit using <a href="#WINDOW_UPDATE" class="smpl">WINDOW_UPDATE</a> frames is necessary to continue receiving flow-controlled frames. A receiver can ignore <a href="#WINDOW_UPDATE" class="smpl">WINDOW_UPDATE</a> frames in this state, which might arrive for a short period after a frame bearing the END_STREAM flag is sent.
                      </p>
                      <p><a href="#PRIORITY" class="smpl">PRIORITY</a> frames received in this state are used to reprioritize streams that depend on the identified stream.
                      </p>
                   </dd>
-                  <dt>half closed (remote):</dt>
+                  <dt>half-closed (remote):</dt>
                   <dd>
-                     <p><br> A stream that is "half closed (remote)" is no longer being used by the peer to send frames. In this state, an endpoint is
-                        no longer obligated to maintain a receiver flow control window.
+                     <p><br> A stream that is "half-closed (remote)" is no longer being used by the peer to send frames. In this state, an endpoint is
+                        no longer obligated to maintain a receiver flow-control window.
                      </p>
-                     <p>If an endpoint receives additional frames for a stream that is in this state, other than <a href="#WINDOW_UPDATE" class="smpl">WINDOW_UPDATE</a>, <a href="#PRIORITY" class="smpl">PRIORITY</a> or <a href="#RST_STREAM" class="smpl">RST_STREAM</a>, it MUST respond with a stream error (<a href="#StreamErrorHandler" title="Stream Error Handling">Section&nbsp;5.4.2</a>) of type <a href="#STREAM_CLOSED" class="smpl">STREAM_CLOSED</a>.
+                     <p>If an endpoint receives additional frames for a stream that is in this state, other than <a href="#WINDOW_UPDATE" class="smpl">WINDOW_UPDATE</a>, <a href="#PRIORITY" class="smpl">PRIORITY</a>, or <a href="#RST_STREAM" class="smpl">RST_STREAM</a>, it MUST respond with a stream error (<a href="#StreamErrorHandler" title="Stream Error Handling">Section&nbsp;5.4.2</a>) of type <a href="#STREAM_CLOSED" class="smpl">STREAM_CLOSED</a>.
                      </p>
-                     <p>A stream that is "half closed (remote)" can be used by the endpoint to send frames of any type. In this state, the endpoint
-                        continues to observe advertised stream level flow control limits (<a href="#FlowControl" title="Flow Control">Section&nbsp;5.2</a>).
+                     <p>A stream that is "half-closed (remote)" can be used by the endpoint to send frames of any type. In this state, the endpoint
+                        continues to observe advertised stream-level flow-control limits (<a href="#FlowControl" title="Flow Control">Section&nbsp;5.2</a>).
                      </p>
-                     <p>A stream can transition from this state to "closed" by sending a frame that contains an END_STREAM flag, or when either peer
+                     <p>A stream can transition from this state to "closed" by sending a frame that contains an END_STREAM flag or when either peer
                         sends a <a href="#RST_STREAM" class="smpl">RST_STREAM</a> frame.
                      </p>
                   </dd>
@@ -1458,8 +1458,8 @@ Upgrade: h2c
                         frames that it receives on closed streams after it has sent a <a href="#RST_STREAM" class="smpl">RST_STREAM</a> frame. An endpoint MAY choose to limit the period over which it ignores frames and treat frames that arrive after this time
                         as being in error.
                      </p>
-                     <p>Flow controlled frames (i.e., <a href="#DATA" class="smpl">DATA</a>) received after sending <a href="#RST_STREAM" class="smpl">RST_STREAM</a> are counted toward the connection flow control window. Even though these frames might be ignored, because they are sent before
-                        the sender receives the <a href="#RST_STREAM" class="smpl">RST_STREAM</a>, the sender will consider the frames to count against the flow control window.
+                     <p>Flow-controlled frames (i.e., <a href="#DATA" class="smpl">DATA</a>) received after sending <a href="#RST_STREAM" class="smpl">RST_STREAM</a> are counted toward the connection flow-control window. Even though these frames might be ignored, because they are sent before
+                        the sender receives the <a href="#RST_STREAM" class="smpl">RST_STREAM</a>, the sender will consider the frames to count against the flow-control window.
                      </p>
                      <p>An endpoint might receive a <a href="#PUSH_PROMISE" class="smpl">PUSH_PROMISE</a> frame after it sends <a href="#RST_STREAM" class="smpl">RST_STREAM</a>. <a href="#PUSH_PROMISE" class="smpl">PUSH_PROMISE</a> causes a stream to become "reserved" even if the associated stream has been reset. Therefore, a <a href="#RST_STREAM" class="smpl">RST_STREAM</a> is needed to close an unwanted promised stream.
                      </p>
@@ -1484,7 +1484,7 @@ Upgrade: h2c
                   </p>
                </div>
                <div id="rfc.section.5.1.1.p.2">
-                  <p>HTTP/1.1 requests that are upgraded to HTTP/2 (see <a href="#discover-http" title="Starting HTTP/2 for &#34;http&#34; URIs">Section&nbsp;3.2</a>) are responded to with a stream identifier of one (0x1). After the upgrade completes, stream 0x1 is "half closed (local)"
+                  <p>HTTP/1.1 requests that are upgraded to HTTP/2 (see <a href="#discover-http" title="Starting HTTP/2 for &#34;http&#34; URIs">Section&nbsp;3.2</a>) are responded to with a stream identifier of one (0x1). After the upgrade completes, stream 0x1 is "half-closed (local)"
                      to the client. Therefore, stream 0x1 cannot be selected as a new stream identifier by a client that upgrades from HTTP/1.1.
                   </p>
                </div>
@@ -1516,7 +1516,7 @@ Upgrade: h2c
                   </p>
                </div>
                <div id="rfc.section.5.1.2.p.2">
-                  <p>Streams that are in the "open" state, or either of the "half closed" states count toward the maximum number of streams that
+                  <p>Streams that are in the "open" state, or either of the "half-closed" states count toward the maximum number of streams that
                      an endpoint is permitted to open. Streams in any of these three states count toward the limit advertised in the <a href="#SETTINGS_MAX_CONCURRENT_STREAMS" class="smpl">SETTINGS_MAX_CONCURRENT_STREAMS</a> setting. Streams in either of the "reserved" states do not count toward the stream limit.
                   </p>
                </div>
@@ -1534,9 +1534,9 @@ Upgrade: h2c
          <div id="FlowControl">
             <h2 id="rfc.section.5.2"><a href="#rfc.section.5.2">5.2</a>&nbsp;<a href="#FlowControl">Flow Control</a></h2>
             <div id="rfc.section.5.2.p.1">
-               <p>Using streams for multiplexing introduces contention over use of the TCP connection, resulting in blocked streams. A flow
-                  control scheme ensures that streams on the same connection do not destructively interfere with each other. Flow control is
-                  used for both individual streams and for the connection as a whole.
+               <p>Using streams for multiplexing introduces contention over use of the TCP connection, resulting in blocked streams. A flow-control
+                  scheme ensures that streams on the same connection do not destructively interfere with each other. Flow control is used for
+                  both individual streams and for the connection as a whole.
                </p>
             </div>
             <div id="rfc.section.5.2.p.2">
@@ -1544,25 +1544,25 @@ Upgrade: h2c
                </p>
             </div>
             <div id="fc-principles">
-               <h3 id="rfc.section.5.2.1"><a href="#rfc.section.5.2.1">5.2.1</a>&nbsp;<a href="#fc-principles">Flow Control Principles</a></h3>
+               <h3 id="rfc.section.5.2.1"><a href="#rfc.section.5.2.1">5.2.1</a>&nbsp;<a href="#fc-principles">Flow-Control Principles</a></h3>
                <div id="rfc.section.5.2.1.p.1">
-                  <p>HTTP/2 stream flow control aims to allow a variety of flow control algorithms to be used without requiring protocol changes.
+                  <p>HTTP/2 stream flow control aims to allow a variety of flow-control algorithms to be used without requiring protocol changes.
                      Flow control in HTTP/2 has the following characteristics: 
                   </p>
                   <ol>
-                     <li>Flow control is specific to a connection. Both types of flow control are between the endpoints of a single hop, and not over
+                     <li>Flow control is specific to a connection. Both types of flow control are between the endpoints of a single hop and not over
                         the entire end-to-end path.
                      </li>
                      <li>Flow control is based on window update frames. Receivers advertise how many octets they are prepared to receive on a stream
                         and for the entire connection. This is a credit-based scheme.
                      </li>
                      <li>Flow control is directional with overall control provided by the receiver. A receiver MAY choose to set any window size that
-                        it desires for each stream and for the entire connection. A sender MUST respect flow control limits imposed by a receiver.
-                        Clients, servers and intermediaries all independently advertise their flow control window as a receiver and abide by the flow
-                        control limits set by their peer when sending.
+                        it desires for each stream and for the entire connection. A sender MUST respect flow-control limits imposed by a receiver.
+                        Clients, servers and intermediaries all independently advertise their flow-control window as a receiver and abide by the flow-control
+                        limits set by their peer when sending.
                      </li>
-                     <li>The initial value for the flow control window is 65,535 octets for both new streams and the overall connection.</li>
-                     <li>The frame type determines whether flow control applies to a frame. Of the frames specified in this document, only <a href="#DATA" class="smpl">DATA</a> frames are subject to flow control; all other frame types do not consume space in the advertised flow control window. This
+                     <li>The initial value for the flow-control window is 65,535 octets for both new streams and the overall connection.</li>
+                     <li>The frame type determines whether flow control applies to a frame. Of the frames specified in this document, only <a href="#DATA" class="smpl">DATA</a> frames are subject to flow control; all other frame types do not consume space in the advertised flow-control window. This
                         ensures that important control frames are not blocked by flow control.
                      </li>
                      <li>Flow control cannot be disabled.</li>
@@ -1572,9 +1572,9 @@ Upgrade: h2c
                   </ol>
                </div>
                <div id="rfc.section.5.2.1.p.2">
-                  <p>Implementations are also responsible for managing how requests and responses are sent based on priority; choosing how to avoid
-                     head of line blocking for requests; and managing the creation of new streams. Algorithm choices for these could interact with
-                     any flow control algorithm.
+                  <p>Implementations are also responsible for managing how requests and responses are sent based on priority, choosing how to avoid
+                     head-of-line blocking for requests, and managing the creation of new streams. Algorithm choices for these could interact with
+                     any flow-control algorithm.
                   </p>
                </div>
             </div>
@@ -1582,14 +1582,14 @@ Upgrade: h2c
                <h3 id="rfc.section.5.2.2"><a href="#rfc.section.5.2.2">5.2.2</a>&nbsp;<a href="#DisableFlowControl">Appropriate Use of Flow Control</a></h3>
                <div id="rfc.section.5.2.2.p.1">
                   <p>Flow control is defined to protect endpoints that are operating under resource constraints. For example, a proxy needs to
-                     share memory between many connections, and also might have a slow upstream connection and a fast downstream one. Flow control
-                     addresses cases where the receiver is unable to process data on one stream, yet wants to continue to process other streams
+                     share memory between many connections and also might have a slow upstream connection and a fast downstream one. Flow-control
+                     addresses cases where the receiver is unable to process data on one stream yet wants to continue to process other streams
                      in the same connection.
                   </p>
                </div>
                <div id="rfc.section.5.2.2.p.2">
-                  <p>Deployments that do not require this capability can advertise a flow control window of the maximum size (2<sup>31</sup>-1), and by maintaining this window by sending a <a href="#WINDOW_UPDATE" class="smpl">WINDOW_UPDATE</a> frame when any data is received. This effectively disables flow control for that receiver. Conversely, a sender is always
-                     subject to the flow control window advertised by the receiver.
+                  <p>Deployments that do not require this capability can advertise a flow-control window of the maximum size (2<sup>31</sup>-1), and by maintaining this window by sending a <a href="#WINDOW_UPDATE" class="smpl">WINDOW_UPDATE</a> frame when any data is received. This effectively disables flow control for that receiver. Conversely, a sender is always
+                     subject to the flow-control window advertised by the receiver.
                   </p>
                </div>
                <div id="rfc.section.5.2.2.p.3">
@@ -1778,7 +1778,7 @@ Upgrade: h2c
                   </p>
                </div>
                <div id="rfc.section.5.3.4.p.7">
-                  <p>The retention of priority information for streams that are not counted toward the limit set by <a href="#SETTINGS_MAX_CONCURRENT_STREAMS" class="smpl">SETTINGS_MAX_CONCURRENT_STREAMS</a> could create a large state burden for an endpoint. Therefore the amount of prioritization state that is retained MAY be limited.
+                  <p>The retention of priority information for streams that are not counted toward the limit set by <a href="#SETTINGS_MAX_CONCURRENT_STREAMS" class="smpl">SETTINGS_MAX_CONCURRENT_STREAMS</a> could create a large state burden for an endpoint. Therefore, the amount of prioritization state that is retained MAY be limited.
                   </p>
                </div>
                <div id="rfc.section.5.3.4.p.8">
@@ -1825,7 +1825,7 @@ Upgrade: h2c
                   </p>
                </div>
                <div id="rfc.section.5.4.1.p.3">
-                  <p>It is possible that the <a href="#GOAWAY" class="smpl">GOAWAY</a> will not be reliably received by the receiving endpoint (see <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#persistent.tear-down" title="Tear-down">Section 6.6</a>). In the event of a connection error, <a href="#GOAWAY" class="smpl">GOAWAY</a> only provides a best effort attempt to communicate with the peer about why the connection is being terminated.
+                  <p>It is possible that the <a href="#GOAWAY" class="smpl">GOAWAY</a> will not be reliably received by the receiving endpoint (see <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#persistent.tear-down" title="Tear-down">Section 6.6</a>). In the event of a connection error, <a href="#GOAWAY" class="smpl">GOAWAY</a> only provides a best-effort attempt to communicate with the peer about why the connection is being terminated.
                   </p>
                </div>
                <div id="rfc.section.5.4.1.p.4">
@@ -1845,7 +1845,7 @@ Upgrade: h2c
                </div>
                <div id="rfc.section.5.4.2.p.3">
                   <p>A <a href="#RST_STREAM" class="smpl">RST_STREAM</a> is the last frame that an endpoint can send on a stream. The peer that sends the <a href="#RST_STREAM" class="smpl">RST_STREAM</a> frame MUST be prepared to receive any frames that were sent or enqueued for sending by the remote peer. These frames can be
-                     ignored, except where they modify connection state (such as the state maintained for header compression (<a href="#HeaderBlock" title="Header Compression and Decompression">Section&nbsp;4.3</a>), or flow control).
+                     ignored, except where they modify connection state (such as the state maintained for header compression (<a href="#HeaderBlock" title="Header Compression and Decompression">Section&nbsp;4.3</a>) or flow control).
                   </p>
                </div>
                <div id="rfc.section.5.4.2.p.4">
@@ -1862,7 +1862,7 @@ Upgrade: h2c
                <h3 id="rfc.section.5.4.3"><a href="#rfc.section.5.4.3">5.4.3</a>&nbsp;Connection Termination
                </h3>
                <div id="rfc.section.5.4.3.p.1">
-                  <p>If the TCP connection is closed or reset while streams remain in open or half closed states, then the affected streams cannot
+                  <p>If the TCP connection is closed or reset while streams remain in open or half-closed states, then the affected streams cannot
                      be automatically retried (see <a href="#Reliability" title="Request Reliability Mechanisms in HTTP/2">Section&nbsp;8.1.4</a> for details).
                   </p>
                </div>
@@ -1882,7 +1882,7 @@ Upgrade: h2c
                </p>
             </div>
             <div id="rfc.section.5.5.p.3">
-               <p>Extensions are permitted to use new frame types (<a href="#FrameHeader" title="Frame Format">Section&nbsp;4.1</a>), new settings (<a href="#SettingValues" title="Defined SETTINGS Parameters">Section&nbsp;6.5.2</a>), or new error codes (<a href="#ErrorCodes" title="Error Codes">Section&nbsp;7</a>). Registries are established for managing these extension points: frame types (<a href="#iana-frames" title="Frame Type Registry">Section&nbsp;11.2</a>), settings (<a href="#iana-settings" title="Settings Registry">Section&nbsp;11.3</a>) and error codes (<a href="#iana-errors" title="Error Code Registry">Section&nbsp;11.4</a>).
+               <p>Extensions are permitted to use new frame types (<a href="#FrameHeader" title="Frame Format">Section&nbsp;4.1</a>), new settings (<a href="#SettingValues" title="Defined SETTINGS Parameters">Section&nbsp;6.5.2</a>), or new error codes (<a href="#ErrorCodes" title="Error Codes">Section&nbsp;7</a>). Registries are established for managing these extension points: frame types (<a href="#iana-frames" title="Frame Type Registry">Section&nbsp;11.2</a>), settings (<a href="#iana-settings" title="Settings Registry">Section&nbsp;11.3</a>), and error codes (<a href="#iana-errors" title="Error Code Registry">Section&nbsp;11.4</a>).
                </p>
             </div>
             <div id="rfc.section.5.5.p.4">
@@ -1894,7 +1894,7 @@ Upgrade: h2c
             <div id="rfc.section.5.5.p.5">
                <p>Extensions that could change the semantics of existing protocol components MUST be negotiated before being used. For example,
                   an extension that changes the layout of the <a href="#HEADERS" class="smpl">HEADERS</a> frame cannot be used until the peer has given a positive signal that this is acceptable. In this case, it could also be necessary
-                  to coordinate when the revised layout comes into effect. Note that treating any frame other than <a href="#DATA" class="smpl">DATA</a> frames as flow controlled is such a change in semantics, and can only be done through negotiation.
+                  to coordinate when the revised layout comes into effect. Note that treating any frame other than <a href="#DATA" class="smpl">DATA</a> frames as flow controlled is such a change in semantics and can only be done through negotiation.
                </p>
             </div>
             <div id="rfc.section.5.5.p.6">
@@ -1909,7 +1909,7 @@ Upgrade: h2c
          <h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a>&nbsp;<a href="#FrameTypes">Frame Definitions</a></h1>
          <div id="rfc.section.6.p.1">
             <p>This specification defines a number of frame types, each identified by a unique 8-bit type code. Each frame type serves a
-               distinct purpose either in the establishment and management of the connection as a whole, or of individual streams.
+               distinct purpose either in the establishment and management of the connection as a whole or of individual streams.
             </p>
          </div>
          <div id="rfc.section.6.p.2">
@@ -1953,7 +1953,7 @@ Upgrade: h2c
                   </dd>
                   <dt>Padding:</dt>
                   <dd>Padding octets that contain no application semantic value. Padding octets MUST be set to zero when sending. A receiver is
-                     not obligated to verify padding, but MAY treat non-zero padding as a connection error (<a href="#ConnectionErrorHandler" title="Connection Error Handling">Section&nbsp;5.4.1</a>) of type <a href="#PROTOCOL_ERROR" class="smpl">PROTOCOL_ERROR</a>.
+                     not obligated to verify padding but MAY treat non-zero padding as a connection error (<a href="#ConnectionErrorHandler" title="Connection Error Handling">Section&nbsp;5.4.1</a>) of type <a href="#PROTOCOL_ERROR" class="smpl">PROTOCOL_ERROR</a>.
                   </dd>
                </dl>
             </div>
@@ -1962,7 +1962,7 @@ Upgrade: h2c
                <dl>
                   <dt>END_STREAM (0x1):</dt>
                   <dd>Bit 0 being set indicates that this frame is the last that the endpoint will send for the identified stream. Setting this
-                     flag causes the stream to enter one of the "half closed" states or the "closed" state (<a href="#StreamStates" title="Stream States">Section&nbsp;5.1</a>).
+                     flag causes the stream to enter one of the "half-closed" states or the "closed" state (<a href="#StreamStates" title="Stream States">Section&nbsp;5.1</a>).
                   </dd>
                   <dt>PADDED (0x8):</dt>
                   <dd>Bit 3 being set indicates that the Pad Length field and any padding that it describes is present.</dd>
@@ -1974,9 +1974,9 @@ Upgrade: h2c
                </p>
             </div>
             <div id="rfc.section.6.1.p.6">
-               <p>DATA frames are subject to flow control and can only be sent when a stream is in the "open" or "half closed (remote)" states.
+               <p>DATA frames are subject to flow control and can only be sent when a stream is in the "open" or "half-closed (remote)" states.
                   The entire DATA frame payload is included in flow control, including Pad Length and Padding fields if present. If a DATA frame
-                  is received whose stream is not in "open" or "half closed (local)" state, the recipient MUST respond with a stream error (<a href="#StreamErrorHandler" title="Stream Error Handling">Section&nbsp;5.4.2</a>) of type <a href="#STREAM_CLOSED" class="smpl">STREAM_CLOSED</a>.
+                  is received whose stream is not in "open" or "half-closed (local)" state, the recipient MUST respond with a stream error (<a href="#StreamErrorHandler" title="Stream Error Handling">Section&nbsp;5.4.2</a>) of type <a href="#STREAM_CLOSED" class="smpl">STREAM_CLOSED</a>.
                </p>
             </div>
             <div id="rfc.section.6.1.p.7">
@@ -1993,7 +1993,7 @@ Upgrade: h2c
             <h2 id="rfc.section.6.2"><a href="#rfc.section.6.2">6.2</a>&nbsp;<a href="#HEADERS">HEADERS</a></h2>
             <div id="rfc.section.6.2.p.1">
                <p>The HEADERS frame (type=0x1) is used to open a stream (<a href="#StreamStates" title="Stream States">Section&nbsp;5.1</a>), and additionally carries a header block fragment. HEADERS frames can be sent on a stream in the "idle", "reserved (local)",
-                  "open" or "half closed (remote)" states.
+                  "open", or "half-closed (remote)" states.
                </p>
             </div>
             <div id="HEADERSFramePayload"></div>
@@ -2018,7 +2018,7 @@ Upgrade: h2c
                      is set.
                   </dd>
                   <dt>E:</dt>
-                  <dd>A single bit flag indicates that the stream dependency is exclusive, see <a href="#StreamPriority" title="Stream priority">Section&nbsp;5.3</a>. This field is only present if the PRIORITY flag is set.
+                  <dd>A single-bit flag indicates that the stream dependency is exclusive, see <a href="#StreamPriority" title="Stream priority">Section&nbsp;5.3</a>. This field is only present if the PRIORITY flag is set.
                   </dd>
                   <dt>Stream Dependency:</dt>
                   <dd>A 31-bit stream identifier for the stream that this stream depends on, see <a href="#StreamPriority" title="Stream priority">Section&nbsp;5.3</a>. This field is only present if the PRIORITY flag is set.
@@ -2125,7 +2125,7 @@ Upgrade: h2c
             <div id="rfc.section.6.3.p.5">
                <p>The PRIORITY frame can be sent on a stream in any state, though it cannot be sent between consecutive frames that comprise
                   a single header block (<a href="#HeaderBlock" title="Header Compression and Decompression">Section&nbsp;4.3</a>). Note that this frame could arrive after processing or frame sending has completed, which would cause it to have no effect
-                  on the identified stream. For a stream that is in the "half closed (remote)" or "closed" - state, this frame can only affect
+                  on the identified stream. For a stream that is in the "half-closed (remote)" or "closed" - state, this frame can only affect
                   processing of the identified stream and its dependent streams and not frame transmission on that stream.
                </p>
             </div>
@@ -2143,7 +2143,7 @@ Upgrade: h2c
             <h2 id="rfc.section.6.4"><a href="#rfc.section.6.4">6.4</a>&nbsp;<a href="#RST_STREAM">RST_STREAM</a></h2>
             <div id="rfc.section.6.4.p.1">
                <p>The RST_STREAM frame (type=0x3) allows for immediate termination of a stream. RST_STREAM is sent to request cancellation of
-                  a stream, or to indicate that an error condition has occurred.
+                  a stream or to indicate that an error condition has occurred.
                </p>
             </div>
             <div id="RST_STREAMFramePayload"></div>
@@ -2191,12 +2191,12 @@ Upgrade: h2c
             <div id="rfc.section.6.5.p.2">
                <p>SETTINGS parameters are not negotiated; they describe characteristics of the sending peer, which are used by the receiving
                   peer. Different values for the same parameter can be advertised by each peer. For example, a client might set a high initial
-                  flow control window, whereas a server might set a lower value to conserve resources.
+                  flow-control window, whereas a server might set a lower value to conserve resources.
                </p>
             </div>
             <div id="rfc.section.6.5.p.3">
-               <p>A SETTINGS frame MUST be sent by both endpoints at the start of a connection, and MAY be sent at any other time by either
-                  endpoint over the lifetime of the connection. Implementations MUST support all of the parameters defined by this specification.
+               <p>A SETTINGS frame MUST be sent by both endpoints at the start of a connection and MAY be sent at any other time by either endpoint
+                  over the lifetime of the connection. Implementations MUST support all of the parameters defined by this specification.
                </p>
             </div>
             <div id="rfc.section.6.5.p.4">
@@ -2272,17 +2272,17 @@ Upgrade: h2c
                            that this value be no smaller than 100, so as to not unnecessarily limit parallelism.
                         </p>
                         <p>A value of 0 for SETTINGS_MAX_CONCURRENT_STREAMS SHOULD NOT be treated as special by endpoints. A zero value does prevent
-                           the creation of new streams, however this can also happen for any limit that is exhausted with active streams. Servers SHOULD
+                           the creation of new streams; however, this can also happen for any limit that is exhausted with active streams. Servers SHOULD
                            only set a zero value for short durations; if a server does not wish to accept requests, closing the connection is more appropriate.
                         </p>
                      </dd>
                      <dt id="SETTINGS_INITIAL_WINDOW_SIZE">SETTINGS_INITIAL_WINDOW_SIZE (0x4):</dt>
                      <dd>
-                        <p>Indicates the sender's initial window size (in octets) for stream level flow control. The initial value is 2<sup>16</sup>-1 (65,535) octets.
+                        <p>Indicates the sender's initial window size (in octets) for stream-level flow control. The initial value is 2<sup>16</sup>-1 (65,535) octets.
                         </p>
-                        <p>This setting affects the window size of all streams, see <a href="#InitialWindowSize" title="Initial Flow Control Window Size">Section&nbsp;6.9.2</a>.
+                        <p>This setting affects the window size of all streams, see <a href="#InitialWindowSize" title="Initial Flow-Control Window Size">Section&nbsp;6.9.2</a>.
                         </p>
-                        <p>Values above the maximum flow control window size of 2<sup>31</sup>-1 MUST be treated as a connection error (<a href="#ConnectionErrorHandler" title="Connection Error Handling">Section&nbsp;5.4.1</a>) of type <a href="#FLOW_CONTROL_ERROR" class="smpl">FLOW_CONTROL_ERROR</a>.
+                        <p>Values above the maximum flow-control window size of 2<sup>31</sup>-1 MUST be treated as a connection error (<a href="#ConnectionErrorHandler" title="Connection Error Handling">Section&nbsp;5.4.1</a>) of type <a href="#FLOW_CONTROL_ERROR" class="smpl">FLOW_CONTROL_ERROR</a>.
                         </p>
                      </dd>
                      <dt id="SETTINGS_MAX_FRAME_SIZE">SETTINGS_MAX_FRAME_SIZE (0x5):</dt>
@@ -2385,7 +2385,7 @@ Upgrade: h2c
                </dl>
             </div>
             <div id="rfc.section.6.6.p.4">
-               <p>PUSH_PROMISE frames MUST only be sent on a peer-initiated stream that is in either the "open" or "half closed (remote)" state.
+               <p>PUSH_PROMISE frames MUST only be sent on a peer-initiated stream that is in either the "open" or "half-closed (remote)" state.
                   The stream identifier of a PUSH_PROMISE frame indicates the stream it is associated with. If the stream identifier field specifies
                   the value 0x0, a recipient MUST respond with a connection error (<a href="#ConnectionErrorHandler" title="Connection Error Handling">Section&nbsp;5.4.1</a>) of type <a href="#PROTOCOL_ERROR" class="smpl">PROTOCOL_ERROR</a>.
                </p>
@@ -2407,12 +2407,12 @@ Upgrade: h2c
             <div id="rfc.section.6.6.p.8">
                <p>A PUSH_PROMISE frame modifies the connection state in two ways. The inclusion of a header block (<a href="#HeaderBlock" title="Header Compression and Decompression">Section&nbsp;4.3</a>) potentially modifies the state maintained for header compression. PUSH_PROMISE also reserves a stream for later use, causing
                   the promised stream to enter the "reserved" state. A sender MUST NOT send a PUSH_PROMISE on a stream unless that stream is
-                  either "open" or "half closed (remote)"; the sender MUST ensure that the promised stream is a valid choice for a new stream identifier (<a href="#StreamIdentifiers" title="Stream Identifiers">Section&nbsp;5.1.1</a>) (that is, the promised stream MUST be in the "idle" state).
+                  either "open" or "half-closed (remote)"; the sender MUST ensure that the promised stream is a valid choice for a new stream identifier (<a href="#StreamIdentifiers" title="Stream Identifiers">Section&nbsp;5.1.1</a>) (that is, the promised stream MUST be in the "idle" state).
                </p>
             </div>
             <div id="rfc.section.6.6.p.9">
                <p>Since PUSH_PROMISE reserves a stream, ignoring a PUSH_PROMISE frame causes the stream state to become indeterminate. A receiver
-                  MUST treat the receipt of a PUSH_PROMISE on a stream that is neither "open" nor "half closed (local)" as a connection error (<a href="#ConnectionErrorHandler" title="Connection Error Handling">Section&nbsp;5.4.1</a>) of type <a href="#PROTOCOL_ERROR" class="smpl">PROTOCOL_ERROR</a>. However, an endpoint that has sent <a href="#RST_STREAM" class="smpl">RST_STREAM</a> on the associated stream MUST handle PUSH_PROMISE frames that might have been created before the <a href="#RST_STREAM" class="smpl">RST_STREAM</a> frame is received and processed.
+                  MUST treat the receipt of a PUSH_PROMISE on a stream that is neither "open" nor "half-closed (local)" as a connection error (<a href="#ConnectionErrorHandler" title="Connection Error Handling">Section&nbsp;5.4.1</a>) of type <a href="#PROTOCOL_ERROR" class="smpl">PROTOCOL_ERROR</a>. However, an endpoint that has sent <a href="#RST_STREAM" class="smpl">RST_STREAM</a> on the associated stream MUST handle PUSH_PROMISE frames that might have been created before the <a href="#RST_STREAM" class="smpl">RST_STREAM</a> frame is received and processed.
                </p>
             </div>
             <div id="rfc.section.6.6.p.10">
@@ -2427,7 +2427,7 @@ Upgrade: h2c
          <div id="PING">
             <h2 id="rfc.section.6.7"><a href="#rfc.section.6.7">6.7</a>&nbsp;<a href="#PING">PING</a></h2>
             <div id="rfc.section.6.7.p.1">
-               <p>The PING frame (type=0x6) is a mechanism for measuring a minimal round trip time from the sender, as well as determining whether
+               <p>The PING frame (type=0x6) is a mechanism for measuring a minimal round-trip time from the sender, as well as determining whether
                   an idle connection is still functional. PING frames can be sent from any endpoint.
                </p>
             </div>
@@ -2480,7 +2480,7 @@ Upgrade: h2c
                <p>There is an inherent race condition between an endpoint starting new streams and the remote sending a GOAWAY frame. To deal
                   with this case, the GOAWAY contains the stream identifier of the last peer-initiated stream which was or might be processed
                   on the sending endpoint in this connection. For instance, if the server sends a GOAWAY frame, the identified stream is the
-                  highest numbered stream initiated by the client.
+                  highest-numbered stream initiated by the client.
                </p>
             </div>
             <div id="rfc.section.6.8.p.3">
@@ -2528,9 +2528,9 @@ Upgrade: h2c
                </p>
             </div>
             <div id="rfc.section.6.8.p.10">
-               <p>The last stream identifier in the GOAWAY frame contains the highest numbered stream identifier for which the sender of the
-                  GOAWAY frame might have taken some action on, or might yet take action on. All streams up to and including the identified
-                  stream might have been processed in some way. The last stream identifier can be set to 0 if no streams were processed. 
+               <p>The last stream identifier in the GOAWAY frame contains the highest-numbered stream identifier for which the sender of the
+                  GOAWAY frame might have taken some action on or might yet take action on. All streams up to and including the identified stream
+                  might have been processed in some way. The last stream identifier can be set to 0 if no streams were processed. 
                </p>
                <dl>
                   <dt>Note:</dt>
@@ -2541,9 +2541,9 @@ Upgrade: h2c
                <p> If a connection terminates without a GOAWAY frame, the last stream identifier is effectively the highest possible stream identifier.</p>
             </div>
             <div id="rfc.section.6.8.p.11">
-               <p>On streams with lower or equal numbered identifiers that were not closed completely prior to the connection being closed,
-                  re-attempting requests, transactions, or any protocol activity is not possible, with the exception of idempotent actions like
-                  HTTP GET, PUT, or DELETE. Any protocol activity that uses higher numbered streams can be safely retried using a new connection.
+               <p>On streams with lower- or equal-numbered identifiers that were not closed completely prior to the connection being closed,
+                  reattempting requests, transactions, or any protocol activity is not possible, with the exception of idempotent actions like
+                  HTTP GET, PUT, or DELETE. Any protocol activity that uses higher-numbered streams can be safely retried using a new connection.
                </p>
             </div>
             <div id="rfc.section.6.8.p.12">
@@ -2560,16 +2560,16 @@ Upgrade: h2c
                </p>
             </div>
             <div id="rfc.section.6.8.p.14">
-               <p>A client that is unable to retry requests loses all requests that are in flight when the server closes the connection. This
+               <p>A client that is unable to retry requests loses all requests that are in-flight when the server closes the connection. This
                   is especially true for intermediaries that might not be serving clients using HTTP/2. A server that is attempting to gracefully
                   shut down a connection SHOULD send an initial GOAWAY frame with the last stream identifier set to 2<sup>31</sup>-1 and a <a href="#NO_ERROR" class="smpl">NO_ERROR</a> code. This signals to the client that a shutdown is imminent and that initiating further requests is prohibited. After allowing
-                  time for any in flight stream creation - at least one round trip time - the server can send another GOAWAY frame with an updated
+                  time for any in-flight stream creation - at least one round-trip time - the server can send another GOAWAY frame with an updated
                   last stream identifier. This ensures that a connection can be cleanly shut down without causing clients to lose requests.
                </p>
             </div>
             <div id="rfc.section.6.8.p.15">
                <p>After sending a GOAWAY frame, the sender can discard frames for streams initiated by the receiver with identifiers higher
-                  than the identified last stream. However, any frames that alter connection state cannot be completely ignored. For instance, <a href="#HEADERS" class="smpl">HEADERS</a>, <a href="#PUSH_PROMISE" class="smpl">PUSH_PROMISE</a> and <a href="#CONTINUATION" class="smpl">CONTINUATION</a> frames MUST be minimally processed to ensure the state maintained for header compression is consistent (see <a href="#HeaderBlock" title="Header Compression and Decompression">Section&nbsp;4.3</a>); similarly DATA frames MUST be counted toward the connection flow control window. Failure to process these frames can cause
+                  than the identified last stream. However, any frames that alter connection state cannot be completely ignored. For instance, <a href="#HEADERS" class="smpl">HEADERS</a>, <a href="#PUSH_PROMISE" class="smpl">PUSH_PROMISE</a>, and <a href="#CONTINUATION" class="smpl">CONTINUATION</a> frames MUST be minimally processed to ensure the state maintained for header compression is consistent (see <a href="#HeaderBlock" title="Header Compression and Decompression">Section&nbsp;4.3</a>); similarly, DATA frames MUST be counted toward the connection flow-control window. Failure to process these frames can cause
                   flow control or header compression state to become unsynchronized.
                </p>
             </div>
@@ -2594,9 +2594,9 @@ Upgrade: h2c
                <p>Flow control operates at two levels: on each individual stream and on the entire connection.</p>
             </div>
             <div id="rfc.section.6.9.p.3">
-               <p>Both types of flow control are hop-by-hop; that is, only between the two endpoints. Intermediaries do not forward WINDOW_UPDATE
+               <p>Both types of flow control are hop by hop, that is, only between the two endpoints. Intermediaries do not forward WINDOW_UPDATE
                   frames between dependent connections. However, throttling of data transfer by any receiver can indirectly cause the propagation
-                  of flow control information toward the original sender.
+                  of flow-control information toward the original sender.
                </p>
             </div>
             <div id="rfc.section.6.9.p.4">
@@ -2612,9 +2612,9 @@ Upgrade: h2c
 </pre></div>
             <p class="figure">Figure 14: WINDOW_UPDATE Payload Format</p>
             <div id="rfc.section.6.9.p.5">
-               <p>The payload of a WINDOW_UPDATE frame is one reserved bit, plus an unsigned 31-bit integer indicating the number of octets
-                  that the sender can transmit in addition to the existing flow control window. The legal range for the increment to the flow
-                  control window is 1 to 2<sup>31</sup>-1 (2,147,483,647) octets.
+               <p>The payload of a WINDOW_UPDATE frame is one reserved bit plus an unsigned 31-bit integer indicating the number of octets that
+                  the sender can transmit in addition to the existing flow-control window. The legal range for the increment to the flow-control
+                  window is 1 to 2<sup>31</sup>-1 (2,147,483,647) octets.
                </p>
             </div>
             <div id="rfc.section.6.9.p.6">
@@ -2626,18 +2626,18 @@ Upgrade: h2c
                </p>
             </div>
             <div id="rfc.section.6.9.p.8">
-               <p>A receiver MUST treat the receipt of a WINDOW_UPDATE frame with an flow control window increment of 0 as a stream error (<a href="#StreamErrorHandler" title="Stream Error Handling">Section&nbsp;5.4.2</a>) of type <a href="#PROTOCOL_ERROR" class="smpl">PROTOCOL_ERROR</a>; errors on the connection flow control window MUST be treated as a connection error (<a href="#ConnectionErrorHandler" title="Connection Error Handling">Section&nbsp;5.4.1</a>).
+               <p>A receiver MUST treat the receipt of a WINDOW_UPDATE frame with an flow-control window increment of 0 as a stream error (<a href="#StreamErrorHandler" title="Stream Error Handling">Section&nbsp;5.4.2</a>) of type <a href="#PROTOCOL_ERROR" class="smpl">PROTOCOL_ERROR</a>; errors on the connection flow-control window MUST be treated as a connection error (<a href="#ConnectionErrorHandler" title="Connection Error Handling">Section&nbsp;5.4.1</a>).
                </p>
             </div>
             <div id="rfc.section.6.9.p.9">
                <p>WINDOW_UPDATE can be sent by a peer that has sent a frame bearing the END_STREAM flag. This means that a receiver could receive
-                  a WINDOW_UPDATE frame on a "half closed (remote)" or "closed" stream. A receiver MUST NOT treat this as an error, see <a href="#StreamStates" title="Stream States">Section&nbsp;5.1</a>.
+                  a WINDOW_UPDATE frame on a "half-closed (remote)" or "closed" stream. A receiver MUST NOT treat this as an error, see <a href="#StreamStates" title="Stream States">Section&nbsp;5.1</a>.
                </p>
             </div>
             <div id="rfc.section.6.9.p.10">
-               <p>A receiver that receives a flow controlled frame MUST always account for its contribution against the connection flow control
-                  window, unless the receiver treats this as a connection error (<a href="#ConnectionErrorHandler" title="Connection Error Handling">Section&nbsp;5.4.1</a>). This is necessary even if the frame is in error. Since the sender counts the frame toward the flow control window, if the
-                  receiver does not, the flow control window at sender and receiver can become different.
+               <p>A receiver that receives a flow-controlled frame MUST always account for its contribution against the connection flow-control
+                  window, unless the receiver treats this as a connection error (<a href="#ConnectionErrorHandler" title="Connection Error Handling">Section&nbsp;5.4.1</a>). This is necessary even if the frame is in error. Since the sender counts the frame toward the flow-control window, if the
+                  receiver does not, the flow-control window at sender and receiver can become different.
                </p>
             </div>
             <div id="rfc.section.6.9.p.11">
@@ -2645,86 +2645,86 @@ Upgrade: h2c
                </p>
             </div>
             <div>
-               <h3 id="rfc.section.6.9.1"><a href="#rfc.section.6.9.1">6.9.1</a>&nbsp;The Flow Control Window
+               <h3 id="rfc.section.6.9.1"><a href="#rfc.section.6.9.1">6.9.1</a>&nbsp;The Flow-Control Window
                </h3>
                <div id="rfc.section.6.9.1.p.1">
-                  <p>Flow control in HTTP/2 is implemented using a window kept by each sender on every stream. The flow control window is a simple
+                  <p>Flow control in HTTP/2 is implemented using a window kept by each sender on every stream. The flow-control window is a simple
                      integer value that indicates how many octets of data the sender is permitted to transmit; as such, its size is a measure of
                      the buffering capacity of the receiver.
                   </p>
                </div>
                <div id="rfc.section.6.9.1.p.2">
-                  <p>Two flow control windows are applicable: the stream flow control window and the connection flow control window. The sender
-                     MUST NOT send a flow controlled frame with a length that exceeds the space available in either of the flow control windows
-                     advertised by the receiver. Frames with zero length with the END_STREAM flag set (that is, an empty <a href="#DATA" class="smpl">DATA</a> frame) MAY be sent if there is no available space in either flow control window.
+                  <p>Two flow-control windows are applicable: the stream flow-control window and the connection flow-control window. The sender
+                     MUST NOT send a flow-controlled frame with a length that exceeds the space available in either of the flow-control windows
+                     advertised by the receiver. Frames with zero length with the END_STREAM flag set (that is, an empty <a href="#DATA" class="smpl">DATA</a> frame) MAY be sent if there is no available space in either flow-control window.
                   </p>
                </div>
                <div id="rfc.section.6.9.1.p.3">
-                  <p>For flow control calculations, the 9 octet frame header is not counted.</p>
+                  <p>For flow-control calculations, the 9-octet frame header is not counted.</p>
                </div>
                <div id="rfc.section.6.9.1.p.4">
-                  <p>After sending a flow controlled frame, the sender reduces the space available in both windows by the length of the transmitted
+                  <p>After sending a flow-controlled frame, the sender reduces the space available in both windows by the length of the transmitted
                      frame.
                   </p>
                </div>
                <div id="rfc.section.6.9.1.p.5">
-                  <p>The receiver of a frame sends a WINDOW_UPDATE frame as it consumes data and frees up space in flow control windows. Separate
-                     WINDOW_UPDATE frames are sent for the stream and connection level flow control windows.
+                  <p>The receiver of a frame sends a WINDOW_UPDATE frame as it consumes data and frees up space in flow-control windows. Separate
+                     WINDOW_UPDATE frames are sent for the stream- and connection-level flow-control windows.
                   </p>
                </div>
                <div id="rfc.section.6.9.1.p.6">
                   <p>A sender that receives a WINDOW_UPDATE frame updates the corresponding window by the amount specified in the frame.</p>
                </div>
                <div id="rfc.section.6.9.1.p.7">
-                  <p>A sender MUST NOT allow a flow control window to exceed 2<sup>31</sup>-1 octets. If a sender receives a WINDOW_UPDATE that causes a flow control window to exceed this maximum it MUST terminate
+                  <p>A sender MUST NOT allow a flow-control window to exceed 2<sup>31</sup>-1 octets. If a sender receives a WINDOW_UPDATE that causes a flow-control window to exceed this maximum, it MUST terminate
                      either the stream or the connection, as appropriate. For streams, the sender sends a <a href="#RST_STREAM" class="smpl">RST_STREAM</a> with the error code of <a href="#FLOW_CONTROL_ERROR" class="smpl">FLOW_CONTROL_ERROR</a> code; for the connection, a <a href="#GOAWAY" class="smpl">GOAWAY</a> frame with a <a href="#FLOW_CONTROL_ERROR" class="smpl">FLOW_CONTROL_ERROR</a> code.
                   </p>
                </div>
                <div id="rfc.section.6.9.1.p.8">
-                  <p>Flow controlled frames from the sender and WINDOW_UPDATE frames from the receiver are completely asynchronous with respect
+                  <p>Flow-controlled frames from the sender and WINDOW_UPDATE frames from the receiver are completely asynchronous with respect
                      to each other. This property allows a receiver to aggressively update the window size kept by the sender to prevent streams
                      from stalling.
                   </p>
                </div>
             </div>
             <div id="InitialWindowSize">
-               <h3 id="rfc.section.6.9.2"><a href="#rfc.section.6.9.2">6.9.2</a>&nbsp;<a href="#InitialWindowSize">Initial Flow Control Window Size</a></h3>
+               <h3 id="rfc.section.6.9.2"><a href="#rfc.section.6.9.2">6.9.2</a>&nbsp;<a href="#InitialWindowSize">Initial Flow-Control Window Size</a></h3>
                <div id="rfc.section.6.9.2.p.1">
-                  <p>When an HTTP/2 connection is first established, new streams are created with an initial flow control window size of 65,535
-                     octets. The connection flow control window is 65,535 octets. Both endpoints can adjust the initial window size for new streams
-                     by including a value for <a href="#SETTINGS_INITIAL_WINDOW_SIZE" class="smpl">SETTINGS_INITIAL_WINDOW_SIZE</a> in the <a href="#SETTINGS" class="smpl">SETTINGS</a> frame that forms part of the connection preface. The connection flow control window can only be changed using WINDOW_UPDATE
+                  <p>When an HTTP/2 connection is first established, new streams are created with an initial flow-control window size of 65,535
+                     octets. The connection flow-control window is 65,535 octets. Both endpoints can adjust the initial window size for new streams
+                     by including a value for <a href="#SETTINGS_INITIAL_WINDOW_SIZE" class="smpl">SETTINGS_INITIAL_WINDOW_SIZE</a> in the <a href="#SETTINGS" class="smpl">SETTINGS</a> frame that forms part of the connection preface. The connection flow-control window can only be changed using WINDOW_UPDATE
                      frames.
                   </p>
                </div>
                <div id="rfc.section.6.9.2.p.2">
-                  <p>Prior to receiving a <a href="#SETTINGS" class="smpl">SETTINGS</a> frame that sets a value for <a href="#SETTINGS_INITIAL_WINDOW_SIZE" class="smpl">SETTINGS_INITIAL_WINDOW_SIZE</a>, an endpoint can only use the default initial window size when sending flow controlled frames. Similarly, the connection
-                     flow control window is set to the default initial window size until a WINDOW_UPDATE frame is received.
+                  <p>Prior to receiving a <a href="#SETTINGS" class="smpl">SETTINGS</a> frame that sets a value for <a href="#SETTINGS_INITIAL_WINDOW_SIZE" class="smpl">SETTINGS_INITIAL_WINDOW_SIZE</a>, an endpoint can only use the default initial window size when sending flow-controlled frames. Similarly, the connection
+                     flow-control window is set to the default initial window size until a WINDOW_UPDATE frame is received.
                   </p>
                </div>
                <div id="rfc.section.6.9.2.p.3">
-                  <p>In addition to changing the flow control window for streams that are not yet active, a <a href="#SETTINGS" class="smpl">SETTINGS</a> frame can alter the initial flow control window size for streams with active flow control windows (that is, streams in the
-                     "open" or "half closed (remote)" state). When the value of <a href="#SETTINGS_INITIAL_WINDOW_SIZE" class="smpl">SETTINGS_INITIAL_WINDOW_SIZE</a> changes, a receiver MUST adjust the size of all stream flow control windows that it maintains by the difference between the
+                  <p>In addition to changing the flow-control window for streams that are not yet active, a <a href="#SETTINGS" class="smpl">SETTINGS</a> frame can alter the initial flow-control window size for streams with active flow-control windows (that is, streams in the
+                     "open" or "half-closed (remote)" state). When the value of <a href="#SETTINGS_INITIAL_WINDOW_SIZE" class="smpl">SETTINGS_INITIAL_WINDOW_SIZE</a> changes, a receiver MUST adjust the size of all stream flow-control windows that it maintains by the difference between the
                      new value and the old value.
                   </p>
                </div>
                <div id="rfc.section.6.9.2.p.4">
-                  <p>A change to <a href="#SETTINGS_INITIAL_WINDOW_SIZE" class="smpl">SETTINGS_INITIAL_WINDOW_SIZE</a> can cause the available space in a flow control window to become negative. A sender MUST track the negative flow control window,
-                     and MUST NOT send new flow controlled frames until it receives WINDOW_UPDATE frames that cause the flow control window to
+                  <p>A change to <a href="#SETTINGS_INITIAL_WINDOW_SIZE" class="smpl">SETTINGS_INITIAL_WINDOW_SIZE</a> can cause the available space in a flow-control window to become negative. A sender MUST track the negative flow-control window,
+                     and MUST NOT send new flow-controlled frames until it receives WINDOW_UPDATE frames that cause the flow-control window to
                      become positive.
                   </p>
                </div>
                <div id="rfc.section.6.9.2.p.5">
                   <p>For example, if the client sends 60KB immediately on connection establishment, and the server sets the initial window size
-                     to be 16KB, the client will recalculate the available flow control window to be -44KB on receipt of the <a href="#SETTINGS" class="smpl">SETTINGS</a> frame. The client retains a negative flow control window until WINDOW_UPDATE frames restore the window to being positive,
+                     to be 16KB, the client will recalculate the available flow-control window to be -44KB on receipt of the <a href="#SETTINGS" class="smpl">SETTINGS</a> frame. The client retains a negative flow-control window until WINDOW_UPDATE frames restore the window to being positive,
                      after which the client can resume sending.
                   </p>
                </div>
                <div id="rfc.section.6.9.2.p.6">
-                  <p>A <a href="#SETTINGS" class="smpl">SETTINGS</a> frame cannot alter the connection flow control window.
+                  <p>A <a href="#SETTINGS" class="smpl">SETTINGS</a> frame cannot alter the connection flow-control window.
                   </p>
                </div>
                <div id="rfc.section.6.9.2.p.7">
-                  <p>An endpoint MUST treat a change to <a href="#SETTINGS_INITIAL_WINDOW_SIZE" class="smpl">SETTINGS_INITIAL_WINDOW_SIZE</a> that causes any flow control window to exceed the maximum size as a connection error (<a href="#ConnectionErrorHandler" title="Connection Error Handling">Section&nbsp;5.4.1</a>) of type <a href="#FLOW_CONTROL_ERROR" class="smpl">FLOW_CONTROL_ERROR</a>.
+                  <p>An endpoint MUST treat a change to <a href="#SETTINGS_INITIAL_WINDOW_SIZE" class="smpl">SETTINGS_INITIAL_WINDOW_SIZE</a> that causes any flow-control window to exceed the maximum size as a connection error (<a href="#ConnectionErrorHandler" title="Connection Error Handling">Section&nbsp;5.4.1</a>) of type <a href="#FLOW_CONTROL_ERROR" class="smpl">FLOW_CONTROL_ERROR</a>.
                   </p>
                </div>
             </div>
@@ -2732,14 +2732,14 @@ Upgrade: h2c
                <h3 id="rfc.section.6.9.3"><a href="#rfc.section.6.9.3">6.9.3</a>&nbsp;Reducing the Stream Window Size
                </h3>
                <div id="rfc.section.6.9.3.p.1">
-                  <p>A receiver that wishes to use a smaller flow control window than the current size can send a new <a href="#SETTINGS" class="smpl">SETTINGS</a> frame. However, the receiver MUST be prepared to receive data that exceeds this window size, since the sender might send data
+                  <p>A receiver that wishes to use a smaller flow-control window than the current size can send a new <a href="#SETTINGS" class="smpl">SETTINGS</a> frame. However, the receiver MUST be prepared to receive data that exceeds this window size, since the sender might send data
                      that exceeds the lower limit prior to processing the <a href="#SETTINGS" class="smpl">SETTINGS</a> frame.
                   </p>
                </div>
                <div id="rfc.section.6.9.3.p.2">
-                  <p>After sending a SETTINGS frame that reduces the initial flow control window size, a receiver MAY continue to process streams
-                     that exceed flow control limits. Allowing streams to continue does not allow the receiver to immediately reduce the space
-                     it reserves for flow control windows. Progress on these streams can also stall, since <a href="#WINDOW_UPDATE" class="smpl">WINDOW_UPDATE</a> frames are needed to allow the sender to resume sending. The receiver MAY instead send a <a href="#RST_STREAM" class="smpl">RST_STREAM</a> with <a href="#FLOW_CONTROL_ERROR" class="smpl">FLOW_CONTROL_ERROR</a> error code for the affected streams.
+                  <p>After sending a SETTINGS frame that reduces the initial flow-control window size, a receiver MAY continue to process streams
+                     that exceed flow-control limits. Allowing streams to continue does not allow the receiver to immediately reduce the space
+                     it reserves for flow-control windows. Progress on these streams can also stall, since <a href="#WINDOW_UPDATE" class="smpl">WINDOW_UPDATE</a> frames are needed to allow the sender to resume sending. The receiver MAY instead send a <a href="#RST_STREAM" class="smpl">RST_STREAM</a> with <a href="#FLOW_CONTROL_ERROR" class="smpl">FLOW_CONTROL_ERROR</a> error code for the affected streams.
                   </p>
                </div>
             </div>
@@ -2747,7 +2747,7 @@ Upgrade: h2c
          <div id="CONTINUATION">
             <h2 id="rfc.section.6.10"><a href="#rfc.section.6.10">6.10</a>&nbsp;<a href="#CONTINUATION">CONTINUATION</a></h2>
             <div id="rfc.section.6.10.p.1">
-               <p>The CONTINUATION frame (type=0x9) is used to continue a sequence of header block fragments (<a href="#HeaderBlock" title="Header Compression and Decompression">Section&nbsp;4.3</a>). Any number of CONTINUATION frames can be sent, as long as the preceding frame is on the same stream and is a <a href="#HEADERS" class="smpl">HEADERS</a>, <a href="#PUSH_PROMISE" class="smpl">PUSH_PROMISE</a> or CONTINUATION frame without the END_HEADERS flag set.
+               <p>The CONTINUATION frame (type=0x9) is used to continue a sequence of header block fragments (<a href="#HeaderBlock" title="Header Compression and Decompression">Section&nbsp;4.3</a>). Any number of CONTINUATION frames can be sent, as long as the preceding frame is on the same stream and is a <a href="#HEADERS" class="smpl">HEADERS</a>, <a href="#PUSH_PROMISE" class="smpl">PUSH_PROMISE</a>, or CONTINUATION frame without the END_HEADERS flag set.
                </p>
             </div>
             <div id="CONTINUATIONFramePayload"></div>
@@ -2811,12 +2811,12 @@ Upgrade: h2c
                <dt id="INTERNAL_ERROR">INTERNAL_ERROR (0x2):</dt>
                <dd>The endpoint encountered an unexpected internal error.</dd>
                <dt id="FLOW_CONTROL_ERROR">FLOW_CONTROL_ERROR (0x3):</dt>
-               <dd>The endpoint detected that its peer violated the flow control protocol.</dd>
+               <dd>The endpoint detected that its peer violated the flow-control protocol.</dd>
                <dt id="SETTINGS_TIMEOUT">SETTINGS_TIMEOUT (0x4):</dt>
                <dd>The endpoint sent a <a href="#SETTINGS" class="smpl">SETTINGS</a> frame, but did not receive a response in a timely manner. See Settings Synchronization (<a href="#SettingsSync" title="Settings Synchronization">Section&nbsp;6.5.3</a>).
                </dd>
                <dt id="STREAM_CLOSED">STREAM_CLOSED (0x5):</dt>
-               <dd>The endpoint received a frame after a stream was half closed.</dd>
+               <dd>The endpoint received a frame after a stream was half-closed.</dd>
                <dt id="FRAME_SIZE_ERROR">FRAME_SIZE_ERROR (0x6):</dt>
                <dd>The endpoint received a frame with an invalid size.</dd>
                <dt id="REFUSED_STREAM">REFUSED_STREAM (0x7):</dt>
@@ -2853,7 +2853,7 @@ Upgrade: h2c
             </p>
          </div>
          <div id="rfc.section.8.p.2">
-            <p>Thus, the specification and requirements of HTTP/1.1 Semantics and Content <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>, Conditional Requests <a href="#RFC7232"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Conditional Requests">[RFC7232]</cite></a>, Range Requests <a href="#RFC7233"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Range Requests">[RFC7233]</cite></a>, Caching <a href="#RFC7234"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Caching">[RFC7234]</cite></a> and Authentication <a href="#RFC7235"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Authentication">[RFC7235]</cite></a> are applicable to HTTP/2. Selected portions of HTTP/1.1 Message Syntax and Routing <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, such as the HTTP and HTTPS URI schemes, are also applicable in HTTP/2, but the expression of those semantics for this protocol
+            <p>Thus, the specification and requirements of HTTP/1.1 Semantics and Content <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>, Conditional Requests <a href="#RFC7232"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Conditional Requests">[RFC7232]</cite></a>, Range Requests <a href="#RFC7233"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Range Requests">[RFC7233]</cite></a>, Caching <a href="#RFC7234"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Caching">[RFC7234]</cite></a>, and Authentication <a href="#RFC7235"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Authentication">[RFC7235]</cite></a> are applicable to HTTP/2. Selected portions of HTTP/1.1 Message Syntax and Routing <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, such as the HTTP and HTTPS URI schemes, are also applicable in HTTP/2, but the expression of those semantics for this protocol
                are defined in the sections below.
             </p>
          </div>
@@ -2899,7 +2899,7 @@ Upgrade: h2c
             </div>
             <div id="rfc.section.8.1.p.7">
                <p>An HTTP request/response exchange fully consumes a single stream. A request starts with the <a href="#HEADERS" class="smpl">HEADERS</a> frame that puts the stream into an "open" state. The request ends with a frame bearing END_STREAM, which causes the stream
-                  to become "half closed (local)" for the client and "half closed (remote)" for the server. A response starts with a <a href="#HEADERS" class="smpl">HEADERS</a> frame and ends with a frame bearing END_STREAM, which places the stream in the "closed" state.
+                  to become "half-closed (local)" for the client and "half-closed (remote)" for the server. A response starts with a <a href="#HEADERS" class="smpl">HEADERS</a> frame and ends with a frame bearing END_STREAM, which places the stream in the "closed" state.
                </p>
             </div>
             <div id="rfc.section.8.1.p.8">
@@ -2977,8 +2977,8 @@ Upgrade: h2c
                   <div id="rfc.section.8.1.2.2.p.3">
                      <p>This means that an intermediary transforming an HTTP/1.x message to HTTP/2 will need to remove any header fields nominated
                         by the Connection header field, along with the Connection header field itself. Such intermediaries SHOULD also remove other
-                        connection-specific header fields, such as Keep-Alive, Proxy-Connection, Transfer-Encoding and Upgrade, even if they are not
-                        nominated by Connection.
+                        connection-specific header fields, such as Keep-Alive, Proxy-Connection, Transfer-Encoding, and Upgrade, even if they are
+                        not nominated by Connection.
                      </p>
                   </div>
                   <div id="rfc.section.8.1.2.2.p.4">
@@ -3032,7 +3032,7 @@ Upgrade: h2c
                <div id="HttpResponse">
                   <h4 id="rfc.section.8.1.2.4"><a href="#rfc.section.8.1.2.4">8.1.2.4</a>&nbsp;<a href="#HttpResponse">Response Pseudo-Header Fields</a></h4>
                   <div id="rfc.section.8.1.2.4.p.1">
-                     <p>For HTTP/2 responses, a single <tt>:status</tt> pseudo-header field is defined that carries the HTTP status code field (see <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7231.html#status.codes" title="Response Status Codes">Section 6</a>). This pseudo-header field MUST be included in all responses, otherwise the response is malformed (<a href="#malformed" title="Malformed Requests and Responses">Section&nbsp;8.1.2.6</a>).
+                     <p>For HTTP/2 responses, a single <tt>:status</tt> pseudo-header field is defined that carries the HTTP status code field (see <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7231.html#status.codes" title="Response Status Codes">Section 6</a>). This pseudo-header field MUST be included in all responses; otherwise, the response is malformed (<a href="#malformed" title="Malformed Requests and Responses">Section&nbsp;8.1.2.6</a>).
                      </p>
                   </div>
                   <div id="rfc.section.8.1.2.4.p.2">
@@ -3065,9 +3065,9 @@ Upgrade: h2c
                <div id="malformed">
                   <h4 id="rfc.section.8.1.2.6"><a href="#rfc.section.8.1.2.6">8.1.2.6</a>&nbsp;<a href="#malformed">Malformed Requests and Responses</a></h4>
                   <div id="rfc.section.8.1.2.6.p.1">
-                     <p>A malformed request or response is one that is an otherwise valid sequence of HTTP/2 frames, but is otherwise invalid due
-                        to the presence of extraneous frames, prohibited header fields, the absence of mandatory header fields, or the inclusion of
-                        uppercase header field names.
+                     <p>A malformed request or response is one that is an otherwise valid sequence of HTTP/2 frames but is otherwise invalid due to
+                        the presence of extraneous frames, prohibited header fields, the absence of mandatory header fields, or the inclusion of uppercase
+                        header field names.
                      </p>
                   </div>
                   <div id="rfc.section.8.1.2.6.p.2">
@@ -3082,7 +3082,7 @@ Upgrade: h2c
                   <div id="rfc.section.8.1.2.6.p.4">
                      <p>For malformed requests, a server MAY send an HTTP response prior to closing or resetting the stream. Clients MUST NOT accept
                         a malformed response. Note that these requirements are intended to protect against several types of common attacks against
-                        HTTP; they are deliberately strict, because being permissive can expose implementations to these vulnerabilities.
+                        HTTP; they are deliberately strict because being permissive can expose implementations to these vulnerabilities.
                      </p>
                   </div>
                </div>
@@ -3194,7 +3194,7 @@ Upgrade: h2c
             <div id="Reliability">
                <h3 id="rfc.section.8.1.4"><a href="#rfc.section.8.1.4">8.1.4</a>&nbsp;<a href="#Reliability">Request Reliability Mechanisms in HTTP/2</a></h3>
                <div id="rfc.section.8.1.4.p.1">
-                  <p>In HTTP/1.1, an HTTP client is unable to retry a non-idempotent request when an error occurs, because there is no means to
+                  <p>In HTTP/1.1, an HTTP client is unable to retry a non-idempotent request when an error occurs because there is no means to
                      determine the nature of the error. It is possible that some server processing occurred prior to the error, which could result
                      in undesirable effects if the request were reattempted.
                   </p>
@@ -3222,7 +3222,7 @@ Upgrade: h2c
                </div>
                <div id="rfc.section.8.1.4.p.5">
                   <p>In addition to these mechanisms, the <a href="#PING" class="smpl">PING</a> frame provides a way for a client to easily test a connection. Connections that remain idle can become broken as some middleboxes
-                     (for instance, network address translators, or load balancers) silently discard connection bindings. The <a href="#PING" class="smpl">PING</a> frame allows a client to safely test whether a connection is still active without sending a request.
+                     (for instance, network address translators or load balancers) silently discard connection bindings. The <a href="#PING" class="smpl">PING</a> frame allows a client to safely test whether a connection is still active without sending a request.
                   </p>
                </div>
             </div>
@@ -3240,8 +3240,8 @@ Upgrade: h2c
                </p>
             </div>
             <div id="rfc.section.8.2.p.3">
-               <p>Promised requests MUST be cacheable (see <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7231.html#cacheable.methods" title="Cacheable Methods">Section 4.2.3</a>), MUST be safe (see <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7231.html#safe.methods" title="Safe Methods">Section 4.2.1</a>) and MUST NOT include a request body. Clients that receive a promised request that is not cacheable, is not known to be safe
-                  or that indicates the presence of a request body MUST reset the promised stream with a stream error (<a href="#StreamErrorHandler" title="Stream Error Handling">Section&nbsp;5.4.2</a>) of type <a href="#PROTOCOL_ERROR" class="smpl">PROTOCOL_ERROR</a>. Note this could result in the promised stream being reset if the client does not recognize a newly defined method as being
+               <p>Promised requests MUST be cacheable (see <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7231.html#cacheable.methods" title="Cacheable Methods">Section 4.2.3</a>), MUST be safe (see <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7231.html#safe.methods" title="Safe Methods">Section 4.2.1</a>), and MUST NOT include a request body. Clients that receive a promised request that is not cacheable, is not known to be
+                  safe, or that indicates the presence of a request body MUST reset the promised stream with a stream error (<a href="#StreamErrorHandler" title="Stream Error Handling">Section&nbsp;5.4.2</a>) of type <a href="#PROTOCOL_ERROR" class="smpl">PROTOCOL_ERROR</a>. Note this could result in the promised stream being reset if the client does not recognize a newly defined method as being
                   safe.
                </p>
             </div>
@@ -3272,7 +3272,7 @@ Upgrade: h2c
             <div id="PushRequests">
                <h3 id="rfc.section.8.2.1"><a href="#rfc.section.8.2.1">8.2.1</a>&nbsp;<a href="#PushRequests">Push Requests</a></h3>
                <div id="rfc.section.8.2.1.p.1">
-                  <p>Server push is semantically equivalent to a server responding to a request; however, in this case that request is also sent
+                  <p>Server push is semantically equivalent to a server responding to a request; however, in this case, that request is also sent
                      by the server, as a <a href="#PUSH_PROMISE" class="smpl">PUSH_PROMISE</a> frame.
                   </p>
                </div>
@@ -3295,7 +3295,7 @@ Upgrade: h2c
                   </p>
                </div>
                <div id="rfc.section.8.2.1.p.6">
-                  <p>For example, if the server receives a request for a document containing embedded links to multiple image files, and the server
+                  <p>For example, if the server receives a request for a document containing embedded links to multiple image files and the server
                      chooses to push those additional images to the client, sending push promises before the <a href="#DATA" class="smpl">DATA</a> frames that contain the image links ensures that the client is able to see the promises before discovering embedded links.
                      Similarly, if the server pushes responses referenced by the header block (for instance, in Link header fields), sending the
                      push promises before sending the header block ensures that clients do not request them.
@@ -3307,7 +3307,7 @@ Upgrade: h2c
                </div>
                <div id="rfc.section.8.2.1.p.8">
                   <p><a href="#PUSH_PROMISE" class="smpl">PUSH_PROMISE</a> frames can be sent by the server in response to any client-initiated stream, but the stream MUST be in either the "open" or
-                     "half closed (remote)" state with respect to the server. <a href="#PUSH_PROMISE" class="smpl">PUSH_PROMISE</a> frames are interspersed with the frames that comprise a response, though they cannot be interspersed with <a href="#HEADERS" class="smpl">HEADERS</a> and <a href="#CONTINUATION" class="smpl">CONTINUATION</a> frames that comprise a single header block.
+                     "half-closed (remote)" state with respect to the server. <a href="#PUSH_PROMISE" class="smpl">PUSH_PROMISE</a> frames are interspersed with the frames that comprise a response, though they cannot be interspersed with <a href="#HEADERS" class="smpl">HEADERS</a> and <a href="#CONTINUATION" class="smpl">CONTINUATION</a> frames that comprise a single header block.
                   </p>
                </div>
                <div id="rfc.section.8.2.1.p.9">
@@ -3320,7 +3320,7 @@ Upgrade: h2c
                <h3 id="rfc.section.8.2.2"><a href="#rfc.section.8.2.2">8.2.2</a>&nbsp;<a href="#PushResponses">Push Responses</a></h3>
                <div id="rfc.section.8.2.2.p.1">
                   <p>After sending the <a href="#PUSH_PROMISE" class="smpl">PUSH_PROMISE</a> frame, the server can begin delivering the pushed response as a response (<a href="#HttpResponse" title="Response Pseudo-Header Fields">Section&nbsp;8.1.2.4</a>) on a server-initiated stream that uses the promised stream identifier. The server uses this stream to transmit an HTTP response,
-                     using the same sequence of frames as defined in <a href="#HttpSequence" title="HTTP Request/Response Exchange">Section&nbsp;8.1</a>. This stream becomes "half closed" to the client (<a href="#StreamStates" title="Stream States">Section&nbsp;5.1</a>) after the initial <a href="#HEADERS" class="smpl">HEADERS</a> frame is sent.
+                     using the same sequence of frames as defined in <a href="#HttpSequence" title="HTTP Request/Response Exchange">Section&nbsp;8.1</a>. This stream becomes "half-closed" to the client (<a href="#StreamStates" title="Stream States">Section&nbsp;5.1</a>) after the initial <a href="#HEADERS" class="smpl">HEADERS</a> frame is sent.
                   </p>
                </div>
                <div id="rfc.section.8.2.2.p.2">
@@ -3329,8 +3329,8 @@ Upgrade: h2c
                   </p>
                </div>
                <div id="rfc.section.8.2.2.p.3">
-                  <p>If the client determines, for any reason, that it does not wish to receive the pushed response from the server, or if the
-                     server takes too long to begin sending the promised response, the client can send an <a href="#RST_STREAM" class="smpl">RST_STREAM</a> frame, using either the <a href="#CANCEL" class="smpl">CANCEL</a> or <a href="#REFUSED_STREAM" class="smpl">REFUSED_STREAM</a> codes, and referencing the pushed stream's identifier.
+                  <p>If the client determines, for any reason, that it does not wish to receive the pushed response from the server or if the server
+                     takes too long to begin sending the promised response, the client can send an <a href="#RST_STREAM" class="smpl">RST_STREAM</a> frame, using either the <a href="#CANCEL" class="smpl">CANCEL</a> or <a href="#REFUSED_STREAM" class="smpl">REFUSED_STREAM</a> codes, and referencing the pushed stream's identifier.
                   </p>
                </div>
                <div id="rfc.section.8.2.2.p.4">
@@ -3339,12 +3339,12 @@ Upgrade: h2c
                   </p>
                </div>
                <div id="rfc.section.8.2.2.p.5">
-                  <p>Clients receiving a pushed response MUST validate that either the server is authoritative (see <a href="#authority" title="Server Authority">Section&nbsp;10.1</a>), or the proxy that provided the pushed response is configured for the corresponding request. For example, a server that
-                     offers a certificate for only the <tt>example.com</tt> DNS-ID or Common Name is not permitted to push a response for <tt>https://www.example.org/doc</tt>.
+                  <p>Clients receiving a pushed response MUST validate that either the server is authoritative (see <a href="#authority" title="Server Authority">Section&nbsp;10.1</a>) or the proxy that provided the pushed response is configured for the corresponding request. For example, a server that offers
+                     a certificate for only the <tt>example.com</tt> DNS-ID or Common Name is not permitted to push a response for <tt>https://www.example.org/doc</tt>.
                   </p>
                </div>
                <div id="rfc.section.8.2.2.p.6">
-                  <p>The response for a <a href="#PUSH_PROMISE" class="smpl">PUSH_PROMISE</a> stream begins with a <a href="#HEADERS" class="smpl">HEADERS</a> frame, which immediately puts the stream into the “half closed (remote)” state for the server and “half closed (local)” state
+                  <p>The response for a <a href="#PUSH_PROMISE" class="smpl">PUSH_PROMISE</a> stream begins with a <a href="#HEADERS" class="smpl">HEADERS</a> frame, which immediately puts the stream into the "half-closed (remote)" state for the server and "half-closed (local)" state
                      for the client, and ends with a frame bearing END_STREAM, which places the stream in the "closed" state. 
                   </p>
                   <dl>
@@ -3362,7 +3362,7 @@ Upgrade: h2c
                </p>
             </div>
             <div id="rfc.section.8.3.p.2">
-               <p>In HTTP/2, the CONNECT method is used to establish a tunnel over a single HTTP/2 stream to a remote host, for similar purposes.
+               <p>In HTTP/2, the CONNECT method is used to establish a tunnel over a single HTTP/2 stream to a remote host for similar purposes.
                   The HTTP header field mapping works as defined in Request Header Fields (<a href="#HttpRequest" title="Request Pseudo-Header Fields">Section&nbsp;8.1.2.3</a>), with a few differences. Specifically: 
                </p>
                <ul>
@@ -3384,7 +3384,7 @@ Upgrade: h2c
                </p>
             </div>
             <div id="rfc.section.8.3.p.5">
-               <p>After the initial <a href="#HEADERS" class="smpl">HEADERS</a> frame sent by each peer, all subsequent <a href="#DATA" class="smpl">DATA</a> frames correspond to data sent on the TCP connection. The payload of any <a href="#DATA" class="smpl">DATA</a> frames sent by the client is transmitted by the proxy to the TCP server; data received from the TCP server is assembled into <a href="#DATA" class="smpl">DATA</a> frames by the proxy. Frame types other than <a href="#DATA" class="smpl">DATA</a> or stream management frames (<a href="#RST_STREAM" class="smpl">RST_STREAM</a>, <a href="#WINDOW_UPDATE" class="smpl">WINDOW_UPDATE</a>, and <a href="#PRIORITY" class="smpl">PRIORITY</a>) MUST NOT be sent on a connected stream, and MUST be treated as a stream error (<a href="#StreamErrorHandler" title="Stream Error Handling">Section&nbsp;5.4.2</a>) if received.
+               <p>After the initial <a href="#HEADERS" class="smpl">HEADERS</a> frame sent by each peer, all subsequent <a href="#DATA" class="smpl">DATA</a> frames correspond to data sent on the TCP connection. The payload of any <a href="#DATA" class="smpl">DATA</a> frames sent by the client is transmitted by the proxy to the TCP server; data received from the TCP server is assembled into <a href="#DATA" class="smpl">DATA</a> frames by the proxy. Frame types other than <a href="#DATA" class="smpl">DATA</a> or stream management frames (<a href="#RST_STREAM" class="smpl">RST_STREAM</a>, <a href="#WINDOW_UPDATE" class="smpl">WINDOW_UPDATE</a>, and <a href="#PRIORITY" class="smpl">PRIORITY</a>) MUST NOT be sent on a connected stream and MUST be treated as a stream error (<a href="#StreamErrorHandler" title="Stream Error Handling">Section&nbsp;5.4.2</a>) if received.
                </p>
             </div>
             <div id="rfc.section.8.3.p.6">
@@ -3411,7 +3411,7 @@ Upgrade: h2c
             </h2>
             <div id="rfc.section.9.1.p.1">
                <p>HTTP/2 connections are persistent. For best performance, it is expected clients will not close connections until it is determined
-                  that no further communication with a server is necessary (for example, when a user navigates away from a particular web page),
+                  that no further communication with a server is necessary (for example, when a user navigates away from a particular web page)
                   or until the server closes the connection.
                </p>
             </div>
@@ -3426,11 +3426,11 @@ Upgrade: h2c
                </p>
             </div>
             <div id="rfc.section.9.1.p.4">
-               <p>A client MAY open multiple connections to the same IP address and TCP port using different <a href="#TLS-EXT">Server Name Indication</a> <cite title="Transport Layer Security (TLS) Extensions: Extension Definitions">[TLS-EXT]</cite> values or to provide different TLS client certificates, but SHOULD avoid creating multiple connections with the same configuration.
+               <p>A client MAY open multiple connections to the same IP address and TCP port using different <a href="#TLS-EXT">Server Name Indication</a> <cite title="Transport Layer Security (TLS) Extensions: Extension Definitions">[TLS-EXT]</cite> values or to provide different TLS client certificates but SHOULD avoid creating multiple connections with the same configuration.
                </p>
             </div>
             <div id="rfc.section.9.1.p.5">
-               <p>Servers are encouraged to maintain open connections for as long as possible, but are permitted to terminate idle connections
+               <p>Servers are encouraged to maintain open connections for as long as possible but are permitted to terminate idle connections
                   if necessary. When either endpoint chooses to close the transport-layer TCP connection, the terminating endpoint SHOULD first
                   send a <a href="#GOAWAY" class="smpl">GOAWAY</a> (<a href="#GOAWAY" title="GOAWAY">Section&nbsp;6.8</a>) frame so that both endpoints can reliably determine whether previously sent frames have been processed and gracefully complete
                   or terminate any necessary remaining tasks.
@@ -3439,7 +3439,7 @@ Upgrade: h2c
             <div id="reuse">
                <h3 id="rfc.section.9.1.1"><a href="#rfc.section.9.1.1">9.1.1</a>&nbsp;<a href="#reuse">Connection Reuse</a></h3>
                <div id="rfc.section.9.1.1.p.1">
-                  <p>Connections that are made to an origin server, either directly or through a tunnel created using the CONNECT method (<a href="#CONNECT" title="The CONNECT Method">Section&nbsp;8.3</a>) MAY be reused for requests with multiple different URI authority components. A connection can be reused as long as the origin
+                  <p>Connections that are made to an origin server, either directly or through a tunnel created using the CONNECT method (<a href="#CONNECT" title="The CONNECT Method">Section&nbsp;8.3</a>), MAY be reused for requests with multiple different URI authority components. A connection can be reused as long as the origin
                      server is authoritative (<a href="#authority" title="Server Authority">Section&nbsp;10.1</a>). For TCP connections without TLS, this depends on the host having resolved to the same IP address.
                   </p>
                </div>
@@ -3450,7 +3450,7 @@ Upgrade: h2c
                   </p>
                </div>
                <div id="rfc.section.9.1.1.p.3">
-                  <p>An origin server might offer a certificate with multiple <tt>subjectAltName</tt> attributes, or names with wildcards, one of which is valid for the authority in the URI. For example, a certificate with a <tt>subjectAltName</tt> of <tt>*.example.com</tt> might permit the use of the same connection for requests to URIs starting with <tt>https://a.example.com/</tt> and <tt>https://b.example.com/</tt>.
+                  <p>An origin server might offer a certificate with multiple <tt>subjectAltName</tt> attributes or names with wildcards, one of which is valid for the authority in the URI. For example, a certificate with a <tt>subjectAltName</tt> of <tt>*.example.com</tt> might permit the use of the same connection for requests to URIs starting with <tt>https://a.example.com/</tt> and <tt>https://b.example.com/</tt>.
                   </p>
                </div>
                <div id="rfc.section.9.1.1.p.4">
@@ -3521,7 +3521,7 @@ Upgrade: h2c
                <div id="rfc.section.9.2.1.p.2">
                   <p>A deployment of HTTP/2 over TLS 1.2 MUST disable compression. TLS compression can lead to the exposure of information that
                      would not otherwise be revealed <a href="#RFC3749"><cite title="Transport Layer Security Protocol Compression Methods">[RFC3749]</cite></a>. Generic compression is unnecessary since HTTP/2 provides compression features that are more aware of context and therefore
-                     likely to be more appropriate for use for performance, security or other reasons.
+                     likely to be more appropriate for use for performance, security, or other reasons.
                   </p>
                </div>
                <div id="rfc.section.9.2.1.p.3">
@@ -3587,7 +3587,7 @@ Upgrade: h2c
             <h2 id="rfc.section.10.1"><a href="#rfc.section.10.1">10.1</a>&nbsp;<a href="#authority">Server Authority</a></h2>
             <div id="rfc.section.10.1.p.1">
                <p>HTTP/2 relies on the HTTP/1.1 definition of authority for determining whether a server is authoritative in providing a given
-                  response, see <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#establishing.authority" title="Establishing Authority">Section 9.1</a>. This relies on local name resolution for the "http" URI scheme, and the authenticated server identity for the "https" scheme
+                  response, see <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#establishing.authority" title="Establishing Authority">Section 9.1</a>. This relies on local name resolution for the "http" URI scheme and the authenticated server identity for the "https" scheme
                   (see <a href="#RFC2818"><cite title="HTTP Over TLS">[RFC2818]</cite></a>, <a href="https://tools.ietf.org/html/rfc2818#section-3">Section 3</a>).
                </p>
             </div>
@@ -3662,7 +3662,7 @@ Upgrade: h2c
             </div>
          </div>
          <div id="dos">
-            <h2 id="rfc.section.10.5"><a href="#rfc.section.10.5">10.5</a>&nbsp;<a href="#dos">Denial of Service Considerations</a></h2>
+            <h2 id="rfc.section.10.5"><a href="#rfc.section.10.5">10.5</a>&nbsp;<a href="#dos">Denial-of-Service Considerations</a></h2>
             <div id="rfc.section.10.5.p.1">
                <p>An HTTP/2 connection can demand a greater commitment of resources to operate than a HTTP/1.1 connection. The use of header
                   compression and flow control depend on a commitment of resources for storing a greater amount of state. Settings for these
@@ -3683,7 +3683,7 @@ Upgrade: h2c
                </p>
             </div>
             <div id="rfc.section.10.5.p.5">
-               <p>Large numbers of small or empty frames can be abused to cause a peer to expend time processing frame headers. Note however
+               <p>Large numbers of small or empty frames can be abused to cause a peer to expend time processing frame headers. Note, however,
                   that some uses are entirely legitimate, such as the sending of an empty <a href="#DATA" class="smpl">DATA</a> or <a href="#CONTINUATION" class="smpl">CONTINUATION</a> frame at the end of a stream.
                </p>
             </div>
@@ -3703,7 +3703,7 @@ Upgrade: h2c
                </p>
             </div>
             <div id="rfc.section.10.5.p.9">
-               <p>An endpoint that doesn't monitor this behavior exposes itself to a risk of denial of service attack. Implementations SHOULD
+               <p>An endpoint that doesn't monitor this behavior exposes itself to a risk of denial-of-service attack. Implementations SHOULD
                   track the use of these features and set limits on their use. An endpoint MAY treat activity that is suspicious as a connection error (<a href="#ConnectionErrorHandler" title="Connection Error Handling">Section&nbsp;5.4.1</a>) of type <a href="#ENHANCE_YOUR_CALM" class="smpl">ENHANCE_YOUR_CALM</a>.
                </p>
             </div>
@@ -3758,7 +3758,7 @@ Upgrade: h2c
             <div id="rfc.section.10.6.p.3">
                <p>Implementations communicating on a secure channel MUST NOT compress content that includes both confidential and attacker-controlled
                   data unless separate compression dictionaries are used for each source of data. Compression MUST NOT be used if the source
-                  of data cannot be reliably determined. Generic stream compression, such as that provided by TLS MUST NOT be used with HTTP/2
+                  of data cannot be reliably determined. Generic stream compression, such as that provided by TLS, MUST NOT be used with HTTP/2
                   (see <a href="#TLSUsage" title="Use of TLS Features">Section&nbsp;9.2</a>).
                </p>
             </div>
@@ -3778,20 +3778,20 @@ Upgrade: h2c
                <p>To mitigate attacks that rely on compression, disabling or limiting compression might be preferable to padding as a countermeasure.</p>
             </div>
             <div id="rfc.section.10.7.p.3">
-               <p>Padding can be used to obscure the exact size of frame content, and is provided to mitigate specific attacks within HTTP.
-                  For example, attacks where compressed content includes both attacker-controlled plaintext and secret data (see for example, <a href="#BREACH"><cite title="BREACH: Reviving the CRIME Attack">[BREACH]</cite></a>).
+               <p>Padding can be used to obscure the exact size of frame content and is provided to mitigate specific attacks within HTTP. For
+                  example, attacks where compressed content includes both attacker-controlled plaintext and secret data (see for example, <a href="#BREACH"><cite title="BREACH: Reviving the CRIME Attack">[BREACH]</cite></a>).
                </p>
             </div>
             <div id="rfc.section.10.7.p.4">
                <p>Use of padding can result in less protection than might seem immediately obvious. At best, padding only makes it more difficult
                   for an attacker to infer length information by increasing the number of frames an attacker has to observe. Incorrectly implemented
                   padding schemes can be easily defeated. In particular, randomized padding with a predictable distribution provides very little
-                  protection; similarly, padding payloads to a fixed size exposes information as payload sizes cross the fixed size boundary,
+                  protection; similarly, padding payloads to a fixed size exposes information as payload sizes cross the fixed-sized boundary,
                   which could be possible if an attacker can control plaintext.
                </p>
             </div>
             <div id="rfc.section.10.7.p.5">
-               <p>Intermediaries SHOULD retain padding for <a href="#DATA" class="smpl">DATA</a> frames, but MAY drop padding for <a href="#HEADERS" class="smpl">HEADERS</a> and <a href="#PUSH_PROMISE" class="smpl">PUSH_PROMISE</a> frames. A valid reason for an intermediary to change the amount of padding of frames is to improve the protections that padding
+               <p>Intermediaries SHOULD retain padding for <a href="#DATA" class="smpl">DATA</a> frames but MAY drop padding for <a href="#HEADERS" class="smpl">HEADERS</a> and <a href="#PUSH_PROMISE" class="smpl">PUSH_PROMISE</a> frames. A valid reason for an intermediary to change the amount of padding of frames is to improve the protections that padding
                   provides.
                </p>
             </div>
@@ -3801,7 +3801,7 @@ Upgrade: h2c
             </h2>
             <div id="rfc.section.10.8.p.1">
                <p>Several characteristics of HTTP/2 provide an observer an opportunity to correlate actions of a single client or server over
-                  time. This includes the value of settings, the manner in which flow control windows are managed, the way priorities are allocated
+                  time. This includes the value of settings, the manner in which flow-control windows are managed, the way priorities are allocated
                   to streams, timing of reactions to stimulus, and handling of any features that are controlled by settings.
                </p>
             </div>
@@ -3825,7 +3825,7 @@ Upgrade: h2c
       <div id="iana">
          <h1 id="rfc.section.11"><a href="#rfc.section.11">11.</a>&nbsp;<a href="#iana">IANA Considerations</a></h1>
          <div id="rfc.section.11.p.1">
-            <p>A string for identifying HTTP/2 is entered into the "Application Layer Protocol Negotiation (ALPN) Protocol IDs" registry
+            <p>A string for identifying HTTP/2 is entered into the "Application-Layer Protocol Negotiation (ALPN) Protocol IDs" registry
                established in <a href="#TLS-ALPN"><cite title="Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension">[TLS-ALPN]</cite></a>.
             </p>
          </div>
@@ -3845,7 +3845,7 @@ Upgrade: h2c
          <div id="iana-alpn">
             <h2 id="rfc.section.11.1"><a href="#rfc.section.11.1">11.1</a>&nbsp;<a href="#iana-alpn">Registration of HTTP/2 Identification Strings</a></h2>
             <div id="rfc.section.11.1.p.1">
-               <p>This document creates two registrations for the identification of HTTP/2 in the "Application Layer Protocol Negotiation (ALPN)
+               <p>This document creates two registrations for the identification of HTTP/2 in the "Application-Layer Protocol Negotiation (ALPN)
                   Protocol IDs" registry established in <a href="#TLS-ALPN"><cite title="Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension">[TLS-ALPN]</cite></a>.
                </p>
             </div>
@@ -4676,8 +4676,8 @@ Upgrade: h2c
             <dl>
                <dt>Note:</dt>
                <dd>This list was assembled from the set of registered TLS cipher suites at the time of writing. This list includes those cipher
-                  suites that do not offer an ephemeral key exchange and those that are based on the TLS null, stream or block cipher type (as
-                  defined in Section 6.2.3 of <a href="#TLS12"><cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[TLS12]</cite></a>). Additional cipher suites with these properties could be defined; these would not be explicitly prohibited.
+                  suites that do not offer an ephemeral key exchange and those that are based on the TLS null, stream, or block cipher type
+                  (as defined in Section 6.2.3 of <a href="#TLS12"><cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[TLS12]</cite></a>). Additional cipher suites with these properties could be defined; these would not be explicitly prohibited.
                </dd>
             </dl>
          </div>
