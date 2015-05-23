@@ -3264,7 +3264,7 @@ Upgrade: h2c
                </p>
             </div>
             <div id="rfc.section.8.2.p.6">
-               <p>The server MUST include a value in the <tt>:authority</tt> header field for which the server is authoritative (see <a href="#authority" title="Server Authority">Section&nbsp;10.1</a>). A client MUST treat a <a href="#PUSH_PROMISE" class="smpl">PUSH_PROMISE</a> for which the server is not authoritative as a stream error (<a href="#StreamErrorHandler" title="Stream Error Handling">Section&nbsp;5.4.2</a>) of type <a href="#PROTOCOL_ERROR" class="smpl">PROTOCOL_ERROR</a>.
+               <p>The server MUST include a value in the <tt>:authority</tt> pseudo-header field for which the server is authoritative (see <a href="#authority" title="Server Authority">Section&nbsp;10.1</a>). A client MUST treat a <a href="#PUSH_PROMISE" class="smpl">PUSH_PROMISE</a> for which the server is not authoritative as a stream error (<a href="#StreamErrorHandler" title="Stream Error Handling">Section&nbsp;5.4.2</a>) of type <a href="#PROTOCOL_ERROR" class="smpl">PROTOCOL_ERROR</a>.
                </p>
             </div>
             <div id="rfc.section.8.2.p.7">
@@ -3294,7 +3294,7 @@ Upgrade: h2c
                   </p>
                </div>
                <div id="rfc.section.8.2.1.p.4">
-                  <p>The header fields in <a href="#PUSH_PROMISE" class="smpl">PUSH_PROMISE</a> and any subsequent <a href="#CONTINUATION" class="smpl">CONTINUATION</a> frames MUST be a valid and complete set of request header fields (<a href="#HttpRequest" title="Request Pseudo-Header Fields">Section&nbsp;8.1.2.3</a>). The server MUST include a method in the <tt>:method</tt> header field that is safe and cacheable. If a client receives a <a href="#PUSH_PROMISE" class="smpl">PUSH_PROMISE</a> that does not include a complete and valid set of header fields, or the <tt>:method</tt> header field identifies a method that is not safe, it MUST respond with a stream error (<a href="#StreamErrorHandler" title="Stream Error Handling">Section&nbsp;5.4.2</a>) of type <a href="#PROTOCOL_ERROR" class="smpl">PROTOCOL_ERROR</a>.
+                  <p>The header fields in <a href="#PUSH_PROMISE" class="smpl">PUSH_PROMISE</a> and any subsequent <a href="#CONTINUATION" class="smpl">CONTINUATION</a> frames MUST be a valid and complete set of request header fields (<a href="#HttpRequest" title="Request Pseudo-Header Fields">Section&nbsp;8.1.2.3</a>). The server MUST include a method in the <tt>:method</tt> pseudo-header field that is safe and cacheable. If a client receives a <a href="#PUSH_PROMISE" class="smpl">PUSH_PROMISE</a> that does not include a complete and valid set of header fields, or the <tt>:method</tt> pseudo-header field identifies a method that is not safe, it MUST respond with a stream error (<a href="#StreamErrorHandler" title="Stream Error Handling">Section&nbsp;5.4.2</a>) of type <a href="#PROTOCOL_ERROR" class="smpl">PROTOCOL_ERROR</a>.
                   </p>
                </div>
                <div id="rfc.section.8.2.1.p.5">
@@ -3376,12 +3376,12 @@ Upgrade: h2c
                   The HTTP header field mapping works as defined in <a href="#HttpRequest" title="Request Pseudo-Header Fields">Section&nbsp;8.1.2.3</a> ("<a href="#HttpRequest" title="Request Pseudo-Header Fields">Request Pseudo-Header Fields</a>"), with a few differences. Specifically: 
                </p>
                <ul>
-                  <li>The <tt>:method</tt> header field is set to <tt>CONNECT</tt>.
+                  <li>The <tt>:method</tt> pseudo-header field is set to <tt>CONNECT</tt>.
                   </li>
-                  <li>The <tt>:scheme</tt> and <tt>:path</tt> header fields MUST be omitted.
+                  <li>The <tt>:scheme</tt> and <tt>:path</tt> pseudo-header fields MUST be omitted.
                   </li>
-                  <li>The <tt>:authority</tt> header field contains the host and port to connect to (equivalent to the authority-form of the request-target of CONNECT requests
-                     (see <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#request-target" title="Request Target">Section 5.3</a>)).
+                  <li>The <tt>:authority</tt> pseudo-header field contains the host and port to connect to (equivalent to the authority-form of the request-target of CONNECT
+                     requests (see <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#request-target" title="Request Target">Section 5.3</a>)).
                   </li>
                </ul>
             </div>
@@ -3390,7 +3390,7 @@ Upgrade: h2c
                </p>
             </div>
             <div id="rfc.section.8.3.p.4">
-               <p>A proxy that supports CONNECT establishes a <a href="#TCP">TCP connection</a> <cite title="Transmission Control Protocol">[TCP]</cite> to the server identified in the <tt>:authority</tt> header field. Once this connection is successfully established, the proxy sends a <a href="#HEADERS" class="smpl">HEADERS</a> frame containing a 2xx series status code to the client, as defined in <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7231.html#CONNECT" title="CONNECT">Section 4.3.6</a>.
+               <p>A proxy that supports CONNECT establishes a <a href="#TCP">TCP connection</a> <cite title="Transmission Control Protocol">[TCP]</cite> to the server identified in the <tt>:authority</tt> pseudo-header field. Once this connection is successfully established, the proxy sends a <a href="#HEADERS" class="smpl">HEADERS</a> frame containing a 2xx series status code to the client, as defined in <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7231.html#CONNECT" title="CONNECT">Section 4.3.6</a>.
                </p>
             </div>
             <div id="rfc.section.8.3.p.5">
