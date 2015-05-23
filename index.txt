@@ -368,10 +368,11 @@ Internet-Draft                   HTTP/2                         May 2015
 
    The protocol defined in this document has two identifiers.
 
-   o  The string "h2" identifies the protocol where HTTP/2 uses TLS
-      [TLS12].  This identifier is used in the TLS application-layer
-      protocol negotiation extension (ALPN) [TLS-ALPN] field and in any
-      place where HTTP/2 over TLS is identified.
+   o  The string "h2" identifies the protocol where HTTP/2 uses
+      Transport Layer Security (TLS) [TLS12].  This identifier is used
+      in the TLS application-layer protocol negotiation (ALPN) extension
+      [TLS-ALPN] field and in any place where HTTP/2 over TLS is
+      identified.
 
       The "h2" string is serialized into an ALPN protocol identifier as
       the two-octet sequence: 0x68, 0x32.
@@ -385,7 +386,6 @@ Internet-Draft                   HTTP/2                         May 2015
 
    Negotiating "h2" or "h2c" implies the use of the transport, security,
    framing, and message semantics described in this document.
-
 
 
 
@@ -576,7 +576,7 @@ Internet-Draft                   HTTP/2                         May 2015
    server support for the protocol, the client connection preface is
    sent upon connection establishment.
 
-      The client connection preface is selected so that a large
+      Note: The client connection preface is selected so that a large
       proportion of HTTP/1.1 or HTTP/1.0 servers and intermediaries do
       not attempt to process further frames.  Note that this does not
       address the concerns raised in [TALKING].
@@ -686,7 +686,7 @@ Internet-Draft                   HTTP/2                         May 2015
    header (Section 4.1).  The size of the frame header is not included
    when describing frame sizes.
 
-   Note:  Certain frame types, such as PING (Section 6.7), impose
+      Note: Certain frame types, such as PING (Section 6.7), impose
       additional limits on the amount of payload data allowed.
 
    An endpoint MUST send a FRAME_SIZE_ERROR error if a frame exceeds the
@@ -714,7 +714,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
    Header lists are collections of zero or more header fields.  When
    transmitted over a connection, a header list is serialized into a
-   header block using HTTP Header Compression [COMPRESSION].  The
+   header block using HTTP header compression [COMPRESSION].  The
    serialized header block is then divided into one or more octet
    sequences, called header block fragments, and transmitted within the
    payload of HEADERS (Section 6.2), PUSH_PROMISE (Section 6.6), or
@@ -1106,14 +1106,14 @@ Internet-Draft                   HTTP/2                         May 2015
 
    An example of the state transitions for an HTTP request/response
    exchange can be found in Section 8.1.  An example of the state
-   transitions for server push can be found in Section 8.2.1 and
-   Section 8.2.2.
+   transitions for server push can be found in Sections 8.2.1 and 8.2.2.
 
 5.1.1.  Stream Identifiers
 
    Streams are identified with an unsigned 31-bit integer.  Streams
    initiated by a client MUST use odd-numbered stream identifiers; those
    initiated by the server MUST use even-numbered stream identifiers.  A
+   stream identifier of zero (0x0) is used for connection control
 
 
 
@@ -1122,7 +1122,6 @@ Belshe, et al.          Expires November 24, 2015              [Page 20]
 Internet-Draft                   HTTP/2                         May 2015
 
 
-   stream identifier of zero (0x0) is used for connection control
    messages; the stream identifier zero cannot be used to establish a
    new stream.
 
@@ -1173,6 +1172,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
 
+
 Belshe, et al.          Expires November 24, 2015              [Page 21]
 
 Internet-Draft                   HTTP/2                         May 2015
@@ -1183,7 +1183,7 @@ Internet-Draft                   HTTP/2                         May 2015
    stream limit to be exceeded MUST treat this as a stream error
    (Section 5.4.2) of type PROTOCOL_ERROR or REFUSED_STREAM.  The choice
    of error code determines whether the endpoint wishes to enable
-   automatic retry, see Section 8.1.4) for details.
+   automatic retry (see Section 8.1.4) for details).
 
    An endpoint that wishes to reduce the value of
    SETTINGS_MAX_CONCURRENT_STREAMS to a value that is below the current
@@ -1747,7 +1747,7 @@ Internet-Draft                   HTTP/2                         May 2015
    frame payload or greater, the recipient MUST treat this as a
    connection error (Section 5.4.1) of type PROTOCOL_ERROR.
 
-   Note:  A frame can be increased in size by one octet by including a
+      Note: A frame can be increased in size by one octet by including a
       Pad Length field with a value of zero.
 
 6.2.  HEADERS
@@ -1778,11 +1778,11 @@ Internet-Draft                   HTTP/2                         May 2015
       PADDED flag is set.
 
    E: A single-bit flag indicates that the stream dependency is
-      exclusive, see Section 5.3.  This field is only present if the
+      exclusive (see Section 5.3).  This field is only present if the
       PRIORITY flag is set.
 
    Stream Dependency:  A 31-bit stream identifier for the stream that
-      this stream depends on, see Section 5.3.  This field is only
+      this stream depends on (see Section 5.3).  This field is only
       present if the PRIORITY flag is set.
 
 
@@ -1795,7 +1795,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 
    Weight:  An unsigned 8-bit integer representing a priority weight for
-      the stream, see Section 5.3.  Add one to the value to obtain a
+      the stream (see Section 5.3).  Add one to the value to obtain a
       weight between 1 and 256.  This field is only present if the
       PRIORITY flag is set.
 
@@ -1878,13 +1878,13 @@ Internet-Draft                   HTTP/2                         May 2015
    The payload of a PRIORITY frame contains the following fields:
 
    E: A single bit flag indicates that the stream dependency is
-      exclusive, see Section 5.3.
+      exclusive (see Section 5.3).
 
    Stream Dependency:  A 31-bit stream identifier for the stream that
-      this stream depends on, see Section 5.3.
+      this stream depends on (see Section 5.3).
 
    Weight:  An unsigned 8-bit integer representing a priority weight for
-      the stream, see Section 5.3.  Add one to the value to obtain a
+      the stream (see Section 5.3).  Add one to the value to obtain a
       weight between 1 and 256.
 
    The PRIORITY frame does not define any flags.
@@ -1999,8 +1999,8 @@ Internet-Draft                   HTTP/2                         May 2015
       bit is set, the payload of the SETTINGS frame MUST be empty.
       Receipt of a SETTINGS frame with the ACK flag set and a length
       field value other than 0 MUST be treated as a connection error
-      (Section 5.4.1) of type FRAME_SIZE_ERROR.  For more info, see
-      Settings Synchronization (Section 6.5.3).
+      (Section 5.4.1) of type FRAME_SIZE_ERROR.  For more information,
+      see Section 6.5.3 ("Settings Synchronization").
 
    SETTINGS frames always apply to a connection, never a single stream.
    The stream identifier for a SETTINGS frame MUST be zero (0x0).  If an
@@ -2049,7 +2049,7 @@ Internet-Draft                   HTTP/2                         May 2015
       table used to decode header blocks, in octets.  The encoder can
       select any size equal to or less than this value by using
       signaling specific to the header compression format inside a
-      header block, see [COMPRESSION].  The initial value is 4,096
+      header block (see [COMPRESSION]).  The initial value is 4,096
       octets.
 
    SETTINGS_ENABLE_PUSH (0x2):  This setting can be use to disable
@@ -2089,8 +2089,8 @@ Internet-Draft                   HTTP/2                         May 2015
       window size (in octets) for stream-level flow control.  The
       initial value is 2^16-1 (65,535) octets.
 
-      This setting affects the window size of all streams, see
-      Section 6.9.2.
+      This setting affects the window size of all streams (see
+      Section 6.9.2).
 
       Values above the maximum flow-control window size of 2^31-1 MUST
       be treated as a connection error (Section 5.4.1) of type
@@ -2189,7 +2189,7 @@ Internet-Draft                   HTTP/2                         May 2015
    Promised Stream ID:  An unsigned 31-bit integer that identifies the
       stream that is reserved by the PUSH_PROMISE.  The promised stream
       identifier MUST be a valid choice for the next stream sent by the
-      sender (see new stream identifier (Section 5.1.1)).
+      sender (see "new stream identifier" in Section 5.1.1).
 
    Header Block Fragment:  A header block fragment (Section 4.3)
       containing request header fields.
@@ -2390,7 +2390,7 @@ Internet-Draft                   HTTP/2                         May 2015
    processed in some way.  The last stream identifier can be set to 0 if
    no streams were processed.
 
-   Note:  In this context, "processed" means that some data from the
+      Note: In this context, "processed" means that some data from the
       stream was passed to some higher layer of software that might have
       taken some action as a result.
 
@@ -2528,7 +2528,7 @@ Internet-Draft                   HTTP/2                         May 2015
    WINDOW_UPDATE can be sent by a peer that has sent a frame bearing the
    END_STREAM flag.  This means that a receiver could receive a
    WINDOW_UPDATE frame on a "half-closed (remote)" or "closed" stream.
-   A receiver MUST NOT treat this as an error, see Section 5.1.
+   A receiver MUST NOT treat this as an error (see Section 5.1).
 
    A receiver that receives a flow-controlled frame MUST always account
    for its contribution against the connection flow-control window,
@@ -2734,8 +2734,8 @@ Internet-Draft                   HTTP/2                         May 2015
       violated the flow-control protocol.
 
    SETTINGS_TIMEOUT (0x4):  The endpoint sent a SETTINGS frame, but did
-      not receive a response in a timely manner.  See Settings
-      Synchronization (Section 6.5.3).
+      not receive a response in a timely manner.  See Section 6.5.3
+      ("Settings Synchronization").
 
 
 
@@ -2753,8 +2753,8 @@ Internet-Draft                   HTTP/2                         May 2015
       invalid size.
 
    REFUSED_STREAM (0x7):  The endpoint refuses the stream prior to
-      performing any application processing, see Section 8.1.4 for
-      details.
+      performing any application processing (see Section 8.1.4 for
+      details).
 
    CANCEL (0x8):  Used by the endpoint to indicate that the stream is no
       longer needed.
@@ -2955,7 +2955,7 @@ Internet-Draft                   HTTP/2                         May 2015
    Transfer-Encoding, and Upgrade, even if they are not nominated by
    Connection.
 
-   Note:  HTTP/2 purposefully does not support upgrade to another
+      Note: HTTP/2 purposefully does not support upgrade to another
       protocol.  The handshake methods described in Section 3 are
       believed sufficient to negotiate the use of alternative protocols.
 
@@ -3002,9 +3002,8 @@ Internet-Draft                   HTTP/2                         May 2015
    o  The ":path" pseudo-header field includes the path and query parts
       of the target URI (the "path-absolute" production from [RFC3986]
       and optionally a '?' character followed by the "query" production,
-      see [RFC3986], Section 3.3 and [RFC3986], Section 3.4).  A request
-      in asterisk form includes the value '*' for the ":path" pseudo-
-      header field.
+      see Sections 3.3 and 3.4 of [RFC3986]).  A request in asterisk
+      form includes the value '*' for the ":path" pseudo-header field.
 
       This pseudo-header field MUST NOT be empty for "http" or "https"
       URIs; "http" or "https" URIs that do not contain a path component
@@ -3017,6 +3016,7 @@ Internet-Draft                   HTTP/2                         May 2015
    ":method", ":scheme", and ":path" pseudo-header fields, unless it is
    a CONNECT request (Section 8.3).  An HTTP request that omits
    mandatory pseudo-header fields is malformed (Section 8.1.2.6).
+
 
 
 
@@ -3322,9 +3322,9 @@ Internet-Draft                   HTTP/2                         May 2015
    Pushed responses that are cacheable (see [RFC7234], Section 3) can be
    stored by the client, if it implements an HTTP cache.  Pushed
    responses are considered successfully validated on the origin server
-   (e.g., if the "no-cache" cache response directive [RFC7234],
-   Section 5.2.2 is present) while the stream identified by the promised
-   stream ID is still open.
+   (e.g., if the "no-cache" cache response directive is present
+   ([RFC7234], Section 5.2.2)) while the stream identified by the
+   promised stream ID is still open.
 
    Pushed responses that are not cacheable MUST NOT be stored by any
    HTTP cache.  They MAY be made available to the application
@@ -3459,8 +3459,8 @@ Internet-Draft                   HTTP/2                         May 2015
    and ends with a frame bearing END_STREAM, which places the stream in
    the "closed" state.
 
-   Note:  The client never sends a frame with the END_STREAM flag for a
-      server push.
+      Note: The client never sends a frame with the END_STREAM flag for
+      a server push.
 
 
 
@@ -3484,8 +3484,9 @@ Internet-Draft                   HTTP/2                         May 2015
 
    In HTTP/2, the CONNECT method is used to establish a tunnel over a
    single HTTP/2 stream to a remote host for similar purposes.  The HTTP
-   header field mapping works as defined in Request Header Fields
-   (Section 8.1.2.3), with a few differences.  Specifically:
+   header field mapping works as defined in Section 8.1.2.3
+   ("Request Pseudo-Header Fields"), with a few differences.
+   Specifically:
 
    o  The ":method" header field is set to "CONNECT".
 
@@ -3493,7 +3494,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
    o  The ":authority" header field contains the host and port to
       connect to (equivalent to the authority-form of the request-target
-      of CONNECT requests, see [RFC7230], Section 5.3).
+      of CONNECT requests (see [RFC7230], Section 5.3)).
 
    A CONNECT request that does not conform to these restrictions is
    malformed (Section 8.1.2.6).
@@ -3520,8 +3521,7 @@ Internet-Draft                   HTTP/2                         May 2015
    receives a DATA frame with the END_STREAM flag set sends the attached
    data with the FIN bit set on the last TCP segment.  A proxy that
    receives a TCP segment with the FIN bit set sends a DATA frame with
-   the END_STREAM flag set.  Note that the final TCP segment or DATA
-   frame could be empty.
+
 
 
 
@@ -3529,6 +3529,9 @@ Belshe, et al.          Expires November 24, 2015              [Page 63]
 
 Internet-Draft                   HTTP/2                         May 2015
 
+
+   the END_STREAM flag set.  Note that the final TCP segment or DATA
+   frame could be empty.
 
    A TCP connection error is signaled with RST_STREAM.  A proxy treats
    any error in the TCP connection, which includes receiving a TCP
@@ -3573,9 +3576,6 @@ Internet-Draft                   HTTP/2                         May 2015
    (Section 6.8) frame so that both endpoints can reliably determine
    whether previously sent frames have been processed and gracefully
    complete or terminate any necessary remaining tasks.
-
-
-
 
 
 
@@ -3646,7 +3646,7 @@ Internet-Draft                   HTTP/2                         May 2015
    MAY retry the request - whether the request method is idempotent or
    not - over a different connection.  This is possible if a connection
    is reused (Section 9.1.1) or if an alternative service is selected
-   ([ALT-SVC]).
+   [ALT-SVC].
 
    This status code MUST NOT be generated by proxies.
 
@@ -3656,7 +3656,7 @@ Internet-Draft                   HTTP/2                         May 2015
 
 9.2.  Use of TLS Features
 
-   Implementations of HTTP/2 MUST use TLS [TLS12] version 1.2 or higher
+   Implementations of HTTP/2 MUST use TLS version 1.2 [TLS12] or higher
    for HTTP/2 over TLS.  The general TLS usage guidance in [TLSBCP]
    SHOULD be followed, with some additional restrictions that are
    specific to HTTP/2.
@@ -3766,9 +3766,9 @@ Internet-Draft                   HTTP/2                         May 2015
 10.1.  Server Authority
 
    HTTP/2 relies on the HTTP/1.1 definition of authority for determining
-   whether a server is authoritative in providing a given response, see
-   [RFC7230], Section 9.1.  This relies on local name resolution for the
-   "http" URI scheme and the authenticated server identity for the
+   whether a server is authoritative in providing a given response (see
+   [RFC7230], Section 9.1).  This relies on local name resolution for
+   the "http" URI scheme and the authenticated server identity for the
    "https" scheme (see [RFC2818], Section 3).
 
 10.2.  Cross-Protocol Attacks
@@ -5128,12 +5128,12 @@ Internet-Draft                   HTTP/2                         May 2015
 
    o  TLS_PSK_WITH_AES_256_CCM_8
 
-   Note:  This list was assembled from the set of registered TLS cipher
-      suites at the time of writing.  This list includes those cipher
-      suites that do not offer an ephemeral key exchange and those that
-      are based on the TLS null, stream, or block cipher type (as
-      defined in Section 6.2.3 of [TLS12]).  Additional cipher suites
-      with these properties could be defined; these would not be
+      Note: This list was assembled from the set of registered TLS
+      cipher suites at the time of writing.  This list includes those
+      cipher suites that do not offer an ephemeral key exchange and
+      those that are based on the TLS null, stream, or block cipher type
+      (as defined in Section 6.2.3 of [TLS12]).  Additional cipher
+      suites with these properties could be defined; these would not be
       explicitly prohibited.
 
 Appendix B.  Acknowledgements
