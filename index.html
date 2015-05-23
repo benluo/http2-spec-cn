@@ -3,7 +3,7 @@
 <html lang="en">
    <head profile="http://dublincore.org/documents/2008/08/04/dc-html/">
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <title>Hypertext Transfer Protocol version 2</title><script type="application/javascript">
+      <title>Hypertext Transfer Protocol Version 2 (HTTP/2)</title><script type="application/javascript">
 var buttonsAdded = false;
 
 function initFeedback() {
@@ -461,7 +461,7 @@ ul p {
        content: "Belshe, et al.";
   }
   @bottom-center {
-       content: "Expires November 20, 2015";
+       content: "Expires November 24, 2015";
   }
   @bottom-right {
        content: "[Page " counter(page) "]";
@@ -533,10 +533,9 @@ pre.text, pre.text2 {
       <link rel="Chapter" title="9 Additional HTTP Requirements/Considerations" href="#rfc.section.9">
       <link rel="Chapter" title="10 Security Considerations" href="#rfc.section.10">
       <link rel="Chapter" title="11 IANA Considerations" href="#rfc.section.11">
-      <link rel="Chapter" title="12 Acknowledgements" href="#rfc.section.12">
-      <link rel="Chapter" href="#rfc.section.13" title="13 References">
+      <link rel="Chapter" href="#rfc.section.12" title="12 References">
       <link rel="Appendix" title="A TLS 1.2 Cipher Suite Black List" href="#rfc.section.A">
-      <link rel="Appendix" title="B Change Log" href="#rfc.section.B">
+      <link rel="Appendix" title="Acknowledgements" href="#rfc.section.unnumbered-1">
       <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.730, 2015/05/19 09:21:05, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
       <meta name="keywords" content="HTTP, SPDY, Web">
       <link rel="schema.dct" href="http://purl.org/dc/terms/">
@@ -544,7 +543,7 @@ pre.text, pre.text2 {
       <meta name="dct.creator" content="Peon, R.">
       <meta name="dct.creator" content="Thomson, M.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-http2-latest">
-      <meta name="dct.issued" scheme="ISO8601" content="2015-05-19">
+      <meta name="dct.issued" scheme="ISO8601" content="2015-05-23">
       <meta name="dct.abstract" content="This specification describes an optimized expression of the semantics of the Hypertext Transfer Protocol (HTTP). HTTP/2 enables a more efficient use of network resources and a reduced perception of latency by introducing header field compression and allowing multiple concurrent exchanges on the same connection. It also introduces unsolicited push of representations from servers to clients. This specification is an alternative to, but does not obsolete, the HTTP/1.1 message syntax. HTTP's existing semantics remain unchanged.">
       <meta name="description" content="This specification describes an optimized expression of the semantics of the Hypertext Transfer Protocol (HTTP). HTTP/2 enables a more efficient use of network resources and a reduced perception of latency by introducing header field compression and allowing multiple concurrent exchanges on the same connection. It also introduces unsolicited push of representations from servers to clients. This specification is an alternative to, but does not obsolete, the HTTP/1.1 message syntax. HTTP's existing semantics remain unchanged.">
    </head>
@@ -557,14 +556,14 @@ pre.text, pre.text2 {
             </tr>
             <tr>
                <td class="left">Internet-Draft</td>
-               <td class="right">Twist</td>
+               <td class="right">BitGo</td>
             </tr>
             <tr>
                <td class="left">Intended status: Standards Track</td>
                <td class="right">R. Peon</td>
             </tr>
             <tr>
-               <td class="left">Expires: November 20, 2015</td>
+               <td class="left">Expires: November 24, 2015</td>
                <td class="right">Google, Inc</td>
             </tr>
             <tr>
@@ -577,11 +576,11 @@ pre.text, pre.text2 {
             </tr>
             <tr>
                <td class="left"></td>
-               <td class="right">May 19, 2015</td>
+               <td class="right">May 23, 2015</td>
             </tr>
          </tbody>
       </table>
-      <p class="title" id="rfc.title">Hypertext Transfer Protocol version 2<br><span class="filename">draft-ietf-httpbis-http2-latest</span></p>
+      <p class="title" id="rfc.title">Hypertext Transfer Protocol Version 2 (HTTP/2)<br><span class="filename">draft-ietf-httpbis-http2-latest</span></p>
       <h1 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h1>
       <p>This specification describes an optimized expression of the semantics of the Hypertext Transfer Protocol (HTTP). HTTP/2 enables
          a more efficient use of network resources and a reduced perception of latency by introducing header field compression and
@@ -590,13 +589,6 @@ pre.text, pre.text2 {
       </p>
       <p>This specification is an alternative to, but does not obsolete, the HTTP/1.1 message syntax. HTTP's existing semantics remain
          unchanged.
-      </p>
-      <h1 id="rfc.note.1"><a href="#rfc.note.1">Editorial Note (To be removed by RFC Editor)</a></h1>
-      <p>Discussion of this draft takes place on the HTTPBIS working group mailing list (ietf-http-wg@w3.org), which is archived at &lt;<a href="https://lists.w3.org/Archives/Public/ietf-http-wg/">https://lists.w3.org/Archives/Public/ietf-http-wg/</a>&gt;.
-      </p>
-      <p>Working Group information can be found at &lt;<a href="https://tools.ietf.org/wg/httpbis/">https://tools.ietf.org/wg/httpbis/</a>&gt;; that specific to HTTP/2 are at &lt;<a href="https://http2.github.io/">https://http2.github.io/</a>&gt;.
-      </p>
-      <p>The changes in this draft are summarized in <a href="#change.log" title="Change Log">Appendix&nbsp;B</a>.
       </p>
       <div id="rfc.status">
          <h1><a href="#rfc.status">Status of This Memo</a></h1>
@@ -608,7 +600,7 @@ pre.text, pre.text2 {
             documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
             in progress”.
          </p>
-         <p>This Internet-Draft will expire on November 20, 2015.</p>
+         <p>This Internet-Draft will expire on November 24, 2015.</p>
       </div>
       <div id="rfc.copyrightnotice">
          <h1><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
@@ -752,33 +744,13 @@ pre.text, pre.text2 {
                   <li><a href="#rfc.section.11.7">11.7</a>&nbsp;&nbsp;&nbsp;<a href="#iana-MisdirectedRequest">The 421 (Misdirected Request) HTTP Status Code</a></li>
                </ul>
             </li>
-            <li><a href="#rfc.section.12">12.</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.12">Acknowledgements</a></li>
-            <li><a href="#rfc.section.13">13.</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references">References</a><ul>
-                  <li><a href="#rfc.section.13.1">13.1</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references.1">Normative References</a></li>
-                  <li><a href="#rfc.section.13.2">13.2</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references.2">Informative References</a></li>
+            <li><a href="#rfc.section.12">12.</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references">References</a><ul>
+                  <li><a href="#rfc.section.12.1">12.1</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references.1">Normative References</a></li>
+                  <li><a href="#rfc.section.12.2">12.2</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references.2">Informative References</a></li>
                </ul>
             </li>
             <li><a href="#rfc.section.A">A.</a>&nbsp;&nbsp;&nbsp;<a href="#BadCipherSuites">TLS 1.2 Cipher Suite Black List</a></li>
-            <li><a href="#rfc.section.B">B.</a>&nbsp;&nbsp;&nbsp;<a href="#change.log">Change Log</a><ul>
-                  <li><a href="#rfc.section.B.1">B.1</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-http2-15">Since draft-ietf-httpbis-http2-15</a></li>
-                  <li><a href="#rfc.section.B.2">B.2</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-http2-14">Since draft-ietf-httpbis-http2-14</a></li>
-                  <li><a href="#rfc.section.B.3">B.3</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-http2-13">Since draft-ietf-httpbis-http2-13</a></li>
-                  <li><a href="#rfc.section.B.4">B.4</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-http2-12">Since draft-ietf-httpbis-http2-12</a></li>
-                  <li><a href="#rfc.section.B.5">B.5</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-http2-11">Since draft-ietf-httpbis-http2-11</a></li>
-                  <li><a href="#rfc.section.B.6">B.6</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-http2-10">Since draft-ietf-httpbis-http2-10</a></li>
-                  <li><a href="#rfc.section.B.7">B.7</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-http2-09">Since draft-ietf-httpbis-http2-09</a></li>
-                  <li><a href="#rfc.section.B.8">B.8</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-http2-08">Since draft-ietf-httpbis-http2-08</a></li>
-                  <li><a href="#rfc.section.B.9">B.9</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-http2-07">Since draft-ietf-httpbis-http2-07</a></li>
-                  <li><a href="#rfc.section.B.10">B.10</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-http2-06">Since draft-ietf-httpbis-http2-06</a></li>
-                  <li><a href="#rfc.section.B.11">B.11</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-http2-05">Since draft-ietf-httpbis-http2-05</a></li>
-                  <li><a href="#rfc.section.B.12">B.12</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-http2-04">Since draft-ietf-httpbis-http2-04</a></li>
-                  <li><a href="#rfc.section.B.13">B.13</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-http2-03">Since draft-ietf-httpbis-http2-03</a></li>
-                  <li><a href="#rfc.section.B.14">B.14</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-http2-02">Since draft-ietf-httpbis-http2-02</a></li>
-                  <li><a href="#rfc.section.B.15">B.15</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-http2-01">Since draft-ietf-httpbis-http2-01</a></li>
-                  <li><a href="#rfc.section.B.16">B.16</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-http2-00">Since draft-ietf-httpbis-http2-00</a></li>
-                  <li><a href="#rfc.section.B.17">B.17</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-mbelshe-httpbis-spdy-00">Since draft-mbelshe-httpbis-spdy-00</a></li>
-               </ul>
-            </li>
+            <li><a href="#rfc.section.unnumbered-1">Acknowledgements</a></li>
             <li><a href="#rfc.authors">Authors' Addresses</a></li>
          </ul>
       </div>
@@ -984,26 +956,6 @@ pre.text, pre.text2 {
             </div>
             <div id="rfc.section.3.1.p.2">
                <p>Negotiating "h2" or "h2c" implies the use of the transport, security, framing and message semantics described in this document.</p>
-            </div>
-            <div id="rfc.section.3.1.p.3">
-               <p><span class="comment" id="rfc.comment.1">[<a href="#rfc.comment.1" class="smpl">rfc.comment.1</a>: RFC Editor's Note: please remove the remainder of this section prior to the publication of a final version of this document.]</span> 
-               </p>
-            </div>
-            <div id="rfc.section.3.1.p.4">
-               <p>Only implementations of the final, published RFC can identify themselves as "h2" or "h2c". Until such an RFC exists, implementations
-                  MUST NOT identify themselves using these strings.
-               </p>
-            </div>
-            <div id="rfc.section.3.1.p.5">
-               <p>Implementations of draft versions of the protocol MUST add the string "-" and the corresponding draft number to the identifier.
-                  For example, draft-ietf-httpbis-http2-11 over TLS is identified using the string "h2-11".
-               </p>
-            </div>
-            <div id="rfc.section.3.1.p.6">
-               <p>Non-compatible experiments that are based on these draft versions MUST append the string "-" and an experiment name to the
-                  identifier. For example, an experimental implementation of packet mood-based encoding based on draft-ietf-httpbis-http2-09
-                  might identify itself as "h2-09-emo". Note that any label MUST conform to the "token" syntax defined in <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#field.components" title="Field Value Components">Section 3.2.6</a> of <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>. Experimenters are encouraged to coordinate their experiments on the ietf-http-wg@w3.org mailing list.
-               </p>
             </div>
          </div>
          <div id="discover-http">
@@ -1282,7 +1234,7 @@ Upgrade: h2c
             </div>
             <div id="rfc.section.4.3.p.2">
                <p>Header lists are collections of zero or more header fields. When transmitted over a connection, a header list is serialized
-                  into a header block using <a href="#COMPRESSION">HTTP Header Compression</a> <cite title="HPACK - Header Compression for HTTP/2">[COMPRESSION]</cite>. The serialized header block is then divided into one or more octet sequences, called header block fragments, and transmitted
+                  into a header block using <a href="#COMPRESSION">HTTP Header Compression</a> <cite title="HPACK: Header Compression for HTTP/2">[COMPRESSION]</cite>. The serialized header block is then divided into one or more octet sequences, called header block fragments, and transmitted
                   within the payload of HEADERS (<a href="#HEADERS" title="HEADERS">Section&nbsp;6.2</a>), PUSH_PROMISE (<a href="#PUSH_PROMISE" title="PUSH_PROMISE">Section&nbsp;6.6</a>) or CONTINUATION (<a href="#CONTINUATION" title="CONTINUATION">Section&nbsp;6.10</a>) frames.
                </p>
             </div>
@@ -2302,7 +2254,7 @@ Upgrade: h2c
                      <dd>
                         <p>Allows the sender to inform the remote endpoint of the maximum size of the header compression table used to decode header
                            blocks, in octets. The encoder can select any size equal to or less than this value by using signaling specific to the header
-                           compression format inside a header block, see <a href="#COMPRESSION"><cite title="HPACK - Header Compression for HTTP/2">[COMPRESSION]</cite></a>. The initial value is 4,096 octets.
+                           compression format inside a header block, see <a href="#COMPRESSION"><cite title="HPACK: Header Compression for HTTP/2">[COMPRESSION]</cite></a>. The initial value is 4,096 octets.
                         </p>
                      </dd>
                      <dt id="SETTINGS_ENABLE_PUSH">SETTINGS_ENABLE_PUSH (0x2):</dt>
@@ -3544,7 +3496,7 @@ Upgrade: h2c
          <div id="TLSUsage">
             <h2 id="rfc.section.9.2"><a href="#rfc.section.9.2">9.2</a>&nbsp;<a href="#TLSUsage">Use of TLS Features</a></h2>
             <div id="rfc.section.9.2.p.1">
-               <p>Implementations of HTTP/2 MUST use <a href="#TLS12">TLS</a> <cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[TLS12]</cite> version 1.2 or higher for HTTP/2 over TLS. The general TLS usage guidance in <a href="#TLSBCP"><cite title="Recommendations for Secure Use of TLS and DTLS">[TLSBCP]</cite></a> SHOULD be followed, with some additional restrictions that are specific to HTTP/2.
+               <p>Implementations of HTTP/2 MUST use <a href="#TLS12">TLS</a> <cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[TLS12]</cite> version 1.2 or higher for HTTP/2 over TLS. The general TLS usage guidance in <a href="#TLSBCP"><cite title="Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)">[TLSBCP]</cite></a> SHOULD be followed, with some additional restrictions that are specific to HTTP/2.
                </p>
             </div>
             <div id="rfc.section.9.2.p.2">
@@ -3736,7 +3688,7 @@ Upgrade: h2c
                </p>
             </div>
             <div id="rfc.section.10.5.p.6">
-               <p>Header compression also offers some opportunities to waste processing resources; see <a href="https://tools.ietf.org/html/draft-ietf-httpbis-header-compression-11#section-7" title="Security Considerations">Section 7</a> of <a href="#COMPRESSION"><cite title="HPACK - Header Compression for HTTP/2">[COMPRESSION]</cite></a> for more details on potential abuses.
+               <p>Header compression also offers some opportunities to waste processing resources; see <a href="https://tools.ietf.org/html/rfc7541#section-7" title="Security Considerations">Section 7</a> of <a href="#COMPRESSION"><cite title="HPACK: Header Compression for HTTP/2">[COMPRESSION]</cite></a> for more details on potential abuses.
                </p>
             </div>
             <div id="rfc.section.10.5.p.7">
@@ -3811,7 +3763,7 @@ Upgrade: h2c
                </p>
             </div>
             <div id="rfc.section.10.6.p.4">
-               <p>Further considerations regarding the compression of header fields are described in <a href="#COMPRESSION"><cite title="HPACK - Header Compression for HTTP/2">[COMPRESSION]</cite></a>.
+               <p>Further considerations regarding the compression of header fields are described in <a href="#COMPRESSION"><cite title="HPACK: Header Compression for HTTP/2">[COMPRESSION]</cite></a>.
                </p>
             </div>
          </div>
@@ -4276,36 +4228,14 @@ Upgrade: h2c
             </div>
          </div>
       </div>
-      <div>
-         <h1 id="rfc.section.12"><a href="#rfc.section.12">12.</a>&nbsp;Acknowledgements
-         </h1>
-         <div id="rfc.section.12.p.1">
-            <p>This document includes substantial input from the following individuals: </p>
-            <ul>
-               <li>Adam Langley, Wan-Teh Chang, Jim Morrison, Mark Nottingham, Alyssa Wilk, Costin Manolache, William Chan, Vitaliy Lvin, Joe
-                  Chan, Adam Barth, Ryan Hamilton, Gavin Peters, Kent Alstad, Kevin Lindsay, Paul Amer, Fan Yang, Jonathan Leighton (SPDY contributors).
-               </li>
-               <li>Gabriel Montenegro and Willy Tarreau (Upgrade mechanism).</li>
-               <li>William Chan, Salvatore Loreto, Osama Mazahir, Gabriel Montenegro, Jitu Padhye, Roberto Peon, Rob Trace (Flow control).</li>
-               <li>Mike Bishop (Extensibility).</li>
-               <li>Mark Nottingham, Julian Reschke, James Snell, Jeff Pinner, Mike Bishop, Herve Ruellan (Substantial editorial contributions).</li>
-               <li>Kari Hurtta, Tatsuhiro Tsujikawa, Greg Wilkins, Poul-Henning Kamp, Jonathan Thackray.</li>
-               <li>Alexey Melnikov was an editor of this document during 2013.</li>
-               <li>A substantial proportion of Martin's contribution was supported by Microsoft during his employment there.</li>
-               <li>The Japanese HTTP/2 community provided an invaluable contribution, including a number of implementations, plus numerous technical
-                  and editorial contributions.
-               </li>
-            </ul>
-         </div>
-      </div>
-      <h1 id="rfc.references"><a id="rfc.section.13" href="#rfc.section.13">13.</a> References
+      <h1 id="rfc.references"><a id="rfc.section.12" href="#rfc.section.12">12.</a> References
       </h1>
-      <h2 id="rfc.references.1"><a href="#rfc.section.13.1" id="rfc.section.13.1">13.1</a> Normative References
+      <h2 id="rfc.references.1"><a href="#rfc.section.12.1" id="rfc.section.12.1">12.1</a> Normative References
       </h2>
       <table>
          <tr>
             <td class="reference"><b id="COMPRESSION">[COMPRESSION]</b></td>
-            <td class="top">Ruellan, H. and R. Peon, “<a href="https://tools.ietf.org/html/draft-ietf-httpbis-header-compression-11">HPACK - Header Compression for HTTP/2</a>”, Internet-Draft&nbsp;draft-ietf-httpbis-header-compression-11 (work in progress), February&nbsp;2015.
+            <td class="top">Peon, R. and H. Ruellan, “<a href="https://tools.ietf.org/html/rfc7541">HPACK: Header Compression for HTTP/2</a>”, RFC&nbsp;7541, <a href="http://dx.doi.org/10.17487/RFC7541">DOI&nbsp;10.17487/RFC7541</a>, May&nbsp;2015, &lt;<a href="http://www.rfc-editor.org/info/rfc7541">http://www.rfc-editor.org/info/rfc7541</a>&gt;.
             </td>
          </tr>
          <tr>
@@ -4345,7 +4275,7 @@ Upgrade: h2c
          </tr>
          <tr>
             <td class="reference"><b id="RFC5234">[RFC5234]</b></td>
-            <td class="top">Crocker, D. and P. Overell, “<a href="https://tools.ietf.org/html/rfc5234">Augmented BNF for Syntax Specifications: ABNF</a>”, STD&nbsp;68, RFC&nbsp;5234, <a href="http://dx.doi.org/10.17487/RFC5234">DOI&nbsp;10.17487/RFC5234</a>, January&nbsp;2008, &lt;<a href="http://www.rfc-editor.org/info/rfc5234">http://www.rfc-editor.org/info/rfc5234</a>&gt;.
+            <td class="top">Crocker, D., Ed. and P. Overell, “<a href="https://tools.ietf.org/html/rfc5234">Augmented BNF for Syntax Specifications: ABNF</a>”, STD&nbsp;68, RFC&nbsp;5234, <a href="http://dx.doi.org/10.17487/RFC5234">DOI&nbsp;10.17487/RFC5234</a>, January&nbsp;2008, &lt;<a href="http://www.rfc-editor.org/info/rfc5234">http://www.rfc-editor.org/info/rfc5234</a>&gt;.
             </td>
          </tr>
          <tr>
@@ -4395,7 +4325,7 @@ Upgrade: h2c
          </tr>
          <tr>
             <td class="reference"><b id="TLS-EXT">[TLS-EXT]</b></td>
-            <td class="top">Eastlake, D., “<a href="https://tools.ietf.org/html/rfc6066">Transport Layer Security (TLS) Extensions: Extension Definitions</a>”, RFC&nbsp;6066, <a href="http://dx.doi.org/10.17487/RFC6066">DOI&nbsp;10.17487/RFC6066</a>, January&nbsp;2011, &lt;<a href="http://www.rfc-editor.org/info/rfc6066">http://www.rfc-editor.org/info/rfc6066</a>&gt;.
+            <td class="top">Eastlake 3rd, D., “<a href="https://tools.ietf.org/html/rfc6066">Transport Layer Security (TLS) Extensions: Extension Definitions</a>”, RFC&nbsp;6066, <a href="http://dx.doi.org/10.17487/RFC6066">DOI&nbsp;10.17487/RFC6066</a>, January&nbsp;2011, &lt;<a href="http://www.rfc-editor.org/info/rfc6066">http://www.rfc-editor.org/info/rfc6066</a>&gt;.
             </td>
          </tr>
          <tr>
@@ -4404,7 +4334,7 @@ Upgrade: h2c
             </td>
          </tr>
       </table>
-      <h2 id="rfc.references.2"><a href="#rfc.section.13.2" id="rfc.section.13.2">13.2</a> Informative References
+      <h2 id="rfc.references.2"><a href="#rfc.section.12.2" id="rfc.section.12.2">12.2</a> Informative References
       </h2>
       <table>
          <tr>
@@ -4424,7 +4354,7 @@ Upgrade: h2c
          </tr>
          <tr>
             <td class="reference"><b id="HTML5">[HTML5]</b></td>
-            <td class="top">Hickson, I., Berjon, R., Faulkner, S., Leithead, T., Doyle Navara, E., O'Connor, E., and S. Pfeiffer, “<a href="http://www.w3.org/TR/2014/REC-html5-20141028/">HTML5</a>”, W3C Recommendation&nbsp;REC-html5-20141028, October&nbsp;2014, &lt;<a href="http://www.w3.org/TR/2014/REC-html5-20141028/">http://www.w3.org/TR/2014/REC-html5-20141028/</a>&gt;.<br>Latest version available at &lt;<a href="http://www.w3.org/TR/html5/">http://www.w3.org/TR/html5/</a>&gt;.
+            <td class="top">Hickson, I., Berjon, R., Faulkner, S., Leithead, T., Doyle Navara, E., O'Connor, E., and S. Pfeiffer, “<a href="http://www.w3.org/TR/2014/REC-html5-20141028/">HTML5</a>”, W3C Recommendation&nbsp;REC-html5-20141028, October&nbsp;2014, &lt;<a href="http://www.w3.org/TR/2014/REC-html5-20141028/">http://www.w3.org/TR/2014/REC-html5-20141028/</a>&gt;.
             </td>
          </tr>
          <tr>
@@ -4444,17 +4374,17 @@ Upgrade: h2c
          </tr>
          <tr>
             <td class="reference"><b id="RFC7323">[RFC7323]</b></td>
-            <td class="top">Borman, D., Braden, B., Jacobson, V., and R. Scheffenegger, “<a href="https://tools.ietf.org/html/rfc7323">TCP Extensions for High Performance</a>”, RFC&nbsp;7323, <a href="http://dx.doi.org/10.17487/RFC7323">DOI&nbsp;10.17487/RFC7323</a>, September&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7323">http://www.rfc-editor.org/info/rfc7323</a>&gt;.
+            <td class="top">Borman, D., Braden, B., Jacobson, V., and R. Scheffenegger, Ed., “<a href="https://tools.ietf.org/html/rfc7323">TCP Extensions for High Performance</a>”, RFC&nbsp;7323, <a href="http://dx.doi.org/10.17487/RFC7323">DOI&nbsp;10.17487/RFC7323</a>, September&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7323">http://www.rfc-editor.org/info/rfc7323</a>&gt;.
             </td>
          </tr>
          <tr>
             <td class="reference"><b id="TALKING">[TALKING]</b></td>
-            <td class="top">Huang, L-S., Chen, E., Barth, A., Rescorla, E., and C. Jackson, “<a href="http://w2spconf.com/2011/papers/websocket.pdf">Talking to Yourself for Fun and Profit</a>”, 2011, &lt;<a href="http://w2spconf.com/2011/papers/websocket.pdf">http://w2spconf.com/2011/papers/websocket.pdf</a>&gt;.
+            <td class="top">Huang, L., Chen, E., Barth, A., Rescorla, E., and C. Jackson, “<a href="http://w2spconf.com/2011/papers/websocket.pdf">Talking to Yourself for Fun and Profit</a>”, 2011, &lt;<a href="http://w2spconf.com/2011/papers/websocket.pdf">http://w2spconf.com/2011/papers/websocket.pdf</a>&gt;.
             </td>
          </tr>
          <tr>
             <td class="reference"><b id="TLSBCP">[TLSBCP]</b></td>
-            <td class="top">Sheffer, Y., Holz, R., and P. Saint-Andre, “<a href="https://tools.ietf.org/html/draft-ietf-uta-tls-bcp-08">Recommendations for Secure Use of TLS and DTLS</a>”, Internet-Draft&nbsp;draft-ietf-uta-tls-bcp-08 (work in progress), December&nbsp;2014.
+            <td class="top">Sheffer, Y., Holz, R., and P. Saint-Andre, “<a href="https://tools.ietf.org/html/rfc7525">Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)</a>”, BCP&nbsp;195, RFC&nbsp;7525, <a href="http://dx.doi.org/10.17487/RFC7525">DOI&nbsp;10.17487/RFC7525</a>, May&nbsp;2015, &lt;<a href="http://www.rfc-editor.org/info/rfc7525">http://www.rfc-editor.org/info/rfc7525</a>&gt;.
             </td>
          </tr>
       </table>
@@ -4752,374 +4682,41 @@ Upgrade: h2c
             </dl>
          </div>
       </div>
-      <div id="change.log">
-         <h1 id="rfc.section.B"><a href="#rfc.section.B">B.</a>&nbsp;<a href="#change.log">Change Log</a></h1>
-         <div id="rfc.section.B.p.1">
-            <p>This section is to be removed by RFC Editor before publication.</p>
+      <div>
+         <h1 id="rfc.section.unnumbered-1">Acknowledgements</h1>
+         <div id="rfc.section.unnumbered-1.p.1">
+            <p>This document includes substantial input from the following individuals: </p>
+            <ul>
+               <li>Adam Langley, Wan-Teh Chang, Jim Morrison, Mark Nottingham, Alyssa Wilk, Costin Manolache, William Chan, Vitaliy Lvin, Joe
+                  Chan, Adam Barth, Ryan Hamilton, Gavin Peters, Kent Alstad, Kevin Lindsay, Paul Amer, Fan Yang, and Jonathan Leighton (SPDY
+                  contributors).
+               </li>
+               <li>Gabriel Montenegro and Willy Tarreau (Upgrade mechanism).</li>
+               <li>William Chan, Salvatore Loreto, Osama Mazahir, Gabriel Montenegro, Jitu Padhye, Roberto Peon, and Rob Trace (Flow control).</li>
+               <li>Mike Bishop (Extensibility).</li>
+               <li>Mark Nottingham, Julian Reschke, James Snell, Jeff Pinner, Mike Bishop, and Herve Ruellan (Substantial editorial contributions).</li>
+               <li>Kari Hurtta, Tatsuhiro Tsujikawa, Greg Wilkins, Poul-Henning Kamp, and Jonathan Thackray.</li>
+               <li>Alexey Melnikov, who was an editor of this document in 2013.</li>
+            </ul>
          </div>
-         <div id="changes.since.draft-ietf-httpbis-http2-15">
-            <h2 id="rfc.section.B.1"><a href="#rfc.section.B.1">B.1</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-http2-15">Since draft-ietf-httpbis-http2-15</a></h2>
-            <div id="rfc.section.B.1.p.1">
-               <p>Enabled the sending of <a href="#PRIORITY" class="smpl">PRIORITY</a> for any stream state.
-               </p>
-            </div>
-            <div id="rfc.section.B.1.p.2">
-               <p>Added a cipher suite blacklist and made several changes to the TLS usage section.</p>
-            </div>
+         <div id="rfc.section.unnumbered-1.p.2">
+            <p>A substantial proportion of Martin's contribution was supported by Microsoft during his employment there.</p>
          </div>
-         <div id="changes.since.draft-ietf-httpbis-http2-14">
-            <h2 id="rfc.section.B.2"><a href="#rfc.section.B.2">B.2</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-http2-14">Since draft-ietf-httpbis-http2-14</a></h2>
-            <div id="rfc.section.B.2.p.1">
-               <p>Renamed Not Authoritative status code to Misdirected Request.</p>
-            </div>
-            <div id="rfc.section.B.2.p.2">
-               <p>Added <a href="#HTTP_1_1_REQUIRED" class="smpl">HTTP_1_1_REQUIRED</a> error code.
-               </p>
-            </div>
-         </div>
-         <div id="changes.since.draft-ietf-httpbis-http2-13">
-            <h2 id="rfc.section.B.3"><a href="#rfc.section.B.3">B.3</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-http2-13">Since draft-ietf-httpbis-http2-13</a></h2>
-            <div id="rfc.section.B.3.p.1">
-               <p>Pseudo-header fields are now required to appear strictly before regular ones.</p>
-            </div>
-            <div id="rfc.section.B.3.p.2">
-               <p>Restored 1xx series status codes, except 101.</p>
-            </div>
-            <div id="rfc.section.B.3.p.3">
-               <p>Changed frame length field 24-bits. Expanded frame header to 9 octets. Added a setting to limit the damage.</p>
-            </div>
-            <div id="rfc.section.B.3.p.4">
-               <p>Added a setting to advise peers of header set size limits.</p>
-            </div>
-            <div id="rfc.section.B.3.p.5">
-               <p>Removed segments.</p>
-            </div>
-            <div id="rfc.section.B.3.p.6">
-               <p>Made non-semantic-bearing <a href="#HEADERS" class="smpl">HEADERS</a> frames illegal in the HTTP mapping.
-               </p>
-            </div>
-         </div>
-         <div id="changes.since.draft-ietf-httpbis-http2-12">
-            <h2 id="rfc.section.B.4"><a href="#rfc.section.B.4">B.4</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-http2-12">Since draft-ietf-httpbis-http2-12</a></h2>
-            <div id="rfc.section.B.4.p.1">
-               <p>Restored extensibility options.</p>
-            </div>
-            <div id="rfc.section.B.4.p.2">
-               <p>Restricting TLS cipher suites to AEAD only.</p>
-            </div>
-            <div id="rfc.section.B.4.p.3">
-               <p>Removing Content-Encoding requirements.</p>
-            </div>
-            <div id="rfc.section.B.4.p.4">
-               <p>Permitting the use of <a href="#PRIORITY" class="smpl">PRIORITY</a> after stream close.
-               </p>
-            </div>
-            <div id="rfc.section.B.4.p.5">
-               <p>Removed ALTSVC frame.</p>
-            </div>
-            <div id="rfc.section.B.4.p.6">
-               <p>Removed BLOCKED frame.</p>
-            </div>
-            <div id="rfc.section.B.4.p.7">
-               <p>Reducing the maximum padding size to 256 octets; removing padding from <a href="#CONTINUATION" class="smpl">CONTINUATION</a> frames.
-               </p>
-            </div>
-            <div id="rfc.section.B.4.p.8">
-               <p>Removed per-frame GZIP compression.</p>
-            </div>
-         </div>
-         <div id="changes.since.draft-ietf-httpbis-http2-11">
-            <h2 id="rfc.section.B.5"><a href="#rfc.section.B.5">B.5</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-http2-11">Since draft-ietf-httpbis-http2-11</a></h2>
-            <div id="rfc.section.B.5.p.1">
-               <p>Added BLOCKED frame (at risk).</p>
-            </div>
-            <div id="rfc.section.B.5.p.2">
-               <p>Simplified priority scheme.</p>
-            </div>
-            <div id="rfc.section.B.5.p.3">
-               <p>Added <a href="#DATA" class="smpl">DATA</a> per-frame GZIP compression.
-               </p>
-            </div>
-         </div>
-         <div id="changes.since.draft-ietf-httpbis-http2-10">
-            <h2 id="rfc.section.B.6"><a href="#rfc.section.B.6">B.6</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-http2-10">Since draft-ietf-httpbis-http2-10</a></h2>
-            <div id="rfc.section.B.6.p.1">
-               <p>Changed "connection header" to "connection preface" to avoid confusion.</p>
-            </div>
-            <div id="rfc.section.B.6.p.2">
-               <p>Added dependency-based stream prioritization.</p>
-            </div>
-            <div id="rfc.section.B.6.p.3">
-               <p>Added "h2c" identifier to distinguish between cleartext and secured HTTP/2.</p>
-            </div>
-            <div id="rfc.section.B.6.p.4">
-               <p>Adding missing padding to <a href="#PUSH_PROMISE" class="smpl">PUSH_PROMISE</a>.
-               </p>
-            </div>
-            <div id="rfc.section.B.6.p.5">
-               <p>Integrate ALTSVC frame and supporting text.</p>
-            </div>
-            <div id="rfc.section.B.6.p.6">
-               <p>Dropping requirement on "deflate" Content-Encoding.</p>
-            </div>
-            <div id="rfc.section.B.6.p.7">
-               <p>Improving security considerations around use of compression.</p>
-            </div>
-         </div>
-         <div id="changes.since.draft-ietf-httpbis-http2-09">
-            <h2 id="rfc.section.B.7"><a href="#rfc.section.B.7">B.7</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-http2-09">Since draft-ietf-httpbis-http2-09</a></h2>
-            <div id="rfc.section.B.7.p.1">
-               <p>Adding padding for data frames.</p>
-            </div>
-            <div id="rfc.section.B.7.p.2">
-               <p>Renumbering frame types, error codes, and settings.</p>
-            </div>
-            <div id="rfc.section.B.7.p.3">
-               <p>Adding INADEQUATE_SECURITY error code.</p>
-            </div>
-            <div id="rfc.section.B.7.p.4">
-               <p>Updating TLS usage requirements to 1.2; forbidding TLS compression.</p>
-            </div>
-            <div id="rfc.section.B.7.p.5">
-               <p>Removing extensibility for frames and settings.</p>
-            </div>
-            <div id="rfc.section.B.7.p.6">
-               <p>Changing setting identifier size.</p>
-            </div>
-            <div id="rfc.section.B.7.p.7">
-               <p>Removing the ability to disable flow control.</p>
-            </div>
-            <div id="rfc.section.B.7.p.8">
-               <p>Changing the protocol identification token to "h2".</p>
-            </div>
-            <div id="rfc.section.B.7.p.9">
-               <p>Changing the use of :authority to make it optional and to allow userinfo in non-HTTP cases.</p>
-            </div>
-            <div id="rfc.section.B.7.p.10">
-               <p>Allowing split on 0x0 for Cookie.</p>
-            </div>
-            <div id="rfc.section.B.7.p.11">
-               <p>Reserved PRI method in HTTP/1.1 to avoid possible future collisions.</p>
-            </div>
-         </div>
-         <div id="changes.since.draft-ietf-httpbis-http2-08">
-            <h2 id="rfc.section.B.8"><a href="#rfc.section.B.8">B.8</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-http2-08">Since draft-ietf-httpbis-http2-08</a></h2>
-            <div id="rfc.section.B.8.p.1">
-               <p>Added cookie crumbling for more efficient header compression.</p>
-            </div>
-            <div id="rfc.section.B.8.p.2">
-               <p>Added header field ordering with the value-concatenation mechanism.</p>
-            </div>
-         </div>
-         <div id="changes.since.draft-ietf-httpbis-http2-07">
-            <h2 id="rfc.section.B.9"><a href="#rfc.section.B.9">B.9</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-http2-07">Since draft-ietf-httpbis-http2-07</a></h2>
-            <div id="rfc.section.B.9.p.1">
-               <p>Marked draft for implementation.</p>
-            </div>
-         </div>
-         <div id="changes.since.draft-ietf-httpbis-http2-06">
-            <h2 id="rfc.section.B.10"><a href="#rfc.section.B.10">B.10</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-http2-06">Since draft-ietf-httpbis-http2-06</a></h2>
-            <div id="rfc.section.B.10.p.1">
-               <p>Adding definition for CONNECT method.</p>
-            </div>
-            <div id="rfc.section.B.10.p.2">
-               <p>Constraining the use of push to safe, cacheable methods with no request body.</p>
-            </div>
-            <div id="rfc.section.B.10.p.3">
-               <p>Changing from :host to :authority to remove any potential confusion.</p>
-            </div>
-            <div id="rfc.section.B.10.p.4">
-               <p>Adding setting for header compression table size.</p>
-            </div>
-            <div id="rfc.section.B.10.p.5">
-               <p>Adding settings acknowledgement.</p>
-            </div>
-            <div id="rfc.section.B.10.p.6">
-               <p>Removing unnecessary and potentially problematic flags from CONTINUATION.</p>
-            </div>
-            <div id="rfc.section.B.10.p.7">
-               <p>Added denial of service considerations.</p>
-            </div>
-         </div>
-         <div id="changes.since.draft-ietf-httpbis-http2-05">
-            <h2 id="rfc.section.B.11"><a href="#rfc.section.B.11">B.11</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-http2-05">Since draft-ietf-httpbis-http2-05</a></h2>
-            <div id="rfc.section.B.11.p.1">
-               <p>Marking the draft ready for implementation.</p>
-            </div>
-            <div id="rfc.section.B.11.p.2">
-               <p>Renumbering END_PUSH_PROMISE flag.</p>
-            </div>
-            <div id="rfc.section.B.11.p.3">
-               <p>Editorial clarifications and changes.</p>
-            </div>
-         </div>
-         <div id="changes.since.draft-ietf-httpbis-http2-04">
-            <h2 id="rfc.section.B.12"><a href="#rfc.section.B.12">B.12</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-http2-04">Since draft-ietf-httpbis-http2-04</a></h2>
-            <div id="rfc.section.B.12.p.1">
-               <p>Added CONTINUATION frame for HEADERS and PUSH_PROMISE.</p>
-            </div>
-            <div id="rfc.section.B.12.p.2">
-               <p>PUSH_PROMISE is no longer implicitly prohibited if SETTINGS_MAX_CONCURRENT_STREAMS is zero.</p>
-            </div>
-            <div id="rfc.section.B.12.p.3">
-               <p>Push expanded to allow all safe methods without a request body.</p>
-            </div>
-            <div id="rfc.section.B.12.p.4">
-               <p>Clarified the use of HTTP header fields in requests and responses. Prohibited HTTP/1.1 hop-by-hop header fields.</p>
-            </div>
-            <div id="rfc.section.B.12.p.5">
-               <p>Requiring that intermediaries not forward requests with missing or illegal routing :-headers.</p>
-            </div>
-            <div id="rfc.section.B.12.p.6">
-               <p>Clarified requirements around handling different frames after stream close, stream reset and <a href="#GOAWAY" class="smpl">GOAWAY</a>.
-               </p>
-            </div>
-            <div id="rfc.section.B.12.p.7">
-               <p>Added more specific prohibitions for sending of different frame types in various stream states.</p>
-            </div>
-            <div id="rfc.section.B.12.p.8">
-               <p>Making the last received setting value the effective value.</p>
-            </div>
-            <div id="rfc.section.B.12.p.9">
-               <p>Clarified requirements on TLS version, extension and ciphers.</p>
-            </div>
-         </div>
-         <div id="changes.since.draft-ietf-httpbis-http2-03">
-            <h2 id="rfc.section.B.13"><a href="#rfc.section.B.13">B.13</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-http2-03">Since draft-ietf-httpbis-http2-03</a></h2>
-            <div id="rfc.section.B.13.p.1">
-               <p>Committed major restructuring atrocities.</p>
-            </div>
-            <div id="rfc.section.B.13.p.2">
-               <p>Added reference to first header compression draft.</p>
-            </div>
-            <div id="rfc.section.B.13.p.3">
-               <p>Added more formal description of frame lifecycle.</p>
-            </div>
-            <div id="rfc.section.B.13.p.4">
-               <p>Moved END_STREAM (renamed from FINAL) back to <a href="#HEADERS" class="smpl">HEADERS</a>/<a href="#DATA" class="smpl">DATA</a>.
-               </p>
-            </div>
-            <div id="rfc.section.B.13.p.5">
-               <p>Removed HEADERS+PRIORITY, added optional priority to <a href="#HEADERS" class="smpl">HEADERS</a> frame.
-               </p>
-            </div>
-            <div id="rfc.section.B.13.p.6">
-               <p>Added <a href="#PRIORITY" class="smpl">PRIORITY</a> frame.
-               </p>
-            </div>
-         </div>
-         <div id="changes.since.draft-ietf-httpbis-http2-02">
-            <h2 id="rfc.section.B.14"><a href="#rfc.section.B.14">B.14</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-http2-02">Since draft-ietf-httpbis-http2-02</a></h2>
-            <div id="rfc.section.B.14.p.1">
-               <p>Added continuations to frames carrying header blocks.</p>
-            </div>
-            <div id="rfc.section.B.14.p.2">
-               <p>Replaced use of "session" with "connection" to avoid confusion with other HTTP stateful concepts, like cookies.</p>
-            </div>
-            <div id="rfc.section.B.14.p.3">
-               <p>Removed "message".</p>
-            </div>
-            <div id="rfc.section.B.14.p.4">
-               <p>Switched to TLS ALPN from NPN.</p>
-            </div>
-            <div id="rfc.section.B.14.p.5">
-               <p>Editorial changes.</p>
-            </div>
-         </div>
-         <div id="changes.since.draft-ietf-httpbis-http2-01">
-            <h2 id="rfc.section.B.15"><a href="#rfc.section.B.15">B.15</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-http2-01">Since draft-ietf-httpbis-http2-01</a></h2>
-            <div id="rfc.section.B.15.p.1">
-               <p>Added IANA considerations section for frame types, error codes and settings.</p>
-            </div>
-            <div id="rfc.section.B.15.p.2">
-               <p>Removed data frame compression.</p>
-            </div>
-            <div id="rfc.section.B.15.p.3">
-               <p>Added <a href="#PUSH_PROMISE" class="smpl">PUSH_PROMISE</a>.
-               </p>
-            </div>
-            <div id="rfc.section.B.15.p.4">
-               <p>Added globally applicable flags to framing.</p>
-            </div>
-            <div id="rfc.section.B.15.p.5">
-               <p>Removed zlib-based header compression mechanism.</p>
-            </div>
-            <div id="rfc.section.B.15.p.6">
-               <p>Updated references.</p>
-            </div>
-            <div id="rfc.section.B.15.p.7">
-               <p>Clarified stream identifier reuse.</p>
-            </div>
-            <div id="rfc.section.B.15.p.8">
-               <p>Removed CREDENTIALS frame and associated mechanisms.</p>
-            </div>
-            <div id="rfc.section.B.15.p.9">
-               <p>Added advice against naive implementation of flow control.</p>
-            </div>
-            <div id="rfc.section.B.15.p.10">
-               <p>Added session header section.</p>
-            </div>
-            <div id="rfc.section.B.15.p.11">
-               <p>Restructured frame header. Removed distinction between data and control frames.</p>
-            </div>
-            <div id="rfc.section.B.15.p.12">
-               <p>Altered flow control properties to include session-level limits.</p>
-            </div>
-            <div id="rfc.section.B.15.p.13">
-               <p>Added note on cacheability of pushed resources and multiple tenant servers.</p>
-            </div>
-            <div id="rfc.section.B.15.p.14">
-               <p>Changed protocol label form based on discussions.</p>
-            </div>
-         </div>
-         <div id="changes.since.draft-ietf-httpbis-http2-00">
-            <h2 id="rfc.section.B.16"><a href="#rfc.section.B.16">B.16</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-http2-00">Since draft-ietf-httpbis-http2-00</a></h2>
-            <div id="rfc.section.B.16.p.1">
-               <p>Changed title throughout.</p>
-            </div>
-            <div id="rfc.section.B.16.p.2">
-               <p>Removed section on Incompatibilities with SPDY draft#2.</p>
-            </div>
-            <div id="rfc.section.B.16.p.3">
-               <p>Changed <a href="#INTERNAL_ERROR" class="smpl">INTERNAL_ERROR</a> on <a href="#GOAWAY" class="smpl">GOAWAY</a> to have a value of 2 &lt;<a href="https://groups.google.com/forum/?fromgroups#!topic/spdy-dev/cfUef2gL3iU">https://groups.google.com/forum/?fromgroups#!topic/spdy-dev/cfUef2gL3iU</a>&gt;.
-               </p>
-            </div>
-            <div id="rfc.section.B.16.p.4">
-               <p>Replaced abstract and introduction.</p>
-            </div>
-            <div id="rfc.section.B.16.p.5">
-               <p>Added section on starting HTTP/2.0, including upgrade mechanism.</p>
-            </div>
-            <div id="rfc.section.B.16.p.6">
-               <p>Removed unused references.</p>
-            </div>
-            <div id="rfc.section.B.16.p.7">
-               <p>Added flow control principles (<a href="#fc-principles" title="Flow Control Principles">Section&nbsp;5.2.1</a>) based on &lt;<a href="https://tools.ietf.org/html/draft-montenegro-httpbis-http2-fc-principles-01">https://tools.ietf.org/html/draft-montenegro-httpbis-http2-fc-principles-01</a>&gt;.
-               </p>
-            </div>
-         </div>
-         <div id="changes.since.draft-mbelshe-httpbis-spdy-00">
-            <h2 id="rfc.section.B.17"><a href="#rfc.section.B.17">B.17</a>&nbsp;<a href="#changes.since.draft-mbelshe-httpbis-spdy-00">Since draft-mbelshe-httpbis-spdy-00</a></h2>
-            <div id="rfc.section.B.17.p.1">
-               <p>Adopted as base for draft-ietf-httpbis-http2.</p>
-            </div>
-            <div id="rfc.section.B.17.p.2">
-               <p>Updated authors/editors list.</p>
-            </div>
-            <div id="rfc.section.B.17.p.3">
-               <p>Added status note.</p>
-            </div>
+         <div id="rfc.section.unnumbered-1.p.3">
+            <p>The Japanese HTTP/2 community provided invaluable contributions, including a number of implementations as well as numerous
+               technical and editorial contributions.
+            </p>
          </div>
       </div>
       <div class="avoidbreakinside">
          <h1 id="rfc.authors"><a href="#rfc.authors">Authors' Addresses</a></h1>
-         <p><b>Mike Belshe</b><br>Twist<br>Email: mbelshe@chromium.org
+         <p><b>Mike Belshe</b><br>BitGo<br>Email: mike@belshe.com
          </p>
          <p><b>Roberto Peon</b><br>Google, Inc<br>Email: fenix@google.com
          </p>
          <p><b>Martin Thomson</b>
             (editor)
-            <br>Mozilla<br>331 E Evelyn Street<br>Mountain View, CA&nbsp;94041<br>US<br>Email: martin.thomson@gmail.com
+            <br>Mozilla<br>331 E Evelyn Street<br>Mountain View, CA&nbsp;94041<br>United States<br>Email: martin.thomson@gmail.com
          </p>
       </div>
    </body>
