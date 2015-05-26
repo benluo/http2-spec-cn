@@ -464,7 +464,7 @@ ul p {
        content: "Belshe, et al.";
   }
   @bottom-center {
-       content: "Expires November 24, 2015";
+       content: "Expires November 27, 2015";
   }
   @bottom-right {
        content: "[Page " counter(page) "]";
@@ -546,7 +546,7 @@ pre.text, pre.text2 {
       <meta name="dct.creator" content="Peon, R.">
       <meta name="dct.creator" content="Thomson, M.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-http2-latest">
-      <meta name="dct.issued" scheme="ISO8601" content="2015-05-23">
+      <meta name="dct.issued" scheme="ISO8601" content="2015-05-26">
       <meta name="dct.abstract" content="This specification describes an optimized expression of the semantics of the Hypertext Transfer Protocol (HTTP). HTTP/2 enables a more efficient use of network resources and a reduced perception of latency by introducing header field compression and allowing multiple concurrent exchanges on the same connection. It also introduces unsolicited push of representations from servers to clients. This specification is an alternative to, but does not obsolete, the HTTP/1.1 message syntax. HTTP's existing semantics remain unchanged.">
       <meta name="description" content="This specification describes an optimized expression of the semantics of the Hypertext Transfer Protocol (HTTP). HTTP/2 enables a more efficient use of network resources and a reduced perception of latency by introducing header field compression and allowing multiple concurrent exchanges on the same connection. It also introduces unsolicited push of representations from servers to clients. This specification is an alternative to, but does not obsolete, the HTTP/1.1 message syntax. HTTP's existing semantics remain unchanged.">
    </head>
@@ -566,7 +566,7 @@ pre.text, pre.text2 {
                <td class="right">R. Peon</td>
             </tr>
             <tr>
-               <td class="left">Expires: November 24, 2015</td>
+               <td class="left">Expires: November 27, 2015</td>
                <td class="right">Google, Inc</td>
             </tr>
             <tr>
@@ -579,7 +579,7 @@ pre.text, pre.text2 {
             </tr>
             <tr>
                <td class="left"></td>
-               <td class="right">May 23, 2015</td>
+               <td class="right">May 26, 2015</td>
             </tr>
          </tbody>
       </table>
@@ -603,7 +603,7 @@ pre.text, pre.text2 {
             documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
             in progress”.
          </p>
-         <p>This Internet-Draft will expire on November 24, 2015.</p>
+         <p>This Internet-Draft will expire on November 27, 2015.</p>
       </div>
       <div id="rfc.copyrightnotice">
          <h1><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
@@ -745,6 +745,7 @@ pre.text, pre.text2 {
                   <li><a href="#rfc.section.11.5">11.5</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.11.5">HTTP2-Settings Header Field Registration</a></li>
                   <li><a href="#rfc.section.11.6">11.6</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.11.6">PRI Method Registration</a></li>
                   <li><a href="#rfc.section.11.7">11.7</a>&nbsp;&nbsp;&nbsp;<a href="#iana-MisdirectedRequest">The 421 (Misdirected Request) HTTP Status Code</a></li>
+                  <li><a href="#rfc.section.11.8">11.8</a>&nbsp;&nbsp;&nbsp;<a href="#iana-h2c">The h2c Upgrade Token</a></li>
                </ul>
             </li>
             <li><a href="#rfc.section.12">12.</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references">References</a><ul>
@@ -3840,23 +3841,22 @@ Upgrade: h2c
             </p>
          </div>
          <div id="rfc.section.11.p.2">
-            <p>This document establishes a registry for frame types, settings, and error codes. These new registries are entered into a new
-               "Hypertext Transfer Protocol (HTTP) 2 Parameters" section.
+            <p>This document establishes a registry for frame types, settings, and error codes. These new registries appear in the new "Hypertext
+               Transfer Protocol version 2 (HTTP/2) Parameters" section.
             </p>
          </div>
          <div id="rfc.section.11.p.3">
-            <p>This document registers the <tt>HTTP2-Settings</tt> header field for use in HTTP; and the 421 (Misdirected Request) status code.
+            <p>This document registers the <tt>HTTP2-Settings</tt> header field for use in HTTP; it also registers the 421 (Misdirected Request) status code.
             </p>
          </div>
          <div id="rfc.section.11.p.4">
-            <p>This document registers the <tt>PRI</tt> method for use in HTTP, to avoid collisions with the connection preface (<a href="#ConnectionHeader" title="HTTP/2 Connection Preface">Section&nbsp;3.5</a>).
+            <p>This document registers the <tt>PRI</tt> method for use in HTTP to avoid collisions with the connection preface (<a href="#ConnectionHeader" title="HTTP/2 Connection Preface">Section&nbsp;3.5</a>).
             </p>
          </div>
          <div id="iana-alpn">
             <h2 id="rfc.section.11.1"><a href="#rfc.section.11.1">11.1</a>&nbsp;<a href="#iana-alpn">Registration of HTTP/2 Identification Strings</a></h2>
             <div id="rfc.section.11.1.p.1">
-               <p>This document creates two registrations for the identification of HTTP/2 in the "Application-Layer Protocol Negotiation (ALPN)
-                  Protocol IDs" registry established in <a href="#TLS-ALPN"><cite title="Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension">[TLS-ALPN]</cite></a>.
+               <p>This document creates two registrations for the identification of HTTP/2 (see <a href="#discover-https" title="Starting HTTP/2 for &#34;https&#34; URIs">Section&nbsp;3.3</a>) in the "Application-Layer Protocol Negotiation (ALPN) Protocol IDs" registry established in <a href="#TLS-ALPN"><cite title="Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension">[TLS-ALPN]</cite></a>.
                </p>
             </div>
             <div id="rfc.section.11.1.p.2">
@@ -3886,7 +3886,7 @@ Upgrade: h2c
             <h2 id="rfc.section.11.2"><a href="#rfc.section.11.2">11.2</a>&nbsp;<a href="#iana-frames">Frame Type Registry</a></h2>
             <div id="rfc.section.11.2.p.1">
                <p>This document establishes a registry for HTTP/2 frame type codes. The "HTTP/2 Frame Type" registry manages an 8-bit space.
-                  The "HTTP/2 Frame Type" registry operates under either of the <a href="#RFC5226">"IETF Review" or "IESG Approval" policies</a> <cite title="Guidelines for Writing an IANA Considerations Section in RFCs">[RFC5226]</cite> for values between 0x00 and 0xef, with values between 0xf0 and 0xff being reserved for experimental use.
+                  The "HTTP/2 Frame Type" registry operates under either of the <a href="#RFC5226">"IETF Review" or "IESG Approval" policies</a> <cite title="Guidelines for Writing an IANA Considerations Section in RFCs">[RFC5226]</cite> for values between 0x00 and 0xef, with values between 0xf0 and 0xff being reserved for Experimental Use.
                </p>
             </div>
             <div id="rfc.section.11.2.p.2">
@@ -3973,7 +3973,7 @@ Upgrade: h2c
             <h2 id="rfc.section.11.3"><a href="#rfc.section.11.3">11.3</a>&nbsp;<a href="#iana-settings">Settings Registry</a></h2>
             <div id="rfc.section.11.3.p.1">
                <p>This document establishes a registry for HTTP/2 settings. The "HTTP/2 Settings" registry manages a 16-bit space. The "HTTP/2
-                  Settings" registry operates under the <a href="#RFC5226">"Expert Review" policy</a> <cite title="Guidelines for Writing an IANA Considerations Section in RFCs">[RFC5226]</cite> for values in the range from 0x0000 to 0xefff, with values between and 0xf000 and 0xffff being reserved for experimental use.
+                  Settings" registry operates under the <a href="#RFC5226">"Expert Review" policy</a> <cite title="Guidelines for Writing an IANA Considerations Section in RFCs">[RFC5226]</cite> for values in the range from 0x0000 to 0xefff, with values between and 0xf000 and 0xffff being reserved for Experimental Use.
                </p>
             </div>
             <div id="rfc.section.11.3.p.2">
@@ -3990,8 +3990,7 @@ Upgrade: h2c
                </dl>
             </div>
             <div id="rfc.section.11.3.p.3">
-               <p>An initial set of setting registrations can be found in <a href="#SettingValues" title="Defined SETTINGS Parameters">Section&nbsp;6.5.2</a>.
-               </p>
+               <p>The entries in the following table are registered by this document.</p>
             </div>
             <div id="rfc.table.u.2">
                <table class="tt full left" cellpadding="3" cellspacing="0">
@@ -4105,7 +4104,7 @@ Upgrade: h2c
                      <tr>
                         <td class="left">FLOW_CONTROL_ERROR</td>
                         <td class="left">0x3</td>
-                        <td class="left">Flow control limits exceeded</td>
+                        <td class="left">Flow-control limits exceeded</td>
                         <td class="left"><a href="#ErrorCodes" title="Error Codes">Section&nbsp;7</a></td>
                      </tr>
                      <tr>
@@ -4176,7 +4175,7 @@ Upgrade: h2c
             <h2 id="rfc.section.11.5"><a href="#rfc.section.11.5">11.5</a>&nbsp;HTTP2-Settings Header Field Registration
             </h2>
             <div id="rfc.section.11.5.p.1">
-               <p>This section registers the <tt>HTTP2-Settings</tt> header field in the <a href="#BCP90">Permanent Message Header Field Registry</a> <cite title="Registration Procedures for Message Header Fields">[BCP90]</cite>. 
+               <p>This section registers the <tt>HTTP2-Settings</tt> header field in the "Permanent Message Header Field Names" Registry <a href="#BCP90"><cite title="Registration Procedures for Message Header Fields">[BCP90]</cite></a>. 
                </p>
                <dl>
                   <dt>Header field name:</dt>
@@ -4199,16 +4198,16 @@ Upgrade: h2c
             <h2 id="rfc.section.11.6"><a href="#rfc.section.11.6">11.6</a>&nbsp;PRI Method Registration
             </h2>
             <div id="rfc.section.11.6.p.1">
-               <p>This section registers the <tt>PRI</tt> method in the HTTP Method Registry (<a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7231.html#method.registry" title="Method Registry">Section 8.1</a>). 
+               <p>This section registers the <tt>PRI</tt> method in the "HTTP Method Registry" (<a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7231.html#method.registry" title="Method Registry">Section 8.1</a>). 
                </p>
                <dl>
                   <dt>Method Name:</dt>
                   <dd>PRI</dd>
-                  <dt>Safe</dt>
+                  <dt>Safe:</dt>
                   <dd>Yes</dd>
-                  <dt>Idempotent</dt>
+                  <dt>Idempotent:</dt>
                   <dd>Yes</dd>
-                  <dt>Specification document(s)</dt>
+                  <dt>Specification document(s):</dt>
                   <dd><a href="#ConnectionHeader" title="HTTP/2 Connection Preface">Section&nbsp;3.5</a> of this document
                   </dd>
                   <dt>Related information:</dt>
@@ -4221,8 +4220,7 @@ Upgrade: h2c
          <div id="iana-MisdirectedRequest">
             <h2 id="rfc.section.11.7"><a href="#rfc.section.11.7">11.7</a>&nbsp;<a href="#iana-MisdirectedRequest">The 421 (Misdirected Request) HTTP Status Code</a></h2>
             <div id="rfc.section.11.7.p.1">
-               <p>This document registers the 421 (Misdirected Request) HTTP Status code in the Hypertext Transfer Protocol (HTTP) Status Code
-                  Registry (<a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7231.html#status.code.registry" title="Status Code Registry">Section 8.2</a>).
+               <p>This document registers the 421 (Misdirected Request) HTTP status code in the "HTTP Status Codes" registry (<a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7231.html#status.code.registry" title="Status Code Registry">Section 8.2</a>).
                </p>
             </div>
             <div id="rfc.section.11.7.p.2">
@@ -4233,6 +4231,26 @@ Upgrade: h2c
                   <dd>Misdirected Request</dd>
                   <dt>Specification:</dt>
                   <dd><a href="#MisdirectedRequest" title="The 421 (Misdirected Request) Status Code">Section&nbsp;9.1.2</a> of this document
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div id="iana-h2c">
+            <h2 id="rfc.section.11.8"><a href="#rfc.section.11.8">11.8</a>&nbsp;<a href="#iana-h2c">The h2c Upgrade Token</a></h2>
+            <div id="rfc.section.11.8.p.1">
+               <p>This document registers the "h2c" upgrade token in the "HTTP Upgrade Tokens" registry (<a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#upgrade.token.registry" title="Upgrade Token Registry">Section 8.6</a>).
+               </p>
+            </div>
+            <div id="rfc.section.11.8.p.2">
+               <dl>
+                  <dt>Value:</dt>
+                  <dd>h2c</dd>
+                  <dt>Description:</dt>
+                  <dd>Hypertext Transfer Protocol version 2 (HTTP/2)</dd>
+                  <dt>Expected Version Tokens:</dt>
+                  <dd>None</dd>
+                  <dt>Reference:</dt>
+                  <dd><a href="#discover-http" title="Starting HTTP/2 for &#34;http&#34; URIs">Section&nbsp;3.2</a> of this document
                   </dd>
                </dl>
             </div>
