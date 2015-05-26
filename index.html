@@ -652,7 +652,7 @@ pre.text, pre.text2 {
                         <li><a href="#rfc.section.5.2.2">5.2.2</a>&nbsp;&nbsp;&nbsp;<a href="#DisableFlowControl">Appropriate Use of Flow Control</a></li>
                      </ul>
                   </li>
-                  <li><a href="#rfc.section.5.3">5.3</a>&nbsp;&nbsp;&nbsp;<a href="#StreamPriority">Stream priority</a><ul>
+                  <li><a href="#rfc.section.5.3">5.3</a>&nbsp;&nbsp;&nbsp;<a href="#StreamPriority">Stream Priority</a><ul>
                         <li><a href="#rfc.section.5.3.1">5.3.1</a>&nbsp;&nbsp;&nbsp;<a href="#pri-depend">Stream Dependencies</a></li>
                         <li><a href="#rfc.section.5.3.2">5.3.2</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.5.3.2">Dependency Weighting</a></li>
                         <li><a href="#rfc.section.5.3.3">5.3.3</a>&nbsp;&nbsp;&nbsp;<a href="#reprioritize">Reprioritization</a></li>
@@ -783,7 +783,7 @@ pre.text, pre.text2 {
       <div id="intro">
          <h1 id="rfc.section.1" class="np"><a href="#rfc.section.1">1.</a>&nbsp;<a href="#intro">Introduction</a></h1>
          <div id="rfc.section.1.p.1">
-            <p>The Hypertext Transfer Protocol (HTTP) is a wildly successful protocol. However, how HTTP/1.1 uses the underlying transport
+            <p>The Hypertext Transfer Protocol (HTTP) is a wildly successful protocol. However, the way HTTP/1.1 uses the underlying transport
                (<a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#connection.management" title="Connection Management">Section 6</a>) has several characteristics that have a negative overall effect on application performance today.
             </p>
          </div>
@@ -808,7 +808,7 @@ pre.text, pre.text2 {
          </div>
          <div id="rfc.section.1.p.5">
             <p>The resulting protocol is more friendly to the network because fewer TCP connections can be used in comparison to HTTP/1.x.
-               This means less competition with other flows and longer-lived connections, which in turn leads to better utilization of available
+               This means less competition with other flows and longer-lived connections, which in turn lead to better utilization of available
                network capacity.
             </p>
          </div>
@@ -833,7 +833,7 @@ pre.text, pre.text2 {
             </p>
          </div>
          <div id="rfc.section.2.p.4">
-            <p>Flow control and prioritization ensure that it is possible to efficiently use multiplexed streams. Flow control (<a href="#FlowControl" title="Flow Control">Section&nbsp;5.2</a>) helps to ensure that only data that can be used by a receiver is transmitted. Prioritization (<a href="#StreamPriority" title="Stream priority">Section&nbsp;5.3</a>) ensures that limited resources can be directed to the most important streams first.
+            <p>Flow control and prioritization ensure that it is possible to efficiently use multiplexed streams. Flow control (<a href="#FlowControl" title="Flow Control">Section&nbsp;5.2</a>) helps to ensure that only data that can be used by a receiver is transmitted. Prioritization (<a href="#StreamPriority" title="Stream Priority">Section&nbsp;5.3</a>) ensures that limited resources can be directed to the most important streams first.
             </p>
          </div>
          <div id="rfc.section.2.p.5">
@@ -855,7 +855,7 @@ pre.text, pre.text2 {
                <ul>
                   <li>Starting HTTP/2 (<a href="#starting" title="Starting HTTP/2">Section&nbsp;3</a>) covers how an HTTP/2 connection is initiated.
                   </li>
-                  <li>The framing (<a href="#FramingLayer" title="HTTP Frames">Section&nbsp;4</a>) and streams (<a href="#StreamsLayer" title="Streams and Multiplexing">Section&nbsp;5</a>) layers describe the way HTTP/2 frames are structured and formed into multiplexed streams.
+                  <li>The frame (<a href="#FramingLayer" title="HTTP Frames">Section&nbsp;4</a>) and stream (<a href="#StreamsLayer" title="Streams and Multiplexing">Section&nbsp;5</a>) layers describe the way HTTP/2 frames are structured and formed into multiplexed streams.
                   </li>
                   <li>Frame (<a href="#FrameTypes" title="Frame Definitions">Section&nbsp;6</a>) and error (<a href="#ErrorCodes" title="Error Codes">Section&nbsp;7</a>) definitions include details of the frame and error types used in HTTP/2.
                   </li>
@@ -865,7 +865,7 @@ pre.text, pre.text2 {
             </div>
             <div id="rfc.section.2.1.p.2">
                <p>While some of the frame and stream layer concepts are isolated from HTTP, this specification does not define a completely
-                  generic framing layer. The framing and streams layers are tailored to the needs of the HTTP protocol and server push.
+                  generic frame layer. The frame and stream layers are tailored to the needs of the HTTP protocol and server push.
                </p>
             </div>
          </div>
@@ -906,7 +906,7 @@ pre.text, pre.text2 {
                   <dt>sender:</dt>
                   <dd>An endpoint that is transmitting frames.</dd>
                   <dt>server:</dt>
-                  <dd>The endpoint that accepts an HTTP/2 connection. Servers receive HTTP requests and serve HTTP responses.</dd>
+                  <dd>The endpoint that accepts an HTTP/2 connection. Servers receive HTTP requests and send HTTP responses.</dd>
                   <dt>stream:</dt>
                   <dd>A bidirectional flow of frames within the HTTP/2 connection.</dd>
                   <dt>stream error:</dt>
@@ -979,8 +979,8 @@ HTTP2-Settings: &lt;base64url encoding of HTTP/2 SETTINGS payload&gt;
 
 </pre></div>
             <div id="rfc.section.3.2.p.2">
-               <p>Requests that contain an payload body MUST be sent in their entirety before the client can send HTTP/2 frames. This means
-                  that a large request can block the use of the connection until it is completely sent.
+               <p>Requests that contain a payload body MUST be sent in their entirety before the client can send HTTP/2 frames. This means that
+                  a large request can block the use of the connection until it is completely sent.
                </p>
             </div>
             <div id="rfc.section.3.2.p.3">
@@ -1005,7 +1005,7 @@ Content-Type: text/html
             <div id="rfc.section.3.2.p.6">
                <p>A server that supports HTTP/2 accepts the upgrade with a 101 (Switching Protocols) response. After the empty line that terminates
                   the 101 response, the server can begin sending HTTP/2 frames. These frames MUST include a response to the request that initiated
-                  the Upgrade.
+                  the upgrade.
                </p>
             </div>
             <div id="rfc.figure.u.3">
@@ -1016,7 +1016,7 @@ Upgrade: h2c
 [ HTTP/2 connection ...
 </pre></div>
             <div id="rfc.section.3.2.p.7">
-               <p>The first HTTP/2 frame sent by the server MUST be a <a href="#SETTINGS" class="smpl">SETTINGS</a> frame (<a href="#SETTINGS" title="SETTINGS">Section&nbsp;6.5</a>) as the server connection preface (<a href="#ConnectionHeader" title="HTTP/2 Connection Preface">Section&nbsp;3.5</a>). Upon receiving the 101 response, the client MUST send a connection preface (<a href="#ConnectionHeader" title="HTTP/2 Connection Preface">Section&nbsp;3.5</a>), which includes a <a href="#SETTINGS" class="smpl">SETTINGS</a> frame.
+               <p>The first HTTP/2 frame sent by the server MUST be a server connection preface (<a href="#ConnectionHeader" title="HTTP/2 Connection Preface">Section&nbsp;3.5</a>) consisting of a <a href="#SETTINGS" class="smpl">SETTINGS</a> frame (<a href="#SETTINGS" title="SETTINGS">Section&nbsp;6.5</a>). Upon receiving the 101 response, the client MUST send a connection preface (<a href="#ConnectionHeader" title="HTTP/2 Connection Preface">Section&nbsp;3.5</a>), which includes a <a href="#SETTINGS" class="smpl">SETTINGS</a> frame.
                </p>
             </div>
             <div id="rfc.section.3.2.p.8">
@@ -1043,11 +1043,11 @@ Upgrade: h2c
                   </p>
                </div>
                <div id="rfc.section.3.2.1.p.4">
-                  <p>Since the upgrade is only intended to apply to the immediate connection, a client sending <tt>HTTP2-Settings</tt> MUST also send <tt>HTTP2-Settings</tt> as a connection option in the <tt>Connection</tt> header field to prevent it from being forwarded (see <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#header.connection" title="Connection">Section 6.1</a> of <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>).
+                  <p>Since the upgrade is only intended to apply to the immediate connection, a client sending the <tt>HTTP2-Settings</tt> header field MUST also send <tt>HTTP2-Settings</tt> as a connection option in the <tt>Connection</tt> header field to prevent it from being forwarded (see <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#header.connection" title="Connection">Section 6.1</a> of <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>).
                   </p>
                </div>
                <div id="rfc.section.3.2.1.p.5">
-                  <p>A server decodes and interprets these values as it would any other <a href="#SETTINGS" class="smpl">SETTINGS</a> frame. Explicit acknowledgement of these settings (<a href="#SettingsSync" title="Settings Synchronization">Section&nbsp;6.5.3</a>) is not necessary, since a 101 response serves as implicit acknowledgment. Providing these values in the Upgrade request gives
+                  <p>A server decodes and interprets these values as it would any other <a href="#SETTINGS" class="smpl">SETTINGS</a> frame. Explicit acknowledgement of these settings (<a href="#SettingsSync" title="Settings Synchronization">Section&nbsp;6.5.3</a>) is not necessary, since a 101 response serves as implicit acknowledgement. Providing these values in the upgrade request gives
                      a client an opportunity to provide parameters prior to receiving any frames from the server.
                   </p>
                </div>
@@ -1100,12 +1100,12 @@ Upgrade: h2c
                </p>
             </div>
             <div id="rfc.section.3.5.p.2" class="avoidbreakafter">
-               <p>The client connection preface starts with a sequence of 24 octets, which in hex notation are:</p>
+               <p>The client connection preface starts with a sequence of 24 octets, which in hex notation is:</p>
             </div>
             <div id="rfc.figure.u.5"><pre class="inline">0x505249202a20485454502f322e300d0a0d0a534d0d0a0d0a
 </pre></div>
             <div id="rfc.section.3.5.p.3">
-               <p>(the string <tt>PRI * HTTP/2.0\r\n\r\nSM\r\n\r\n</tt>). This sequence MUST be followed by a <a href="#SETTINGS" class="smpl">SETTINGS</a> frame (<a href="#SETTINGS" title="SETTINGS">Section&nbsp;6.5</a>), which MAY be empty. The client sends the client connection preface immediately upon receipt of a 101 Switching Protocols
+               <p>That is, the connection preface starts with the string <tt>PRI * HTTP/2.0\r\n\r\nSM\r\n\r\n</tt>). This sequence MUST be followed by a <a href="#SETTINGS" class="smpl">SETTINGS</a> frame (<a href="#SETTINGS" title="SETTINGS">Section&nbsp;6.5</a>), which MAY be empty. The client sends the client connection preface immediately upon receipt of a 101 (Switching Protocols)
                   response (indicating a successful upgrade) or as the first application data octets of a TLS connection. If starting an HTTP/2
                   connection with prior knowledge of server support for the protocol, the client connection preface is sent upon connection
                   establishment.
@@ -1179,14 +1179,14 @@ Upgrade: h2c
                   </dd>
                   <dt>Flags:</dt>
                   <dd>
-                     <p>An 8-bit field reserved for frame-type specific boolean flags.</p>
+                     <p>An 8-bit field reserved for boolean flags specific to the frame type.</p>
                      <p>Flags are assigned semantics specific to the indicated frame type. Flags that have no defined semantics for a particular frame
                         type MUST be ignored and MUST be left unset (0x0) when sending.
                      </p>
                   </dd>
                   <dt>R:</dt>
                   <dd>
-                     <p>A reserved 1-bit field. The semantics of this bit are undefined and the bit MUST remain unset (0x0) when sending and MUST
+                     <p>A reserved 1-bit field. The semantics of this bit are undefined, and the bit MUST remain unset (0x0) when sending and MUST
                         be ignored when receiving.
                      </p>
                   </dd>
@@ -1219,7 +1219,7 @@ Upgrade: h2c
                </div>
             </div>
             <div id="rfc.section.4.2.p.4">
-               <p>An endpoint MUST send a <a href="#FRAME_SIZE_ERROR" class="smpl">FRAME_SIZE_ERROR</a> error if a frame exceeds the size defined in <a href="#SETTINGS_MAX_FRAME_SIZE" class="smpl">SETTINGS_MAX_FRAME_SIZE</a>, any limit defined for the frame type, or it is too small to contain mandatory frame data. A frame size error in a frame
+               <p>An endpoint MUST send an error code of <a href="#FRAME_SIZE_ERROR" class="smpl">FRAME_SIZE_ERROR</a> if a frame exceeds the size defined in <a href="#SETTINGS_MAX_FRAME_SIZE" class="smpl">SETTINGS_MAX_FRAME_SIZE</a>, exceeds any limit defined for the frame type, or is too small to contain mandatory frame data. A frame size error in a frame
                   that could alter the state of the entire connection MUST be treated as a connection error (<a href="#ConnectionErrorHandler" title="Connection Error Handling">Section&nbsp;5.4.1</a>); this includes any frame carrying a header block (<a href="#HeaderBlock" title="Header Compression and Decompression">Section&nbsp;4.3</a>) (that is, <a href="#HEADERS" class="smpl">HEADERS</a>, <a href="#PUSH_PROMISE" class="smpl">PUSH_PROMISE</a>, and <a href="#CONTINUATION" class="smpl">CONTINUATION</a>), <a href="#SETTINGS" class="smpl">SETTINGS</a>, and any frame with a stream identifier of 0.
                </p>
             </div>
@@ -1233,8 +1233,8 @@ Upgrade: h2c
          <div id="HeaderBlock">
             <h2 id="rfc.section.4.3"><a href="#rfc.section.4.3">4.3</a>&nbsp;<a href="#HeaderBlock">Header Compression and Decompression</a></h2>
             <div id="rfc.section.4.3.p.1">
-               <p>Just as in HTTP/1, a header field in HTTP/2 is a name with one or more associated values. They are used within HTTP request
-                  and response messages as well as server push operations (see <a href="#PushResources" title="Server Push">Section&nbsp;8.2</a>).
+               <p>Just as in HTTP/1, a header field in HTTP/2 is a name with one or more associated values. Header fields are used within HTTP
+                  request and response messages as well as in server push operations (see <a href="#PushResources" title="Server Push">Section&nbsp;8.2</a>).
                </p>
             </div>
             <div id="rfc.section.4.3.p.2">
@@ -1248,7 +1248,7 @@ Upgrade: h2c
                </p>
             </div>
             <div id="rfc.section.4.3.p.4">
-               <p>A receiving endpoint reassembles the header block by concatenating its fragments, then decompresses the block to reconstruct
+               <p>A receiving endpoint reassembles the header block by concatenating its fragments and then decompresses the block to reconstruct
                   the header list.
                </p>
             </div>
@@ -1262,8 +1262,8 @@ Upgrade: h2c
                </ul>
             </div>
             <div id="rfc.section.4.3.p.6">
-               <p>Header compression is stateful. One compression context and one decompression context is used for the entire connection. A
-                  decoding error in a header block MUST be treated as a connection error (<a href="#ConnectionErrorHandler" title="Connection Error Handling">Section&nbsp;5.4.1</a>) of type <a href="#COMPRESSION_ERROR" class="smpl">COMPRESSION_ERROR</a>.
+               <p>Header compression is stateful. One compression context and one decompression context are used for the entire connection.
+                  A decoding error in a header block MUST be treated as a connection error (<a href="#ConnectionErrorHandler" title="Connection Error Handling">Section&nbsp;5.4.1</a>) of type <a href="#COMPRESSION_ERROR" class="smpl">COMPRESSION_ERROR</a>.
                </p>
             </div>
             <div id="rfc.section.4.3.p.7">
@@ -1415,7 +1415,7 @@ Upgrade: h2c
                      <p><br> A stream in the "open" state may be used by both peers to send frames of any type. In this state, sending peers observe advertised stream-level flow-control limits (<a href="#FlowControl" title="Flow Control">Section&nbsp;5.2</a>).
                      </p>
                      <p>From this state, either endpoint can send a frame with an END_STREAM flag set, which causes the stream to transition into
-                        one of the "half-closed" states: an endpoint sending an END_STREAM flag causes the stream state to become "half-closed (local)";
+                        one of the "half-closed" states. An endpoint sending an END_STREAM flag causes the stream state to become "half-closed (local)";
                         an endpoint receiving an END_STREAM flag causes the stream state to become "half-closed (remote)".
                      </p>
                      <p>Either endpoint can send a <a href="#RST_STREAM" class="smpl">RST_STREAM</a> frame from this state, causing it to transition immediately to "closed".
@@ -1428,7 +1428,7 @@ Upgrade: h2c
                      <p>A stream transitions from this state to "closed" when a frame that contains an END_STREAM flag is received or when either
                         peer sends a <a href="#RST_STREAM" class="smpl">RST_STREAM</a> frame.
                      </p>
-                     <p>An endpoint can receive any type of frame in this state. Providing flow-control credit using <a href="#WINDOW_UPDATE" class="smpl">WINDOW_UPDATE</a> frames is necessary to continue receiving flow-controlled frames. A receiver can ignore <a href="#WINDOW_UPDATE" class="smpl">WINDOW_UPDATE</a> frames in this state, which might arrive for a short period after a frame bearing the END_STREAM flag is sent.
+                     <p>An endpoint can receive any type of frame in this state. Providing flow-control credit using <a href="#WINDOW_UPDATE" class="smpl">WINDOW_UPDATE</a> frames is necessary to continue receiving flow-controlled frames. In this state, a receiver can ignore <a href="#WINDOW_UPDATE" class="smpl">WINDOW_UPDATE</a> frames, which might arrive for a short period after a frame bearing the END_STREAM flag is sent.
                      </p>
                      <p><a href="#PRIORITY" class="smpl">PRIORITY</a> frames received in this state are used to reprioritize streams that depend on the identified stream.
                      </p>
@@ -1438,7 +1438,7 @@ Upgrade: h2c
                      <p><br> A stream that is "half-closed (remote)" is no longer being used by the peer to send frames. In this state, an endpoint is
                         no longer obligated to maintain a receiver flow-control window.
                      </p>
-                     <p>If an endpoint receives additional frames for a stream that is in this state, other than <a href="#WINDOW_UPDATE" class="smpl">WINDOW_UPDATE</a>, <a href="#PRIORITY" class="smpl">PRIORITY</a>, or <a href="#RST_STREAM" class="smpl">RST_STREAM</a>, it MUST respond with a stream error (<a href="#StreamErrorHandler" title="Stream Error Handling">Section&nbsp;5.4.2</a>) of type <a href="#STREAM_CLOSED" class="smpl">STREAM_CLOSED</a>.
+                     <p>If an endpoint receives additional frames, other than <a href="#WINDOW_UPDATE" class="smpl">WINDOW_UPDATE</a>, <a href="#PRIORITY" class="smpl">PRIORITY</a>, or <a href="#RST_STREAM" class="smpl">RST_STREAM</a>, for a stream that is in this state, it MUST respond with a stream error (<a href="#StreamErrorHandler" title="Stream Error Handling">Section&nbsp;5.4.2</a>) of type <a href="#STREAM_CLOSED" class="smpl">STREAM_CLOSED</a>.
                      </p>
                      <p>A stream that is "half-closed (remote)" can be used by the endpoint to send frames of any type. In this state, the endpoint
                         continues to observe advertised stream-level flow-control limits (<a href="#FlowControl" title="Flow Control">Section&nbsp;5.2</a>).
@@ -1459,7 +1459,7 @@ Upgrade: h2c
                      </p>
                      <p><a href="#PRIORITY" class="smpl">PRIORITY</a> frames can be sent on closed streams to prioritize streams that are dependent on the closed stream. Endpoints SHOULD process <a href="#PRIORITY" class="smpl">PRIORITY</a> frames, though they can be ignored if the stream has been removed from the dependency tree (see <a href="#priority-gc" title="Prioritization State Management">Section&nbsp;5.3.4</a>).
                      </p>
-                     <p>If this state is reached as a result of sending a <a href="#RST_STREAM" class="smpl">RST_STREAM</a> frame, the peer that receives the <a href="#RST_STREAM" class="smpl">RST_STREAM</a> might have already sent - or enqueued for sending - frames on the stream that cannot be withdrawn. An endpoint MUST ignore
+                     <p>If this state is reached as a result of sending a <a href="#RST_STREAM" class="smpl">RST_STREAM</a> frame, the peer that receives the <a href="#RST_STREAM" class="smpl">RST_STREAM</a> might have already sent -- or enqueued for sending -- frames on the stream that cannot be withdrawn. An endpoint MUST ignore
                         frames that it receives on closed streams after it has sent a <a href="#RST_STREAM" class="smpl">RST_STREAM</a> frame. An endpoint MAY choose to limit the period over which it ignores frames and treat frames that arrive after this time
                         as being in error.
                      </p>
@@ -1485,7 +1485,7 @@ Upgrade: h2c
                <div id="rfc.section.5.1.1.p.1">
                   <p>Streams are identified with an unsigned 31-bit integer. Streams initiated by a client MUST use odd-numbered stream identifiers;
                      those initiated by the server MUST use even-numbered stream identifiers. A stream identifier of zero (0x0) is used for connection
-                     control messages; the stream identifier zero cannot be used to establish a new stream.
+                     control messages; the stream identifier of zero cannot be used to establish a new stream.
                   </p>
                </div>
                <div id="rfc.section.5.1.1.p.2">
@@ -1521,12 +1521,12 @@ Upgrade: h2c
                   </p>
                </div>
                <div id="rfc.section.5.1.2.p.2">
-                  <p>Streams that are in the "open" state, or either of the "half-closed" states count toward the maximum number of streams that
+                  <p>Streams that are in the "open" state or in either of the "half-closed" states count toward the maximum number of streams that
                      an endpoint is permitted to open. Streams in any of these three states count toward the limit advertised in the <a href="#SETTINGS_MAX_CONCURRENT_STREAMS" class="smpl">SETTINGS_MAX_CONCURRENT_STREAMS</a> setting. Streams in either of the "reserved" states do not count toward the stream limit.
                   </p>
                </div>
                <div id="rfc.section.5.1.2.p.3">
-                  <p>Endpoints MUST NOT exceed the limit set by their peer. An endpoint that receives a <a href="#HEADERS" class="smpl">HEADERS</a> frame that causes their advertised concurrent stream limit to be exceeded MUST treat this as a stream error (<a href="#StreamErrorHandler" title="Stream Error Handling">Section&nbsp;5.4.2</a>) of type <a href="#PROTOCOL_ERROR" class="smpl">PROTOCOL_ERROR</a> or <a href="#REFUSED_STREAM" class="smpl">REFUSED_STREAM</a>. The choice of error code determines whether the endpoint wishes to enable automatic retry (see <a href="#Reliability" title="Request Reliability Mechanisms in HTTP/2">Section&nbsp;8.1.4</a>) for details).
+                  <p>Endpoints MUST NOT exceed the limit set by their peer. An endpoint that receives a <a href="#HEADERS" class="smpl">HEADERS</a> frame that causes its advertised concurrent stream limit to be exceeded MUST treat this as a stream error (<a href="#StreamErrorHandler" title="Stream Error Handling">Section&nbsp;5.4.2</a>) of type <a href="#PROTOCOL_ERROR" class="smpl">PROTOCOL_ERROR</a> or <a href="#REFUSED_STREAM" class="smpl">REFUSED_STREAM</a>. The choice of error code determines whether the endpoint wishes to enable automatic retry (see <a href="#Reliability" title="Request Reliability Mechanisms in HTTP/2">Section&nbsp;8.1.4</a>) for details).
                   </p>
                </div>
                <div id="rfc.section.5.1.2.p.4">
@@ -1558,13 +1558,13 @@ Upgrade: h2c
                      <li>Flow control is specific to a connection. Both types of flow control are between the endpoints of a single hop and not over
                         the entire end-to-end path.
                      </li>
-                     <li>Flow control is based on window update frames. Receivers advertise how many octets they are prepared to receive on a stream
-                        and for the entire connection. This is a credit-based scheme.
+                     <li>Flow control is based on <a href="#WINDOW_UPDATE" class="smpl">WINDOW_UPDATE</a> frames. Receivers advertise how many octets they are prepared to receive on a stream and for the entire connection. This is
+                        a credit-based scheme.
                      </li>
                      <li>Flow control is directional with overall control provided by the receiver. A receiver MAY choose to set any window size that
                         it desires for each stream and for the entire connection. A sender MUST respect flow-control limits imposed by a receiver.
-                        Clients, servers and intermediaries all independently advertise their flow-control window as a receiver and abide by the flow-control
-                        limits set by their peer when sending.
+                        Clients, servers, and intermediaries all independently advertise their flow-control window as a receiver and abide by the
+                        flow-control limits set by their peer when sending.
                      </li>
                      <li>The initial value for the flow-control window is 65,535 octets for both new streams and the overall connection.</li>
                      <li>The frame type determines whether flow control applies to a frame. Of the frames specified in this document, only <a href="#DATA" class="smpl">DATA</a> frames are subject to flow control; all other frame types do not consume space in the advertised flow-control window. This
@@ -1593,7 +1593,7 @@ Upgrade: h2c
                   </p>
                </div>
                <div id="rfc.section.5.2.2.p.2">
-                  <p>Deployments that do not require this capability can advertise a flow-control window of the maximum size (2<sup>31</sup>-1), and by maintaining this window by sending a <a href="#WINDOW_UPDATE" class="smpl">WINDOW_UPDATE</a> frame when any data is received. This effectively disables flow control for that receiver. Conversely, a sender is always
+                  <p>Deployments that do not require this capability can advertise a flow-control window of the maximum size (2<sup>31</sup>-1) and can maintain this window by sending a <a href="#WINDOW_UPDATE" class="smpl">WINDOW_UPDATE</a> frame when any data is received. This effectively disables flow control for that receiver. Conversely, a sender is always
                      subject to the flow-control window advertised by the receiver.
                   </p>
                </div>
@@ -1612,13 +1612,13 @@ Upgrade: h2c
             </div>
          </div>
          <div id="StreamPriority">
-            <h2 id="rfc.section.5.3"><a href="#rfc.section.5.3">5.3</a>&nbsp;<a href="#StreamPriority">Stream priority</a></h2>
+            <h2 id="rfc.section.5.3"><a href="#rfc.section.5.3">5.3</a>&nbsp;<a href="#StreamPriority">Stream Priority</a></h2>
             <div id="rfc.section.5.3.p.1">
                <p>A client can assign a priority for a new stream by including prioritization information in the HEADERS frame (<a href="#HEADERS" title="HEADERS">Section&nbsp;6.2</a>) that opens the stream. At any other time, the PRIORITY frame (<a href="#PRIORITY" title="PRIORITY">Section&nbsp;6.3</a>) can be used to change the priority of a stream.
                </p>
             </div>
             <div id="rfc.section.5.3.p.2">
-               <p>The purpose of prioritization is to allow an endpoint to express how it would prefer its peer allocate resources when managing
+               <p>The purpose of prioritization is to allow an endpoint to express how it would prefer its peer to allocate resources when managing
                   concurrent streams. Most importantly, priority can be used to select streams for transmitting frames when there is limited
                   capacity for sending.
                </p>
@@ -1631,7 +1631,7 @@ Upgrade: h2c
             <div id="rfc.section.5.3.p.4">
                <p>Explicitly setting the priority for a stream is input to a prioritization process. It does not guarantee any particular processing
                   or transmission order for the stream relative to any other stream. An endpoint cannot force a peer to process concurrent streams
-                  in a particular order using priority. Expressing priority is therefore only ever a suggestion.
+                  in a particular order using priority. Expressing priority is therefore only a suggestion.
                </p>
             </div>
             <div id="rfc.section.5.3.p.5">
@@ -1652,7 +1652,7 @@ Upgrade: h2c
                </div>
                <div id="rfc.section.5.3.1.p.3">
                   <p>A stream that depends on another stream is a dependent stream. The stream upon which a stream is dependent is a parent stream.
-                     A dependency on a stream that is not currently in the tree - such as a stream in the "idle" state - results in that stream
+                     A dependency on a stream that is not currently in the tree -- such as a stream in the "idle" state -- results in that stream
                      being given a default priority (<a href="#pri-default" title="Default Priorities">Section&nbsp;5.3.5</a>).
                   </p>
                </div>
@@ -1685,8 +1685,8 @@ Upgrade: h2c
 </pre></div>
                <p class="figure">Figure 4: Example of Exclusive Dependency Creation</p>
                <div id="rfc.section.5.3.1.p.6">
-                  <p>Inside the dependency tree, a dependent stream SHOULD only be allocated resources if all of the streams that it depends on
-                     (the chain of parent streams up to 0x0) are either closed, or it is not possible to make progress on them.
+                  <p>Inside the dependency tree, a dependent stream SHOULD only be allocated resources if either all of the streams that it depends
+                     on (the chain of parent streams up to 0x0) are closed or it is not possible to make progress on them.
                   </p>
                </div>
                <div id="rfc.section.5.3.1.p.7">
@@ -1702,8 +1702,8 @@ Upgrade: h2c
                </div>
                <div id="rfc.section.5.3.2.p.2">
                   <p>Streams with the same parent SHOULD be allocated resources proportionally based on their weight. Thus, if stream B depends
-                     on stream A with weight 4, and C depends on stream A with weight 12, and if no progress can be made on A, stream B ideally
-                     receives one third of the resources allocated to stream C.
+                     on stream A with weight 4, stream C depends on stream A with weight 12, and if no progress can be made on stream A, stream
+                     B ideally receives one-third of the resources allocated to stream C.
                   </p>
                </div>
             </div>
@@ -1715,7 +1715,7 @@ Upgrade: h2c
                </div>
                <div id="rfc.section.5.3.3.p.2">
                   <p>Dependent streams move with their parent stream if the parent is reprioritized. Setting a dependency with the exclusive flag
-                     for a reprioritized stream moves all the dependencies of the new parent stream to become dependent on the reprioritized stream.
+                     for a reprioritized stream causes all the dependencies of the new parent stream to become dependent on the reprioritized stream.
                   </p>
                </div>
                <div id="rfc.section.5.3.3.p.3">
@@ -1728,7 +1728,7 @@ Upgrade: h2c
                   <p>For example, consider an original dependency tree where B and C depend on A, D and E depend on C, and F depends on D. If A
                      is made dependent on D, then D takes the place of A. All other dependency relationships stay the same, except for F, which
                      becomes dependent on A if the reprioritization is exclusive.
-                  </p><pre class="inline">    ?                ?                ?                 ?
+                  </p><pre class="inline">    x                x                x                 x
     |               / \               |                 |
     A              D   A              D                 D
    / \            /   / \            / \                |
@@ -1767,7 +1767,7 @@ Upgrade: h2c
                <div id="rfc.section.5.3.4.p.4">
                   <p>It is possible for a stream to become closed while prioritization information that creates a dependency on that stream is
                      in transit. If a stream identified in a dependency has no associated priority information, then the dependent stream is instead
-                     assigned a default priority (<a href="#pri-default" title="Default Priorities">Section&nbsp;5.3.5</a>). This potentially creates suboptimal prioritization, since the stream could be given a priority that is different to what
+                     assigned a default priority (<a href="#pri-default" title="Default Priorities">Section&nbsp;5.3.5</a>). This potentially creates suboptimal prioritization, since the stream could be given a priority that is different from what
                      is intended.
                   </p>
                </div>
@@ -1794,8 +1794,7 @@ Upgrade: h2c
                   </p>
                </div>
                <div id="rfc.section.5.3.4.p.9">
-                  <p>An endpoint receiving a <a href="#PRIORITY" class="smpl">PRIORITY</a> frame that changes the priority of a closed stream SHOULD alter the dependencies of the streams that depend on it, if it has
-                     retained enough state to do so.
+                  <p>If it has retained enough state to do so, an endpoint receiving a <a href="#PRIORITY" class="smpl">PRIORITY</a> frame that changes the priority of a closed stream SHOULD alter the dependencies of the streams that depend on it.
                   </p>
                </div>
             </div>
@@ -1823,14 +1822,14 @@ Upgrade: h2c
             <div id="ConnectionErrorHandler">
                <h3 id="rfc.section.5.4.1"><a href="#rfc.section.5.4.1">5.4.1</a>&nbsp;<a href="#ConnectionErrorHandler">Connection Error Handling</a></h3>
                <div id="rfc.section.5.4.1.p.1">
-                  <p>A connection error is any error which prevents further processing of the framing layer, or which corrupts any connection state.</p>
+                  <p>A connection error is any error that prevents further processing of the frame layer or corrupts any connection state.</p>
                </div>
                <div id="rfc.section.5.4.1.p.2">
                   <p>An endpoint that encounters a connection error SHOULD first send a <a href="#GOAWAY" class="smpl">GOAWAY</a> frame (<a href="#GOAWAY" title="GOAWAY">Section&nbsp;6.8</a>) with the stream identifier of the last stream that it successfully received from its peer. The <a href="#GOAWAY" class="smpl">GOAWAY</a> frame includes an error code that indicates why the connection is terminating. After sending the <a href="#GOAWAY" class="smpl">GOAWAY</a> frame for an error condition, the endpoint MUST close the TCP connection.
                   </p>
                </div>
                <div id="rfc.section.5.4.1.p.3">
-                  <p>It is possible that the <a href="#GOAWAY" class="smpl">GOAWAY</a> will not be reliably received by the receiving endpoint (see <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#persistent.tear-down" title="Tear-down">Section 6.6</a>). In the event of a connection error, <a href="#GOAWAY" class="smpl">GOAWAY</a> only provides a best-effort attempt to communicate with the peer about why the connection is being terminated.
+                  <p>It is possible that the <a href="#GOAWAY" class="smpl">GOAWAY</a> will not be reliably received by the receiving endpoint (<a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#persistent.tear-down" title="Tear-down">Section 6.6</a> describes how an immediate conncetion close can result in data loss). In the event of a connection error, <a href="#GOAWAY" class="smpl">GOAWAY</a> only provides a best-effort attempt to communicate with the peer about why the connection is being terminated.
                   </p>
                </div>
                <div id="rfc.section.5.4.1.p.4">
@@ -1859,7 +1858,7 @@ Upgrade: h2c
                   </p>
                </div>
                <div id="rfc.section.5.4.2.p.5">
-                  <p>An endpoint MUST NOT send a <a href="#RST_STREAM" class="smpl">RST_STREAM</a> in response to a <a href="#RST_STREAM" class="smpl">RST_STREAM</a> frame, to avoid looping.
+                  <p>To avoid looping, an endpoint MUST NOT send a <a href="#RST_STREAM" class="smpl">RST_STREAM</a> in response to a <a href="#RST_STREAM" class="smpl">RST_STREAM</a> frame.
                   </p>
                </div>
             </div>
@@ -1876,8 +1875,8 @@ Upgrade: h2c
          <div id="extensibility">
             <h2 id="rfc.section.5.5"><a href="#rfc.section.5.5">5.5</a>&nbsp;<a href="#extensibility">Extending HTTP/2</a></h2>
             <div id="rfc.section.5.5.p.1">
-               <p>HTTP/2 permits extension of the protocol. Protocol extensions can be used to provide additional services or alter any aspect
-                  of the protocol, within the limitations described in this section. Extensions are effective only within the scope of a single
+               <p>HTTP/2 permits extension of the protocol. Within the limitations described in this section, protocol extensions can be used
+                  to provide additional services or alter any aspect of the protocol. Extensions are effective only within the scope of a single
                   HTTP/2 connection.
                </p>
             </div>
@@ -1899,11 +1898,11 @@ Upgrade: h2c
             <div id="rfc.section.5.5.p.5">
                <p>Extensions that could change the semantics of existing protocol components MUST be negotiated before being used. For example,
                   an extension that changes the layout of the <a href="#HEADERS" class="smpl">HEADERS</a> frame cannot be used until the peer has given a positive signal that this is acceptable. In this case, it could also be necessary
-                  to coordinate when the revised layout comes into effect. Note that treating any frame other than <a href="#DATA" class="smpl">DATA</a> frames as flow controlled is such a change in semantics and can only be done through negotiation.
+                  to coordinate when the revised layout comes into effect. Note that treating any frames other than <a href="#DATA" class="smpl">DATA</a> frames as flow controlled is such a change in semantics and can only be done through negotiation.
                </p>
             </div>
             <div id="rfc.section.5.5.p.6">
-               <p>This document doesn't mandate a specific method for negotiating the use of an extension, but notes that a setting (<a href="#SettingValues" title="Defined SETTINGS Parameters">Section&nbsp;6.5.2</a>) could be used for that purpose. If both peers set a value that indicates willingness to use the extension, then the extension
+               <p>This document doesn't mandate a specific method for negotiating the use of an extension but notes that a setting (<a href="#SettingValues" title="Defined SETTINGS Parameters">Section&nbsp;6.5.2</a>) could be used for that purpose. If both peers set a value that indicates willingness to use the extension, then the extension
                   can be used. If a setting is used for extension negotiation, the initial value MUST be defined in such a fashion that the
                   extension is initially disabled.
                </p>
@@ -2025,13 +2024,13 @@ Upgrade: h2c
                      is set.
                   </dd>
                   <dt>E:</dt>
-                  <dd>A single-bit flag indicates that the stream dependency is exclusive (see <a href="#StreamPriority" title="Stream priority">Section&nbsp;5.3</a>). This field is only present if the PRIORITY flag is set.
+                  <dd>A single-bit flag indicates that the stream dependency is exclusive (see <a href="#StreamPriority" title="Stream Priority">Section&nbsp;5.3</a>). This field is only present if the PRIORITY flag is set.
                   </dd>
                   <dt>Stream Dependency:</dt>
-                  <dd>A 31-bit stream identifier for the stream that this stream depends on (see <a href="#StreamPriority" title="Stream priority">Section&nbsp;5.3</a>). This field is only present if the PRIORITY flag is set.
+                  <dd>A 31-bit stream identifier for the stream that this stream depends on (see <a href="#StreamPriority" title="Stream Priority">Section&nbsp;5.3</a>). This field is only present if the PRIORITY flag is set.
                   </dd>
                   <dt>Weight:</dt>
-                  <dd>An unsigned 8-bit integer representing a priority weight for the stream (see <a href="#StreamPriority" title="Stream priority">Section&nbsp;5.3</a>). Add one to the value to obtain a weight between 1 and 256. This field is only present if the PRIORITY flag is set.
+                  <dd>An unsigned 8-bit integer representing a priority weight for the stream (see <a href="#StreamPriority" title="Stream Priority">Section&nbsp;5.3</a>). Add one to the value to obtain a weight between 1 and 256. This field is only present if the PRIORITY flag is set.
                   </dd>
                   <dt>Header Block Fragment:</dt>
                   <dd>A header block fragment (<a href="#HeaderBlock" title="Header Compression and Decompression">Section&nbsp;4.3</a>).
@@ -2065,7 +2064,7 @@ Upgrade: h2c
                   </dd>
                   <dt>PRIORITY (0x20):</dt>
                   <dd>
-                     <p>Bit 5 being set indicates that the Exclusive Flag (E), Stream Dependency, and Weight fields are present; see <a href="#StreamPriority" title="Stream priority">Section&nbsp;5.3</a>.
+                     <p>Bit 5 being set indicates that the Exclusive Flag (E), Stream Dependency, and Weight fields are present; see <a href="#StreamPriority" title="Stream Priority">Section&nbsp;5.3</a>.
                      </p>
                   </dd>
                </dl>
@@ -2096,7 +2095,7 @@ Upgrade: h2c
          <div id="PRIORITY">
             <h2 id="rfc.section.6.3"><a href="#rfc.section.6.3">6.3</a>&nbsp;<a href="#PRIORITY">PRIORITY</a></h2>
             <div id="rfc.section.6.3.p.1">
-               <p>The PRIORITY frame (type=0x2) specifies the sender-advised priority of a stream (<a href="#StreamPriority" title="Stream priority">Section&nbsp;5.3</a>). It can be sent in any stream state, including idle or closed streams.
+               <p>The PRIORITY frame (type=0x2) specifies the sender-advised priority of a stream (<a href="#StreamPriority" title="Stream Priority">Section&nbsp;5.3</a>). It can be sent in any stream state, including idle or closed streams.
                </p>
             </div>
             <div id="PRIORITYFramePayload"></div>
@@ -2111,13 +2110,13 @@ Upgrade: h2c
                <p>The payload of a PRIORITY frame contains the following fields: </p>
                <dl>
                   <dt>E:</dt>
-                  <dd>A single bit flag indicates that the stream dependency is exclusive (see <a href="#StreamPriority" title="Stream priority">Section&nbsp;5.3</a>).
+                  <dd>A single bit flag indicates that the stream dependency is exclusive (see <a href="#StreamPriority" title="Stream Priority">Section&nbsp;5.3</a>).
                   </dd>
                   <dt>Stream Dependency:</dt>
-                  <dd>A 31-bit stream identifier for the stream that this stream depends on (see <a href="#StreamPriority" title="Stream priority">Section&nbsp;5.3</a>).
+                  <dd>A 31-bit stream identifier for the stream that this stream depends on (see <a href="#StreamPriority" title="Stream Priority">Section&nbsp;5.3</a>).
                   </dd>
                   <dt>Weight:</dt>
-                  <dd>An unsigned 8-bit integer representing a priority weight for the stream (see <a href="#StreamPriority" title="Stream priority">Section&nbsp;5.3</a>). Add one to the value to obtain a weight between 1 and 256.
+                  <dd>An unsigned 8-bit integer representing a priority weight for the stream (see <a href="#StreamPriority" title="Stream Priority">Section&nbsp;5.3</a>). Add one to the value to obtain a weight between 1 and 256.
                   </dd>
                </dl>
             </div>
