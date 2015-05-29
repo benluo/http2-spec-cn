@@ -737,7 +737,7 @@ pre.text, pre.text2 {
          <h1 id="rfc.section.1" class="np"><a href="#rfc.section.1">1.</a>&nbsp;Introduction
          </h1>
          <div id="rfc.section.1.p.1">
-            <p>In HTTP/1.1 (see <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>), header fields are not compressed. As Web pages have grown to require dozens to hundreds of requests, the redundant header
+            <p>In HTTP/1.1 (see <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>), header fields are not compressed. As web pages have grown to require dozens to hundreds of requests, the redundant header
                fields in these requests unnecessarily consume bandwidth, measurably increasing latency.
             </p>
          </div>
@@ -747,9 +747,9 @@ pre.text, pre.text2 {
             </p>
          </div>
          <div id="rfc.section.1.p.3">
-            <p>This specification defines HPACK, a new compressor for header fields which eliminates redundant header fields, limits vulnerability
-               to known security attacks, and which has a bounded memory requirement for use in constrained environments. Potential security
-               concerns for HPACK are described in <a href="#Security" title="Security Considerations">Section&nbsp;7</a>.
+            <p>This specification defines HPACK, a new compressor that eliminates redundant header fields, limits vulnerability to known
+               security attacks, and has a bounded memory requirement for use in constrained environments. Potential security concerns for
+               HPACK are described in <a href="#Security" title="Security Considerations">Section&nbsp;7</a>.
             </p>
          </div>
          <div id="rfc.section.1.p.4">
@@ -778,7 +778,7 @@ pre.text, pre.text2 {
                </p>
             </div>
             <div id="rfc.section.1.1.p.4">
-               <p>Literal values are either encoded directly or using a static Huffman code.</p>
+               <p>Literal values are either encoded directly or use a static Huffman code.</p>
             </div>
             <div id="rfc.section.1.1.p.5">
                <p>The encoder is responsible for deciding which header fields to insert as new entries in the header field tables. The decoder
@@ -817,7 +817,7 @@ pre.text, pre.text2 {
                   </dd>
                   <dt>Static Table:</dt>
                   <dd>The static table (see <a href="#static.table" title="Static Table">Section&nbsp;2.3.1</a>) is a table that statically associates header fields that occur frequently with index values. This table is ordered, read-only,
-                     always accessible, and may be shared amongst all encoding or decoding contexts.
+                     always accessible, and it may be shared amongst all encoding or decoding contexts.
                   </dd>
                   <dt>Header List:</dt>
                   <dd>A header list is an ordered collection of header fields that are encoded jointly and can contain duplicate header fields.
@@ -991,7 +991,7 @@ pre.text, pre.text2 {
             </div>
             <div id="rfc.section.3.1.p.4">
                <p>By passing the resulting header fields to the application, a decoder can be implemented with minimal transitory memory commitment
-                  in addition to the dynamic table.
+                  in addition to the memory required for the dynamic table.
                </p>
             </div>
          </div>
@@ -1047,7 +1047,7 @@ pre.text, pre.text2 {
                <p>The size of the dynamic table is the sum of the size of its entries.</p>
             </div>
             <div id="rfc.section.4.1.p.2">
-               <p>The size of an entry is the sum of its name's length in octets (as defined in <a href="#string.literal.representation" title="String Literal Representation">Section&nbsp;5.2</a>), its value's length in octets, plus 32.
+               <p>The size of an entry is the sum of its name's length in octets (as defined in <a href="#string.literal.representation" title="String Literal Representation">Section&nbsp;5.2</a>), its value's length in octets, and 32.
                </p>
             </div>
             <div id="rfc.section.4.1.p.3">
@@ -1074,14 +1074,14 @@ pre.text, pre.text2 {
                </p>
             </div>
             <div id="rfc.section.4.2.p.3">
-               <p>A change in the maximum size of the dynamic table is signaled via an encoding context update (see <a href="#encoding.context.update" title="Dynamic Table Size Update">Section&nbsp;6.3</a>). This encoding context update MUST occur at the beginning of the first header block following the change to the dynamic
+               <p>A change in the maximum size of the dynamic table is signaled via a dynamic table size update (see <a href="#encoding.context.update" title="Dynamic Table Size Update">Section&nbsp;6.3</a>). This dynamic table size update MUST occur at the beginning of the first header block following the change to the dynamic
                   table size. In HTTP/2, this follows a settings acknowledgment (see <a href="https://tools.ietf.org/html/rfc7540#section-6.5.3" title="Settings Synchronization">Section 6.5.3</a> of <a href="#HTTP2"><cite title="Hypertext Transfer Protocol Version 2 (HTTP/2)">[HTTP2]</cite></a>).
                </p>
             </div>
             <div id="rfc.section.4.2.p.4">
                <p>Multiple updates to the maximum table size can occur between the transmission of two header blocks. In the case that this
                   size is changed more than once in this interval, the smallest maximum table size that occurs in that interval MUST be signaled
-                  in an encoding context update. The final maximum size is always signaled, resulting in at most two encoding context updates.
+                  in a dynamic table size update. The final maximum size is always signaled, resulting in at most two dynamic table size updates.
                   This ensures that the decoder is able to perform eviction based on reductions in dynamic table size (see <a href="#entry.eviction" title="Entry Eviction When Dynamic Table Size Changes">Section&nbsp;4.3</a>).
                </p>
             </div>
@@ -1205,8 +1205,8 @@ else
             </div>
             <div id="rfc.section.5.1.p.8">
                <p>This integer representation allows for values of indefinite size. It is also possible for an encoder to send a large number
-                  of zero values, which can waste octets and could be used to overflow integer values. Integer encodings that exceed an implementation
-                  limits -- in value or octet length -- MUST be treated as a decoding error. Different limits can be set for each of the different
+                  of zero values, which can waste octets and could be used to overflow integer values. Integer encodings that exceed implementation
+                  limits -- in value or octet length -- MUST be treated as decoding errors. Different limits can be set for each of the different
                   uses of integers, based on implementation constraints.
                </p>
             </div>
@@ -1215,7 +1215,7 @@ else
             <h2 id="rfc.section.5.2"><a href="#rfc.section.5.2">5.2</a>&nbsp;<a href="#string.literal.representation">String Literal Representation</a></h2>
             <div id="rfc.section.5.2.p.1">
                <p>Header field names and header field values can be represented as string literals. A string literal is encoded as a sequence
-                  of octets, either by directly encoding the string literal's octets, or by using a Huffman code (see <a href="#HUFFMAN"><cite title="A Method for the Construction of Minimum-Redundancy Codes">[HUFFMAN]</cite></a>).
+                  of octets, either by directly encoding the string literal's octets or by using a Huffman code (see <a href="#HUFFMAN"><cite title="A Method for the Construction of Minimum-Redundancy Codes">[HUFFMAN]</cite></a>).
                </p>
             </div>
             <div id="String.Literal.Representation"></div>
@@ -1233,7 +1233,7 @@ else
                   <dt>H:</dt>
                   <dd>A one-bit flag, H, indicating whether or not the octets of the string are Huffman encoded.</dd>
                   <dt>String Length:</dt>
-                  <dd>The number of octets used to encode the string literal, encoded as an integer with 7-bit prefix (see <a href="#integer.representation" title="Integer Representation">Section&nbsp;5.1</a>).
+                  <dd>The number of octets used to encode the string literal, encoded as an integer with a 7-bit prefix (see <a href="#integer.representation" title="Integer Representation">Section&nbsp;5.1</a>).
                   </dd>
                   <dt>String Data:</dt>
                   <dd>The encoded data of the string literal. If H is '0', then the encoded data is the raw octets of the string literal. If H is
@@ -1242,13 +1242,13 @@ else
                </dl>
             </div>
             <div id="rfc.section.5.2.p.3">
-               <p>String literals which use Huffman encoding are encoded with the Huffman code defined in <a href="#huffman.code" title="Huffman Code">Appendix&nbsp;B</a> (see examples for requests in <a href="#request.examples.with.huffman.coding" title="Request Examples with Huffman Coding">Appendix&nbsp;C.4</a> and for responses in <a href="#response.examples.with.huffman.coding" title="Response Examples with Huffman Coding">Appendix&nbsp;C.6</a>). The encoded data is the bitwise concatenation of the codes corresponding to each octet of the string literal.
+               <p>String literals that use Huffman encoding are encoded with the Huffman code defined in <a href="#huffman.code" title="Huffman Code">Appendix&nbsp;B</a> (see examples for requests in <a href="#request.examples.with.huffman.coding" title="Request Examples with Huffman Coding">Appendix&nbsp;C.4</a> and for responses in <a href="#response.examples.with.huffman.coding" title="Response Examples with Huffman Coding">Appendix&nbsp;C.6</a>). The encoded data is the bitwise concatenation of the codes corresponding to each octet of the string literal.
                </p>
             </div>
             <div id="rfc.section.5.2.p.4">
                <p>As the Huffman-encoded data doesn't always end at an octet boundary, some padding is inserted after it, up to the next octet
-                  boundary. To prevent this padding to be misinterpreted as part of the string literal, the most significant bits of the code
-                  corresponding to the EOS (end-of-string) symbol are used.
+                  boundary. To prevent this padding from being misinterpreted as part of the string literal, the most significant bits of the
+                  code corresponding to the EOS (end-of-string) symbol are used.
                </p>
             </div>
             <div id="rfc.section.5.2.p.5">
@@ -1263,7 +1263,7 @@ else
       <div id="detailed.format">
          <h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a>&nbsp;<a href="#detailed.format">Binary Format</a></h1>
          <div id="rfc.section.6.p.1">
-            <p>This section describes the detailed format of each of the different header field representations, plus the encoding context
+            <p>This section describes the detailed format of each of the different header field representations and the dynamic table size
                update instruction.
             </p>
          </div>
@@ -1296,7 +1296,7 @@ else
          <div id="literal.header.representation">
             <h2 id="rfc.section.6.2"><a href="#rfc.section.6.2">6.2</a>&nbsp;<a href="#literal.header.representation">Literal Header Field Representation</a></h2>
             <div id="rfc.section.6.2.p.1">
-               <p>A literal header field representation contains a literal header field value. Header field names are either provided as a literal
+               <p>A literal header field representation contains a literal header field value. Header field names are provided either as a literal
                   or by reference to an existing table entry, either from the static table or the dynamic table (see <a href="#indexing.tables" title="Indexing Tables">Section&nbsp;2.3</a>).
                </p>
             </div>
@@ -1535,8 +1535,8 @@ else
                <h3 id="rfc.section.7.1.1"><a href="#rfc.section.7.1.1">7.1.1</a>&nbsp;Applicability to HPACK and HTTP
                </h3>
                <div id="rfc.section.7.1.1.p.1">
-                  <p>HPACK mitigates but does not completely prevent attacks modeled on <a href="#CRIME">CRIME</a> <cite title="CRIME">[CRIME]</cite> by forcing a guess to match an entire header field value rather than individual characters. An attacker can only learn whether
-                     a guess is correct or not, so is reduced to a brute-force guess for the header field values.
+                  <p>HPACK mitigates but does not completely prevent attacks modeled on <a href="#CRIME">CRIME</a> <cite title="CRIME">[CRIME]</cite> by forcing a guess to match an entire header field value rather than individual characters. Attackers can only learn whether
+                     a guess is correct or not, so they are reduced to brute-force guesses for the header field values.
                   </p>
                </div>
                <div id="rfc.section.7.1.1.p.2">
@@ -1588,7 +1588,7 @@ else
                <div id="rfc.section.7.1.2.p.5">
                   <p>An encoder without good knowledge of the provenance of header fields might instead introduce a penalty for a header field
                      with many different values, such that a large number of attempts to guess a header field value results in the header field
-                     no more being compared to the dynamic table entries in future messages, effectively preventing further guesses.
+                     no longer being compared to the dynamic table entries in future messages, effectively preventing further guesses.
                   </p>
                </div>
                <div class="note">
@@ -1602,7 +1602,7 @@ else
                </div>
                <div id="rfc.section.7.1.2.p.7">
                   <p>This response might be made inversely proportional to the length of the header field value. Marking a header field as not
-                     using the dynamic table any more might occur for shorter values more quickly or with higher probability than for longer values.
+                     using the dynamic table anymore might occur for shorter values more quickly or with higher probability than for longer values.
                   </p>
                </div>
             </div>
@@ -1674,7 +1674,7 @@ else
             <div id="rfc.section.7.3.p.3">
                <p>A decoder can limit the amount of state memory used by setting an appropriate value for the maximum size of the dynamic table.
                   In HTTP/2, this is realized by setting an appropriate value for the SETTINGS_HEADER_TABLE_SIZE parameter. An encoder can limit
-                  the amount of state memory it uses by signaling lower dynamic table size than the decoder allows (see <a href="#encoding.context.update" title="Dynamic Table Size Update">Section&nbsp;6.3</a>).
+                  the amount of state memory it uses by signaling a lower dynamic table size than the decoder allows (see <a href="#encoding.context.update" title="Dynamic Table Size Update">Section&nbsp;6.3</a>).
                </p>
             </div>
             <div id="rfc.section.7.3.p.4">
@@ -1777,7 +1777,8 @@ else
             </p>
          </div>
          <div id="rfc.section.A.p.3">
-            <p>The following table lists the predefined header fields that make-up the static table.</p>
+            <p><a href="#static.table.entries">Table&nbsp;1</a> lists the predefined header fields that make up the static table and gives the index of each entry.
+            </p>
          </div>
          <div id="rfc.table.1">
             <div id="static.table.entries"></div>
@@ -2099,10 +2100,6 @@ else
                </tbody>
             </table>
          </div>
-         <div id="rfc.section.A.p.4">
-            <p><a href="#static.table.entries">Table&nbsp;1</a> gives the index of each entry in the static table.
-            </p>
-         </div>
       </div>
       <div id="huffman.code">
          <h1 id="rfc.section.B"><a href="#rfc.section.B">B.</a>&nbsp;<a href="#huffman.code">Huffman Code</a></h1>
@@ -2401,14 +2398,14 @@ EOS (256)  |11111111|11111111|11111111|111111      3fffffff  [30]
       <div id="examples">
          <h1 id="rfc.section.C"><a href="#rfc.section.C">C.</a>&nbsp;<a href="#examples">Examples</a></h1>
          <div id="rfc.section.C.p.1">
-            <p>A number of examples are worked through here, covering integer encoding, header field representation, and the encoding of
-               whole lists of header fields, for both requests and responses, and with and without Huffman coding.
+            <p>This appendix contains examples covering integer encoding, header field representation, and the encoding of whole lists of
+               header fields for both requests and responses, with and without Huffman coding.
             </p>
          </div>
          <div id="integer.representation.examples">
             <h2 id="rfc.section.C.1"><a href="#rfc.section.C.1">C.1</a>&nbsp;<a href="#integer.representation.examples">Integer Representation Examples</a></h2>
             <div id="rfc.section.C.1.p.1">
-               <p>This section shows the representation of integer values in details (see <a href="#integer.representation" title="Integer Representation">Section&nbsp;5.1</a>).
+               <p>This section shows the representation of integer values in detail (see <a href="#integer.representation" title="Integer Representation">Section&nbsp;5.1</a>).
                </p>
             </div>
             <div id="integer.representation.example1">
@@ -2442,14 +2439,14 @@ EOS (256)  |11111111|11111111|11111111|111111      3fffffff  [30]
                      </li>
                      <li>
                         <ul class="empty">
-                           <li>I (1306) is greater than or equal to 128, the while loop body executes:</li>
+                           <li>I (1306) is greater than or equal to 128, so the while loop body executes:</li>
                            <li>
                               <ul class="empty">
                                  <li>I % 128 == 26</li>
                                  <li>26 + 128 == 154</li>
                                  <li>154 is encoded in 8 bits as: 10011010</li>
                                  <li>I is set to 10 (1306 / 128 == 10)</li>
-                                 <li>I is no longer greater than or equal to 128, the while loop terminates.</li>
+                                 <li>I is no longer greater than or equal to 128, so the while loop terminates.</li>
                               </ul> 
                            </li>
                            <li>I, now 10, is encoded in 8 bits as: 00001010.</li>
@@ -2469,7 +2466,7 @@ EOS (256)  |11111111|11111111|11111111|111111      3fffffff  [30]
             <div id="integer.representation.example3">
                <h3 id="rfc.section.C.1.3"><a href="#rfc.section.C.1.3">C.1.3</a>&nbsp;<a href="#integer.representation.example3">Example 3: Encoding 42 Starting at an Octet Boundary</a></h3>
                <div id="rfc.section.C.1.3.p.1">
-                  <p>The value 42 is to be encoded starting at an octet-boundary. This implies that a 8-bit prefix is used. </p>
+                  <p>The value 42 is to be encoded starting at an octet boundary. This implies that a 8-bit prefix is used. </p>
                   <ul>
                      <li>42 is less than 255 (2<sup>8</sup> - 1) and is represented using the 8-bit prefix.
                      </li>
@@ -2715,7 +2712,7 @@ custom-key: custom-value</pre></span></div>
          <div id="request.examples.with.huffman.coding">
             <h2 id="rfc.section.C.4"><a href="#rfc.section.C.4">C.4</a>&nbsp;<a href="#request.examples.with.huffman.coding">Request Examples with Huffman Coding</a></h2>
             <div id="rfc.section.C.4.p.1">
-               <p>This section shows the same examples as the previous section, but using Huffman encoding for the literal values.</p>
+               <p>This section shows the same examples as the previous section but uses Huffman encoding for the literal values.</p>
             </div>
             <div>
                <h3 id="rfc.section.C.4.1"><a href="#rfc.section.C.4.1">C.4.1</a>&nbsp;First Request
@@ -3044,9 +3041,9 @@ set-cookie: foo=ASDJKHQKBZXOQWEOPIUAXQWEOIU; max-age=3600; version=1</pre></span
          <div id="response.examples.with.huffman.coding">
             <h2 id="rfc.section.C.6"><a href="#rfc.section.C.6">C.6</a>&nbsp;<a href="#response.examples.with.huffman.coding">Response Examples with Huffman Coding</a></h2>
             <div id="rfc.section.C.6.p.1">
-               <p>This section shows the same examples as the previous section, but using Huffman encoding for the literal values. The HTTP/2
+               <p>This section shows the same examples as the previous section but uses Huffman encoding for the literal values. The HTTP/2
                   setting parameter SETTINGS_HEADER_TABLE_SIZE is set to the value of 256 octets, causing some evictions to occur. The eviction
-                  mechanism uses the length of the decoded literal values, so the same evictions occurs as in the previous section.
+                  mechanism uses the length of the decoded literal values, so the same evictions occur as in the previous section.
                </p>
             </div>
             <div>
