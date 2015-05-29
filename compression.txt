@@ -1857,8 +1857,8 @@ Internet-Draft                    HPACK                         May 2015
    6375 7374 6f6d 2d6b 6579                | custom-key
    0d                                      |   Literal value (len = 13)
    6375 7374 6f6d 2d68 6561 6465 72        | custom-header
-                                           | -> custom-key: custom-head\
-                                           |   er
+                                           | -> custom-key:
+                                           |   custom-header
 
    Dynamic Table (after decoding):
 
@@ -2003,8 +2003,8 @@ C.3.1.  First Request
                                            |     :authority
    0f                                      |   Literal value (len = 15)
    7777 772e 6578 616d 706c 652e 636f 6d   | www.example.com
-                                           | -> :authority: www.example\
-                                           |   .com
+                                           | -> :authority:
+                                           |   www.example.com
 
    Dynamic Table (after decoding):
 
@@ -2052,8 +2052,8 @@ C.3.2.  Second Request
                                            | -> :path: /
    be                                      | == Indexed - Add ==
                                            |   idx = 62
-                                           | -> :authority: www.example\
-                                           |   .com
+                                           | -> :authority:
+                                           |   www.example.com
    58                                      | == Literal indexed ==
                                            |   Indexed name (idx = 24)
                                            |     cache-control
@@ -2110,15 +2110,15 @@ C.3.3.  Third Request
                                            | -> :path: /index.html
    bf                                      | == Indexed - Add ==
                                            |   idx = 63
-                                           | -> :authority: www.example\
-                                           |   .com
+                                           | -> :authority:
+                                           |   www.example.com
    40                                      | == Literal indexed ==
    0a                                      |   Literal name (len = 10)
    6375 7374 6f6d 2d6b 6579                | custom-key
    0c                                      |   Literal value (len = 12)
    6375 7374 6f6d 2d76 616c 7565           | custom-value
-                                           | -> custom-key: custom-valu\
-                                           |   e
+                                           | -> custom-key:
+                                           |   custom-value
 
 
 
@@ -2205,8 +2205,8 @@ Internet-Draft                    HPACK                         May 2015
    f1e3 c2e5 f23a 6ba0 ab90 f4ff           | .....:k.....
                                            |     Decoded:
                                            | www.example.com
-                                           | -> :authority: www.example\
-                                           |   .com
+                                           | -> :authority:
+                                           |   www.example.com
 
    Dynamic Table (after decoding):
 
@@ -2255,8 +2255,8 @@ Internet-Draft                    HPACK                         May 2015
                                            | -> :path: /
    be                                      | == Indexed - Add ==
                                            |   idx = 62
-                                           | -> :authority: www.example\
-                                           |   .com
+                                           | -> :authority:
+                                           |   www.example.com
    58                                      | == Literal indexed ==
                                            |   Indexed name (idx = 24)
                                            |     cache-control
@@ -2316,8 +2316,8 @@ Internet-Draft                    HPACK                         May 2015
                                            | -> :path: /index.html
    bf                                      | == Indexed - Add ==
                                            |   idx = 63
-                                           | -> :authority: www.example\
-                                           |   .com
+                                           | -> :authority:
+                                           |   www.example.com
    40                                      | == Literal indexed ==
    88                                      |   Literal name (len = 8)
                                            |     Huffman encoded:
@@ -2329,8 +2329,8 @@ Internet-Draft                    HPACK                         May 2015
    25a8 49e9 5bb8 e8b4 bf                  | %.I.[....
                                            |     Decoded:
                                            | custom-value
-                                           | -> custom-key: custom-valu\
-                                           |   e
+                                           | -> custom-key:
+                                           |   custom-value
 
    Dynamic Table (after decoding):
 
@@ -2430,7 +2430,7 @@ Internet-Draft                    HPACK                         May 2015
    1d                                      |   Literal value (len = 29)
    4d6f 6e2c 2032 3120 4f63 7420 3230 3133 | Mon, 21 Oct 2013
    2032 303a 3133 3a32 3120 474d 54        |  20:13:21 GMT
-                                           | -> date: Mon, 21 Oct 2013 \
+                                           | -> date: Mon, 21 Oct 2013
                                            |   20:13:21 GMT
    6e                                      | == Literal indexed ==
                                            |   Indexed name (idx = 46)
@@ -2438,8 +2438,8 @@ Internet-Draft                    HPACK                         May 2015
    17                                      |   Literal value (len = 23)
    6874 7470 733a 2f2f 7777 772e 6578 616d | https://www.exam
    706c 652e 636f 6d                       | ple.com
-                                           | -> location: https://www.e\
-                                           |   xample.com
+                                           | -> location:
+                                           |   https://www.example.com
 
    Dynamic Table (after decoding):
 
@@ -2496,12 +2496,12 @@ C.5.2.  Second Response
                                            | -> cache-control: private
    c0                                      | == Indexed - Add ==
                                            |   idx = 64
-                                           | -> date: Mon, 21 Oct 2013 \
+                                           | -> date: Mon, 21 Oct 2013
                                            |   20:13:21 GMT
    bf                                      | == Indexed - Add ==
                                            |   idx = 63
-                                           | -> location: https://www.e\
-                                           |   xample.com
+                                           | -> location:
+                                           |   https://www.example.com
 
    Dynamic Table (after decoding):
 
@@ -2592,20 +2592,20 @@ Internet-Draft                    HPACK                         May 2015
    1d                                      |   Literal value (len = 29)
    4d6f 6e2c 2032 3120 4f63 7420 3230 3133 | Mon, 21 Oct 2013
    2032 303a 3133 3a32 3220 474d 54        |  20:13:22 GMT
-                                           | - evict: cache-control: pr\
-                                           |   ivate
-                                           | -> date: Mon, 21 Oct 2013 \
+                                           | - evict: cache-control:
+                                           |   private
+                                           | -> date: Mon, 21 Oct 2013
                                            |   20:13:22 GMT
    c0                                      | == Indexed - Add ==
                                            |   idx = 64
-                                           | -> location: https://www.e\
-                                           |   xample.com
+                                           | -> location:
+                                           |   https://www.example.com
    5a                                      | == Literal indexed ==
                                            |   Indexed name (idx = 26)
                                            |     content-encoding
    04                                      |   Literal value (len = 4)
    677a 6970                               | gzip
-                                           | - evict: date: Mon, 21 Oct\
+                                           | - evict: date: Mon, 21 Oct
                                            |    2013 20:13:21 GMT
                                            | -> content-encoding: gzip
    77                                      | == Literal indexed ==
@@ -2616,11 +2616,11 @@ Internet-Draft                    HPACK                         May 2015
    5157 454f 5049 5541 5851 5745 4f49 553b | QWEOPIUAXQWEOIU;
    206d 6178 2d61 6765 3d33 3630 303b 2076 |  max-age=3600; v
    6572 7369 6f6e 3d31                     | ersion=1
-                                           | - evict: location: https:/\
-                                           |   /www.example.com
+                                           | - evict: location:
+                                           |   https://www.example.com
                                            | - evict: :status: 307
-                                           | -> set-cookie: foo=ASDJKHQ\
-                                           |   KBZXOQWEOPIUAXQWEOIU; ma\
+                                           | -> set-cookie: foo=ASDJKHQ
+                                           |   KBZXOQWEOPIUAXQWEOIU; ma
                                            |   x-age=3600; version=1
 
 
@@ -2636,8 +2636,8 @@ Internet-Draft                    HPACK                         May 2015
 
    Dynamic Table (after decoding):
 
-   [  1] (s =  98) set-cookie: foo=ASDJKHQKBZXOQWEOPIUAXQWEOIU; max-age\
-                    =3600; version=1
+   [  1] (s =  98) set-cookie: foo=ASDJKHQKBZXOQWEOPIUAXQWEOIU;
+                    max-age=3600; version=1
    [  2] (s =  52) content-encoding: gzip
    [  3] (s =  65) date: Mon, 21 Oct 2013 20:13:22 GMT
          Table size: 215
@@ -2718,9 +2718,9 @@ Internet-Draft                    HPACK                         May 2015
    d07a be94 1054 d444 a820 0595 040b 8166 | .z...T.D. .....f
    e082 a62d 1bff                          | ...-..
                                            |     Decoded:
-                                           | Mon, 21 Oct 2013 20:13:21 \
+                                           | Mon, 21 Oct 2013 20:13:21
                                            | GMT
-                                           | -> date: Mon, 21 Oct 2013 \
+                                           | -> date: Mon, 21 Oct 2013
                                            |   20:13:21 GMT
    6e                                      | == Literal indexed ==
                                            |   Indexed name (idx = 46)
@@ -2731,8 +2731,8 @@ Internet-Draft                    HPACK                         May 2015
    d3                                      | .
                                            |     Decoded:
                                            | https://www.example.com
-                                           | -> location: https://www.e\
-                                           |   xample.com
+                                           | -> location:
+                                           |   https://www.example.com
 
 
 
@@ -2819,12 +2819,12 @@ Internet-Draft                    HPACK                         May 2015
                                            | -> cache-control: private
    c0                                      | == Indexed - Add ==
                                            |   idx = 64
-                                           | -> date: Mon, 21 Oct 2013 \
+                                           | -> date: Mon, 21 Oct 2013
                                            |   20:13:21 GMT
    bf                                      | == Indexed - Add ==
                                            |   idx = 63
-                                           | -> location: https://www.e\
-                                           |   xample.com
+                                           | -> location:
+                                           |   https://www.example.com
 
    Dynamic Table (after decoding):
 
@@ -2891,16 +2891,16 @@ Internet-Draft                    HPACK                         May 2015
    d07a be94 1054 d444 a820 0595 040b 8166 | .z...T.D. .....f
    e084 a62d 1bff                          | ...-..
                                            |     Decoded:
-                                           | Mon, 21 Oct 2013 20:13:22 \
+                                           | Mon, 21 Oct 2013 20:13:22
                                            | GMT
-                                           | - evict: cache-control: pr\
-                                           |   ivate
-                                           | -> date: Mon, 21 Oct 2013 \
+                                           | - evict: cache-control:
+                                           |   private
+                                           | -> date: Mon, 21 Oct 2013
                                            |   20:13:22 GMT
    c0                                      | == Indexed - Add ==
                                            |   idx = 64
-                                           | -> location: https://www.e\
-                                           |   xample.com
+                                           | -> location:
+                                           |   https://www.example.com
    5a                                      | == Literal indexed ==
                                            |   Indexed name (idx = 26)
                                            |     content-encoding
@@ -2917,7 +2917,7 @@ Internet-Draft                    HPACK                         May 2015
    9bd9 ab                                 | ...
                                            |     Decoded:
                                            | gzip
-                                           | - evict: date: Mon, 21 Oct\
+                                           | - evict: date: Mon, 21 Oct
                                            |    2013 20:13:21 GMT
                                            | -> content-encoding: gzip
    77                                      | == Literal indexed ==
@@ -2929,20 +2929,20 @@ Internet-Draft                    HPACK                         May 2015
    d5af 2708 7f36 72c1 ab27 0fb5 291f 9587 | ..'..6r..'..)...
    3160 65c0 03ed 4ee5 b106 3d50 07        | 1`e...N...=P.
                                            |     Decoded:
-                                           | foo=ASDJKHQKBZXOQWEOPIUAXQ\
-                                           | WEOIU; max-age=3600; versi\
+                                           | foo=ASDJKHQKBZXOQWEOPIUAXQ
+                                           | WEOIU; max-age=3600; versi
                                            | on=1
-                                           | - evict: location: https:/\
-                                           |   /www.example.com
+                                           | - evict: location:
+                                           |   https://www.example.com
                                            | - evict: :status: 307
-                                           | -> set-cookie: foo=ASDJKHQ\
-                                           |   KBZXOQWEOPIUAXQWEOIU; ma\
+                                           | -> set-cookie: foo=ASDJKHQ
+                                           |   KBZXOQWEOPIUAXQWEOIU; ma
                                            |   x-age=3600; version=1
 
    Dynamic Table (after decoding):
 
-   [  1] (s =  98) set-cookie: foo=ASDJKHQKBZXOQWEOPIUAXQWEOIU; max-age\
-                    =3600; version=1
+   [  1] (s =  98) set-cookie: foo=ASDJKHQKBZXOQWEOPIUAXQWEOIU;
+                    max-age=3600; version=1
    [  2] (s =  52) content-encoding: gzip
    [  3] (s =  65) date: Mon, 21 Oct 2013 20:13:22 GMT
          Table size: 215

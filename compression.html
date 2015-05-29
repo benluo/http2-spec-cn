@@ -2500,8 +2500,8 @@ EOS (256)  |11111111|11111111|11111111|111111      3fffffff  [30]
 6375 7374 6f6d 2d6b 6579                | custom-key
 0d                                      |   Literal value (len = 13)
 6375 7374 6f6d 2d68 6561 6465 72        | custom-header
-                                        | -&gt; custom-key: custom-head\
-                                        |   er</pre></span></div>
+                                        | -&gt; custom-key:
+                                        |   custom-header</pre></span></div>
                <div id="rfc.section.C.2.1.p.5"><span id="rfc.figure.u.10">
                      <p>Dynamic Table (after decoding):</p><pre>[  1] (s =  55) custom-key: custom-header
       Table size:  55</pre></span></div>
@@ -2609,8 +2609,8 @@ EOS (256)  |11111111|11111111|11111111|111111      3fffffff  [30]
                                         |     :authority
 0f                                      |   Literal value (len = 15)
 7777 772e 6578 616d 706c 652e 636f 6d   | www.example.com
-                                        | -&gt; :authority: www.example\
-                                        |   .com</pre></span></div>
+                                        | -&gt; :authority: 
+                                        |   www.example.com</pre></span></div>
                <div id="rfc.section.C.3.1.p.4"><span id="rfc.figure.u.27">
                      <p>Dynamic Table (after decoding):</p><pre>[  1] (s =  57) :authority: www.example.com
       Table size:  57</pre></span></div>
@@ -2643,8 +2643,8 @@ cache-control: no-cache</pre></span></div>
                                         | -&gt; :path: /
 be                                      | == Indexed - Add ==
                                         |   idx = 62
-                                        | -&gt; :authority: www.example\
-                                        |   .com
+                                        | -&gt; :authority:
+                                        |   www.example.com
 58                                      | == Literal indexed ==
                                         |   Indexed name (idx = 24)
                                         |     cache-control
@@ -2686,15 +2686,15 @@ custom-key: custom-value</pre></span></div>
                                         | -&gt; :path: /index.html
 bf                                      | == Indexed - Add ==
                                         |   idx = 63
-                                        | -&gt; :authority: www.example\
-                                        |   .com
+                                        | -&gt; :authority:
+                                        |   www.example.com
 40                                      | == Literal indexed ==
 0a                                      |   Literal name (len = 10)
 6375 7374 6f6d 2d6b 6579                | custom-key
 0c                                      |   Literal value (len = 12)
 6375 7374 6f6d 2d76 616c 7565           | custom-value
-                                        | -&gt; custom-key: custom-valu\
-                                        |   e</pre></span></div>
+                                        | -&gt; custom-key:
+                                        |   custom-value</pre></span></div>
                <div id="rfc.section.C.3.3.p.4"><span id="rfc.figure.u.37">
                      <p>Dynamic Table (after decoding):</p><pre>[  1] (s =  54) custom-key: custom-value
 [  2] (s =  53) cache-control: no-cache
@@ -2742,8 +2742,8 @@ ff                                      | .</pre></span></div>
 f1e3 c2e5 f23a 6ba0 ab90 f4ff           | .....:k.....
                                         |     Decoded:
                                         | www.example.com
-                                        | -&gt; :authority: www.example\
-                                        |   .com</pre></span></div>
+                                        | -&gt; :authority:
+                                        |   www.example.com</pre></span></div>
                <div id="rfc.section.C.4.1.p.4"><span id="rfc.figure.u.42">
                      <p>Dynamic Table (after decoding):</p><pre>[  1] (s =  57) :authority: www.example.com
       Table size:  57</pre></span></div>
@@ -2776,8 +2776,8 @@ cache-control: no-cache</pre></span></div>
                                         | -&gt; :path: /
 be                                      | == Indexed - Add ==
                                         |   idx = 62
-                                        | -&gt; :authority: www.example\
-                                        |   .com
+                                        | -&gt; :authority:
+                                        |   www.example.com
 58                                      | == Literal indexed ==
                                         |   Indexed name (idx = 24)
                                         |     cache-control
@@ -2822,8 +2822,8 @@ a849 e95b b8e8 b4bf                     | .I.[....</pre></span></div>
                                         | -&gt; :path: /index.html
 bf                                      | == Indexed - Add ==
                                         |   idx = 63
-                                        | -&gt; :authority: www.example\
-                                        |   .com
+                                        | -&gt; :authority:
+                                        |   www.example.com
 40                                      | == Literal indexed ==
 88                                      |   Literal name (len = 8)
                                         |     Huffman encoded:
@@ -2835,8 +2835,8 @@ bf                                      | == Indexed - Add ==
 25a8 49e9 5bb8 e8b4 bf                  | %.I.[....
                                         |     Decoded:
                                         | custom-value
-                                        | -&gt; custom-key: custom-valu\
-                                        |   e</pre></span></div>
+                                        | -&gt; custom-key:
+                                        |   custom-value</pre></span></div>
                <div id="rfc.section.C.4.3.p.4"><span id="rfc.figure.u.52">
                      <p>Dynamic Table (after decoding):</p><pre>[  1] (s =  54) custom-key: custom-value
 [  2] (s =  53) cache-control: no-cache
@@ -2890,7 +2890,7 @@ location: https://www.example.com</pre></span></div>
 1d                                      |   Literal value (len = 29)
 4d6f 6e2c 2032 3120 4f63 7420 3230 3133 | Mon, 21 Oct 2013
 2032 303a 3133 3a32 3120 474d 54        |  20:13:21 GMT
-                                        | -&gt; date: Mon, 21 Oct 2013 \
+                                        | -&gt; date: Mon, 21 Oct 2013
                                         |   20:13:21 GMT
 6e                                      | == Literal indexed ==
                                         |   Indexed name (idx = 46)
@@ -2898,8 +2898,8 @@ location: https://www.example.com</pre></span></div>
 17                                      |   Literal value (len = 23)
 6874 7470 733a 2f2f 7777 772e 6578 616d | https://www.exam
 706c 652e 636f 6d                       | ple.com
-                                        | -&gt; location: https://www.e\
-                                        |   xample.com</pre></span></div>
+                                        | -&gt; location:
+                                        |   https://www.example.com</pre></span></div>
                <div id="rfc.section.C.5.1.p.4"><span id="rfc.figure.u.57">
                      <p>Dynamic Table (after decoding):</p><pre>[  1] (s =  63) location: https://www.example.com
 [  2] (s =  65) date: Mon, 21 Oct 2013 20:13:21 GMT
@@ -2940,12 +2940,12 @@ c1                                      | == Indexed - Add ==
                                         | -&gt; cache-control: private
 c0                                      | == Indexed - Add ==
                                         |   idx = 64
-                                        | -&gt; date: Mon, 21 Oct 2013 \
+                                        | -&gt; date: Mon, 21 Oct 2013
                                         |   20:13:21 GMT
 bf                                      | == Indexed - Add ==
                                         |   idx = 63
-                                        | -&gt; location: https://www.e\
-                                        |   xample.com</pre></span></div>
+                                        | -&gt; location:
+                                        |   https://www.example.com</pre></span></div>
                <div id="rfc.section.C.5.2.p.5"><span id="rfc.figure.u.62">
                      <p>Dynamic Table (after decoding):</p><pre>[  1] (s =  42) :status: 307
 [  2] (s =  63) location: https://www.example.com
@@ -2992,20 +2992,20 @@ c1                                      | == Indexed - Add ==
 1d                                      |   Literal value (len = 29)
 4d6f 6e2c 2032 3120 4f63 7420 3230 3133 | Mon, 21 Oct 2013
 2032 303a 3133 3a32 3220 474d 54        |  20:13:22 GMT
-                                        | - evict: cache-control: pr\
-                                        |   ivate
-                                        | -&gt; date: Mon, 21 Oct 2013 \
+                                        | - evict: cache-control:
+                                        |   private
+                                        | -&gt; date: Mon, 21 Oct 2013
                                         |   20:13:22 GMT
 c0                                      | == Indexed - Add ==
                                         |   idx = 64
-                                        | -&gt; location: https://www.e\
-                                        |   xample.com
+                                        | -&gt; location: 
+                                        |   https://www.example.com
 5a                                      | == Literal indexed ==
                                         |   Indexed name (idx = 26)
                                         |     content-encoding
 04                                      |   Literal value (len = 4)
 677a 6970                               | gzip
-                                        | - evict: date: Mon, 21 Oct\
+                                        | - evict: date: Mon, 21 Oct 
                                         |    2013 20:13:21 GMT
                                         | -&gt; content-encoding: gzip
 77                                      | == Literal indexed ==
@@ -3016,15 +3016,15 @@ c0                                      | == Indexed - Add ==
 5157 454f 5049 5541 5851 5745 4f49 553b | QWEOPIUAXQWEOIU;
 206d 6178 2d61 6765 3d33 3630 303b 2076 |  max-age=3600; v
 6572 7369 6f6e 3d31                     | ersion=1
-                                        | - evict: location: https:/\
-                                        |   /www.example.com
+                                        | - evict: location:
+                                        |   https://www.example.com
                                         | - evict: :status: 307
-                                        | -&gt; set-cookie: foo=ASDJKHQ\
-                                        |   KBZXOQWEOPIUAXQWEOIU; ma\
+                                        | -&gt; set-cookie: foo=ASDJKHQ
+                                        |   KBZXOQWEOPIUAXQWEOIU; ma
                                         |   x-age=3600; version=1</pre></span></div>
                <div id="rfc.section.C.5.3.p.5"><span id="rfc.figure.u.67">
-                     <p>Dynamic Table (after decoding):</p><pre>[  1] (s =  98) set-cookie: foo=ASDJKHQKBZXOQWEOPIUAXQWEOIU; max-age\
-                 =3600; version=1
+                     <p>Dynamic Table (after decoding):</p><pre>[  1] (s =  98) set-cookie: foo=ASDJKHQKBZXOQWEOPIUAXQWEOIU;
+                 max-age=3600; version=1
 [  2] (s =  52) content-encoding: gzip
 [  3] (s =  65) date: Mon, 21 Oct 2013 20:13:22 GMT
       Table size: 215</pre></span></div>
@@ -3085,9 +3085,9 @@ aec3 771a 4b                            | ..w.K
 d07a be94 1054 d444 a820 0595 040b 8166 | .z...T.D. .....f
 e082 a62d 1bff                          | ...-..
                                         |     Decoded:
-                                        | Mon, 21 Oct 2013 20:13:21 \
+                                        | Mon, 21 Oct 2013 20:13:21
                                         | GMT
-                                        | -&gt; date: Mon, 21 Oct 2013 \
+                                        | -&gt; date: Mon, 21 Oct 2013
                                         |   20:13:21 GMT
 6e                                      | == Literal indexed ==
                                         |   Indexed name (idx = 46)
@@ -3098,8 +3098,8 @@ e082 a62d 1bff                          | ...-..
 d3                                      | .
                                         |     Decoded:
                                         | https://www.example.com
-                                        | -&gt; location: https://www.e\
-                                        |   xample.com</pre></span></div>
+                                        | -&gt; location:
+                                        |   https://www.example.com</pre></span></div>
                <div id="rfc.section.C.6.1.p.4"><span id="rfc.figure.u.72">
                      <p>Dynamic Table (after decoding):</p><pre>[  1] (s =  63) location: https://www.example.com
 [  2] (s =  65) date: Mon, 21 Oct 2013 20:13:21 GMT
@@ -3143,12 +3143,12 @@ c1                                      | == Indexed - Add ==
                                         | -&gt; cache-control: private
 c0                                      | == Indexed - Add ==
                                         |   idx = 64
-                                        | -&gt; date: Mon, 21 Oct 2013 \
+                                        | -&gt; date: Mon, 21 Oct 2013
                                         |   20:13:21 GMT
 bf                                      | == Indexed - Add ==
                                         |   idx = 63
-                                        | -&gt; location: https://www.e\
-                                        |   xample.com</pre></span></div>
+                                        | -&gt; location:
+                                        |   https://www.example.com</pre></span></div>
                <div id="rfc.section.C.6.2.p.5"><span id="rfc.figure.u.77">
                      <p>Dynamic Table (after decoding):</p><pre>[  1] (s =  42) :status: 307
 [  2] (s =  63) location: https://www.example.com
@@ -3195,16 +3195,16 @@ c1                                      | == Indexed - Add ==
 d07a be94 1054 d444 a820 0595 040b 8166 | .z...T.D. .....f
 e084 a62d 1bff                          | ...-..
                                         |     Decoded:
-                                        | Mon, 21 Oct 2013 20:13:22 \
+                                        | Mon, 21 Oct 2013 20:13:22
                                         | GMT
-                                        | - evict: cache-control: pr\
-                                        |   ivate
-                                        | -&gt; date: Mon, 21 Oct 2013 \
+                                        | - evict: cache-control:
+                                        |   private
+                                        | -&gt; date: Mon, 21 Oct 2013 
                                         |   20:13:22 GMT
 c0                                      | == Indexed - Add ==
                                         |   idx = 64
-                                        | -&gt; location: https://www.e\
-                                        |   xample.com
+                                        | -&gt; location:
+                                        |   https://www.example.com
 5a                                      | == Literal indexed ==
                                         |   Indexed name (idx = 26)
                                         |     content-encoding
@@ -3213,7 +3213,7 @@ c0                                      | == Indexed - Add ==
 9bd9 ab                                 | ...
                                         |     Decoded:
                                         | gzip
-                                        | - evict: date: Mon, 21 Oct\
+                                        | - evict: date: Mon, 21 Oct
                                         |    2013 20:13:21 GMT
                                         | -&gt; content-encoding: gzip
 77                                      | == Literal indexed ==
@@ -3225,18 +3225,18 @@ ad                                      |   Literal value (len = 45)
 d5af 2708 7f36 72c1 ab27 0fb5 291f 9587 | ..'..6r..'..)...
 3160 65c0 03ed 4ee5 b106 3d50 07        | 1`e...N...=P.
                                         |     Decoded:
-                                        | foo=ASDJKHQKBZXOQWEOPIUAXQ\
-                                        | WEOIU; max-age=3600; versi\
+                                        | foo=ASDJKHQKBZXOQWEOPIUAXQ
+                                        | WEOIU; max-age=3600; versi
                                         | on=1
-                                        | - evict: location: https:/\
-                                        |   /www.example.com
+                                        | - evict: location:
+                                        |   https://www.example.com
                                         | - evict: :status: 307
-                                        | -&gt; set-cookie: foo=ASDJKHQ\
-                                        |   KBZXOQWEOPIUAXQWEOIU; ma\
+                                        | -&gt; set-cookie: foo=ASDJKHQ
+                                        |   KBZXOQWEOPIUAXQWEOIU; ma
                                         |   x-age=3600; version=1</pre></span></div>
                <div id="rfc.section.C.6.3.p.5"><span id="rfc.figure.u.82">
-                     <p>Dynamic Table (after decoding):</p><pre>[  1] (s =  98) set-cookie: foo=ASDJKHQKBZXOQWEOPIUAXQWEOIU; max-age\
-                 =3600; version=1
+                     <p>Dynamic Table (after decoding):</p><pre>[  1] (s =  98) set-cookie: foo=ASDJKHQKBZXOQWEOPIUAXQWEOIU;
+                 max-age=3600; version=1
 [  2] (s =  52) content-encoding: gzip
 [  3] (s =  65) date: Mon, 21 Oct 2013 20:13:22 GMT
       Table size: 215</pre></span></div>
