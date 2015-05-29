@@ -115,6 +115,9 @@ samp, tt, code, pre {
 cite {
   font-style: normal;
 }
+div.note {
+  margin-left: 2em;
+}
 dl {
   margin-left: 2em;
 }
@@ -1050,14 +1053,13 @@ pre.text, pre.text2 {
             <div id="rfc.section.4.1.p.3">
                <p>The size of an entry is calculated using the length of its name and value without any Huffman encoding applied.</p>
             </div>
-            <div id="rfc.section.4.1.p.4">
-               <dl>
-                  <dt>Note:</dt>
-                  <dd>The additional 32 octets account for an estimated overhead associated with an entry. For example, an entry structure using
+            <div class="note">
+               <div id="rfc.section.4.1.p.4">
+                  <p><b>Note:</b> The additional 32 octets account for an estimated overhead associated with an entry. For example, an entry structure using
                      two 64-bit pointers to reference the name and the value of the entry, and two 64-bit integers for counting the number of references
                      to the name and value would have 32 octets of overhead.
-                  </dd>
-               </dl>
+                  </p>
+               </div>
             </div>
          </div>
          <div id="maximum.table.size">
@@ -1513,17 +1515,18 @@ else
             </div>
             <div id="rfc.section.7.1.p.3">
                <p>This is possible even over the Transport Layer Security Protocol (TLS, see <a href="#TLS12"><cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[TLS12]</cite></a>), because while TLS provides confidentiality protection for content, it only provides a limited amount of protection for
-                  the length of that content. 
+                  the length of that content.
                </p>
-               <dl>
-                  <dt>Note:</dt>
-                  <dd>Padding schemes only provide limited protection against an attacker with these capabilities, potentially only forcing an increased
+            </div>
+            <div class="note">
+               <div id="rfc.section.7.1.p.4">
+                  <p><b>Note:</b> Padding schemes only provide limited protection against an attacker with these capabilities, potentially only forcing an increased
                      number of guesses to learn the length associated with a given guess. Padding schemes also work directly against compression
                      by increasing the number of bits that are transmitted.
-                  </dd>
-               </dl>
+                  </p>
+               </div>
             </div>
-            <div id="rfc.section.7.1.p.4">
+            <div id="rfc.section.7.1.p.5">
                <p>Attacks like <a href="#CRIME">CRIME</a> <cite title="CRIME">[CRIME]</cite> demonstrated the existence of these general attacker capabilities. The specific attack exploited the fact that <a href="#DEFLATE">DEFLATE</a> <cite title="DEFLATE Compressed Data Format Specification version 1.3">[DEFLATE]</cite> removes redundancy based on prefix matching. This permitted the attacker to confirm guesses a character at a time, reducing
                   an exponential-time attack into a linear-time attack.
                </p>
@@ -1585,18 +1588,19 @@ else
                <div id="rfc.section.7.1.2.p.5">
                   <p>An encoder without good knowledge of the provenance of header fields might instead introduce a penalty for a header field
                      with many different values, such that a large number of attempts to guess a header field value results in the header field
-                     no more being compared to the dynamic table entries in future messages, effectively preventing further guesses. 
+                     no more being compared to the dynamic table entries in future messages, effectively preventing further guesses.
                   </p>
-                  <dl>
-                     <dt>Note:</dt>
-                     <dd>Simply removing entries corresponding to the header field from the dynamic table can be ineffectual if the attacker has a
+               </div>
+               <div class="note">
+                  <div id="rfc.section.7.1.2.p.6">
+                     <p><b>Note:</b> Simply removing entries corresponding to the header field from the dynamic table can be ineffectual if the attacker has a
                         reliable way of causing values to be reinstalled. For example, a request to load an image in a web browser typically includes
                         the Cookie header field (a potentially highly valued target for this sort of attack), and web sites can easily force an image
                         to be loaded, thereby refreshing the entry in the dynamic table.
-                     </dd>
-                  </dl>
+                     </p>
+                  </div>
                </div>
-               <div id="rfc.section.7.1.2.p.6">
+               <div id="rfc.section.7.1.2.p.7">
                   <p>This response might be made inversely proportional to the length of the header field value. Marking a header field as not
                      using the dynamic table any more might occur for shorter values more quickly or with higher probability than for longer values.
                   </p>

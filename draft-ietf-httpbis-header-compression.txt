@@ -488,7 +488,7 @@ Internet-Draft                    HPACK                         May 2015
    The size of an entry is calculated using the length of its name and
    value without any Huffman encoding applied.
 
-   Note:  The additional 32 octets account for an estimated overhead
+      Note: The additional 32 octets account for an estimated overhead
       associated with an entry.  For example, an entry structure using
       two 64-bit pointers to reference the name and the value of the
       entry, and two 64-bit integers for counting the number of
@@ -1020,7 +1020,7 @@ Internet-Draft                    HPACK                         May 2015
    protection for content, it only provides a limited amount of
    protection for the length of that content.
 
-   Note:  Padding schemes only provide limited protection against an
+      Note: Padding schemes only provide limited protection against an
       attacker with these capabilities, potentially only forcing an
       increased number of guesses to learn the length associated with a
       given guess.  Padding schemes also work directly against
@@ -1102,8 +1102,8 @@ Internet-Draft                    HPACK                         May 2015
    to the dynamic table entries in future messages, effectively
    preventing further guesses.
 
-   Note:  Simply removing entries corresponding to the header field from
-      the dynamic table can be ineffectual if the attacker has a
+      Note: Simply removing entries corresponding to the header field
+      from the dynamic table can be ineffectual if the attacker has a
       reliable way of causing values to be reinstalled.  For example, a
       request to load an image in a web browser typically includes the
       Cookie header field (a potentially highly valued target for this
