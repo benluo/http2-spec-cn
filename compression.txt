@@ -657,8 +657,8 @@ Internet-Draft                    HPACK                         May 2015
    This integer representation allows for values of indefinite size.  It
    is also possible for an encoder to send a large number of zero
    values, which can waste octets and could be used to overflow integer
-   values.  Integer encodings that exceed an implementation limits - in
-   value or octet length - MUST be treated as a decoding error.
+   values.  Integer encodings that exceed an implementation limits -- in
+   value or octet length -- MUST be treated as a decoding error.
    Different limits can be set for each of the different uses of
    integers, based on implementation constraints.
 
@@ -795,7 +795,7 @@ Internet-Draft                    HPACK                         May 2015
    | Value String (Length octets)  |
    +-------------------------------+
 
-    Figure 6: Literal Header Field with Incremental Indexing - Indexed
+    Figure 6: Literal Header Field with Incremental Indexing -- Indexed
                                    Name
 
      0   1   2   3   4   5   6   7
@@ -811,7 +811,7 @@ Internet-Draft                    HPACK                         May 2015
    | Value String (Length octets)  |
    +-------------------------------+
 
-    Figure 7: Literal Header Field with Incremental Indexing - New Name
+   Figure 7: Literal Header Field with Incremental Indexing -- New Name
 
    A literal header field with incremental indexing representation
    starts with the '01' 2-bit pattern.
@@ -851,7 +851,7 @@ Internet-Draft                    HPACK                         May 2015
    | Value String (Length octets)  |
    +-------------------------------+
 
-      Figure 8: Literal Header Field without Indexing - Indexed Name
+      Figure 8: Literal Header Field without Indexing -- Indexed Name
 
      0   1   2   3   4   5   6   7
    +---+---+---+---+---+---+---+---+
@@ -866,7 +866,7 @@ Internet-Draft                    HPACK                         May 2015
    | Value String (Length octets)  |
    +-------------------------------+
 
-        Figure 9: Literal Header Field without Indexing - New Name
+        Figure 9: Literal Header Field without Indexing -- New Name
 
    A literal header field without indexing representation starts with
    the '0000' 4-bit pattern.
@@ -907,7 +907,7 @@ Internet-Draft                    HPACK                         May 2015
    | Value String (Length octets)  |
    +-------------------------------+
 
-       Figure 10: Literal Header Field Never Indexed - Indexed Name
+       Figure 10: Literal Header Field Never Indexed -- Indexed Name
 
      0   1   2   3   4   5   6   7
    +---+---+---+---+---+---+---+---+
@@ -922,7 +922,7 @@ Internet-Draft                    HPACK                         May 2015
    | Value String (Length octets)  |
    +-------------------------------+
 
-         Figure 11: Literal Header Field Never Indexed - New Name
+         Figure 11: Literal Header Field Never Indexed -- New Name
 
    A literal header field never-indexed representation starts with the
    '0001' 4-bit pattern.
