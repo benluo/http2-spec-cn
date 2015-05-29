@@ -159,7 +159,7 @@ Internet-Draft                    HPACK                         May 2015
    fields using the DEFLATE [DEFLATE] format, which proved very
    effective at efficiently representing the redundant header fields.
    However, that approach exposed a security risk as demonstrated by the
-   CRIME attack (see [CRIME]).
+   CRIME (Compression Ratio Info-leak Made Easy) attack (see [CRIME]).
 
 
 
@@ -1010,8 +1010,8 @@ Peon & Ruellan          Expires November 30, 2015              [Page 18]
 Internet-Draft                    HPACK                         May 2015
 
 
-   This is possible even over the Transport Layer Security Protocol
-   (TLS, see [TLS12]), because while TLS provides confidentiality
+   This is possible even over the Transport Layer Security (TLS)
+   protocol (see [TLS12]), because while TLS provides confidentiality
    protection for content, it only provides a limited amount of
    protection for the length of that content.
 

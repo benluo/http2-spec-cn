@@ -743,7 +743,7 @@ pre.text, pre.text2 {
          </div>
          <div id="rfc.section.1.p.2">
             <p><a href="#SPDY">SPDY</a> <cite title="SPDY Protocol">[SPDY]</cite> initially addressed this redundancy by compressing header fields using the <a href="#DEFLATE">DEFLATE</a> <cite title="DEFLATE Compressed Data Format Specification version 1.3">[DEFLATE]</cite> format, which proved very effective at efficiently representing the redundant header fields. However, that approach exposed
-               a security risk as demonstrated by the CRIME attack (see <a href="#CRIME"><cite title="CRIME">[CRIME]</cite></a>).
+               a security risk as demonstrated by the CRIME (Compression Ratio Info-leak Made Easy) attack (see <a href="#CRIME"><cite title="CRIME">[CRIME]</cite></a>).
             </p>
          </div>
          <div id="rfc.section.1.p.3">
@@ -1514,7 +1514,7 @@ else
                </p>
             </div>
             <div id="rfc.section.7.1.p.3">
-               <p>This is possible even over the Transport Layer Security Protocol (TLS, see <a href="#TLS12"><cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[TLS12]</cite></a>), because while TLS provides confidentiality protection for content, it only provides a limited amount of protection for
+               <p>This is possible even over the Transport Layer Security (TLS) protocol (see <a href="#TLS12"><cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[TLS12]</cite></a>), because while TLS provides confidentiality protection for content, it only provides a limited amount of protection for
                   the length of that content.
                </p>
             </div>
