@@ -3,7 +3,7 @@
 <html lang="en">
    <head profile="http://dublincore.org/documents/2008/08/04/dc-html/">
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <title>HPACK - Header Compression for HTTP/2</title><script type="application/javascript">
+      <title>HPACK: Header Compression for HTTP/2</title><script type="application/javascript">
 var buttonsAdded = false;
 
 function initFeedback() {
@@ -529,13 +529,11 @@ pre.text, pre.text2 {
       <link rel="Chapter" title="5 Primitive Type Representations" href="#rfc.section.5">
       <link rel="Chapter" title="6 Binary Format" href="#rfc.section.6">
       <link rel="Chapter" title="7 Security Considerations" href="#rfc.section.7">
-      <link rel="Chapter" title="8 IANA Considerations" href="#rfc.section.8">
-      <link rel="Chapter" title="9 Acknowledgments" href="#rfc.section.9">
-      <link rel="Chapter" href="#rfc.section.10" title="10 References">
+      <link rel="Chapter" href="#rfc.section.8" title="8 References">
       <link rel="Appendix" title="A Static Table Definition" href="#rfc.section.A">
       <link rel="Appendix" title="B Huffman Code" href="#rfc.section.B">
       <link rel="Appendix" title="C Examples" href="#rfc.section.C">
-      <link rel="Appendix" title="D Change Log (to be removed by RFC Editor before publication)" href="#rfc.section.D">
+      <link rel="Appendix" title="Acknowledgments" href="#rfc.section.unnumbered-1">
       <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.733, 2015/05/28 13:08:20, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
       <meta name="keywords" content="HTTP, Header">
       <link rel="schema.dct" href="http://purl.org/dc/terms/">
@@ -571,15 +569,13 @@ pre.text, pre.text2 {
             </tr>
          </tbody>
       </table>
-      <p class="title" id="rfc.title">HPACK - Header Compression for HTTP/2<br><span class="filename">draft-ietf-httpbis-header-compression-latest</span></p>
+      <p class="title" id="rfc.title">HPACK: Header Compression for HTTP/2<br><span class="filename">draft-ietf-httpbis-header-compression-latest</span></p>
       <h1 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h1>
       <p>This specification defines HPACK, a compression format for efficiently representing HTTP header fields, to be used in HTTP/2.</p>
       <h1 id="rfc.note.1"><a href="#rfc.note.1">Editorial Note (To be removed by RFC Editor)</a></h1>
       <p>Discussion of this draft takes place on the HTTPBIS working group mailing list (ietf-http-wg@w3.org), which is archived at &lt;<a href="https://lists.w3.org/Archives/Public/ietf-http-wg/">https://lists.w3.org/Archives/Public/ietf-http-wg/</a>&gt;.
       </p>
       <p>Working Group information can be found at &lt;<a href="http://tools.ietf.org/wg/httpbis/">http://tools.ietf.org/wg/httpbis/</a>&gt;; that specific to HTTP/2 are at &lt;<a href="http://http2.github.io/">http://http2.github.io/</a>&gt;.
-      </p>
-      <p>The changes in this draft are summarized in <a href="#changes.since.draft-ietf-httpbis-header-compression-09" title="Since draft-ietf-httpbis-header-compression-09">Appendix&nbsp;D.2</a>.
       </p>
       <div id="rfc.status">
          <h1><a href="#rfc.status">Status of This Memo</a></h1>
@@ -664,11 +660,9 @@ pre.text, pre.text2 {
                   <li><a href="#rfc.section.7.4">7.4</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.7.4">Implementation Limits</a></li>
                </ul>
             </li>
-            <li><a href="#rfc.section.8">8.</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.8">IANA Considerations</a></li>
-            <li><a href="#rfc.section.9">9.</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.9">Acknowledgments</a></li>
-            <li><a href="#rfc.section.10">10.</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references">References</a><ul>
-                  <li><a href="#rfc.section.10.1">10.1</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references.1">Normative References</a></li>
-                  <li><a href="#rfc.section.10.2">10.2</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references.2">Informative References</a></li>
+            <li><a href="#rfc.section.8">8.</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references">References</a><ul>
+                  <li><a href="#rfc.section.8.1">8.1</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references.1">Normative References</a></li>
+                  <li><a href="#rfc.section.8.2">8.2</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references.2">Informative References</a></li>
                </ul>
             </li>
             <li><a href="#rfc.section.A">A.</a>&nbsp;&nbsp;&nbsp;<a href="#static.table.definition">Static Table Definition</a></li>
@@ -713,20 +707,7 @@ pre.text, pre.text2 {
                   </li>
                </ul>
             </li>
-            <li><a href="#rfc.section.D">D.</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.D">Change Log (to be removed by RFC Editor before publication)</a><ul>
-                  <li><a href="#rfc.section.D.1">D.1</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-header-compression-10">Since draft-ietf-httpbis-header-compression-10</a></li>
-                  <li><a href="#rfc.section.D.2">D.2</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-header-compression-09">Since draft-ietf-httpbis-header-compression-09</a></li>
-                  <li><a href="#rfc.section.D.3">D.3</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-header-compression-08">Since draft-ietf-httpbis-header-compression-08</a></li>
-                  <li><a href="#rfc.section.D.4">D.4</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-header-compression-07">Since draft-ietf-httpbis-header-compression-07</a></li>
-                  <li><a href="#rfc.section.D.5">D.5</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-header-compression-06">Since draft-ietf-httpbis-header-compression-06</a></li>
-                  <li><a href="#rfc.section.D.6">D.6</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-header-compression-05">Since draft-ietf-httpbis-header-compression-05</a></li>
-                  <li><a href="#rfc.section.D.7">D.7</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-header-compression-04">Since draft-ietf-httpbis-header-compression-04</a></li>
-                  <li><a href="#rfc.section.D.8">D.8</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-header-compression-03">Since draft-ietf-httpbis-header-compression-03</a></li>
-                  <li><a href="#rfc.section.D.9">D.9</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.D.9">Since draft-ietf-httpbis-header-compression-02</a></li>
-                  <li><a href="#rfc.section.D.10">D.10</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.D.10">Since draft-ietf-httpbis-header-compression-01</a></li>
-                  <li><a href="#rfc.section.D.11">D.11</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.D.11">Since draft-ietf-httpbis-header-compression-00</a></li>
-               </ul>
-            </li>
+            <li><a href="#rfc.section.unnumbered-1">Acknowledgments</a></li>
             <li><a href="#rfc.authors">Authors' Addresses</a></li>
          </ul>
       </div>
@@ -759,7 +740,7 @@ pre.text, pre.text2 {
          </div>
          <div id="rfc.section.1.p.2">
             <p><a href="#SPDY">SPDY</a> <cite title="SPDY Protocol">[SPDY]</cite> initially addressed this redundancy by compressing header fields using the <a href="#DEFLATE">DEFLATE</a> <cite title="DEFLATE Compressed Data Format Specification version 1.3">[DEFLATE]</cite> format, which proved very effective at efficiently representing the redundant header fields. However, that approach exposed
-               a security risk as demonstrated by the CRIME attack (see <a href="#CRIME"><cite title="The CRIME Attack">[CRIME]</cite></a>).
+               a security risk as demonstrated by the CRIME attack (see <a href="#CRIME"><cite title="CRIME">[CRIME]</cite></a>).
             </p>
          </div>
          <div id="rfc.section.1.p.3">
@@ -1083,7 +1064,7 @@ pre.text, pre.text2 {
             <h2 id="rfc.section.4.2"><a href="#rfc.section.4.2">4.2</a>&nbsp;<a href="#maximum.table.size">Maximum Table Size</a></h2>
             <div id="rfc.section.4.2.p.1">
                <p>Protocols that use HPACK determine the maximum size that the encoder is permitted to use for the dynamic table. In HTTP/2,
-                  this value is determined by the SETTINGS_HEADER_TABLE_SIZE setting (see <a href="https://tools.ietf.org/html/draft-ietf-httpbis-http2-17#section-6.5.2" title="Defined SETTINGS Parameters">Section 6.5.2</a> of <a href="#HTTP2"><cite title="Hypertext Transfer Protocol version 2">[HTTP2]</cite></a>).
+                  this value is determined by the SETTINGS_HEADER_TABLE_SIZE setting (see <a href="https://tools.ietf.org/html/rfc7540#section-6.5.2" title="Defined SETTINGS Parameters">Section 6.5.2</a> of <a href="#HTTP2"><cite title="Hypertext Transfer Protocol Version 2 (HTTP/2)">[HTTP2]</cite></a>).
                </p>
             </div>
             <div id="rfc.section.4.2.p.2">
@@ -1092,7 +1073,7 @@ pre.text, pre.text2 {
             </div>
             <div id="rfc.section.4.2.p.3">
                <p>A change in the maximum size of the dynamic table is signaled via an encoding context update (see <a href="#encoding.context.update" title="Dynamic Table Size Update">Section&nbsp;6.3</a>). This encoding context update MUST occur at the beginning of the first header block following the change to the dynamic
-                  table size. In HTTP/2, this follows a settings acknowledgment (see <a href="https://tools.ietf.org/html/draft-ietf-httpbis-http2-17#section-6.5.3" title="Settings Synchronization">Section 6.5.3</a> of <a href="#HTTP2"><cite title="Hypertext Transfer Protocol version 2">[HTTP2]</cite></a>).
+                  table size. In HTTP/2, this follows a settings acknowledgment (see <a href="https://tools.ietf.org/html/rfc7540#section-6.5.3" title="Settings Synchronization">Section 6.5.3</a> of <a href="#HTTP2"><cite title="Hypertext Transfer Protocol Version 2 (HTTP/2)">[HTTP2]</cite></a>).
                </p>
             </div>
             <div id="rfc.section.4.2.p.4">
@@ -1232,7 +1213,7 @@ else
             <h2 id="rfc.section.5.2"><a href="#rfc.section.5.2">5.2</a>&nbsp;<a href="#string.literal.representation">String Literal Representation</a></h2>
             <div id="rfc.section.5.2.p.1">
                <p>Header field names and header field values can be represented as literal strings. A literal string is encoded as a sequence
-                  of octets, either by directly encoding the literal string's octets, or by using a Huffman code (see <a href="#HUFFMAN"><cite title="A Method for the Construction of Minimum Redundancy Codes">[HUFFMAN]</cite></a>).
+                  of octets, either by directly encoding the literal string's octets, or by using a Huffman code (see <a href="#HUFFMAN"><cite title="A Method for the Construction of Minimum-Redundancy Codes">[HUFFMAN]</cite></a>).
                </p>
             </div>
             <div id="String.Literal.Representation"></div>
@@ -1496,7 +1477,7 @@ else
             <div id="rfc.section.6.3.p.3">
                <p>The new maximum size MUST be lower than or equal to the limit determined by the protocol using HPACK. A value that exceeds
                   this limit MUST be treated as a decoding error. In HTTP/2, this limit is the last value of the SETTINGS_HEADER_TABLE_SIZE
-                  parameter (see <a href="https://tools.ietf.org/html/draft-ietf-httpbis-http2-17#section-6.5.2" title="Defined SETTINGS Parameters">Section 6.5.2</a> of <a href="#HTTP2"><cite title="Hypertext Transfer Protocol version 2">[HTTP2]</cite></a>) received from the decoder and acknowledged by the encoder (see <a href="https://tools.ietf.org/html/draft-ietf-httpbis-http2-17#section-6.5.3" title="Settings Synchronization">Section 6.5.3</a> of <a href="#HTTP2"><cite title="Hypertext Transfer Protocol version 2">[HTTP2]</cite></a>).
+                  parameter (see <a href="https://tools.ietf.org/html/rfc7540#section-6.5.2" title="Defined SETTINGS Parameters">Section 6.5.2</a> of <a href="#HTTP2"><cite title="Hypertext Transfer Protocol Version 2 (HTTP/2)">[HTTP2]</cite></a>) received from the decoder and acknowledged by the encoder (see <a href="https://tools.ietf.org/html/rfc7540#section-6.5.3" title="Settings Synchronization">Section 6.5.3</a> of <a href="#HTTP2"><cite title="Hypertext Transfer Protocol Version 2 (HTTP/2)">[HTTP2]</cite></a>).
                </p>
             </div>
             <div id="rfc.section.6.3.p.4">
@@ -1543,7 +1524,7 @@ else
                </dl>
             </div>
             <div id="rfc.section.7.1.p.4">
-               <p>Attacks like <a href="#CRIME">CRIME</a> <cite title="The CRIME Attack">[CRIME]</cite> demonstrated the existence of these general attacker capabilities. The specific attack exploited the fact that <a href="#DEFLATE">DEFLATE</a> <cite title="DEFLATE Compressed Data Format Specification version 1.3">[DEFLATE]</cite> removes redundancy based on prefix matching. This permitted the attacker to confirm guesses a character at a time, reducing
+               <p>Attacks like <a href="#CRIME">CRIME</a> <cite title="CRIME">[CRIME]</cite> demonstrated the existence of these general attacker capabilities. The specific attack exploited the fact that <a href="#DEFLATE">DEFLATE</a> <cite title="DEFLATE Compressed Data Format Specification version 1.3">[DEFLATE]</cite> removes redundancy based on prefix matching. This permitted the attacker to confirm guesses a character at a time, reducing
                   an exponential-time attack into a linear-time attack.
                </p>
             </div>
@@ -1551,7 +1532,7 @@ else
                <h3 id="rfc.section.7.1.1"><a href="#rfc.section.7.1.1">7.1.1</a>&nbsp;Applicability to HPACK and HTTP
                </h3>
                <div id="rfc.section.7.1.1.p.1">
-                  <p>HPACK mitigates but does not completely prevent attacks modeled on <a href="#CRIME">CRIME</a> <cite title="The CRIME Attack">[CRIME]</cite> by forcing a guess to match an entire header field value, rather than individual characters. An attacker can only learn whether
+                  <p>HPACK mitigates but does not completely prevent attacks modeled on <a href="#CRIME">CRIME</a> <cite title="CRIME">[CRIME]</cite> by forcing a guess to match an entire header field value, rather than individual characters. An attacker can only learn whether
                      a guess is correct or not, so is reduced to a brute force guess for the header field values.
                   </p>
                </div>
@@ -1683,7 +1664,7 @@ else
             <div id="rfc.section.7.3.p.2">
                <p>The amount of memory used by the compressor is limited by the protocol using HPACK through the definition of the maximum size
                   of the dynamic table. In HTTP/2, this value is controlled by the decoder through the setting parameter SETTINGS_HEADER_TABLE_SIZE
-                  (see <a href="https://tools.ietf.org/html/draft-ietf-httpbis-http2-17#section-6.5.2" title="Defined SETTINGS Parameters">Section 6.5.2</a> of <a href="#HTTP2"><cite title="Hypertext Transfer Protocol version 2">[HTTP2]</cite></a>). This limit takes into account both the size of the data stored in the dynamic table, plus a small allowance for overhead.
+                  (see <a href="https://tools.ietf.org/html/rfc7540#section-6.5.2" title="Defined SETTINGS Parameters">Section 6.5.2</a> of <a href="#HTTP2"><cite title="Hypertext Transfer Protocol Version 2 (HTTP/2)">[HTTP2]</cite></a>). This limit takes into account both the size of the data stored in the dynamic table, plus a small allowance for overhead.
                </p>
             </div>
             <div id="rfc.section.7.3.p.3">
@@ -1714,32 +1695,14 @@ else
             </div>
          </div>
       </div>
-      <div>
-         <h1 id="rfc.section.8"><a href="#rfc.section.8">8.</a>&nbsp;IANA Considerations
-         </h1>
-         <div id="rfc.section.8.p.1">
-            <p>This document has no IANA actions.</p>
-         </div>
-      </div>
-      <div>
-         <h1 id="rfc.section.9"><a href="#rfc.section.9">9.</a>&nbsp;Acknowledgments
-         </h1>
-         <div id="rfc.section.9.p.1">
-            <p>This specification includes substantial input from the following individuals: </p>
-            <ul>
-               <li>Mike Bishop, Jeff Pinner, Julian Reschke, Martin Thomson (substantial editorial contributions).</li>
-               <li>Johnny Graettinger (Huffman code statistics).</li>
-            </ul>
-         </div>
-      </div>
-      <h1 id="rfc.references"><a id="rfc.section.10" href="#rfc.section.10">10.</a> References
+      <h1 id="rfc.references"><a id="rfc.section.8" href="#rfc.section.8">8.</a> References
       </h1>
-      <h2 id="rfc.references.1"><a href="#rfc.section.10.1" id="rfc.section.10.1">10.1</a> Normative References
+      <h2 id="rfc.references.1"><a href="#rfc.section.8.1" id="rfc.section.8.1">8.1</a> Normative References
       </h2>
       <table>
          <tr>
             <td class="reference"><b id="HTTP2">[HTTP2]</b></td>
-            <td class="top">Belshe, M., Peon, R., and M. Thomson, Ed., “<a href="https://tools.ietf.org/html/draft-ietf-httpbis-http2-17">Hypertext Transfer Protocol version 2</a>”, Internet-Draft&nbsp;draft-ietf-httpbis-http2-17 (work in progress), February&nbsp;2015.
+            <td class="top">Belshe, M., Peon, R., and M. Thomson, Ed., “<a href="https://tools.ietf.org/html/rfc7540">Hypertext Transfer Protocol Version 2 (HTTP/2)</a>”, RFC&nbsp;7540, <a href="http://dx.doi.org/10.17487/RFC7540">DOI&nbsp;10.17487/RFC7540</a>, May&nbsp;2015, &lt;<a href="http://www.rfc-editor.org/info/rfc7540">http://www.rfc-editor.org/info/rfc7540</a>&gt;.
             </td>
          </tr>
          <tr>
@@ -1753,17 +1716,17 @@ else
             </td>
          </tr>
       </table>
-      <h2 id="rfc.references.2"><a href="#rfc.section.10.2" id="rfc.section.10.2">10.2</a> Informative References
+      <h2 id="rfc.references.2"><a href="#rfc.section.8.2" id="rfc.section.8.2">8.2</a> Informative References
       </h2>
       <table>
          <tr>
             <td class="reference"><b id="CANONICAL">[CANONICAL]</b></td>
-            <td class="top">Schwartz, E. and B. Kallick, “<a href="https://dl.acm.org/citation.cfm?id=363991">Generating a canonical prefix encoding</a>”, Communications of the ACM&nbsp;Volume 7 Issue 3, pp. 166-169, March&nbsp;1964, &lt;<a href="https://dl.acm.org/citation.cfm?id=363991">https://dl.acm.org/citation.cfm?id=363991</a>&gt;.
+            <td class="top">Schwartz, E. and B. Kallick, “<a href="https://dl.acm.org/citation.cfm?id=363991">Generating a canonical prefix encoding</a>”, Communications of the ACM,&nbsp;Volume 7 Issue 3, pp. 166-169, March&nbsp;1964, &lt;<a href="https://dl.acm.org/citation.cfm?id=363991">https://dl.acm.org/citation.cfm?id=363991</a>&gt;.
             </td>
          </tr>
          <tr>
             <td class="reference"><b id="CRIME">[CRIME]</b></td>
-            <td class="top">Rizzo, J. and T. Duong, “<a href="https://docs.google.com/a/twist.com/presentation/d/11eBmGiHbYcHR9gL5nDyZChu_-lCa2GizeuOfaLU2HOU">The CRIME Attack</a>”, September&nbsp;2012, &lt;<a href="https://docs.google.com/a/twist.com/presentation/d/11eBmGiHbYcHR9gL5nDyZChu_-lCa2GizeuOfaLU2HOU">https://docs.google.com/a/twist.com/presentation/d/11eBmGiHbYcHR9gL5nDyZChu_-lCa2GizeuOfaLU2HOU</a>&gt;.
+            <td class="top">Wikipedia, “<a href="http://en.wikipedia.org/w/index.php?title=CRIME&amp;oldid=660948120">CRIME</a>”, May&nbsp;2015, &lt;<a href="http://en.wikipedia.org/w/index.php?title=CRIME&amp;oldid=660948120">http://en.wikipedia.org/w/index.php?title=CRIME&amp;oldid=660948120</a>&gt;.
             </td>
          </tr>
          <tr>
@@ -1773,7 +1736,7 @@ else
          </tr>
          <tr>
             <td class="reference"><b id="HUFFMAN">[HUFFMAN]</b></td>
-            <td class="top">Huffman, D., “<a href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=4051119">A Method for the Construction of Minimum Redundancy Codes</a>”, Proceedings of the Institute of Radio Engineers&nbsp;Volume 40, Number 9, pp. 1098-1101, September&nbsp;1952, &lt;<a href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=4051119">http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=4051119</a>&gt;.
+            <td class="top">Huffman, D., “<a href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=4051119">A Method for the Construction of Minimum-Redundancy Codes</a>”, Proceedings of the Institute of Radio Engineers,&nbsp;Volume 40, Number 9, pp. 1098-1101, September&nbsp;1952, &lt;<a href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=4051119">http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=4051119</a>&gt;.
             </td>
          </tr>
          <tr>
@@ -1805,7 +1768,7 @@ else
          </div>
          <div id="rfc.section.A.p.2">
             <p>The static table was created from the most frequent header fields used by popular web sites, with the addition of HTTP/2-specific
-               pseudo-header fields (see <a href="https://tools.ietf.org/html/draft-ietf-httpbis-http2-17#section-8.1.2.1" title="Pseudo-Header Fields">Section 8.1.2.1</a> of <a href="#HTTP2"><cite title="Hypertext Transfer Protocol version 2">[HTTP2]</cite></a>). For header fields with a few frequent values, an entry was added for each of these frequent values. For other header fields,
+               pseudo-header fields (see <a href="https://tools.ietf.org/html/rfc7540#section-8.1.2.1" title="Pseudo-Header Fields">Section 8.1.2.1</a> of <a href="#HTTP2"><cite title="Hypertext Transfer Protocol Version 2 (HTTP/2)">[HTTP2]</cite></a>). For header fields with a few frequent values, an entry was added for each of these frequent values. For other header fields,
                an entry was added with an empty value.
             </p>
          </div>
@@ -3288,156 +3251,13 @@ set-cookie: foo=ASDJKHQKBZXOQWEOPIUAXQWEOIU; max-age=3600; version=1</pre></span
          </div>
       </div>
       <div>
-         <h1 id="rfc.section.D"><a href="#rfc.section.D">D.</a>&nbsp;Change Log (to be removed by RFC Editor before publication)
-         </h1>
-         <div id="changes.since.draft-ietf-httpbis-header-compression-10">
-            <h2 id="rfc.section.D.1"><a href="#rfc.section.D.1">D.1</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-header-compression-10">Since draft-ietf-httpbis-header-compression-10</a></h2>
-            <div id="rfc.section.D.1.p.1">
-               <ul>
-                  <li>Editorial corrections for taking into account IETF LC comments. 
-                     <ul>
-                        <li>Added links to security sections.</li>
-                        <li>Made spec more independent of HTTP/2.</li>
-                        <li>Expanded security section about never indexed literal usage.</li>
-                     </ul> 
-                  </li>
-                  <li>Removed most usages of 'name-value pair' instead of header field.</li>
-                  <li>Changed 'header table' to 'header field table'.</li>
-               </ul>
-            </div>
-         </div>
-         <div id="changes.since.draft-ietf-httpbis-header-compression-09">
-            <h2 id="rfc.section.D.2"><a href="#rfc.section.D.2">D.2</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-header-compression-09">Since draft-ietf-httpbis-header-compression-09</a></h2>
-            <div id="rfc.section.D.2.p.1">
-               <ul>
-                  <li>Renamed header table to dynamic table.</li>
-                  <li>Updated integer representation.</li>
-                  <li>Editorial corrections.</li>
-               </ul>
-            </div>
-         </div>
-         <div id="changes.since.draft-ietf-httpbis-header-compression-08">
-            <h2 id="rfc.section.D.3"><a href="#rfc.section.D.3">D.3</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-header-compression-08">Since draft-ietf-httpbis-header-compression-08</a></h2>
-            <div id="rfc.section.D.3.p.1">
-               <ul>
-                  <li>Removed the reference set.</li>
-                  <li>Removed header emission.</li>
-                  <li>Explicit handling of several SETTINGS_HEADER_TABLE_SIZE parameter changes.</li>
-                  <li>Changed header set to header list, and forced ordering.</li>
-                  <li>Updated examples.</li>
-                  <li>Exchanged header and static table positions.</li>
-               </ul>
-            </div>
-         </div>
-         <div id="changes.since.draft-ietf-httpbis-header-compression-07">
-            <h2 id="rfc.section.D.4"><a href="#rfc.section.D.4">D.4</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-header-compression-07">Since draft-ietf-httpbis-header-compression-07</a></h2>
-            <div id="rfc.section.D.4.p.1">
-               <ul>
-                  <li>Removed old text on index value of 0.</li>
-                  <li>Added clarification for signalling of maximum table size after a SETTINGS_HEADER_TABLE_SIZE update.</li>
-                  <li>Rewrote security considerations.</li>
-                  <li>Many editorial clarifications or improvements.</li>
-                  <li>Added convention section.</li>
-                  <li>Reworked document's outline.</li>
-                  <li>Updated static table. Entry 16 has now "gzip, deflate" for value.</li>
-                  <li>Updated Huffman table, using data set provided by Google.</li>
-               </ul>
-            </div>
-         </div>
-         <div id="changes.since.draft-ietf-httpbis-header-compression-06">
-            <h2 id="rfc.section.D.5"><a href="#rfc.section.D.5">D.5</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-header-compression-06">Since draft-ietf-httpbis-header-compression-06</a></h2>
-            <div id="rfc.section.D.5.p.1">
-               <ul>
-                  <li>Updated format to include literal headers that must never be compressed.</li>
-                  <li>Updated security considerations.</li>
-                  <li>Moved integer encoding examples to the appendix.</li>
-                  <li>Updated Huffman table.</li>
-                  <li>Updated static header table (adding and removing status values).</li>
-                  <li>Updated examples.</li>
-               </ul>
-            </div>
-         </div>
-         <div id="changes.since.draft-ietf-httpbis-header-compression-05">
-            <h2 id="rfc.section.D.6"><a href="#rfc.section.D.6">D.6</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-header-compression-05">Since draft-ietf-httpbis-header-compression-05</a></h2>
-            <div id="rfc.section.D.6.p.1">
-               <ul>
-                  <li>Regenerated examples.</li>
-                  <li>Only one Huffman table for requests and responses.</li>
-                  <li>Added maximum size for dynamic table, independent of SETTINGS_HEADER_TABLE_SIZE.</li>
-                  <li>Added pseudo-code for integer decoding.</li>
-                  <li>Improved examples (removing unnecessary removals).</li>
-               </ul>
-            </div>
-         </div>
-         <div id="changes.since.draft-ietf-httpbis-header-compression-04">
-            <h2 id="rfc.section.D.7"><a href="#rfc.section.D.7">D.7</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-header-compression-04">Since draft-ietf-httpbis-header-compression-04</a></h2>
-            <div id="rfc.section.D.7.p.1">
-               <ul>
-                  <li>Updated examples: take into account changes in the spec, and show more features.</li>
-                  <li>Use 'octet' everywhere instead of having both 'byte' and 'octet'.</li>
-                  <li>Added reference set emptying.</li>
-                  <li>Editorial changes and clarifications.</li>
-                  <li>Added "host" header to the static table.</li>
-                  <li>Ordering for list of values (either NULL- or comma-separated).</li>
-               </ul>
-            </div>
-         </div>
-         <div id="changes.since.draft-ietf-httpbis-header-compression-03">
-            <h2 id="rfc.section.D.8"><a href="#rfc.section.D.8">D.8</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-header-compression-03">Since draft-ietf-httpbis-header-compression-03</a></h2>
-            <div id="rfc.section.D.8.p.1">
-               <ul>
-                  <li>A large number of editorial changes; changed the description of evicting/adding new entries.</li>
-                  <li>Removed substitution indexing</li>
-                  <li>Changed 'initial headers' to 'static headers', as per issue #258</li>
-                  <li>Merged 'request' and 'response' static headers, as per issue #259</li>
-                  <li>Changed text to indicate that new headers are added at index 0 and expire from the largest index, as per issue #233</li>
-               </ul>
-            </div>
-         </div>
-         <div>
-            <h2 id="rfc.section.D.9"><a href="#rfc.section.D.9">D.9</a>&nbsp;Since draft-ietf-httpbis-header-compression-02
-            </h2>
-            <div id="rfc.section.D.9.p.1">
-               <ul>
-                  <li>Corrected error in integer encoding pseudocode.</li>
-               </ul>
-            </div>
-         </div>
-         <div>
-            <h2 id="rfc.section.D.10"><a href="#rfc.section.D.10">D.10</a>&nbsp;Since draft-ietf-httpbis-header-compression-01
-            </h2>
-            <div id="rfc.section.D.10.p.1">
-               <ul>
-                  <li>Refactored of Header Encoding Section: split definitions and processing rule.</li>
-                  <li>Backward incompatible change: Updated reference set management as per issue #214. This changes how the interaction between
-                     the reference set and eviction works. This also changes the working of the reference set in some specific cases.
-                  </li>
-                  <li>Backward incompatible change: modified initial header list, as per issue #188.</li>
-                  <li>Added example of 32 octets entry structure (issue #191).</li>
-                  <li>Added Header Set Completion section. Reflowed some text. Clarified some writing which was akward. Added text about duplicate
-                     header entry encoding. Clarified some language w.r.t Header Set. Changed x-my-header to mynewheader. Added text in the HeaderEmission
-                     section indicating that the application may also be able to free up memory more quickly. Added information in Security Considerations
-                     section.
-                  </li>
-               </ul>
-            </div>
-         </div>
-         <div>
-            <h2 id="rfc.section.D.11"><a href="#rfc.section.D.11">D.11</a>&nbsp;Since draft-ietf-httpbis-header-compression-00
-            </h2>
-            <div id="rfc.section.D.11.p.1">
-               <ul class="empty">
-                  <li>Fixed bug/omission in integer representation algorithm.</li>
-                  <li>Changed the document title.</li>
-                  <li>Header matching text rewritten.</li>
-                  <li>Changed the definition of header emission.</li>
-                  <li>Changed the name of the setting which dictates how much memory the compression context should use.</li>
-                  <li>Removed "specific use cases" section</li>
-                  <li>Corrected erroneous statement about what index can be contained in one octet</li>
-                  <li>Added descriptions of opcodes</li>
-                  <li>Removed security claims from introduction.</li>
-               </ul>
-            </div>
+         <h1 id="rfc.section.unnumbered-1">Acknowledgments</h1>
+         <div id="rfc.section.unnumbered-1.p.1">
+            <p>This specification includes substantial input from the following individuals: </p>
+            <ul>
+               <li>Mike Bishop, Jeff Pinner, Julian Reschke, and Martin Thomson (substantial editorial contributions).</li>
+               <li>Johnny Graettinger (Huffman code statistics).</li>
+            </ul>
          </div>
       </div>
       <div class="avoidbreakinside">
