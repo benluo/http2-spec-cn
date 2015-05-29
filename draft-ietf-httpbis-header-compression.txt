@@ -677,8 +677,8 @@ Internet-Draft                    HPACK                         May 2015
 5.2.  String Literal Representation
 
    Header field names and header field values can be represented as
-   literal strings.  A literal string is encoded as a sequence of
-   octets, either by directly encoding the literal string's octets, or
+   string literals.  A string literal is encoded as a sequence of
+   octets, either by directly encoding the string literal's octets, or
    by using a Huffman code (see [HUFFMAN]).
 
      0   1   2   3   4   5   6   7
@@ -690,7 +690,7 @@ Internet-Draft                    HPACK                         May 2015
 
                   Figure 4: String Literal Representation
 
-   A literal string representation contains the following fields:
+   A string literal representation contains the following fields:
 
    H: A one-bit flag, H, indicating whether or not the octets of the
       string are Huffman encoded.
@@ -822,12 +822,12 @@ Internet-Draft                    HPACK                         May 2015
    the index of the entry is represented as an integer with a 6-bit
    prefix (see Section 5.1).  This value is always non-zero.
 
-   Otherwise, the header field name is represented as a literal string
+   Otherwise, the header field name is represented as a string literal
    (see Section 5.2).  A value 0 is used in place of the 6-bit index,
    followed by the header field name.
 
    Either form of header field name representation is followed by the
-   header field value represented as a literal string (see Section 5.2).
+   header field value represented as a string literal (see Section 5.2).
 
 6.2.2.  Literal Header Field without Indexing
 
@@ -877,12 +877,12 @@ Internet-Draft                    HPACK                         May 2015
    the index of the entry is represented as an integer with a 4-bit
    prefix (see Section 5.1).  This value is always non-zero.
 
-   Otherwise, the header field name is represented as a literal string
+   Otherwise, the header field name is represented as a string literal
    (see Section 5.2).  A value 0 is used in place of the 4-bit index,
    followed by the header field name.
 
    Either form of header field name representation is followed by the
-   header field value represented as a literal string (see Section 5.2).
+   header field value represented as a string literal (see Section 5.2).
 
 6.2.3.  Literal Header Field Never Indexed
 

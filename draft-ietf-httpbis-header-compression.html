@@ -1214,8 +1214,8 @@ else
          <div id="string.literal.representation">
             <h2 id="rfc.section.5.2"><a href="#rfc.section.5.2">5.2</a>&nbsp;<a href="#string.literal.representation">String Literal Representation</a></h2>
             <div id="rfc.section.5.2.p.1">
-               <p>Header field names and header field values can be represented as literal strings. A literal string is encoded as a sequence
-                  of octets, either by directly encoding the literal string's octets, or by using a Huffman code (see <a href="#HUFFMAN"><cite title="A Method for the Construction of Minimum-Redundancy Codes">[HUFFMAN]</cite></a>).
+               <p>Header field names and header field values can be represented as string literals. A string literal is encoded as a sequence
+                  of octets, either by directly encoding the string literal's octets, or by using a Huffman code (see <a href="#HUFFMAN"><cite title="A Method for the Construction of Minimum-Redundancy Codes">[HUFFMAN]</cite></a>).
                </p>
             </div>
             <div id="String.Literal.Representation"></div>
@@ -1228,7 +1228,7 @@ else
 </pre></div>
             <p class="figure">Figure 4: String Literal Representation</p>
             <div id="rfc.section.5.2.p.2">
-               <p>A literal string representation contains the following fields: </p>
+               <p>A string literal representation contains the following fields: </p>
                <dl>
                   <dt>H:</dt>
                   <dd>A one-bit flag, H, indicating whether or not the octets of the string are Huffman encoded.</dd>
@@ -1348,11 +1348,11 @@ else
                   </p>
                </div>
                <div id="rfc.section.6.2.1.p.4">
-                  <p>Otherwise, the header field name is represented as a literal string (see <a href="#string.literal.representation" title="String Literal Representation">Section&nbsp;5.2</a>). A value 0 is used in place of the 6-bit index, followed by the header field name.
+                  <p>Otherwise, the header field name is represented as a string literal (see <a href="#string.literal.representation" title="String Literal Representation">Section&nbsp;5.2</a>). A value 0 is used in place of the 6-bit index, followed by the header field name.
                   </p>
                </div>
                <div id="rfc.section.6.2.1.p.5">
-                  <p>Either form of header field name representation is followed by the header field value represented as a literal string (see <a href="#string.literal.representation" title="String Literal Representation">Section&nbsp;5.2</a>).
+                  <p>Either form of header field name representation is followed by the header field value represented as a string literal (see <a href="#string.literal.representation" title="String Literal Representation">Section&nbsp;5.2</a>).
                   </p>
                </div>
             </div>
@@ -1399,11 +1399,11 @@ else
                   </p>
                </div>
                <div id="rfc.section.6.2.2.p.4">
-                  <p>Otherwise, the header field name is represented as a literal string (see <a href="#string.literal.representation" title="String Literal Representation">Section&nbsp;5.2</a>). A value 0 is used in place of the 4-bit index, followed by the header field name.
+                  <p>Otherwise, the header field name is represented as a string literal (see <a href="#string.literal.representation" title="String Literal Representation">Section&nbsp;5.2</a>). A value 0 is used in place of the 4-bit index, followed by the header field name.
                   </p>
                </div>
                <div id="rfc.section.6.2.2.p.5">
-                  <p>Either form of header field name representation is followed by the header field value represented as a literal string (see <a href="#string.literal.representation" title="String Literal Representation">Section&nbsp;5.2</a>).
+                  <p>Either form of header field name representation is followed by the header field value represented as a string literal (see <a href="#string.literal.representation" title="String Literal Representation">Section&nbsp;5.2</a>).
                   </p>
                </div>
             </div>
