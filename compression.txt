@@ -102,7 +102,7 @@ Table of Contents
      7.1.  Probing Dynamic Table State . . . . . . . . . . . . . . .  18
        7.1.1.  Applicability to HPACK and HTTP . . . . . . . . . . .  19
        7.1.2.  Mitigation  . . . . . . . . . . . . . . . . . . . . .  20
-       7.1.3.  Never Indexed Literals  . . . . . . . . . . . . . . .  21
+       7.1.3.  Never-Indexed Literals  . . . . . . . . . . . . . . .  21
      7.2.  Static Huffman Encoding . . . . . . . . . . . . . . . . .  21
      7.3.  Memory Consumption  . . . . . . . . . . . . . . . . . . .  21
      7.4.  Implementation Limits . . . . . . . . . . . . . . . . . .  22
@@ -564,7 +564,7 @@ Internet-Draft                    HPACK                         May 2015
 
 5.  Primitive Type Representations
 
-   HPACK encoding uses two primitive types: unsigned variable length
+   HPACK encoding uses two primitive types: unsigned variable-length
    integers and strings of octets.
 
 5.1.  Integer Representation
@@ -625,9 +625,9 @@ Internet-Draft                    HPACK                         May 2015
    2^N-1 to obtain the integer value.
 
    The prefix size, N, is always between 1 and 8 bits.  An integer
-   starting at an octet-boundary will have an 8-bit prefix.
+   starting at an octet boundary will have an 8-bit prefix.
 
-   Pseudo-code to represent an integer I is as follows:
+   Pseudocode to represent an integer I is as follows:
 
    if I < 2^N - 1, encode I on N bits
    else
@@ -638,7 +638,7 @@ Internet-Draft                    HPACK                         May 2015
             I = I / 128
        encode I on 8 bits
 
-   Pseudo-code to decode an integer I is as follows:
+   Pseudocode to decode an integer I is as follows:
 
    decode I from the next N bits
    if I < 2^N - 1, return I
@@ -692,7 +692,7 @@ Internet-Draft                    HPACK                         May 2015
 
    A literal string representation contains the following fields:
 
-   H: A one bit flag, H, indicating whether or not the octets of the
+   H: A one-bit flag, H, indicating whether or not the octets of the
       string are Huffman encoded.
 
    String Length:  The number of octets used to encode the string
@@ -710,7 +710,7 @@ Internet-Draft                    HPACK                         May 2015
    the bitwise concatenation of the codes corresponding to each octet of
    the string literal.
 
-   As the Huffman encoded data doesn't always end at an octet boundary,
+   As the Huffman-encoded data doesn't always end at an octet boundary,
    some padding is inserted after it, up to the next octet boundary.  To
    prevent this padding to be misinterpreted as part of the string
    literal, the most significant bits of the code corresponding to the
@@ -720,7 +720,7 @@ Internet-Draft                    HPACK                         May 2015
    to be considered as padding and discarded.  A padding strictly longer
    than 7 bits MUST be treated as a decoding error.  A padding not
    corresponding to the most significant bits of the code for the EOS
-   symbol MUST be treated as a decoding error.  A Huffman encoded string
+   symbol MUST be treated as a decoding error.  A Huffman-encoded string
 
 
 
@@ -886,7 +886,7 @@ Internet-Draft                    HPACK                         May 2015
 
 6.2.3.  Literal Header Field never Indexed
 
-   A literal header field never indexed representation results in
+   A literal header field never-indexed representation results in
    appending a header field to the decoded header list without altering
    the dynamic table.  Intermediaries MUST use the same representation
    for encoding this header field.
@@ -924,7 +924,7 @@ Internet-Draft                    HPACK                         May 2015
 
          Figure 11: Literal Header Field never Indexed - New Name
 
-   A literal header field never indexed representation starts with the
+   A literal header field never-indexed representation starts with the
    '0001' 4-bit pattern.
 
    When a header field is represented as a literal header field never
@@ -1033,7 +1033,7 @@ Internet-Draft                    HPACK                         May 2015
    HPACK mitigates but does not completely prevent attacks modeled on
    CRIME [CRIME] by forcing a guess to match an entire header field
    value rather than individual characters.  An attacker can only learn
-   whether a guess is correct or not, so is reduced to a brute force
+   whether a guess is correct or not, so is reduced to a brute-force
    guess for the header field values.
 
    The viability of recovering specific header field values therefore
@@ -1122,23 +1122,23 @@ Peon & Ruellan          Expires November 30, 2015              [Page 20]
 Internet-Draft                    HPACK                         May 2015
 
 
-7.1.3.  Never Indexed Literals
+7.1.3.  Never-Indexed Literals
 
    Implementations can also choose to protect sensitive header fields by
    not compressing them and instead encoding their value as literals.
 
    Refusing to generate an indexed representation for a header field is
-   only effective if compression is avoided on all hops.  The never
+   only effective if compression is avoided on all hops.  The never-
    indexed literal (see Section 6.2.3) can be used to signal to
    intermediaries that a particular value was intentionally sent as a
    literal.
 
-   An intermediary MUST NOT re-encode a value that uses the never
+   An intermediary MUST NOT re-encode a value that uses the never-
    indexed literal representation with another representation that would
-   index it.  If HPACK is used for re-encoding, the never indexed
+   index it.  If HPACK is used for re-encoding, the never-indexed
    literal representation MUST be used.
 
-   The choice to use a never indexed literal representation for a header
+   The choice to use a never-indexed literal representation for a header
    field depends on several factors.  Since HPACK doesn't protect
    against guessing an entire header field value, short or low-entropy
    values are more readily recovered by an adversary.  Therefore, an
@@ -1154,7 +1154,7 @@ Internet-Draft                    HPACK                         May 2015
    requests and is sent to any server.  In that case, confirmation that
    a particular User-Agent value has been used provides little value.
 
-   Note that these criteria for deciding to use a never indexed literal
+   Note that these criteria for deciding to use a never-indexed literal
    representation will evolve over time as new attacks are discovered.
 
 7.2.  Static Huffman Encoding
