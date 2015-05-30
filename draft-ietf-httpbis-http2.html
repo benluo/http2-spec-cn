@@ -1459,7 +1459,7 @@ Upgrade: h2c
                      </p>
                      <p><a href="#PRIORITY" class="smpl">PRIORITY</a> frames can be sent on closed streams to prioritize streams that are dependent on the closed stream. Endpoints SHOULD process <a href="#PRIORITY" class="smpl">PRIORITY</a> frames, though they can be ignored if the stream has been removed from the dependency tree (see <a href="#priority-gc" title="Prioritization State Management">Section&nbsp;5.3.4</a>).
                      </p>
-                     <p>If this state is reached as a result of sending a <a href="#RST_STREAM" class="smpl">RST_STREAM</a> frame, the peer that receives the <a href="#RST_STREAM" class="smpl">RST_STREAM</a> might have already sent -- or enqueued for sending -- frames on the stream that cannot be withdrawn. An endpoint MUST ignore
+                     <p>If this state is reached as a result of sending a <a href="#RST_STREAM" class="smpl">RST_STREAM</a> frame, the peer that receives the <a href="#RST_STREAM" class="smpl">RST_STREAM</a> might have already sent — or enqueued for sending — frames on the stream that cannot be withdrawn. An endpoint MUST ignore
                         frames that it receives on closed streams after it has sent a <a href="#RST_STREAM" class="smpl">RST_STREAM</a> frame. An endpoint MAY choose to limit the period over which it ignores frames and treat frames that arrive after this time
                         as being in error.
                      </p>
@@ -1652,7 +1652,7 @@ Upgrade: h2c
                </div>
                <div id="rfc.section.5.3.1.p.3">
                   <p>A stream that depends on another stream is a dependent stream. The stream upon which a stream is dependent is a parent stream.
-                     A dependency on a stream that is not currently in the tree -- such as a stream in the "idle" state -- results in that stream
+                     A dependency on a stream that is not currently in the tree — such as a stream in the "idle" state — results in that stream
                      being given a default priority (<a href="#pri-default" title="Default Priorities">Section&nbsp;5.3.5</a>).
                   </p>
                </div>
@@ -2912,7 +2912,7 @@ Upgrade: h2c
                </p>
             </div>
             <div id="rfc.section.8.1.p.8">
-               <p>An HTTP response is complete after the server sends -- or the client receives -- a frame with the END_STREAM flag set (including
+               <p>An HTTP response is complete after the server sends — or the client receives — a frame with the END_STREAM flag set (including
                   any <a href="#CONTINUATION" class="smpl">CONTINUATION</a> frames needed to complete a header block). A server can send a complete response prior to the client sending an entire request
                   if the response does not depend on any portion of the request that has not been sent and received. When this is true, a server
                   MAY request that the client abort transmission of a request without error by sending a <a href="#RST_STREAM" class="smpl">RST_STREAM</a> with an error code of <a href="#NO_ERROR" class="smpl">NO_ERROR</a> after sending a complete response (i.e., a frame with the END_STREAM flag). Clients MUST NOT discard responses as a result
@@ -3489,8 +3489,8 @@ Upgrade: h2c
                   </p>
                </div>
                <div id="rfc.section.9.1.2.p.2">
-                  <p>Clients receiving a 421 (Misdirected Request) response from a server MAY retry the request -- whether the request method is
-                     idempotent or not -- over a different connection. This is possible if a connection is reused (<a href="#reuse" title="Connection Reuse">Section&nbsp;9.1.1</a>) or if an alternative service is selected <a href="#ALT-SVC"><cite title="HTTP Alternative Services">[ALT-SVC]</cite></a>.
+                  <p>Clients receiving a 421 (Misdirected Request) response from a server MAY retry the request — whether the request method is
+                     idempotent or not — over a different connection. This is possible if a connection is reused (<a href="#reuse" title="Connection Reuse">Section&nbsp;9.1.1</a>) or if an alternative service is selected <a href="#ALT-SVC"><cite title="HTTP Alternative Services">[ALT-SVC]</cite></a>.
                   </p>
                </div>
                <div id="rfc.section.9.1.2.p.3">
@@ -3708,8 +3708,8 @@ Upgrade: h2c
                </p>
             </div>
             <div id="rfc.section.10.5.p.8">
-               <p>All these features -- i.e., <a href="#SETTINGS" class="smpl">SETTINGS</a> changes, small frames, header compression -- have legitimate uses. These features become a burden only when they are used
-                  unnecessarily or to excess.
+               <p>All these features — i.e., <a href="#SETTINGS" class="smpl">SETTINGS</a> changes, small frames, header compression — have legitimate uses. These features become a burden only when they are used unnecessarily
+                  or to excess.
                </p>
             </div>
             <div id="rfc.section.10.5.p.9">
