@@ -464,7 +464,7 @@ ul p {
        content: "Peon & Ruellan";
   }
   @bottom-center {
-       content: "Expires November 30, 2015";
+       content: "Expires December 1, 2015";
   }
   @bottom-right {
        content: "[Page " counter(page) "]";
@@ -543,7 +543,7 @@ pre.text, pre.text2 {
       <meta name="dct.creator" content="Peon, R.">
       <meta name="dct.creator" content="Ruellan, H.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-header-compression-latest">
-      <meta name="dct.issued" scheme="ISO8601" content="2015-05-29">
+      <meta name="dct.issued" scheme="ISO8601" content="2015-05-30">
       <meta name="dct.abstract" content="This specification defines HPACK, a compression format for efficiently representing HTTP header fields, to be used in HTTP/2.">
       <meta name="description" content="This specification defines HPACK, a compression format for efficiently representing HTTP header fields, to be used in HTTP/2.">
    </head>
@@ -563,12 +563,12 @@ pre.text, pre.text2 {
                <td class="right">H. Ruellan</td>
             </tr>
             <tr>
-               <td class="left">Expires: November 30, 2015</td>
+               <td class="left">Expires: December 1, 2015</td>
                <td class="right">Canon CRF</td>
             </tr>
             <tr>
                <td class="left"></td>
-               <td class="right">May 29, 2015</td>
+               <td class="right">May 30, 2015</td>
             </tr>
          </tbody>
       </table>
@@ -590,7 +590,7 @@ pre.text, pre.text2 {
             documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
             in progress”.
          </p>
-         <p>This Internet-Draft will expire on November 30, 2015.</p>
+         <p>This Internet-Draft will expire on December 1, 2015.</p>
       </div>
       <div id="rfc.copyrightnotice">
          <h1><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
@@ -2132,7 +2132,7 @@ else
                "0", "0", "0". This corresponds to the value 0x18 (in hexadecimal) encoded in 6 bits.
             </p>
          </div>
-         <div id="rfc.figure.u.3"><pre>                                                     code
+         <div id="rfc.figure.u.3"><pre class="inline">                                                     code
                        code as bits                 as hex   len
      sym              aligned to MSB                aligned   in
                                                     to LSB   bits
@@ -2417,7 +2417,7 @@ EOS (256)  |11111111|11111111|11111111|111111      3fffffff  [30]
                      </li>
                   </ul>
                </div>
-               <div id="rfc.figure.u.4"><pre>  0   1   2   3   4   5   6   7
+               <div id="rfc.figure.u.4"><pre class="text">  0   1   2   3   4   5   6   7
 +---+---+---+---+---+---+---+---+
 | X | X | X | 0 | 1 | 0 | 1 | 0 |   10 stored on 5 bits
 +---+---+---+---+---+---+---+---+
@@ -2455,7 +2455,7 @@ EOS (256)  |11111111|11111111|11111111|111111      3fffffff  [30]
                      <li>The process ends.</li>
                   </ul>
                </div>
-               <div id="rfc.figure.u.5"><pre>  0   1   2   3   4   5   6   7
+               <div id="rfc.figure.u.5"><pre class="text">  0   1   2   3   4   5   6   7
 +---+---+---+---+---+---+---+---+
 | X | X | X | 1 | 1 | 1 | 1 | 1 |  Prefix = 31, I = 1306
 | 1 | 0 | 0 | 1 | 1 | 0 | 1 | 0 |  1306&gt;=128, encode(154), I=1306/128
@@ -2472,7 +2472,7 @@ EOS (256)  |11111111|11111111|11111111|111111      3fffffff  [30]
                      </li>
                   </ul>
                </div>
-               <div id="rfc.figure.u.6"><pre>  0   1   2   3   4   5   6   7
+               <div id="rfc.figure.u.6"><pre class="text">  0   1   2   3   4   5   6   7
 +---+---+---+---+---+---+---+---+
 | 0 | 0 | 1 | 0 | 1 | 0 | 1 | 0 |   42 stored on 8 bits
 +---+---+---+---+---+---+---+---+
@@ -2491,12 +2491,12 @@ EOS (256)  |11111111|11111111|11111111|111111      3fffffff  [30]
                   <p>The header field representation uses a literal name and a literal value. The header field is added to the dynamic table.</p>
                </div>
                <div id="rfc.section.C.2.1.p.2"><span id="rfc.figure.u.7">
-                     <p>Header list to encode:</p><pre>custom-key: custom-header</pre></span></div>
+                     <p>Header list to encode:</p><pre class="text">custom-key: custom-header</pre></span></div>
                <div id="rfc.section.C.2.1.p.3"><span id="rfc.figure.u.8">
-                     <p>Hex dump of encoded data:</p><pre>400a 6375 7374 6f6d 2d6b 6579 0d63 7573 | @.custom-key.cus
+                     <p>Hex dump of encoded data:</p><pre class="text">400a 6375 7374 6f6d 2d6b 6579 0d63 7573 | @.custom-key.cus
 746f 6d2d 6865 6164 6572                | tom-header</pre></span></div>
                <div id="rfc.section.C.2.1.p.4"><span id="rfc.figure.u.9">
-                     <p>Decoding process:</p><pre>40                                      | == Literal indexed ==
+                     <p>Decoding process:</p><pre class="text">40                                      | == Literal indexed ==
 0a                                      |   Literal name (len = 10)
 6375 7374 6f6d 2d6b 6579                | custom-key
 0d                                      |   Literal value (len = 13)
@@ -2504,10 +2504,10 @@ EOS (256)  |11111111|11111111|11111111|111111      3fffffff  [30]
                                         | -&gt; custom-key:
                                         |   custom-header</pre></span></div>
                <div id="rfc.section.C.2.1.p.5"><span id="rfc.figure.u.10">
-                     <p>Dynamic Table (after decoding):</p><pre>[  1] (s =  55) custom-key: custom-header
+                     <p>Dynamic Table (after decoding):</p><pre class="text">[  1] (s =  55) custom-key: custom-header
       Table size:  55</pre></span></div>
                <div id="rfc.section.C.2.1.p.6"><span id="rfc.figure.u.11">
-                     <p>Decoded header list:</p><pre>custom-key: custom-header</pre></span></div>
+                     <p>Decoded header list:</p><pre class="text">custom-key: custom-header</pre></span></div>
             </div>
             <div>
                <h3 id="rfc.section.C.2.2"><a href="#rfc.section.C.2.2">C.2.2</a>&nbsp;Literal Header Field without Indexing
@@ -2516,11 +2516,11 @@ EOS (256)  |11111111|11111111|11111111|111111      3fffffff  [30]
                   <p>The header field representation uses an indexed name and a literal value. The header field is not added to the dynamic table.</p>
                </div>
                <div id="rfc.section.C.2.2.p.2"><span id="rfc.figure.u.12">
-                     <p>Header list to encode:</p><pre>:path: /sample/path</pre></span></div>
+                     <p>Header list to encode:</p><pre class="text">:path: /sample/path</pre></span></div>
                <div id="rfc.section.C.2.2.p.3"><span id="rfc.figure.u.13">
-                     <p>Hex dump of encoded data:</p><pre>040c 2f73 616d 706c 652f 7061 7468      | ../sample/path</pre></span></div>
+                     <p>Hex dump of encoded data:</p><pre class="text">040c 2f73 616d 706c 652f 7061 7468      | ../sample/path</pre></span></div>
                <div id="rfc.section.C.2.2.p.4"><span id="rfc.figure.u.14">
-                     <p>Decoding process:</p><pre>04                                      | == Literal not indexed ==
+                     <p>Decoding process:</p><pre class="text">04                                      | == Literal not indexed ==
                                         |   Indexed name (idx = 4)
                                         |     :path
 0c                                      |   Literal value (len = 12)
@@ -2530,7 +2530,7 @@ EOS (256)  |11111111|11111111|11111111|111111      3fffffff  [30]
                   <p>Dynamic table (after decoding): empty.</p>
                </div>
                <div id="rfc.section.C.2.2.p.6"><span id="rfc.figure.u.15">
-                     <p>Decoded header list:</p><pre>:path: /sample/path</pre></span></div>
+                     <p>Decoded header list:</p><pre class="text">:path: /sample/path</pre></span></div>
             </div>
             <div>
                <h3 id="rfc.section.C.2.3"><a href="#rfc.section.C.2.3">C.2.3</a>&nbsp;Literal Header Field Never Indexed
@@ -2541,12 +2541,12 @@ EOS (256)  |11111111|11111111|11111111|111111      3fffffff  [30]
                   </p>
                </div>
                <div id="rfc.section.C.2.3.p.2"><span id="rfc.figure.u.16">
-                     <p>Header list to encode:</p><pre>password: secret</pre></span></div>
+                     <p>Header list to encode:</p><pre class="text">password: secret</pre></span></div>
                <div id="rfc.section.C.2.3.p.3"><span id="rfc.figure.u.17">
-                     <p>Hex dump of encoded data:</p><pre>1008 7061 7373 776f 7264 0673 6563 7265 | ..password.secre
+                     <p>Hex dump of encoded data:</p><pre class="text">1008 7061 7373 776f 7264 0673 6563 7265 | ..password.secre
 74                                      | t</pre></span></div>
                <div id="rfc.section.C.2.3.p.4"><span id="rfc.figure.u.18">
-                     <p>Decoding process:</p><pre>10                                      | == Literal never indexed ==
+                     <p>Decoding process:</p><pre class="text">10                                      | == Literal never indexed ==
 08                                      |   Literal name (len = 8)
 7061 7373 776f 7264                     | password
 06                                      |   Literal value (len = 6)
@@ -2556,7 +2556,7 @@ EOS (256)  |11111111|11111111|11111111|111111      3fffffff  [30]
                   <p>Dynamic table (after decoding): empty.</p>
                </div>
                <div id="rfc.section.C.2.3.p.6"><span id="rfc.figure.u.19">
-                     <p>Decoded header list:</p><pre>password: secret</pre></span></div>
+                     <p>Decoded header list:</p><pre class="text">password: secret</pre></span></div>
             </div>
             <div>
                <h3 id="rfc.section.C.2.4"><a href="#rfc.section.C.2.4">C.2.4</a>&nbsp;Indexed Header Field
@@ -2565,18 +2565,18 @@ EOS (256)  |11111111|11111111|11111111|111111      3fffffff  [30]
                   <p>The header field representation uses an indexed header field from the static table.</p>
                </div>
                <div id="rfc.section.C.2.4.p.2"><span id="rfc.figure.u.20">
-                     <p>Header list to encode:</p><pre>:method: GET</pre></span></div>
+                     <p>Header list to encode:</p><pre class="text">:method: GET</pre></span></div>
                <div id="rfc.section.C.2.4.p.3"><span id="rfc.figure.u.21">
-                     <p>Hex dump of encoded data:</p><pre>82                                      | .</pre></span></div>
+                     <p>Hex dump of encoded data:</p><pre class="text">82                                      | .</pre></span></div>
                <div id="rfc.section.C.2.4.p.4"><span id="rfc.figure.u.22">
-                     <p>Decoding process:</p><pre>82                                      | == Indexed - Add ==
+                     <p>Decoding process:</p><pre class="text">82                                      | == Indexed - Add ==
                                         |   idx = 2
                                         | -&gt; :method: GET</pre></span></div>
                <div id="rfc.section.C.2.4.p.5">
                   <p>Dynamic table (after decoding): empty.</p>
                </div>
                <div id="rfc.section.C.2.4.p.6"><span id="rfc.figure.u.23">
-                     <p>Decoded header list:</p><pre>:method: GET</pre></span></div>
+                     <p>Decoded header list:</p><pre class="text">:method: GET</pre></span></div>
             </div>
          </div>
          <div id="request.examples.without.huffman.coding">
@@ -2588,15 +2588,15 @@ EOS (256)  |11111111|11111111|11111111|111111      3fffffff  [30]
                <h3 id="rfc.section.C.3.1"><a href="#rfc.section.C.3.1">C.3.1</a>&nbsp;First Request
                </h3>
                <div id="rfc.section.C.3.1.p.1"><span id="rfc.figure.u.24">
-                     <p>Header list to encode:</p><pre>:method: GET
+                     <p>Header list to encode:</p><pre class="text">:method: GET
 :scheme: http
 :path: /
 :authority: www.example.com</pre></span></div>
                <div id="rfc.section.C.3.1.p.2"><span id="rfc.figure.u.25">
-                     <p>Hex dump of encoded data:</p><pre>8286 8441 0f77 7777 2e65 7861 6d70 6c65 | ...A.www.example
+                     <p>Hex dump of encoded data:</p><pre class="text">8286 8441 0f77 7777 2e65 7861 6d70 6c65 | ...A.www.example
 2e63 6f6d                               | .com</pre></span></div>
                <div id="rfc.section.C.3.1.p.3"><span id="rfc.figure.u.26">
-                     <p>Decoding process:</p><pre>82                                      | == Indexed - Add ==
+                     <p>Decoding process:</p><pre class="text">82                                      | == Indexed - Add ==
                                         |   idx = 2
                                         | -&gt; :method: GET
 86                                      | == Indexed - Add ==
@@ -2613,10 +2613,10 @@ EOS (256)  |11111111|11111111|11111111|111111      3fffffff  [30]
                                         | -&gt; :authority: 
                                         |   www.example.com</pre></span></div>
                <div id="rfc.section.C.3.1.p.4"><span id="rfc.figure.u.27">
-                     <p>Dynamic Table (after decoding):</p><pre>[  1] (s =  57) :authority: www.example.com
+                     <p>Dynamic Table (after decoding):</p><pre class="text">[  1] (s =  57) :authority: www.example.com
       Table size:  57</pre></span></div>
                <div id="rfc.section.C.3.1.p.5"><span id="rfc.figure.u.28">
-                     <p>Decoded header list:</p><pre>:method: GET
+                     <p>Decoded header list:</p><pre class="text">:method: GET
 :scheme: http
 :path: /
 :authority: www.example.com</pre></span></div>
@@ -2625,15 +2625,15 @@ EOS (256)  |11111111|11111111|11111111|111111      3fffffff  [30]
                <h3 id="rfc.section.C.3.2"><a href="#rfc.section.C.3.2">C.3.2</a>&nbsp;Second Request
                </h3>
                <div id="rfc.section.C.3.2.p.1"><span id="rfc.figure.u.29">
-                     <p>Header list to encode:</p><pre>:method: GET
+                     <p>Header list to encode:</p><pre class="text">:method: GET
 :scheme: http
 :path: /
 :authority: www.example.com
 cache-control: no-cache</pre></span></div>
                <div id="rfc.section.C.3.2.p.2"><span id="rfc.figure.u.30">
-                     <p>Hex dump of encoded data:</p><pre>8286 84be 5808 6e6f 2d63 6163 6865      | ....X.no-cache</pre></span></div>
+                     <p>Hex dump of encoded data:</p><pre class="text">8286 84be 5808 6e6f 2d63 6163 6865      | ....X.no-cache</pre></span></div>
                <div id="rfc.section.C.3.2.p.3"><span id="rfc.figure.u.31">
-                     <p>Decoding process:</p><pre>82                                      | == Indexed - Add ==
+                     <p>Decoding process:</p><pre class="text">82                                      | == Indexed - Add ==
                                         |   idx = 2
                                         | -&gt; :method: GET
 86                                      | == Indexed - Add ==
@@ -2653,11 +2653,11 @@ be                                      | == Indexed - Add ==
 6e6f 2d63 6163 6865                     | no-cache
                                         | -&gt; cache-control: no-cache</pre></span></div>
                <div id="rfc.section.C.3.2.p.4"><span id="rfc.figure.u.32">
-                     <p>Dynamic Table (after decoding):</p><pre>[  1] (s =  53) cache-control: no-cache
+                     <p>Dynamic Table (after decoding):</p><pre class="text">[  1] (s =  53) cache-control: no-cache
 [  2] (s =  57) :authority: www.example.com
       Table size: 110</pre></span></div>
                <div id="rfc.section.C.3.2.p.5"><span id="rfc.figure.u.33">
-                     <p>Decoded header list:</p><pre>:method: GET
+                     <p>Decoded header list:</p><pre class="text">:method: GET
 :scheme: http
 :path: /
 :authority: www.example.com
@@ -2667,16 +2667,16 @@ cache-control: no-cache</pre></span></div>
                <h3 id="rfc.section.C.3.3"><a href="#rfc.section.C.3.3">C.3.3</a>&nbsp;Third Request
                </h3>
                <div id="rfc.section.C.3.3.p.1"><span id="rfc.figure.u.34">
-                     <p>Header list to encode:</p><pre>:method: GET
+                     <p>Header list to encode:</p><pre class="text">:method: GET
 :scheme: https
 :path: /index.html
 :authority: www.example.com
 custom-key: custom-value</pre></span></div>
                <div id="rfc.section.C.3.3.p.2"><span id="rfc.figure.u.35">
-                     <p>Hex dump of encoded data:</p><pre>8287 85bf 400a 6375 7374 6f6d 2d6b 6579 | ....@.custom-key
+                     <p>Hex dump of encoded data:</p><pre class="text">8287 85bf 400a 6375 7374 6f6d 2d6b 6579 | ....@.custom-key
 0c63 7573 746f 6d2d 7661 6c75 65        | .custom-value</pre></span></div>
                <div id="rfc.section.C.3.3.p.3"><span id="rfc.figure.u.36">
-                     <p>Decoding process:</p><pre>82                                      | == Indexed - Add ==
+                     <p>Decoding process:</p><pre class="text">82                                      | == Indexed - Add ==
                                         |   idx = 2
                                         | -&gt; :method: GET
 87                                      | == Indexed - Add ==
@@ -2697,12 +2697,12 @@ bf                                      | == Indexed - Add ==
                                         | -&gt; custom-key:
                                         |   custom-value</pre></span></div>
                <div id="rfc.section.C.3.3.p.4"><span id="rfc.figure.u.37">
-                     <p>Dynamic Table (after decoding):</p><pre>[  1] (s =  54) custom-key: custom-value
+                     <p>Dynamic Table (after decoding):</p><pre class="text">[  1] (s =  54) custom-key: custom-value
 [  2] (s =  53) cache-control: no-cache
 [  3] (s =  57) :authority: www.example.com
       Table size: 164</pre></span></div>
                <div id="rfc.section.C.3.3.p.5"><span id="rfc.figure.u.38">
-                     <p>Decoded header list:</p><pre>:method: GET
+                     <p>Decoded header list:</p><pre class="text">:method: GET
 :scheme: https
 :path: /index.html
 :authority: www.example.com
@@ -2718,15 +2718,15 @@ custom-key: custom-value</pre></span></div>
                <h3 id="rfc.section.C.4.1"><a href="#rfc.section.C.4.1">C.4.1</a>&nbsp;First Request
                </h3>
                <div id="rfc.section.C.4.1.p.1"><span id="rfc.figure.u.39">
-                     <p>Header list to encode:</p><pre>:method: GET
+                     <p>Header list to encode:</p><pre class="text">:method: GET
 :scheme: http
 :path: /
 :authority: www.example.com</pre></span></div>
                <div id="rfc.section.C.4.1.p.2"><span id="rfc.figure.u.40">
-                     <p>Hex dump of encoded data:</p><pre>8286 8441 8cf1 e3c2 e5f2 3a6b a0ab 90f4 | ...A......:k....
+                     <p>Hex dump of encoded data:</p><pre class="text">8286 8441 8cf1 e3c2 e5f2 3a6b a0ab 90f4 | ...A......:k....
 ff                                      | .</pre></span></div>
                <div id="rfc.section.C.4.1.p.3"><span id="rfc.figure.u.41">
-                     <p>Decoding process:</p><pre>82                                      | == Indexed - Add ==
+                     <p>Decoding process:</p><pre class="text">82                                      | == Indexed - Add ==
                                         |   idx = 2
                                         | -&gt; :method: GET
 86                                      | == Indexed - Add ==
@@ -2746,10 +2746,10 @@ f1e3 c2e5 f23a 6ba0 ab90 f4ff           | .....:k.....
                                         | -&gt; :authority:
                                         |   www.example.com</pre></span></div>
                <div id="rfc.section.C.4.1.p.4"><span id="rfc.figure.u.42">
-                     <p>Dynamic Table (after decoding):</p><pre>[  1] (s =  57) :authority: www.example.com
+                     <p>Dynamic Table (after decoding):</p><pre class="text">[  1] (s =  57) :authority: www.example.com
       Table size:  57</pre></span></div>
                <div id="rfc.section.C.4.1.p.5"><span id="rfc.figure.u.43">
-                     <p>Decoded header list:</p><pre>:method: GET
+                     <p>Decoded header list:</p><pre class="text">:method: GET
 :scheme: http
 :path: /
 :authority: www.example.com</pre></span></div>
@@ -2758,15 +2758,15 @@ f1e3 c2e5 f23a 6ba0 ab90 f4ff           | .....:k.....
                <h3 id="rfc.section.C.4.2"><a href="#rfc.section.C.4.2">C.4.2</a>&nbsp;Second Request
                </h3>
                <div id="rfc.section.C.4.2.p.1"><span id="rfc.figure.u.44">
-                     <p>Header list to encode:</p><pre>:method: GET
+                     <p>Header list to encode:</p><pre class="text">:method: GET
 :scheme: http
 :path: /
 :authority: www.example.com
 cache-control: no-cache</pre></span></div>
                <div id="rfc.section.C.4.2.p.2"><span id="rfc.figure.u.45">
-                     <p>Hex dump of encoded data:</p><pre>8286 84be 5886 a8eb 1064 9cbf           | ....X....d..</pre></span></div>
+                     <p>Hex dump of encoded data:</p><pre class="text">8286 84be 5886 a8eb 1064 9cbf           | ....X....d..</pre></span></div>
                <div id="rfc.section.C.4.2.p.3"><span id="rfc.figure.u.46">
-                     <p>Decoding process:</p><pre>82                                      | == Indexed - Add ==
+                     <p>Decoding process:</p><pre class="text">82                                      | == Indexed - Add ==
                                         |   idx = 2
                                         | -&gt; :method: GET
 86                                      | == Indexed - Add ==
@@ -2789,11 +2789,11 @@ a8eb 1064 9cbf                          | ...d..
                                         | no-cache
                                         | -&gt; cache-control: no-cache</pre></span></div>
                <div id="rfc.section.C.4.2.p.4"><span id="rfc.figure.u.47">
-                     <p>Dynamic Table (after decoding):</p><pre>[  1] (s =  53) cache-control: no-cache
+                     <p>Dynamic Table (after decoding):</p><pre class="text">[  1] (s =  53) cache-control: no-cache
 [  2] (s =  57) :authority: www.example.com
       Table size: 110</pre></span></div>
                <div id="rfc.section.C.4.2.p.5"><span id="rfc.figure.u.48">
-                     <p>Decoded header list:</p><pre>:method: GET
+                     <p>Decoded header list:</p><pre class="text">:method: GET
 :scheme: http
 :path: /
 :authority: www.example.com
@@ -2803,16 +2803,16 @@ cache-control: no-cache</pre></span></div>
                <h3 id="rfc.section.C.4.3"><a href="#rfc.section.C.4.3">C.4.3</a>&nbsp;Third Request
                </h3>
                <div id="rfc.section.C.4.3.p.1"><span id="rfc.figure.u.49">
-                     <p>Header list to encode:</p><pre>:method: GET
+                     <p>Header list to encode:</p><pre class="text">:method: GET
 :scheme: https
 :path: /index.html
 :authority: www.example.com
 custom-key: custom-value</pre></span></div>
                <div id="rfc.section.C.4.3.p.2"><span id="rfc.figure.u.50">
-                     <p>Hex dump of encoded data:</p><pre>8287 85bf 4088 25a8 49e9 5ba9 7d7f 8925 | ....@.%.I.[.}..%
+                     <p>Hex dump of encoded data:</p><pre class="text">8287 85bf 4088 25a8 49e9 5ba9 7d7f 8925 | ....@.%.I.[.}..%
 a849 e95b b8e8 b4bf                     | .I.[....</pre></span></div>
                <div id="rfc.section.C.4.3.p.3"><span id="rfc.figure.u.51">
-                     <p>Decoding process:</p><pre>82                                      | == Indexed - Add ==
+                     <p>Decoding process:</p><pre class="text">82                                      | == Indexed - Add ==
                                         |   idx = 2
                                         | -&gt; :method: GET
 87                                      | == Indexed - Add ==
@@ -2839,12 +2839,12 @@ bf                                      | == Indexed - Add ==
                                         | -&gt; custom-key:
                                         |   custom-value</pre></span></div>
                <div id="rfc.section.C.4.3.p.4"><span id="rfc.figure.u.52">
-                     <p>Dynamic Table (after decoding):</p><pre>[  1] (s =  54) custom-key: custom-value
+                     <p>Dynamic Table (after decoding):</p><pre class="text">[  1] (s =  54) custom-key: custom-value
 [  2] (s =  53) cache-control: no-cache
 [  3] (s =  57) :authority: www.example.com
       Table size: 164</pre></span></div>
                <div id="rfc.section.C.4.3.p.5"><span id="rfc.figure.u.53">
-                     <p>Decoded header list:</p><pre>:method: GET
+                     <p>Decoded header list:</p><pre class="text">:method: GET
 :scheme: https
 :path: /index.html
 :authority: www.example.com
@@ -2862,18 +2862,18 @@ custom-key: custom-value</pre></span></div>
                <h3 id="rfc.section.C.5.1"><a href="#rfc.section.C.5.1">C.5.1</a>&nbsp;First Response
                </h3>
                <div id="rfc.section.C.5.1.p.1"><span id="rfc.figure.u.54">
-                     <p>Header list to encode:</p><pre>:status: 302
+                     <p>Header list to encode:</p><pre class="text">:status: 302
 cache-control: private
 date: Mon, 21 Oct 2013 20:13:21 GMT
 location: https://www.example.com</pre></span></div>
                <div id="rfc.section.C.5.1.p.2"><span id="rfc.figure.u.55">
-                     <p>Hex dump of encoded data:</p><pre>4803 3330 3258 0770 7269 7661 7465 611d | H.302X.privatea.
+                     <p>Hex dump of encoded data:</p><pre class="text">4803 3330 3258 0770 7269 7661 7465 611d | H.302X.privatea.
 4d6f 6e2c 2032 3120 4f63 7420 3230 3133 | Mon, 21 Oct 2013
 2032 303a 3133 3a32 3120 474d 546e 1768 |  20:13:21 GMTn.h
 7474 7073 3a2f 2f77 7777 2e65 7861 6d70 | ttps://www.examp
 6c65 2e63 6f6d                          | le.com</pre></span></div>
                <div id="rfc.section.C.5.1.p.3"><span id="rfc.figure.u.56">
-                     <p>Decoding process:</p><pre>48                                      | == Literal indexed ==
+                     <p>Decoding process:</p><pre class="text">48                                      | == Literal indexed ==
                                         |   Indexed name (idx = 8)
                                         |     :status
 03                                      |   Literal value (len = 3)
@@ -2902,13 +2902,13 @@ location: https://www.example.com</pre></span></div>
                                         | -&gt; location:
                                         |   https://www.example.com</pre></span></div>
                <div id="rfc.section.C.5.1.p.4"><span id="rfc.figure.u.57">
-                     <p>Dynamic Table (after decoding):</p><pre>[  1] (s =  63) location: https://www.example.com
+                     <p>Dynamic Table (after decoding):</p><pre class="text">[  1] (s =  63) location: https://www.example.com
 [  2] (s =  65) date: Mon, 21 Oct 2013 20:13:21 GMT
 [  3] (s =  52) cache-control: private
 [  4] (s =  42) :status: 302
       Table size: 222</pre></span></div>
                <div id="rfc.section.C.5.1.p.5"><span id="rfc.figure.u.58">
-                     <p>Decoded header list:</p><pre>:status: 302
+                     <p>Decoded header list:</p><pre class="text">:status: 302
 cache-control: private
 date: Mon, 21 Oct 2013 20:13:21 GMT
 location: https://www.example.com</pre></span></div>
@@ -2922,14 +2922,14 @@ location: https://www.example.com</pre></span></div>
                   </p>
                </div>
                <div id="rfc.section.C.5.2.p.2"><span id="rfc.figure.u.59">
-                     <p>Header list to encode:</p><pre>:status: 307
+                     <p>Header list to encode:</p><pre class="text">:status: 307
 cache-control: private
 date: Mon, 21 Oct 2013 20:13:21 GMT
 location: https://www.example.com</pre></span></div>
                <div id="rfc.section.C.5.2.p.3"><span id="rfc.figure.u.60">
-                     <p>Hex dump of encoded data:</p><pre>4803 3330 37c1 c0bf                     | H.307...</pre></span></div>
+                     <p>Hex dump of encoded data:</p><pre class="text">4803 3330 37c1 c0bf                     | H.307...</pre></span></div>
                <div id="rfc.section.C.5.2.p.4"><span id="rfc.figure.u.61">
-                     <p>Decoding process:</p><pre>48                                      | == Literal indexed ==
+                     <p>Decoding process:</p><pre class="text">48                                      | == Literal indexed ==
                                         |   Indexed name (idx = 8)
                                         |     :status
 03                                      |   Literal value (len = 3)
@@ -2948,13 +2948,13 @@ bf                                      | == Indexed - Add ==
                                         | -&gt; location:
                                         |   https://www.example.com</pre></span></div>
                <div id="rfc.section.C.5.2.p.5"><span id="rfc.figure.u.62">
-                     <p>Dynamic Table (after decoding):</p><pre>[  1] (s =  42) :status: 307
+                     <p>Dynamic Table (after decoding):</p><pre class="text">[  1] (s =  42) :status: 307
 [  2] (s =  63) location: https://www.example.com
 [  3] (s =  65) date: Mon, 21 Oct 2013 20:13:21 GMT
 [  4] (s =  52) cache-control: private
       Table size: 222</pre></span></div>
                <div id="rfc.section.C.5.2.p.6"><span id="rfc.figure.u.63">
-                     <p>Decoded header list:</p><pre>:status: 307
+                     <p>Decoded header list:</p><pre class="text">:status: 307
 cache-control: private
 date: Mon, 21 Oct 2013 20:13:21 GMT
 location: https://www.example.com</pre></span></div>
@@ -2966,14 +2966,14 @@ location: https://www.example.com</pre></span></div>
                   <p>Several header fields are evicted from the dynamic table during the processing of this header list.</p>
                </div>
                <div id="rfc.section.C.5.3.p.2"><span id="rfc.figure.u.64">
-                     <p>Header list to encode:</p><pre>:status: 200
+                     <p>Header list to encode:</p><pre class="text">:status: 200
 cache-control: private
 date: Mon, 21 Oct 2013 20:13:22 GMT
 location: https://www.example.com
 content-encoding: gzip
 set-cookie: foo=ASDJKHQKBZXOQWEOPIUAXQWEOIU; max-age=3600; version=1</pre></span></div>
                <div id="rfc.section.C.5.3.p.3"><span id="rfc.figure.u.65">
-                     <p>Hex dump of encoded data:</p><pre>88c1 611d 4d6f 6e2c 2032 3120 4f63 7420 | ..a.Mon, 21 Oct
+                     <p>Hex dump of encoded data:</p><pre class="text">88c1 611d 4d6f 6e2c 2032 3120 4f63 7420 | ..a.Mon, 21 Oct
 3230 3133 2032 303a 3133 3a32 3220 474d | 2013 20:13:22 GM
 54c0 5a04 677a 6970 7738 666f 6f3d 4153 | T.Z.gzipw8foo=AS
 444a 4b48 514b 425a 584f 5157 454f 5049 | DJKHQKBZXOQWEOPI
@@ -2981,7 +2981,7 @@ set-cookie: foo=ASDJKHQKBZXOQWEOPIUAXQWEOIU; max-age=3600; version=1</pre></span
 6765 3d33 3630 303b 2076 6572 7369 6f6e | ge=3600; version
 3d31                                    | =1</pre></span></div>
                <div id="rfc.section.C.5.3.p.4"><span id="rfc.figure.u.66">
-                     <p>Decoding process:</p><pre>88                                      | == Indexed - Add ==
+                     <p>Decoding process:</p><pre class="text">88                                      | == Indexed - Add ==
                                         |   idx = 8
                                         | -&gt; :status: 200
 c1                                      | == Indexed - Add ==
@@ -3024,13 +3024,13 @@ c0                                      | == Indexed - Add ==
                                         |   KBZXOQWEOPIUAXQWEOIU; ma
                                         |   x-age=3600; version=1</pre></span></div>
                <div id="rfc.section.C.5.3.p.5"><span id="rfc.figure.u.67">
-                     <p>Dynamic Table (after decoding):</p><pre>[  1] (s =  98) set-cookie: foo=ASDJKHQKBZXOQWEOPIUAXQWEOIU;
+                     <p>Dynamic Table (after decoding):</p><pre class="text">[  1] (s =  98) set-cookie: foo=ASDJKHQKBZXOQWEOPIUAXQWEOIU;
                  max-age=3600; version=1
 [  2] (s =  52) content-encoding: gzip
 [  3] (s =  65) date: Mon, 21 Oct 2013 20:13:22 GMT
       Table size: 215</pre></span></div>
                <div id="rfc.section.C.5.3.p.6"><span id="rfc.figure.u.68">
-                     <p>Decoded header list:</p><pre>:status: 200
+                     <p>Decoded header list:</p><pre class="text">:status: 200
 cache-control: private
 date: Mon, 21 Oct 2013 20:13:22 GMT
 location: https://www.example.com
@@ -3050,17 +3050,17 @@ set-cookie: foo=ASDJKHQKBZXOQWEOPIUAXQWEOIU; max-age=3600; version=1</pre></span
                <h3 id="rfc.section.C.6.1"><a href="#rfc.section.C.6.1">C.6.1</a>&nbsp;First Response
                </h3>
                <div id="rfc.section.C.6.1.p.1"><span id="rfc.figure.u.69">
-                     <p>Header list to encode:</p><pre>:status: 302
+                     <p>Header list to encode:</p><pre class="text">:status: 302
 cache-control: private
 date: Mon, 21 Oct 2013 20:13:21 GMT
 location: https://www.example.com</pre></span></div>
                <div id="rfc.section.C.6.1.p.2"><span id="rfc.figure.u.70">
-                     <p>Hex dump of encoded data:</p><pre>4882 6402 5885 aec3 771a 4b61 96d0 7abe | H.d.X...w.Ka..z.
+                     <p>Hex dump of encoded data:</p><pre class="text">4882 6402 5885 aec3 771a 4b61 96d0 7abe | H.d.X...w.Ka..z.
 9410 54d4 44a8 2005 9504 0b81 66e0 82a6 | ..T.D. .....f...
 2d1b ff6e 919d 29ad 1718 63c7 8f0b 97c8 | -..n..)...c.....
 e9ae 82ae 43d3                          | ....C.</pre></span></div>
                <div id="rfc.section.C.6.1.p.3"><span id="rfc.figure.u.71">
-                     <p>Decoding process:</p><pre>48                                      | == Literal indexed ==
+                     <p>Decoding process:</p><pre class="text">48                                      | == Literal indexed ==
                                         |   Indexed name (idx = 8)
                                         |     :status
 82                                      |   Literal value (len = 2)
@@ -3102,13 +3102,13 @@ d3                                      | .
                                         | -&gt; location:
                                         |   https://www.example.com</pre></span></div>
                <div id="rfc.section.C.6.1.p.4"><span id="rfc.figure.u.72">
-                     <p>Dynamic Table (after decoding):</p><pre>[  1] (s =  63) location: https://www.example.com
+                     <p>Dynamic Table (after decoding):</p><pre class="text">[  1] (s =  63) location: https://www.example.com
 [  2] (s =  65) date: Mon, 21 Oct 2013 20:13:21 GMT
 [  3] (s =  52) cache-control: private
 [  4] (s =  42) :status: 302
       Table size: 222</pre></span></div>
                <div id="rfc.section.C.6.1.p.5"><span id="rfc.figure.u.73">
-                     <p>Decoded header list:</p><pre>:status: 302
+                     <p>Decoded header list:</p><pre class="text">:status: 302
 cache-control: private
 date: Mon, 21 Oct 2013 20:13:21 GMT
 location: https://www.example.com</pre></span></div>
@@ -3122,14 +3122,14 @@ location: https://www.example.com</pre></span></div>
                   </p>
                </div>
                <div id="rfc.section.C.6.2.p.2"><span id="rfc.figure.u.74">
-                     <p>Header list to encode:</p><pre>:status: 307
+                     <p>Header list to encode:</p><pre class="text">:status: 307
 cache-control: private
 date: Mon, 21 Oct 2013 20:13:21 GMT
 location: https://www.example.com</pre></span></div>
                <div id="rfc.section.C.6.2.p.3"><span id="rfc.figure.u.75">
-                     <p>Hex dump of encoded data:</p><pre>4883 640e ffc1 c0bf                     | H.d.....</pre></span></div>
+                     <p>Hex dump of encoded data:</p><pre class="text">4883 640e ffc1 c0bf                     | H.d.....</pre></span></div>
                <div id="rfc.section.C.6.2.p.4"><span id="rfc.figure.u.76">
-                     <p>Decoding process:</p><pre>48                                      | == Literal indexed ==
+                     <p>Decoding process:</p><pre class="text">48                                      | == Literal indexed ==
                                         |   Indexed name (idx = 8)
                                         |     :status
 83                                      |   Literal value (len = 3)
@@ -3151,13 +3151,13 @@ bf                                      | == Indexed - Add ==
                                         | -&gt; location:
                                         |   https://www.example.com</pre></span></div>
                <div id="rfc.section.C.6.2.p.5"><span id="rfc.figure.u.77">
-                     <p>Dynamic Table (after decoding):</p><pre>[  1] (s =  42) :status: 307
+                     <p>Dynamic Table (after decoding):</p><pre class="text">[  1] (s =  42) :status: 307
 [  2] (s =  63) location: https://www.example.com
 [  3] (s =  65) date: Mon, 21 Oct 2013 20:13:21 GMT
 [  4] (s =  52) cache-control: private
       Table size: 222</pre></span></div>
                <div id="rfc.section.C.6.2.p.6"><span id="rfc.figure.u.78">
-                     <p>Decoded header list:</p><pre>:status: 307
+                     <p>Decoded header list:</p><pre class="text">:status: 307
 cache-control: private
 date: Mon, 21 Oct 2013 20:13:21 GMT
 location: https://www.example.com</pre></span></div>
@@ -3169,20 +3169,20 @@ location: https://www.example.com</pre></span></div>
                   <p>Several header fields are evicted from the dynamic table during the processing of this header list.</p>
                </div>
                <div id="rfc.section.C.6.3.p.2"><span id="rfc.figure.u.79">
-                     <p>Header list to encode:</p><pre>:status: 200
+                     <p>Header list to encode:</p><pre class="text">:status: 200
 cache-control: private
 date: Mon, 21 Oct 2013 20:13:22 GMT
 location: https://www.example.com
 content-encoding: gzip
 set-cookie: foo=ASDJKHQKBZXOQWEOPIUAXQWEOIU; max-age=3600; version=1</pre></span></div>
                <div id="rfc.section.C.6.3.p.3"><span id="rfc.figure.u.80">
-                     <p>Hex dump of encoded data:</p><pre>88c1 6196 d07a be94 1054 d444 a820 0595 | ..a..z...T.D. ..
+                     <p>Hex dump of encoded data:</p><pre class="text">88c1 6196 d07a be94 1054 d444 a820 0595 | ..a..z...T.D. ..
 040b 8166 e084 a62d 1bff c05a 839b d9ab | ...f...-...Z....
 77ad 94e7 821d d7f2 e6c7 b335 dfdf cd5b | w..........5...[
 3960 d5af 2708 7f36 72c1 ab27 0fb5 291f | 9`..'..6r..'..).
 9587 3160 65c0 03ed 4ee5 b106 3d50 07   | ..1`e...N...=P.</pre></span></div>
                <div id="rfc.section.C.6.3.p.4"><span id="rfc.figure.u.81">
-                     <p>Decoding process:</p><pre>88                                      | == Indexed - Add ==
+                     <p>Decoding process:</p><pre class="text">88                                      | == Indexed - Add ==
                                         |   idx = 8
                                         | -&gt; :status: 200
 c1                                      | == Indexed - Add ==
@@ -3236,13 +3236,13 @@ d5af 2708 7f36 72c1 ab27 0fb5 291f 9587 | ..'..6r..'..)...
                                         |   KBZXOQWEOPIUAXQWEOIU; ma
                                         |   x-age=3600; version=1</pre></span></div>
                <div id="rfc.section.C.6.3.p.5"><span id="rfc.figure.u.82">
-                     <p>Dynamic Table (after decoding):</p><pre>[  1] (s =  98) set-cookie: foo=ASDJKHQKBZXOQWEOPIUAXQWEOIU;
+                     <p>Dynamic Table (after decoding):</p><pre class="text">[  1] (s =  98) set-cookie: foo=ASDJKHQKBZXOQWEOPIUAXQWEOIU;
                  max-age=3600; version=1
 [  2] (s =  52) content-encoding: gzip
 [  3] (s =  65) date: Mon, 21 Oct 2013 20:13:22 GMT
       Table size: 215</pre></span></div>
                <div id="rfc.section.C.6.3.p.6"><span id="rfc.figure.u.83">
-                     <p>Decoded header list:</p><pre>:status: 200
+                     <p>Decoded header list:</p><pre class="text">:status: 200
 cache-control: private
 date: Mon, 21 Oct 2013 20:13:22 GMT
 location: https://www.example.com
