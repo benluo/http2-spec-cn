@@ -1,0 +1,163 @@
+<section anchor="Overview" title="HTTP/2 Protocol Overview">
+    <t>
+        HTTP/2 provides an optimized transport for HTTP semantics. HTTP/2 supports all of the core
+        features of HTTP/1.1 but aims to be more efficient in several ways.
+    </t>
+    <t>
+        The basic protocol unit in HTTP/2 is a<xref target="FrameHeader">frame</xref>. Each frame
+        type serves a different purpose. For example,
+        <x:ref>HEADERS</x:ref>
+        and
+        <x:ref>DATA</x:ref>
+        frames form the basis of<xref target="HttpSequence">HTTP requests and
+        responses</xref>; other frame types like<x:ref>SETTINGS</x:ref>,
+        <x:ref>WINDOW_UPDATE</x:ref>, and
+        <x:ref>PUSH_PROMISE</x:ref>
+        are used in support of other
+        HTTP/2 features.
+    </t>
+    <t>
+        Multiplexing of requests is achieved by having each HTTP request/response exchange
+        associated with its own<xref target="StreamsLayer">stream</xref>. Streams are largely
+        independent of each other, so a blocked or stalled request or response does not prevent
+        progress on other streams.
+    </t>
+    <t>
+        Flow control and prioritization ensure that it is possible to efficiently use multiplexed
+        streams.
+        <xref target="FlowControl">Flow control</xref>
+        helps to ensure that only data that
+        can be used by a receiver is transmitted.
+        <xref
+                target="StreamPriority">Prioritization
+        </xref>
+        ensures that limited resources can be directed
+        to the most important streams first.
+    </t>
+    <t>
+        HTTP/2 adds a new interaction mode whereby a server can<xref target="PushResources">push
+        responses to a client</xref>. Server push allows a server to speculatively send data to a
+        client that the server anticipates the client will need, trading off some network usage
+        against a potential latency gain. The server does this by synthesizing a request, which it
+        sends as a
+        <x:ref>PUSH_PROMISE</x:ref>
+        frame. The server is then able to send a response to
+        the synthetic request on a separate stream.
+    </t>
+    <t>
+        Because HTTP header fields used in a connection can contain large amounts of redundant
+        data, frames that contain them are<xref target="HeaderBlock">compressed</xref>. This has
+        especially advantageous impact upon request sizes in the common case, allowing many
+        requests to be compressed into one packet.
+    </t>
+
+    <section title="Document Organization">
+        <t>
+            The HTTP/2 specification is split into four parts:
+            <list style="symbols">
+                <t>
+                    <xref target="starting">Starting HTTP/2</xref>
+                    covers how an HTTP/2 connection is
+                    initiated.
+                </t>
+                <t>
+                    The
+                    <xref target="FramingLayer">frame</xref>
+                    and
+                    <xref
+                            target="StreamsLayer">stream
+                    </xref>
+                    layers describe the way HTTP/2 frames are
+                    structured and formed into multiplexed streams.
+                </t>
+                <t>
+                    <xref target="FrameTypes">Frame</xref>
+                    and
+                    <xref target="ErrorCodes">error</xref>
+                    definitions include details of the frame and error types used in HTTP/2.
+                </t>
+                <t>
+                    <xref target="HTTPLayer">HTTP mappings</xref>
+                    and
+                    <xref target="HttpExtra">additional
+                        requirements
+                    </xref>
+                    describe how HTTP semantics are expressed using frames and
+                    streams.
+                </t>
+            </list>
+        </t>
+        <t>
+            While some of the frame and stream layer concepts are isolated from HTTP, this
+            specification does not define a completely generic frame layer. The frame and stream
+            layers are tailored to the needs of the HTTP protocol and server push.
+        </t>
+    </section>
+
+    <section title="Conventions and Terminology">
+        <t>
+            The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD
+            NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as
+            described in<xref target="RFC2119">RFC 2119</xref>.
+        </t>
+        <t>
+            All numeric values are in network byte order. Values are unsigned unless otherwise
+            indicated. Literal values are provided in decimal or hexadecimal as appropriate.
+            Hexadecimal literals are prefixed with
+            <spanx style="verb">0x</spanx>
+            to distinguish them
+            from decimal literals.
+        </t>
+        <t>
+            The following terms are used:
+            <list style="hanging">
+                <t hangText="client:">
+                    The endpoint that initiates an HTTP/2 connection. Clients send HTTP requests and
+                    receive HTTP responses.
+                </t>
+                <t hangText="connection:">
+                    A transport-layer connection between two endpoints.
+                </t>
+                <t hangText="connection error:">
+                    An error that affects the entire HTTP/2 connection.
+                </t>
+                <t hangText="endpoint:">
+                    Either the client or server of the connection.
+                </t>
+                <t hangText="frame:">
+                    The smallest unit of communication within an HTTP/2 connection, consisting of a header
+                    and a variable-length sequence of octets structured according to the frame type.
+                </t>
+                <t hangText="peer:">
+                    An endpoint. When discussing a particular endpoint, "peer" refers to the endpoint
+                    that is remote to the primary subject of discussion.
+                </t>
+                <t hangText="receiver:">
+                    An endpoint that is receiving frames.
+                </t>
+                <t hangText="sender:">
+                    An endpoint that is transmitting frames.
+                </t>
+                <t hangText="server:">
+                    The endpoint that accepts an HTTP/2 connection. Servers receive HTTP requests and
+                    send HTTP responses.
+                </t>
+                <t hangText="stream:">
+                    A bidirectional flow of frames within the HTTP/2 connection.
+                </t>
+                <t hangText="stream error:">
+                    An error on the individual HTTP/2 stream.
+                </t>
+            </list>
+        </t>
+        <t>
+            Finally, the terms "gateway", "intermediary", "proxy", and "tunnel" are defined in<xref
+                target="RFC7230" x:fmt="of" x:rel="#intermediaries"/>. Intermediaries act as both client
+            and server at different times.
+        </t>
+        <t>
+            The term "payload body" is defined in<xref target="RFC7230" x:fmt="of"
+                                                       x:rel="#message.body"/>.
+        </t>
+    </section>
+</section>

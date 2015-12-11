@@ -1,0 +1,83 @@
+<section anchor="ErrorCodes" title="Error Codes">
+    <t>
+        Error codes are 32-bit fields that are used in
+        <x:ref>RST_STREAM</x:ref>
+        and
+        <x:ref>GOAWAY</x:ref>
+        frames to convey the reasons for the stream or connection error.
+    </t>
+
+    <t>
+        Error codes share a common code space. Some error codes apply only to either streams or the
+        entire connection and have no defined semantics in the other context.
+    </t>
+
+    <t>
+        The following error codes are defined:
+        <list style="hanging">
+            <t hangText="NO_ERROR (0x0):" anchor="NO_ERROR">
+                The associated condition is not a result of an error. For example, a
+                <x:ref>GOAWAY</x:ref>
+                might include this code to indicate graceful shutdown of a
+                connection.
+            </t>
+            <t hangText="PROTOCOL_ERROR (0x1):" anchor="PROTOCOL_ERROR">
+                The endpoint detected an unspecific protocol error. This error is for use when a more
+                specific error code is not available.
+            </t>
+            <t hangText="INTERNAL_ERROR (0x2):" anchor="INTERNAL_ERROR">
+                The endpoint encountered an unexpected internal error.
+            </t>
+            <t hangText="FLOW_CONTROL_ERROR (0x3):" anchor="FLOW_CONTROL_ERROR">
+                The endpoint detected that its peer violated the flow-control protocol.
+            </t>
+            <t hangText="SETTINGS_TIMEOUT (0x4):" anchor="SETTINGS_TIMEOUT">
+                The endpoint sent a
+                <x:ref>SETTINGS</x:ref>
+                frame but did not receive a response in a
+                timely manner. See
+                <xref target="SettingsSync"/>
+                ("Settings Synchronization").
+            </t>
+            <t hangText="STREAM_CLOSED (0x5):" anchor="STREAM_CLOSED">
+                The endpoint received a frame after a stream was half-closed.
+            </t>
+            <t hangText="FRAME_SIZE_ERROR (0x6):" anchor="FRAME_SIZE_ERROR">
+                The endpoint received a frame with an invalid size.
+            </t>
+            <t hangText="REFUSED_STREAM (0x7):" anchor="REFUSED_STREAM">
+                The endpoint refused the stream prior to performing any application processing (see
+                <xref target="Reliability"/>
+                for details).
+            </t>
+            <t hangText="CANCEL (0x8):" anchor="CANCEL">
+                Used by the endpoint to indicate that the stream is no longer needed.
+            </t>
+            <t hangText="COMPRESSION_ERROR (0x9):" anchor="COMPRESSION_ERROR">
+                The endpoint is unable to maintain the header compression context for the connection.
+            </t>
+            <t hangText="CONNECT_ERROR (0xa):" anchor="CONNECT_ERROR">
+                The connection established in response to a
+                <xref target="CONNECT">CONNECT
+                    request
+                </xref>
+                was reset or abnormally closed.
+            </t>
+            <t hangText="ENHANCE_YOUR_CALM (0xb):" anchor="ENHANCE_YOUR_CALM">
+                The endpoint detected that its peer is exhibiting a behavior that might be generating
+                excessive load.
+            </t>
+            <t hangText="INADEQUATE_SECURITY (0xc):" anchor="INADEQUATE_SECURITY">
+                The underlying transport has properties that do not meet minimum security
+                requirements (see<xref target="TLSUsage"/>).
+            </t>
+            <t hangText="HTTP_1_1_REQUIRED (0xd):" anchor="HTTP_1_1_REQUIRED">
+                The endpoint requires that HTTP/1.1 be used instead of HTTP/2.
+            </t>
+        </list>
+    </t>
+    <t>
+        Unknown or unsupported error codes MUST NOT trigger any special behavior. These MAY be
+        treated by an implementation as being equivalent to<x:ref>INTERNAL_ERROR</x:ref>.
+    </t>
+</section>

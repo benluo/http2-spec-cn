@@ -1,0 +1,758 @@
+<back>
+    <references title="Normative References">
+        <reference anchor="COMPRESSION">
+            <front>
+                <title>HPACK: Header Compression for HTTP/2</title>
+                <author initials="R." surname="Peon" fullname="Roberto Peon"/>
+                <author initials="H." surname="Ruellan" fullname="Herve Ruellan"/>
+                <date month="May" year="2015" />
+            </front>
+            <seriesInfo name="RFC" value="7541" />
+            <x:source href="refs/draft-ietf-httpbis-header-compression-11.xml"/><!-- TODO -->
+        </reference>
+
+        <reference anchor="TCP">
+            <front>
+                <title abbrev="Transmission Control Protocol">
+                    Transmission Control Protocol
+                </title>
+                <author initials="J." surname="Postel" fullname="Jon Postel">
+                    <organization>University of Southern California (USC)/Information Sciences
+                        Institute</organization>
+                </author>
+                <date year="1981" month="September" />
+            </front>
+            <seriesInfo name="STD" value="7" />
+            <seriesInfo name="RFC" value="793" />
+        </reference>
+
+        <reference anchor="RFC2119">
+            <front>
+                <title>
+                    Key words for use in RFCs to Indicate Requirement Levels
+                </title>
+                <author initials="S." surname="Bradner" fullname="Scott Bradner">
+                    <organization>Harvard University</organization>
+                    <address><email>sob@harvard.edu</email></address>
+                </author>
+                <date month="March" year="1997"/>
+            </front>
+            <seriesInfo name="BCP" value="14"/>
+            <seriesInfo name="RFC" value="2119"/>
+        </reference>
+
+        <reference anchor="RFC2818">
+            <front>
+                <title>
+                    HTTP Over TLS
+                </title>
+                <author initials="E." surname="Rescorla" fullname="Eric Rescorla"/>
+                <date month="May" year="2000"/>
+            </front>
+            <seriesInfo name="RFC" value="2818"/>
+        </reference>
+
+        <reference anchor="RFC3986">
+            <front>
+                <title abbrev="URI Generic Syntax">Uniform Resource Identifier (URI): Generic
+                    Syntax</title>
+                <author initials="T." surname="Berners-Lee" fullname="Tim Berners-Lee"></author>
+                <author initials="R." surname="Fielding" fullname="Roy T. Fielding"></author>
+                <author initials="L." surname="Masinter" fullname="Larry Masinter"></author>
+                <date year="2005" month="January" />
+            </front>
+            <seriesInfo name="STD" value="66" />
+            <seriesInfo name="RFC" value="3986" />
+        </reference>
+
+        <reference anchor="RFC4648">
+            <front>
+                <title>The Base16, Base32, and Base64 Data Encodings</title>
+                <author fullname="S. Josefsson" initials="S." surname="Josefsson"/>
+                <date year="2006" month="October"/>
+            </front>
+            <seriesInfo value="4648" name="RFC"/>
+        </reference>
+
+        <reference anchor="RFC5226">
+            <front>
+                <title>Guidelines for Writing an IANA Considerations Section in RFCs</title>
+                <author initials="T." surname="Narten" fullname="T. Narten"/>
+                <author initials="H." surname="Alvestrand" fullname="H. Alvestrand"/>
+                <date year="2008" month="May" />
+            </front>
+            <seriesInfo name="BCP" value="26" />
+            <seriesInfo name="RFC" value="5226" />
+        </reference>
+
+        <reference anchor="RFC5234">
+            <front>
+                <title>Augmented BNF for Syntax Specifications: ABNF</title>
+                <author initials="D." surname="Crocker" fullname="D. Crocker" role="editor"/>
+                <author initials="P." surname="Overell" fullname="P. Overell"/>
+                <date year="2008" month="January" />
+            </front>
+            <seriesInfo name="STD" value="68" />
+            <seriesInfo name="RFC" value="5234" />
+        </reference>
+
+        <reference anchor="TLS12">
+            <front>
+                <title>The Transport Layer Security (TLS) Protocol Version 1.2</title>
+                <author initials="T." surname="Dierks" fullname="Tim Dierks"/>
+                <author initials="E." surname="Rescorla" fullname="Eric Rescorla"/>
+                <date year="2008" month="August" />
+            </front>
+            <seriesInfo name="RFC" value="5246" />
+        </reference>
+
+        <reference anchor="TLS-EXT">
+            <front>
+                <title>
+                    Transport Layer Security (TLS) Extensions: Extension Definitions
+                </title>
+                <author initials="D." surname="Eastlake 3rd" fullname="D. Eastlake 3rd"/>
+                <date year="2011" month="January"/>
+            </front>
+            <seriesInfo name="RFC" value="6066"/>
+        </reference>
+
+        <reference anchor="TLS-ALPN">
+            <front>
+                <title>Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension</title>
+                <author initials="S." surname="Friedl" fullname="Stephan Friedl"></author>
+                <author initials="A." surname="Popov" fullname="Andrei Popov"></author>
+                <author initials="A." surname="Langley" fullname="Adam Langley"></author>
+                <author initials="E." surname="Stephan" fullname="Emile Stephan"></author>
+                <date month="July" year="2014" />
+            </front>
+            <seriesInfo name="RFC" value="7301" />
+        </reference>
+
+        <reference anchor="TLS-ECDHE">
+            <front>
+                <title>
+                    TLS Elliptic Curve Cipher Suites with SHA-256/384 and AES Galois
+                    Counter Mode (GCM)
+                </title>
+                <author initials="E." surname="Rescorla" fullname="E. Rescorla"/>
+                <date year="2008" month="August" />
+            </front>
+            <seriesInfo name="RFC" value="5289" />
+        </reference>
+
+        <reference anchor="FIPS186" target="http://dx.doi.org/10.6028/NIST.FIPS.186-4">
+            <front>
+                <title>
+                    Digital Signature Standard (DSS)
+                </title>
+                <author><organization>NIST</organization></author>
+                <date year="2013" month="July" />
+            </front>
+            <seriesInfo name="FIPS" value="PUB 186-4" />
+        </reference>
+
+        <reference anchor="RFC7230">
+            <front>
+                <title>
+                    Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing</title>
+                <author fullname="Roy T. Fielding" initials="R." role="editor" surname="Fielding">
+                    <organization abbrev="Adobe">Adobe Systems Incorporated</organization>
+                    <address><email>fielding@gbiv.com</email></address>
+                </author>
+                <author fullname="Julian F. Reschke" initials="J. F." role="editor" surname="Reschke">
+                    <organization abbrev="greenbytes">greenbytes GmbH</organization>
+                    <address><email>julian.reschke@greenbytes.de</email></address>
+                </author>
+                <date month="June" year="2014" />
+            </front>
+            <seriesInfo name="RFC" value="7230" />
+            <x:source href="refs/rfc7230.xml"
+                      basename="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230"/>
+        </reference>
+        <reference anchor="RFC7231">
+            <front>
+                <title>
+                    Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content</title>
+                <author fullname="Roy T. Fielding" initials="R." role="editor" surname="Fielding">
+                    <organization abbrev="Adobe">Adobe Systems Incorporated</organization>
+                    <address><email>fielding@gbiv.com</email></address>
+                </author>
+                <author fullname="Julian F. Reschke" initials="J. F." role="editor" surname="Reschke">
+                    <organization abbrev="greenbytes">greenbytes GmbH</organization>
+                    <address><email>julian.reschke@greenbytes.de</email></address>
+                </author>
+                <date month="June" year="2014" />
+            </front>
+            <seriesInfo name="RFC" value="7231" />
+            <x:source href="refs/rfc7231.xml"
+                      basename="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7231"/>
+        </reference>
+        <reference anchor="RFC7232">
+            <front>
+                <title>Hypertext Transfer Protocol (HTTP/1.1): Conditional Requests</title>
+                <author fullname="Roy T. Fielding" initials="R." role="editor" surname="Fielding">
+                    <organization abbrev="Adobe">Adobe Systems Incorporated</organization>
+                    <address><email>fielding@gbiv.com</email></address>
+                </author>
+                <author fullname="Julian F. Reschke" initials="J. F." role="editor" surname="Reschke">
+                    <organization abbrev="greenbytes">greenbytes GmbH</organization>
+                    <address><email>julian.reschke@greenbytes.de</email></address>
+                </author>
+                <date month="June" year="2014" />
+            </front>
+            <seriesInfo name="RFC" value="7232" />
+        </reference>
+        <reference anchor="RFC7233">
+            <front>
+                <title>Hypertext Transfer Protocol (HTTP/1.1): Range Requests</title>
+                <author initials="R." surname="Fielding" fullname="Roy T. Fielding" role="editor">
+                    <organization abbrev="Adobe">Adobe Systems Incorporated</organization>
+                    <address><email>fielding@gbiv.com</email></address>
+                </author>
+                <author initials="Y." surname="Lafon" fullname="Yves Lafon" role="editor">
+                    <organization abbrev="W3C">World Wide Web Consortium</organization>
+                    <address><email>ylafon@w3.org</email></address>
+                </author>
+                <author initials="J. F." surname="Reschke" fullname="Julian F. Reschke" role="editor">
+                    <organization abbrev="greenbytes">greenbytes GmbH</organization>
+                    <address><email>julian.reschke@greenbytes.de</email></address>
+                </author>
+                <date month="June" year="2014" />
+            </front>
+            <seriesInfo name="RFC" value="7233" />
+        </reference>
+        <reference anchor="RFC7234">
+            <front>
+                <title>Hypertext Transfer Protocol (HTTP/1.1): Caching</title>
+                <author initials="R." surname="Fielding" fullname="Roy T. Fielding" role="editor">
+                    <organization abbrev="Adobe">Adobe Systems Incorporated</organization>
+                    <address><email>fielding@gbiv.com</email></address>
+                </author>
+                <author fullname="Mark Nottingham" initials="M." role="editor" surname="Nottingham">
+                    <organization>Akamai</organization>
+                    <address><email>mnot@mnot.net</email></address>
+                </author>
+                <author initials="J. F." surname="Reschke" fullname="Julian F. Reschke" role="editor">
+                    <organization abbrev="greenbytes">greenbytes GmbH</organization>
+                    <address><email>julian.reschke@greenbytes.de</email></address>
+                </author>
+                <date month="June" year="2014" />
+            </front>
+            <seriesInfo name="RFC" value="7234"/>
+            <x:source href="refs/rfc7234.xml"
+                      basename="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7234"/>
+        </reference>
+        <reference anchor="RFC7235">
+            <front>
+                <title>Hypertext Transfer Protocol (HTTP/1.1): Authentication</title>
+                <author initials="R." surname="Fielding" fullname="Roy T. Fielding" role="editor">
+                    <organization abbrev="Adobe">Adobe Systems Incorporated</organization>
+                    <address><email>fielding@gbiv.com</email></address>
+                </author>
+                <author initials="J. F." surname="Reschke" fullname="Julian F. Reschke" role="editor">
+                    <organization abbrev="greenbytes">greenbytes GmbH</organization>
+                    <address><email>julian.reschke@greenbytes.de</email></address>
+                </author>
+                <date month="June" year="2014" />
+            </front>
+            <seriesInfo name="RFC" value="7235"/>
+            <x:source href="refs/rfc7235.xml"
+                      basename="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7235"/>
+        </reference>
+
+        <reference anchor="COOKIE">
+            <front>
+                <title>HTTP State Management Mechanism</title>
+                <author initials="A." surname="Barth" fullname="A. Barth"/>
+                <date year="2011" month="April" />
+            </front>
+            <seriesInfo name="RFC" value="6265" />
+        </reference>
+    </references>
+
+    <references title="Informative References">
+        <reference anchor="RFC7323">
+            <front>
+                <title>
+                    TCP Extensions for High Performance
+                </title>
+                <author initials="D." surname="Borman" fullname="Dave Borman"></author>
+                <author initials="B." surname="Braden" fullname="Bob Braden"></author>
+                <author initials="V." surname="Jacobson" fullname="Van Jacobson"></author>
+                <author initials="R." surname="Scheffenegger" fullname="Richard Scheffenegger" role="editor"></author>
+                <date year="2014" month="September" />
+            </front>
+            <seriesInfo name="RFC" value="7323" />
+        </reference>
+
+        <reference anchor="RFC3749">
+            <front>
+                <title>Transport Layer Security Protocol Compression Methods</title>
+                <author initials="S." surname="Hollenbeck" fullname="S. Hollenbeck"/>
+                <date year="2004" month="May" />
+            </front>
+            <seriesInfo name="RFC" value="3749" />
+        </reference>
+
+        <reference anchor="RFC6585">
+            <front>
+                <title>Additional HTTP Status Codes</title>
+                <author initials="M." surname="Nottingham" fullname="Mark Nottingham"/>
+                <author initials="R." surname="Fielding" fullname="Roy Fielding"/>
+                <date year="2012" month="April" />
+            </front>
+            <seriesInfo name="RFC" value="6585" />
+        </reference>
+
+        <reference anchor="RFC4492">
+            <front>
+                <title>
+                    Elliptic Curve Cryptography (ECC) Cipher Suites for Transport Layer Security (TLS)
+                </title>
+                <author initials="S." surname="Blake-Wilson" fullname="S. Blake-Wilson"/>
+                <author initials="N." surname="Bolyard" fullname="N. Bolyard"/>
+                <author initials="V." surname="Gupta" fullname="V. Gupta"/>
+                <author initials="C." surname="Hawk" fullname="C. Hawk"/>
+                <author initials="B." surname="Moeller" fullname="B. Moeller"/>
+                <date year="2006" month="May" />
+            </front>
+            <seriesInfo name="RFC" value="4492" />
+        </reference>
+
+        <reference anchor="HTML5"
+                   target="http://www.w3.org/TR/2014/REC-html5-20141028/">
+            <front>
+                <title>HTML5</title>
+                <author fullname="Ian Hickson" surname="Hickson" initials="I."/>
+                <author fullname="Robin Berjon" surname="Berjon" initials="R."/>
+                <author fullname="Steve Faulkner" surname="Faulkner" initials="S."/>
+                <author fullname="Travis Leithead" surname="Leithead" initials="T."/>
+                <author fullname="Erika Doyle Navara" surname="Doyle Navara" initials="E."/>
+                <author fullname="Edward O&apos;Connor" surname="O&apos;Connor" initials="E."/>
+                <author fullname="Silvia Pfeiffer" surname="Pfeiffer" initials="S."/>
+                <date year="2014" month="October" day="28"/>
+            </front>
+            <seriesInfo name="W3C Recommendation" value="REC-html5-20141028"/>
+        </reference>
+
+        <reference anchor="TALKING" target="http://w2spconf.com/2011/papers/websocket.pdf">
+            <front>
+                <title>
+                    Talking to Yourself for Fun and Profit
+                </title>
+                <author initials="L." surname="Huang"/>
+                <author initials="E." surname="Chen"/>
+                <author initials="A." surname="Barth"/>
+                <author initials="E." surname="Rescorla"/>
+                <author initials="C." surname="Jackson"/>
+                <date year="2011" />
+            </front>
+        </reference>
+
+        <reference anchor="BREACH"
+                   target="http://breachattack.com/resources/BREACH%20-%20SSL,%20gone%20in%2030%20seconds.pdf">
+            <front>
+                <title>
+                    BREACH: Reviving the CRIME Attack
+                </title>
+                <author initials="Y." surname="Gluck"/>
+                <author initials="N." surname="Harris"/>
+                <author initials="A." surname="Prado"/>
+                <date year="2013" month="July" day="12"/>
+            </front>
+        </reference>
+
+        <reference anchor="BCP90">
+            <front>
+                <title>Registration Procedures for Message Header Fields</title>
+                <author initials="G." surname="Klyne" fullname="G. Klyne">
+                    <organization>Nine by Nine</organization>
+                    <address><email>GK-IETF@ninebynine.org</email></address>
+                </author>
+                <author initials="M." surname="Nottingham" fullname="M. Nottingham">
+                    <organization>BEA Systems</organization>
+                    <address><email>mnot@pobox.com</email></address>
+                </author>
+                <author initials="J." surname="Mogul" fullname="J. Mogul">
+                    <organization>HP Labs</organization>
+                    <address><email>JeffMogul@acm.org</email></address>
+                </author>
+                <date year="2004" month="September" />
+            </front>
+            <seriesInfo name="BCP" value="90" />
+            <seriesInfo name="RFC" value="3864" />
+        </reference>
+
+        <reference anchor="TLSBCP">
+            <front>
+                <title>Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)</title>
+                <author initials="Y." surname="Sheffer" fullname="Yaron Sheffer"/>
+                <author initials="R." surname="Holz" fullname="Ralph Holz"/>
+                <author initials="P." surname="Saint-Andre" fullname="Peter Saint-Andre"/>
+                <date month="May" year="2015" />
+            </front>
+            <seriesInfo name="BCP" value="195" />
+            <seriesInfo name="RFC" value="7525" />
+        </reference>
+
+        <reference anchor="ALT-SVC">
+            <front>
+                <title>
+                    HTTP Alternative Services
+                </title>
+                <author initials="M." surname="Nottingham" fullname="Mark Nottingham">
+                    <organization>Akamai</organization>
+                </author>
+                <author initials="P." surname="McManus" fullname="Patrick McManus">
+                    <organization>Mozilla</organization>
+                </author>
+                <author initials="J." surname="Reschke" fullname="Julian Reschke">
+                    <organization>greenbytes</organization>
+                </author>
+                <date year="2015" month="February"/>
+            </front>
+            <seriesInfo name="Internet-Draft" value="draft-ietf-httpbis-alt-svc-06"/>
+        </reference>
+    </references>
+
+    <section title="TLS 1.2 Cipher Suite Black List" anchor="BadCipherSuites">
+        <t>
+            An HTTP/2 implementation MAY treat the negotiation of any of the following cipher suites
+            with TLS 1.2 as a <xref target="ConnectionErrorHandler">connection error</xref> of type
+            <x:ref>INADEQUATE_SECURITY</x:ref>:
+            <list style="symbols">
+                <t>TLS_NULL_WITH_NULL_NULL</t>
+                <t>TLS_RSA_WITH_NULL_MD5</t>
+                <t>TLS_RSA_WITH_NULL_SHA</t>
+                <t>TLS_RSA_EXPORT_WITH_RC4_40_MD5</t>
+                <t>TLS_RSA_WITH_RC4_128_MD5</t>
+                <t>TLS_RSA_WITH_RC4_128_SHA</t>
+                <t>TLS_RSA_EXPORT_WITH_RC2_CBC_40_MD5</t>
+                <t>TLS_RSA_WITH_IDEA_CBC_SHA</t>
+                <t>TLS_RSA_EXPORT_WITH_DES40_CBC_SHA</t>
+                <t>TLS_RSA_WITH_DES_CBC_SHA</t>
+                <t>TLS_RSA_WITH_3DES_EDE_CBC_SHA</t>
+                <t>TLS_DH_DSS_EXPORT_WITH_DES40_CBC_SHA</t>
+                <t>TLS_DH_DSS_WITH_DES_CBC_SHA</t>
+                <t>TLS_DH_DSS_WITH_3DES_EDE_CBC_SHA</t>
+                <t>TLS_DH_RSA_EXPORT_WITH_DES40_CBC_SHA</t>
+                <t>TLS_DH_RSA_WITH_DES_CBC_SHA</t>
+                <t>TLS_DH_RSA_WITH_3DES_EDE_CBC_SHA</t>
+                <t>TLS_DHE_DSS_EXPORT_WITH_DES40_CBC_SHA</t>
+                <t>TLS_DHE_DSS_WITH_DES_CBC_SHA</t>
+                <t>TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA</t>
+                <t>TLS_DHE_RSA_EXPORT_WITH_DES40_CBC_SHA</t>
+                <t>TLS_DHE_RSA_WITH_DES_CBC_SHA</t>
+                <t>TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA</t>
+                <t>TLS_DH_anon_EXPORT_WITH_RC4_40_MD5</t>
+                <t>TLS_DH_anon_WITH_RC4_128_MD5</t>
+                <t>TLS_DH_anon_EXPORT_WITH_DES40_CBC_SHA</t>
+                <t>TLS_DH_anon_WITH_DES_CBC_SHA</t>
+                <t>TLS_DH_anon_WITH_3DES_EDE_CBC_SHA</t>
+                <t>TLS_KRB5_WITH_DES_CBC_SHA</t>
+                <t>TLS_KRB5_WITH_3DES_EDE_CBC_SHA</t>
+                <t>TLS_KRB5_WITH_RC4_128_SHA</t>
+                <t>TLS_KRB5_WITH_IDEA_CBC_SHA</t>
+                <t>TLS_KRB5_WITH_DES_CBC_MD5</t>
+                <t>TLS_KRB5_WITH_3DES_EDE_CBC_MD5</t>
+                <t>TLS_KRB5_WITH_RC4_128_MD5</t>
+                <t>TLS_KRB5_WITH_IDEA_CBC_MD5</t>
+                <t>TLS_KRB5_EXPORT_WITH_DES_CBC_40_SHA</t>
+                <t>TLS_KRB5_EXPORT_WITH_RC2_CBC_40_SHA</t>
+                <t>TLS_KRB5_EXPORT_WITH_RC4_40_SHA</t>
+                <t>TLS_KRB5_EXPORT_WITH_DES_CBC_40_MD5</t>
+                <t>TLS_KRB5_EXPORT_WITH_RC2_CBC_40_MD5</t>
+                <t>TLS_KRB5_EXPORT_WITH_RC4_40_MD5</t>
+                <t>TLS_PSK_WITH_NULL_SHA</t>
+                <t>TLS_DHE_PSK_WITH_NULL_SHA</t>
+                <t>TLS_RSA_PSK_WITH_NULL_SHA</t>
+                <t>TLS_RSA_WITH_AES_128_CBC_SHA</t>
+                <t>TLS_DH_DSS_WITH_AES_128_CBC_SHA</t>
+                <t>TLS_DH_RSA_WITH_AES_128_CBC_SHA</t>
+                <t>TLS_DHE_DSS_WITH_AES_128_CBC_SHA</t>
+                <t>TLS_DHE_RSA_WITH_AES_128_CBC_SHA</t>
+                <t>TLS_DH_anon_WITH_AES_128_CBC_SHA</t>
+                <t>TLS_RSA_WITH_AES_256_CBC_SHA</t>
+                <t>TLS_DH_DSS_WITH_AES_256_CBC_SHA</t>
+                <t>TLS_DH_RSA_WITH_AES_256_CBC_SHA</t>
+                <t>TLS_DHE_DSS_WITH_AES_256_CBC_SHA</t>
+                <t>TLS_DHE_RSA_WITH_AES_256_CBC_SHA</t>
+                <t>TLS_DH_anon_WITH_AES_256_CBC_SHA</t>
+                <t>TLS_RSA_WITH_NULL_SHA256</t>
+                <t>TLS_RSA_WITH_AES_128_CBC_SHA256</t>
+                <t>TLS_RSA_WITH_AES_256_CBC_SHA256</t>
+                <t>TLS_DH_DSS_WITH_AES_128_CBC_SHA256</t>
+                <t>TLS_DH_RSA_WITH_AES_128_CBC_SHA256</t>
+                <t>TLS_DHE_DSS_WITH_AES_128_CBC_SHA256</t>
+                <t>TLS_RSA_WITH_CAMELLIA_128_CBC_SHA</t>
+                <t>TLS_DH_DSS_WITH_CAMELLIA_128_CBC_SHA</t>
+                <t>TLS_DH_RSA_WITH_CAMELLIA_128_CBC_SHA</t>
+                <t>TLS_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA</t>
+                <t>TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA</t>
+                <t>TLS_DH_anon_WITH_CAMELLIA_128_CBC_SHA</t>
+                <t>TLS_DHE_RSA_WITH_AES_128_CBC_SHA256</t>
+                <t>TLS_DH_DSS_WITH_AES_256_CBC_SHA256</t>
+                <t>TLS_DH_RSA_WITH_AES_256_CBC_SHA256</t>
+                <t>TLS_DHE_DSS_WITH_AES_256_CBC_SHA256</t>
+                <t>TLS_DHE_RSA_WITH_AES_256_CBC_SHA256</t>
+                <t>TLS_DH_anon_WITH_AES_128_CBC_SHA256</t>
+                <t>TLS_DH_anon_WITH_AES_256_CBC_SHA256</t>
+                <t>TLS_RSA_WITH_CAMELLIA_256_CBC_SHA</t>
+                <t>TLS_DH_DSS_WITH_CAMELLIA_256_CBC_SHA</t>
+                <t>TLS_DH_RSA_WITH_CAMELLIA_256_CBC_SHA</t>
+                <t>TLS_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA</t>
+                <t>TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA</t>
+                <t>TLS_DH_anon_WITH_CAMELLIA_256_CBC_SHA</t>
+                <t>TLS_PSK_WITH_RC4_128_SHA</t>
+                <t>TLS_PSK_WITH_3DES_EDE_CBC_SHA</t>
+                <t>TLS_PSK_WITH_AES_128_CBC_SHA</t>
+                <t>TLS_PSK_WITH_AES_256_CBC_SHA</t>
+                <t>TLS_DHE_PSK_WITH_RC4_128_SHA</t>
+                <t>TLS_DHE_PSK_WITH_3DES_EDE_CBC_SHA</t>
+                <t>TLS_DHE_PSK_WITH_AES_128_CBC_SHA</t>
+                <t>TLS_DHE_PSK_WITH_AES_256_CBC_SHA</t>
+                <t>TLS_RSA_PSK_WITH_RC4_128_SHA</t>
+                <t>TLS_RSA_PSK_WITH_3DES_EDE_CBC_SHA</t>
+                <t>TLS_RSA_PSK_WITH_AES_128_CBC_SHA</t>
+                <t>TLS_RSA_PSK_WITH_AES_256_CBC_SHA</t>
+                <t>TLS_RSA_WITH_SEED_CBC_SHA</t>
+                <t>TLS_DH_DSS_WITH_SEED_CBC_SHA</t>
+                <t>TLS_DH_RSA_WITH_SEED_CBC_SHA</t>
+                <t>TLS_DHE_DSS_WITH_SEED_CBC_SHA</t>
+                <t>TLS_DHE_RSA_WITH_SEED_CBC_SHA</t>
+                <t>TLS_DH_anon_WITH_SEED_CBC_SHA</t>
+                <t>TLS_RSA_WITH_AES_128_GCM_SHA256</t>
+                <t>TLS_RSA_WITH_AES_256_GCM_SHA384</t>
+                <t>TLS_DH_RSA_WITH_AES_128_GCM_SHA256</t>
+                <t>TLS_DH_RSA_WITH_AES_256_GCM_SHA384</t>
+                <t>TLS_DH_DSS_WITH_AES_128_GCM_SHA256</t>
+                <t>TLS_DH_DSS_WITH_AES_256_GCM_SHA384</t>
+                <t>TLS_DH_anon_WITH_AES_128_GCM_SHA256</t>
+                <t>TLS_DH_anon_WITH_AES_256_GCM_SHA384</t>
+                <t>TLS_PSK_WITH_AES_128_GCM_SHA256</t>
+                <t>TLS_PSK_WITH_AES_256_GCM_SHA384</t>
+                <t>TLS_RSA_PSK_WITH_AES_128_GCM_SHA256</t>
+                <t>TLS_RSA_PSK_WITH_AES_256_GCM_SHA384</t>
+                <t>TLS_PSK_WITH_AES_128_CBC_SHA256</t>
+                <t>TLS_PSK_WITH_AES_256_CBC_SHA384</t>
+                <t>TLS_PSK_WITH_NULL_SHA256</t>
+                <t>TLS_PSK_WITH_NULL_SHA384</t>
+                <t>TLS_DHE_PSK_WITH_AES_128_CBC_SHA256</t>
+                <t>TLS_DHE_PSK_WITH_AES_256_CBC_SHA384</t>
+                <t>TLS_DHE_PSK_WITH_NULL_SHA256</t>
+                <t>TLS_DHE_PSK_WITH_NULL_SHA384</t>
+                <t>TLS_RSA_PSK_WITH_AES_128_CBC_SHA256</t>
+                <t>TLS_RSA_PSK_WITH_AES_256_CBC_SHA384</t>
+                <t>TLS_RSA_PSK_WITH_NULL_SHA256</t>
+                <t>TLS_RSA_PSK_WITH_NULL_SHA384</t>
+                <t>TLS_RSA_WITH_CAMELLIA_128_CBC_SHA256</t>
+                <t>TLS_DH_DSS_WITH_CAMELLIA_128_CBC_SHA256</t>
+                <t>TLS_DH_RSA_WITH_CAMELLIA_128_CBC_SHA256</t>
+                <t>TLS_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA256</t>
+                <t>TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA256</t>
+                <t>TLS_DH_anon_WITH_CAMELLIA_128_CBC_SHA256</t>
+                <t>TLS_RSA_WITH_CAMELLIA_256_CBC_SHA256</t>
+                <t>TLS_DH_DSS_WITH_CAMELLIA_256_CBC_SHA256</t>
+                <t>TLS_DH_RSA_WITH_CAMELLIA_256_CBC_SHA256</t>
+                <t>TLS_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA256</t>
+                <t>TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA256</t>
+                <t>TLS_DH_anon_WITH_CAMELLIA_256_CBC_SHA256</t>
+                <t>TLS_EMPTY_RENEGOTIATION_INFO_SCSV</t>
+                <t>TLS_ECDH_ECDSA_WITH_NULL_SHA</t>
+                <t>TLS_ECDH_ECDSA_WITH_RC4_128_SHA</t>
+                <t>TLS_ECDH_ECDSA_WITH_3DES_EDE_CBC_SHA</t>
+                <t>TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA</t>
+                <t>TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA</t>
+                <t>TLS_ECDHE_ECDSA_WITH_NULL_SHA</t>
+                <t>TLS_ECDHE_ECDSA_WITH_RC4_128_SHA</t>
+                <t>TLS_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA</t>
+                <t>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA</t>
+                <t>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA</t>
+                <t>TLS_ECDH_RSA_WITH_NULL_SHA</t>
+                <t>TLS_ECDH_RSA_WITH_RC4_128_SHA</t>
+                <t>TLS_ECDH_RSA_WITH_3DES_EDE_CBC_SHA</t>
+                <t>TLS_ECDH_RSA_WITH_AES_128_CBC_SHA</t>
+                <t>TLS_ECDH_RSA_WITH_AES_256_CBC_SHA</t>
+                <t>TLS_ECDHE_RSA_WITH_NULL_SHA</t>
+                <t>TLS_ECDHE_RSA_WITH_RC4_128_SHA</t>
+                <t>TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA</t>
+                <t>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA</t>
+                <t>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA</t>
+                <t>TLS_ECDH_anon_WITH_NULL_SHA</t>
+                <t>TLS_ECDH_anon_WITH_RC4_128_SHA</t>
+                <t>TLS_ECDH_anon_WITH_3DES_EDE_CBC_SHA</t>
+                <t>TLS_ECDH_anon_WITH_AES_128_CBC_SHA</t>
+                <t>TLS_ECDH_anon_WITH_AES_256_CBC_SHA</t>
+                <t>TLS_SRP_SHA_WITH_3DES_EDE_CBC_SHA</t>
+                <t>TLS_SRP_SHA_RSA_WITH_3DES_EDE_CBC_SHA</t>
+                <t>TLS_SRP_SHA_DSS_WITH_3DES_EDE_CBC_SHA</t>
+                <t>TLS_SRP_SHA_WITH_AES_128_CBC_SHA</t>
+                <t>TLS_SRP_SHA_RSA_WITH_AES_128_CBC_SHA</t>
+                <t>TLS_SRP_SHA_DSS_WITH_AES_128_CBC_SHA</t>
+                <t>TLS_SRP_SHA_WITH_AES_256_CBC_SHA</t>
+                <t>TLS_SRP_SHA_RSA_WITH_AES_256_CBC_SHA</t>
+                <t>TLS_SRP_SHA_DSS_WITH_AES_256_CBC_SHA</t>
+                <t>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256</t>
+                <t>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384</t>
+                <t>TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256</t>
+                <t>TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384</t>
+                <t>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256</t>
+                <t>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384</t>
+                <t>TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256</t>
+                <t>TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384</t>
+                <t>TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256</t>
+                <t>TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384</t>
+                <t>TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256</t>
+                <t>TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384</t>
+                <t>TLS_ECDHE_PSK_WITH_RC4_128_SHA</t>
+                <t>TLS_ECDHE_PSK_WITH_3DES_EDE_CBC_SHA</t>
+                <t>TLS_ECDHE_PSK_WITH_AES_128_CBC_SHA</t>
+                <t>TLS_ECDHE_PSK_WITH_AES_256_CBC_SHA</t>
+                <t>TLS_ECDHE_PSK_WITH_AES_128_CBC_SHA256</t>
+                <t>TLS_ECDHE_PSK_WITH_AES_256_CBC_SHA384</t>
+                <t>TLS_ECDHE_PSK_WITH_NULL_SHA</t>
+                <t>TLS_ECDHE_PSK_WITH_NULL_SHA256</t>
+                <t>TLS_ECDHE_PSK_WITH_NULL_SHA384</t>
+                <t>TLS_RSA_WITH_ARIA_128_CBC_SHA256</t>
+                <t>TLS_RSA_WITH_ARIA_256_CBC_SHA384</t>
+                <t>TLS_DH_DSS_WITH_ARIA_128_CBC_SHA256</t>
+                <t>TLS_DH_DSS_WITH_ARIA_256_CBC_SHA384</t>
+                <t>TLS_DH_RSA_WITH_ARIA_128_CBC_SHA256</t>
+                <t>TLS_DH_RSA_WITH_ARIA_256_CBC_SHA384</t>
+                <t>TLS_DHE_DSS_WITH_ARIA_128_CBC_SHA256</t>
+                <t>TLS_DHE_DSS_WITH_ARIA_256_CBC_SHA384</t>
+                <t>TLS_DHE_RSA_WITH_ARIA_128_CBC_SHA256</t>
+                <t>TLS_DHE_RSA_WITH_ARIA_256_CBC_SHA384</t>
+                <t>TLS_DH_anon_WITH_ARIA_128_CBC_SHA256</t>
+                <t>TLS_DH_anon_WITH_ARIA_256_CBC_SHA384</t>
+                <t>TLS_ECDHE_ECDSA_WITH_ARIA_128_CBC_SHA256</t>
+                <t>TLS_ECDHE_ECDSA_WITH_ARIA_256_CBC_SHA384</t>
+                <t>TLS_ECDH_ECDSA_WITH_ARIA_128_CBC_SHA256</t>
+                <t>TLS_ECDH_ECDSA_WITH_ARIA_256_CBC_SHA384</t>
+                <t>TLS_ECDHE_RSA_WITH_ARIA_128_CBC_SHA256</t>
+                <t>TLS_ECDHE_RSA_WITH_ARIA_256_CBC_SHA384</t>
+                <t>TLS_ECDH_RSA_WITH_ARIA_128_CBC_SHA256</t>
+                <t>TLS_ECDH_RSA_WITH_ARIA_256_CBC_SHA384</t>
+                <t>TLS_RSA_WITH_ARIA_128_GCM_SHA256</t>
+                <t>TLS_RSA_WITH_ARIA_256_GCM_SHA384</t>
+                <t>TLS_DH_RSA_WITH_ARIA_128_GCM_SHA256</t>
+                <t>TLS_DH_RSA_WITH_ARIA_256_GCM_SHA384</t>
+                <t>TLS_DH_DSS_WITH_ARIA_128_GCM_SHA256</t>
+                <t>TLS_DH_DSS_WITH_ARIA_256_GCM_SHA384</t>
+                <t>TLS_DH_anon_WITH_ARIA_128_GCM_SHA256</t>
+                <t>TLS_DH_anon_WITH_ARIA_256_GCM_SHA384</t>
+                <t>TLS_ECDH_ECDSA_WITH_ARIA_128_GCM_SHA256</t>
+                <t>TLS_ECDH_ECDSA_WITH_ARIA_256_GCM_SHA384</t>
+                <t>TLS_ECDH_RSA_WITH_ARIA_128_GCM_SHA256</t>
+                <t>TLS_ECDH_RSA_WITH_ARIA_256_GCM_SHA384</t>
+                <t>TLS_PSK_WITH_ARIA_128_CBC_SHA256</t>
+                <t>TLS_PSK_WITH_ARIA_256_CBC_SHA384</t>
+                <t>TLS_DHE_PSK_WITH_ARIA_128_CBC_SHA256</t>
+                <t>TLS_DHE_PSK_WITH_ARIA_256_CBC_SHA384</t>
+                <t>TLS_RSA_PSK_WITH_ARIA_128_CBC_SHA256</t>
+                <t>TLS_RSA_PSK_WITH_ARIA_256_CBC_SHA384</t>
+                <t>TLS_PSK_WITH_ARIA_128_GCM_SHA256</t>
+                <t>TLS_PSK_WITH_ARIA_256_GCM_SHA384</t>
+                <t>TLS_RSA_PSK_WITH_ARIA_128_GCM_SHA256</t>
+                <t>TLS_RSA_PSK_WITH_ARIA_256_GCM_SHA384</t>
+                <t>TLS_ECDHE_PSK_WITH_ARIA_128_CBC_SHA256</t>
+                <t>TLS_ECDHE_PSK_WITH_ARIA_256_CBC_SHA384</t>
+                <t>TLS_ECDHE_ECDSA_WITH_CAMELLIA_128_CBC_SHA256</t>
+                <t>TLS_ECDHE_ECDSA_WITH_CAMELLIA_256_CBC_SHA384</t>
+                <t>TLS_ECDH_ECDSA_WITH_CAMELLIA_128_CBC_SHA256</t>
+                <t>TLS_ECDH_ECDSA_WITH_CAMELLIA_256_CBC_SHA384</t>
+                <t>TLS_ECDHE_RSA_WITH_CAMELLIA_128_CBC_SHA256</t>
+                <t>TLS_ECDHE_RSA_WITH_CAMELLIA_256_CBC_SHA384</t>
+                <t>TLS_ECDH_RSA_WITH_CAMELLIA_128_CBC_SHA256</t>
+                <t>TLS_ECDH_RSA_WITH_CAMELLIA_256_CBC_SHA384</t>
+                <t>TLS_RSA_WITH_CAMELLIA_128_GCM_SHA256</t>
+                <t>TLS_RSA_WITH_CAMELLIA_256_GCM_SHA384</t>
+                <t>TLS_DH_RSA_WITH_CAMELLIA_128_GCM_SHA256</t>
+                <t>TLS_DH_RSA_WITH_CAMELLIA_256_GCM_SHA384</t>
+                <t>TLS_DH_DSS_WITH_CAMELLIA_128_GCM_SHA256</t>
+                <t>TLS_DH_DSS_WITH_CAMELLIA_256_GCM_SHA384</t>
+                <t>TLS_DH_anon_WITH_CAMELLIA_128_GCM_SHA256</t>
+                <t>TLS_DH_anon_WITH_CAMELLIA_256_GCM_SHA384</t>
+                <t>TLS_ECDH_ECDSA_WITH_CAMELLIA_128_GCM_SHA256</t>
+                <t>TLS_ECDH_ECDSA_WITH_CAMELLIA_256_GCM_SHA384</t>
+                <t>TLS_ECDH_RSA_WITH_CAMELLIA_128_GCM_SHA256</t>
+                <t>TLS_ECDH_RSA_WITH_CAMELLIA_256_GCM_SHA384</t>
+                <t>TLS_PSK_WITH_CAMELLIA_128_GCM_SHA256</t>
+                <t>TLS_PSK_WITH_CAMELLIA_256_GCM_SHA384</t>
+                <t>TLS_RSA_PSK_WITH_CAMELLIA_128_GCM_SHA256</t>
+                <t>TLS_RSA_PSK_WITH_CAMELLIA_256_GCM_SHA384</t>
+                <t>TLS_PSK_WITH_CAMELLIA_128_CBC_SHA256</t>
+                <t>TLS_PSK_WITH_CAMELLIA_256_CBC_SHA384</t>
+                <t>TLS_DHE_PSK_WITH_CAMELLIA_128_CBC_SHA256</t>
+                <t>TLS_DHE_PSK_WITH_CAMELLIA_256_CBC_SHA384</t>
+                <t>TLS_RSA_PSK_WITH_CAMELLIA_128_CBC_SHA256</t>
+                <t>TLS_RSA_PSK_WITH_CAMELLIA_256_CBC_SHA384</t>
+                <t>TLS_ECDHE_PSK_WITH_CAMELLIA_128_CBC_SHA256</t>
+                <t>TLS_ECDHE_PSK_WITH_CAMELLIA_256_CBC_SHA384</t>
+                <t>TLS_RSA_WITH_AES_128_CCM</t>
+                <t>TLS_RSA_WITH_AES_256_CCM</t>
+                <t>TLS_RSA_WITH_AES_128_CCM_8</t>
+                <t>TLS_RSA_WITH_AES_256_CCM_8</t>
+                <t>TLS_PSK_WITH_AES_128_CCM</t>
+                <t>TLS_PSK_WITH_AES_256_CCM</t>
+                <t>TLS_PSK_WITH_AES_128_CCM_8</t>
+                <t>TLS_PSK_WITH_AES_256_CCM_8</t>
+            </list>
+        </t>
+        <x:note>
+            <t>
+                <x:h>Note:</x:h>
+                This list was assembled from the set of registered TLS cipher suites at the time of
+                writing.  This list includes those cipher suites that do not offer an ephemeral key
+                exchange and those that are based on the TLS null, stream, or block cipher type (as
+                defined in <xref target="TLS12" x:sec="6.2.3" x:fmt="of"/>).  Additional cipher suites with
+                these properties could be defined; these would not be explicitly prohibited.
+            </t>
+        </x:note>
+    </section>
+
+    <section title="Acknowledgements" numbered="false">
+        <t>
+            This document includes substantial input from the following individuals:
+            <list style="symbols">
+                <t>
+                    Adam Langley, Wan-Teh Chang, Jim Morrison, Mark Nottingham, Alyssa Wilk, Costin
+                    Manolache, William Chan, Vitaliy Lvin, Joe Chan, Adam Barth, Ryan Hamilton, Gavin
+                    Peters, Kent Alstad, Kevin Lindsay, Paul Amer, Fan Yang, and Jonathan Leighton (SPDY
+                    contributors).
+                </t>
+                <t>
+                    Gabriel Montenegro and Willy Tarreau (Upgrade mechanism).
+                </t>
+                <t>
+                    William Chan, Salvatore Loreto, Osama Mazahir, Gabriel Montenegro, Jitu Padhye, Roberto
+                    Peon, and Rob Trace (Flow control).
+                </t>
+                <t>
+                    Mike Bishop (Extensibility).
+                </t>
+                <t>
+                    Mark Nottingham, Julian Reschke, James Snell, Jeff Pinner, Mike Bishop,
+                    and Herve Ruellan (Substantial editorial contributions).
+                </t>
+                <t>
+                    Kari Hurtta, Tatsuhiro Tsujikawa, Greg Wilkins, Poul-Henning Kamp,
+                    and Jonathan Thackray.
+                </t>
+                <t>
+                    Alexey Melnikov, who was an editor of this document in 2013.
+                </t>
+            </list>
+        </t>
+        <t>
+            A substantial proportion of Martin's contribution was supported by Microsoft during his
+            employment there.
+        </t>
+        <t>
+            The Japanese HTTP/2 community provided invaluable contributions,
+            including a number of implementations as well as numerous technical and
+            editorial contributions.
+        </t>
+    </section>
+</back>

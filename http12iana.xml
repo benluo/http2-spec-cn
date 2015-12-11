@@ -1,0 +1,444 @@
+<section anchor="iana" title="IANA Considerations">
+    <t>
+        A string for identifying HTTP/2 is entered into the "Application-Layer Protocol Negotiation
+        (ALPN) Protocol IDs" registry established in<xref target="TLS-ALPN"/>.
+    </t>
+    <t>
+        This document establishes a registry for frame types, settings, and error codes. These new
+        registries appear in the new "Hypertext Transfer Protocol version 2 (HTTP/2) Parameters" section.
+    </t>
+    <t>
+        This document registers the
+        <spanx style="vbare">HTTP2-Settings</spanx>
+        header field for
+        use in HTTP; it also registers the 421 (Misdirected Request) status code.
+    </t>
+    <t>
+        This document registers the
+        <spanx style="verb">PRI</spanx>
+        method for use in HTTP to avoid
+        collisions with the<xref target="ConnectionHeader">connection preface</xref>.
+    </t>
+
+    <section anchor="iana-alpn" title="Registration of HTTP/2 Identification Strings">
+        <t>
+            This document creates two registrations for the identification of HTTP/2 (see<xref
+                target="discover-https"/>) in the
+            "Application-Layer Protocol Negotiation (ALPN) Protocol IDs" registry established in<xref
+                target="TLS-ALPN"/>.
+        </t>
+        <t>
+            The "h2" string identifies HTTP/2 when used over TLS:
+            <list style="hanging">
+                <t hangText="Protocol:">HTTP/2 over TLS</t>
+                <t hangText="Identification Sequence:">0x68 0x32 ("h2")</t>
+                <t hangText="Specification:">This document</t>
+            </list>
+        </t>
+        <t>
+            The "h2c" string identifies HTTP/2 when used over cleartext TCP:
+            <list style="hanging">
+                <t hangText="Protocol:">HTTP/2 over TCP</t>
+                <t hangText="Identification Sequence:">0x68 0x32 0x63 ("h2c")</t>
+                <t hangText="Specification:">This document</t>
+            </list>
+        </t>
+    </section>
+
+    <section anchor="iana-frames" title="Frame Type Registry">
+        <t>
+            This document establishes a registry for HTTP/2 frame type codes. The "HTTP/2 Frame
+            Type" registry manages an 8-bit space. The "HTTP/2 Frame Type" registry operates under
+            either of the
+            <xref target="RFC5226">"IETF Review" or "IESG Approval" policies</xref>
+            for
+            values between 0x00 and 0xef, with values between 0xf0 and 0xff being reserved for
+            Experimental Use.
+        </t>
+        <t>
+            New entries in this registry require the following information:
+            <list style="hanging">
+                <t hangText="Frame Type:">
+                    A name or label for the frame type.
+                </t>
+                <t hangText="Code:">
+                    The 8-bit code assigned to the frame type.
+                </t>
+                <t hangText="Specification:">
+                    A reference to a specification that includes a description of the frame layout, its
+                    semantics, and flags that the frame type uses, including any parts of the frame that
+                    are conditionally present based on the value of flags.
+                </t>
+            </list>
+        </t>
+        <t>
+            The entries in the following table are registered by this document.
+        </t>
+        <texttable align="left" suppress-title="true">
+            <ttcol>Frame Type</ttcol>
+            <ttcol>Code</ttcol>
+            <ttcol>Section</ttcol>
+            <c>DATA</c>
+            <c>0x0</c>
+            <c>
+                <xref target="DATA"/>
+            </c>
+            <c>HEADERS</c>
+            <c>0x1</c>
+            <c>
+                <xref target="HEADERS"/>
+            </c>
+            <c>PRIORITY</c>
+            <c>0x2</c>
+            <c>
+                <xref target="PRIORITY"/>
+            </c>
+            <c>RST_STREAM</c>
+            <c>0x3</c>
+            <c>
+                <xref target="RST_STREAM"/>
+            </c>
+            <c>SETTINGS</c>
+            <c>0x4</c>
+            <c>
+                <xref target="SETTINGS"/>
+            </c>
+            <c>PUSH_PROMISE</c>
+            <c>0x5</c>
+            <c>
+                <xref target="PUSH_PROMISE"/>
+            </c>
+            <c>PING</c>
+            <c>0x6</c>
+            <c>
+                <xref target="PING"/>
+            </c>
+            <c>GOAWAY</c>
+            <c>0x7</c>
+            <c>
+                <xref target="GOAWAY"/>
+            </c>
+            <c>WINDOW_UPDATE</c>
+            <c>0x8</c>
+            <c>
+                <xref target="WINDOW_UPDATE"/>
+            </c>
+            <c>CONTINUATION</c>
+            <c>0x9</c>
+            <c>
+                <xref target="CONTINUATION"/>
+            </c>
+        </texttable>
+    </section>
+
+    <section anchor="iana-settings" title="Settings Registry">
+        <t>
+            This document establishes a registry for HTTP/2 settings. The "HTTP/2 Settings" registry
+            manages a 16-bit space. The "HTTP/2 Settings" registry operates under the
+            <xref
+                    target="RFC5226">"Expert Review" policy
+            </xref>
+            for values in the range from 0x0000 to
+            0xefff, with values between and 0xf000 and 0xffff being reserved for Experimental Use.
+        </t>
+        <t>
+            New registrations are advised to provide the following information:
+            <list style="hanging">
+                <t hangText="Name:">
+                    A symbolic name for the setting. Specifying a setting name is optional.
+                </t>
+                <t hangText="Code:">
+                    The 16-bit code assigned to the setting.
+                </t>
+                <t hangText="Initial Value:">
+                    An initial value for the setting.
+                </t>
+                <t hangText="Specification:">
+                    An optional reference to a specification that describes the use of the setting.
+                </t>
+            </list>
+        </t>
+        <t>
+            The entries in the following table are registered by this document.
+        </t>
+        <texttable align="left" suppress-title="true">
+            <ttcol>Name</ttcol>
+            <ttcol>Code</ttcol>
+            <ttcol>Initial Value</ttcol>
+            <ttcol>Specification</ttcol>
+            <c>HEADER_TABLE_SIZE</c>
+            <c>0x1</c>
+            <c>4096</c>
+            <c>
+                <xref target="SettingValues"/>
+            </c>
+            <c>ENABLE_PUSH</c>
+            <c>0x2</c>
+            <c>1</c>
+            <c>
+                <xref target="SettingValues"/>
+            </c>
+            <c>MAX_CONCURRENT_STREAMS</c>
+            <c>0x3</c>
+            <c>(infinite)</c>
+            <c>
+                <xref target="SettingValues"/>
+            </c>
+            <c>INITIAL_WINDOW_SIZE</c>
+            <c>0x4</c>
+            <c>65535</c>
+            <c>
+                <xref target="SettingValues"/>
+            </c>
+            <c>MAX_FRAME_SIZE</c>
+            <c>0x5</c>
+            <c>16384</c>
+            <c>
+                <xref target="SettingValues"/>
+            </c>
+            <c>MAX_HEADER_LIST_SIZE</c>
+            <c>0x6</c>
+            <c>(infinite)</c>
+            <c>
+                <xref target="SettingValues"/>
+            </c>
+        </texttable>
+
+    </section>
+
+    <section anchor="iana-errors" title="Error Code Registry">
+        <t>
+            This document establishes a registry for HTTP/2 error codes. The "HTTP/2 Error Code"
+            registry manages a 32-bit space. The "HTTP/2 Error Code" registry operates under the
+            <xref target="RFC5226">"Expert Review" policy</xref>.
+        </t>
+        <t>
+            Registrations for error codes are required to include a description of the error code. An
+            expert reviewer is advised to examine new registrations for possible duplication with
+            existing error codes. Use of existing registrations is to be encouraged, but not
+            mandated.
+        </t>
+        <t>
+            New registrations are advised to provide the following information:
+            <list style="hanging">
+                <t hangText="Name:">
+                    A name for the error code. Specifying an error code name is optional.
+                </t>
+                <t hangText="Code:">
+                    The 32-bit error code value.
+                </t>
+                <t hangText="Description:">
+                    A brief description of the error code semantics, longer if no detailed specification
+                    is provided.
+                </t>
+                <t hangText="Specification:">
+                    An optional reference for a specification that defines the error code.
+                </t>
+            </list>
+        </t>
+        <t>
+            The entries in the following table are registered by this document.
+        </t>
+        <texttable align="left" suppress-title="true">
+            <ttcol>Name</ttcol>
+            <ttcol>Code</ttcol>
+            <ttcol>Description</ttcol>
+            <ttcol>Specification</ttcol>
+            <c>NO_ERROR</c>
+            <c>0x0</c>
+            <c>Graceful shutdown</c>
+            <c>
+                <xref target="ErrorCodes"/>
+            </c>
+            <c>PROTOCOL_ERROR</c>
+            <c>0x1</c>
+            <c>Protocol error detected</c>
+            <c>
+                <xref target="ErrorCodes"/>
+            </c>
+            <c>INTERNAL_ERROR</c>
+            <c>0x2</c>
+            <c>Implementation fault</c>
+            <c>
+                <xref target="ErrorCodes"/>
+            </c>
+            <c>FLOW_CONTROL_ERROR</c>
+            <c>0x3</c>
+            <c>Flow-control limits exceeded</c>
+            <c>
+                <xref target="ErrorCodes"/>
+            </c>
+            <c>SETTINGS_TIMEOUT</c>
+            <c>0x4</c>
+            <c>Settings not acknowledged</c>
+            <c>
+                <xref target="ErrorCodes"/>
+            </c>
+            <c>STREAM_CLOSED</c>
+            <c>0x5</c>
+            <c>Frame received for closed stream</c>
+            <c>
+                <xref target="ErrorCodes"/>
+            </c>
+            <c>FRAME_SIZE_ERROR</c>
+            <c>0x6</c>
+            <c>Frame size incorrect</c>
+            <c>
+                <xref target="ErrorCodes"/>
+            </c>
+            <c>REFUSED_STREAM</c>
+            <c>0x7</c>
+            <c>Stream not processed</c>
+            <c>
+                <xref target="ErrorCodes"/>
+            </c>
+            <c>CANCEL</c>
+            <c>0x8</c>
+            <c>Stream cancelled</c>
+            <c>
+                <xref target="ErrorCodes"/>
+            </c>
+            <c>COMPRESSION_ERROR</c>
+            <c>0x9</c>
+            <c>Compression state not updated</c>
+            <c>
+                <xref target="ErrorCodes"/>
+            </c>
+            <c>CONNECT_ERROR</c>
+            <c>0xa</c>
+            <c>TCP connection error for CONNECT method</c>
+            <c>
+                <xref target="ErrorCodes"/>
+            </c>
+            <c>ENHANCE_YOUR_CALM</c>
+            <c>0xb</c>
+            <c>Processing capacity exceeded</c>
+            <c>
+                <xref target="ErrorCodes"/>
+            </c>
+            <c>INADEQUATE_SECURITY</c>
+            <c>0xc</c>
+            <c>Negotiated TLS parameters not acceptable</c>
+            <c>
+                <xref target="ErrorCodes"/>
+            </c>
+            <c>HTTP_1_1_REQUIRED</c>
+            <c>0xd</c>
+            <c>Use HTTP/1.1 for the request</c>
+            <c>
+                <xref target="ErrorCodes"/>
+            </c>
+        </texttable>
+
+    </section>
+
+    <section title="HTTP2-Settings Header Field Registration">
+        <t>
+            This section registers the
+            <spanx style="vbare">HTTP2-Settings</spanx>
+            header field in the
+            "Permanent Message Header Field Names" registry<xref target="BCP90"/>.
+            <list style="hanging">
+                <t hangText="Header field name:">
+                    HTTP2-Settings
+                </t>
+                <t hangText="Applicable protocol:">
+                    http
+                </t>
+                <t hangText="Status:">
+                    standard
+                </t>
+                <t hangText="Author/Change controller:">
+                    IETF
+                </t>
+                <t hangText="Specification document(s):">
+                    <xref target="Http2SettingsHeader"/>
+                    of this document
+                </t>
+                <t hangText="Related information:">
+                    This header field is only used by an HTTP/2 client for Upgrade-based negotiation.
+                </t>
+            </list>
+        </t>
+    </section>
+
+    <section title="PRI Method Registration">
+        <t>
+            This section registers the
+            <spanx style="verb">PRI</spanx>
+            method in the "HTTP Method
+            Registry" (<xref target="RFC7231" x:fmt="," x:rel="#method.registry"/>).
+            <list style="hanging">
+                <t hangText="Method Name:">
+                    PRI
+                </t>
+                <t hangText="Safe:">
+                    Yes
+                </t>
+                <t hangText="Idempotent:">
+                    Yes
+                </t>
+                <t hangText="Specification document(s):">
+                    <xref target="ConnectionHeader"/>
+                    of this document
+                </t>
+                <t hangText="Related information:">
+                    This method is never used by an actual client. This method will appear to be used
+                    when an HTTP/1.1 server or intermediary attempts to parse an HTTP/2 connection
+                    preface.
+                </t>
+            </list>
+        </t>
+    </section>
+
+    <section title="The 421 (Misdirected Request) HTTP Status Code"
+             anchor="iana-MisdirectedRequest">
+        <t>
+            This document registers the 421 (Misdirected Request) HTTP status code in the
+            "HTTP Status Codes" registry (<xref target="RFC7231" x:fmt=","
+                                                x:rel="#status.code.registry"/>).
+        </t>
+        <t>
+            <list style="hanging">
+                <t hangText="Status Code:">
+                    421
+                </t>
+                <t hangText="Short Description:">
+                    Misdirected Request
+                </t>
+                <t hangText="Specification:">
+                    <xref target="MisdirectedRequest"/>
+                    of this document
+                </t>
+            </list>
+        </t>
+    </section>
+
+
+    <section anchor="iana-h2c" title="The h2c Upgrade Token">
+        <t>
+            This document registers the "h2c" upgrade token in the "HTTP
+            Upgrade Tokens" registry (<xref
+                target="RFC7230" x:fmt="," x:rel="#upgrade.token.registry"/>).
+        </t>
+        <t>
+            <list style="hanging">
+                <t hangText="Value:">
+                    h2c
+                </t>
+                <t hangText="Description:">
+                    Hypertext Transfer Protocol version 2 (HTTP/2)
+                </t>
+                <t hangText="Expected Version Tokens:">
+                    None
+                </t>
+                <t hangText="Reference:">
+                    <xref target="discover-http"/>
+                    of this document
+                </t>
+            </list>
+        </t>
+    </section>
+
+
+</section>

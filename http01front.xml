@@ -1,0 +1,54 @@
+<front>
+    <title abbrev="HTTP/2">Hypertext Transfer Protocol Version 2 (HTTP/2)</title>
+
+    <author initials="M." surname="Belshe" fullname="Mike Belshe">
+        <organization>BitGo</organization>
+        <address>
+            <email>mike@belshe.com</email>
+        </address>
+    </author>
+
+    <author initials="R." surname="Peon" fullname="Roberto Peon">
+        <organization>Google, Inc</organization>
+        <address>
+            <email>fenix@google.com</email>
+        </address>
+    </author>
+
+    <author initials="M." surname="Thomson" fullname="Martin Thomson" role="editor">
+        <organization>Mozilla</organization>
+        <address>
+            <postal>
+                <street>331 E Evelyn Street</street>
+                <city>Mountain View</city>
+                <region>CA</region>
+                <code>94041</code>
+                <country>United States</country>
+            </postal>
+            <email>martin.thomson@gmail.com</email>
+        </address>
+    </author>
+
+    <date year="2015" month="May"/>
+    <area>Applications</area>
+    <workgroup>HTTPbis</workgroup>
+    <keyword>HTTP</keyword>
+    <keyword>SPDY</keyword>
+    <keyword>Web</keyword>
+
+    <abstract>
+        <t>
+            This specification describes an optimized expression of the semantics of the Hypertext
+            Transfer Protocol (HTTP), referred to as HTTP version 2 (HTTP/2). HTTP/2 enables a more
+            efficient use of network resources and a
+            reduced perception of latency by introducing header field compression and allowing multiple
+            concurrent exchanges on the same connection. It also introduces unsolicited push of
+            representations from servers to clients.
+        </t>
+        <t>
+            This specification is an alternative to, but does not obsolete, the HTTP/1.1 message syntax.
+            HTTP's existing semantics remain unchanged.
+        </t>
+    </abstract>
+
+</front>
